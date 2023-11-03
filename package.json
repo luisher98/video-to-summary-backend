@@ -1,0 +1,32 @@
+{
+  "name": "yt-summary-api",
+  "author": {
+    "name": "Luis Hernández Martín",
+    "email": "luisheratm@gmail.com"
+  },
+  "version": "1.0.0",
+  "description": "API for the YouTube Summary App",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "type": "module",
+  "keywords": [
+    "youtube",
+    "summary",
+    "api"
+  ],
+  "dependencies": {
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "ffmpeg-static": "^5.1.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "openai": "^3.3.0",
+    "ytdl-core": "^4.11.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
