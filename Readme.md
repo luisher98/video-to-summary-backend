@@ -7,9 +7,6 @@ This is the API of a youtube summarization tool that utilizes OpenAI's GPT-3 lan
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Usage](#usage)
-  - [Environment Variables](#environment-variables)
-  - [Running the Application](#running-the-application)
 - [Example](#example)
 
 ## Getting Started
@@ -39,7 +36,7 @@ Before you begin, ensure you have met the following requirements:
     ```
     OPENAI_API_KEY = ...
 5. Run the following command to start the server
-   ´´´
+   ```
    node app
 6. Paste this link following a youtube link in the browser to test it
    ```
