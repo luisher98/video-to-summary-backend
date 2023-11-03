@@ -26,7 +26,7 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/luisher98/tubesummary-server.git
 2. Navigate to the project directory:
    ```
-   cd tubbesummary
+   cd tubesummary-server
 3. Install dependencies
    ```
    npm install
@@ -38,7 +38,7 @@ Before you begin, ensure you have met the following requirements:
 5. Run the following command to start the server
    ```
    node app
-6. Paste this link following a youtube link in the browser to test it
+6. Paste this link following a YouTube link in the browser to test it
    ```
    http://localhost:5000/api/summary?url=...
 ### Example
