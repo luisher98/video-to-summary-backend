@@ -12,9 +12,10 @@ app.use(bodyParser.json());
 
 app.get("/api/summary", async (req, res) => {
   const inputUrl = req.query.url;
+  const words = req.query.words;
 
   try {
-    const summary = await outputTranscript(inputUrl);
+    const summary = await outputTranscript(inputUrl, words);
     res.json({ content: summary });
     console.log("Summary generated successfully.");
   } catch (error) {
