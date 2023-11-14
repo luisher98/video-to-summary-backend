@@ -10,7 +10,18 @@ export default async function videoInfo(url) {
   const data = await response.json();
   const snippet = data.items[0].snippet;
 
-  const { title, thumbnails, channelTitle } = snippet;
+  const { title, description, thumbnails, channelTitle } = snippet;
 
-  return { id, title, thumbnails, channelTitle };
+  function shortenString(str, maxLength) {
+    if (str.length > maxLength) {
+      return str.substring(0, maxLength) + '...';
+    }
+    return str;
+  }
+
+  const trimmedDescription = shortenString(description, 200);
+
+  const mediumThumbnail = thumbnails.medium;
+
+  return { id, title, trimmedDescription, mediumThumbnail, channelTitle };
 }

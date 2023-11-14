@@ -15,7 +15,7 @@ app.get("/api/summary", async (req, res) => {
 
   try {
     const summary = await outputTranscript(inputUrl);
-    res.json({ result: summary });
+    res.json({ content: summary });
     console.log("Summary generated successfully.");
   } catch (error) {
     console.error(error);
@@ -28,14 +28,15 @@ app.get("/api/info", async (req, res) => {
   const inputUrl = req.query.url;
 
   try {
-    const { id, title, thumbnails, channelTitle } = await videoInfo(
+    const { id, title, mediumThumbnail, trimmedDescription, channelTitle } = await videoInfo(
       inputUrl
     );
     res.json({
-      videoInfo: {
+      info: {
         id: id,
         title: title,
-        thumbnail: thumbnails,
+        description: trimmedDescription,
+        thumbnail: mediumThumbnail,
         channel: channelTitle,
       },
     });
