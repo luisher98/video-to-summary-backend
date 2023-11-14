@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-import outputTranscript from "./src/summary/outputTranscript.mjs";
+import outputSummary from "./src/summary/outputSummary.mjs";
 import videoInfo from "./src/info/videoInfo.mjs";
 
 const port = 5000;
@@ -15,7 +15,7 @@ app.get("/api/summary", async (req, res) => {
   const words = req.query.words;
 
   try {
-    const summary = await outputTranscript(inputUrl, words);
+    const summary = await outputSummary(inputUrl, words);
     res.json({ content: summary });
     console.log("Summary generated successfully.");
   } catch (error) {
