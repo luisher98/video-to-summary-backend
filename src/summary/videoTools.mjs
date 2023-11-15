@@ -7,8 +7,6 @@ import ffmpeg from "fluent-ffmpeg";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-// let info = await ytdl.getInfo(videoUrl);
-
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
     try {

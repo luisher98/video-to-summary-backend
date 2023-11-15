@@ -2,7 +2,7 @@ import { downloadVideo, deleteVideo } from "./videoTools.mjs";
 import { generateTranscript, generateSummary } from "./openAI.mjs";
 
 async function outputSummary(url, words) {
-  const id = url.split("?")[1].split("=")[1];
+  const id = url.split("=")[1].split("?")[0]
   // 1. Download video from YouTube
   await downloadVideo(url, id);
   // 2. Generate transcript

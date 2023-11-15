@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Tacoronte",
+			"country": {
+				"code": "ES",
+				"name": "Spain"
+			},
+			"subdivision": {
+				"code": "CN",
+				"name": "Canary Islands"
+			},
+			"timezone": "Atlantic/Canary",
+			"latitude": 28.4834,
+			"longitude": -16.4172
+		},
+		"timestamp": 1700087760434
+	}
+}
