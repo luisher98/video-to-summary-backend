@@ -26,9 +26,11 @@
     "google-auth-library": "^9.2.0",
     "googleapis": "^128.0.0",
     "openai": "^3.3.0",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "^4.11.5",
+    "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "webpack-cli": "^5.1.4"
   }
 }
