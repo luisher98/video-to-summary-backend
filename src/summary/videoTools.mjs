@@ -2,7 +2,7 @@ import fs from "fs/promises";
 
 import ytdl from "ytdl-core";
 
-import ffmpegPath from "ffmpeg-static";
+import ffmpeg from "fluent-ffmpeg";
 
 ffmpeg.setFfmpegPath("usr/bin/ffmpeg");
 
