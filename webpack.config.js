@@ -11,8 +11,12 @@ export default {
   output: {
     path: path.join(__dirname, "dist"),
     publicPath: "/",
+    chunkFormat: "module",
     filename: "app.js",
   },
   target: "node",
   externals: [nodeExternals()],
+  experiments: {
+    outputModule: true, 
+  },
 };
