@@ -7,12 +7,12 @@ const __dirname = path.dirname(__filename);
 
 export default {
   mode: "production",
-  entry: "./app.js",
+  entry: "./app.mjs",
   output: {
     path: path.join(__dirname, "dist"),
     publicPath: "/",
     chunkFormat: "module",
-    filename: "app.js",
+    filename: "app.mjs",
   },
   target: "node",
   externals: [nodeExternals()],

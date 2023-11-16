@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export default async function videoInfo(url) {
   const id = url.split("?v=")[1];
 

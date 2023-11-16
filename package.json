@@ -8,10 +8,10 @@
   "description": "API for the YouTube Summary App",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "build": "webpack --mode production",
-    "prod": "node dist/app.js"
+    "prod": "node dist/app.mjs"
   },
   "type": "module",
   "keywords": [
@@ -26,9 +26,10 @@
     "fluent-ffmpeg": "^2.1.2",
     "google-auth-library": "^9.2.0",
     "googleapis": "^128.0.0",
+    "node-fetch": "^3.3.2",
     "openai": "^3.3.0",
-    "ytdl-core": "^4.11.5",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
