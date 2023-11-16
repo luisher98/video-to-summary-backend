@@ -1,7 +1,5 @@
 import fs from "fs/promises";
-
 import ytdl from "ytdl-core";
-
 import ffmpeg from "fluent-ffmpeg";
 
 ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
@@ -9,11 +7,17 @@ ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
     try {
+      if (typeof videoUrl !== 'string' || typeof id !== 'string') {
+        throw new Error('Invalid input types');
+      }
       // Download video from YouTube
       console.log("Downloading video...");
       let video = ytdl(videoUrl, {
         quality: "lowest",
         filter: "audioonly",
+      });
+      video.on('error', error => {
+        throw error;
       });
       console.log("Video downloaded successfully.");
       // Convert the stream to mp3
@@ -22,7 +26,7 @@ async function downloadVideo(videoUrl, id) {
         .audioCodec("libmp3lame")
         .toFormat("mp3")
         .save(`${id}.mp3`)
-        .on("error", (err) => console.log(`Error: ${err.message}`))
+        .on("error", (err) => console.log(`Error during conversion: ${err.message}`))
         .on("end", () => {
           console.log("Audio downloaded and converted to MP3 successfully.");
           resolve();
