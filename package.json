@@ -9,7 +9,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "build": "webpack --mode production",
+    "prod": "node dist/app.js"
   },
   "type": "module",
   "keywords": [
