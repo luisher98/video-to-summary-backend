@@ -3,9 +3,8 @@ import fs from "fs/promises";
 import ytdl from "ytdl-core";
 
 import ffmpegPath from "ffmpeg-static";
-import ffmpeg from "fluent-ffmpeg";
 
-ffmpeg.setFfmpegPath(ffmpegPath);
+ffmpeg.setFfmpegPath("k5cj25!LPfRF*K$4CXtx");
 
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
