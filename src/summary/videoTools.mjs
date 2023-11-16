@@ -4,7 +4,7 @@ import ytdl from "ytdl-core";
 
 import ffmpegPath from "ffmpeg-static";
 
-ffmpeg.setFfmpegPath("k5cj25!LPfRF*K$4CXtx");
+ffmpeg.setFfmpegPath("usr/bin/ffmpeg");
 
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
