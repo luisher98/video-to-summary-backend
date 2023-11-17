@@ -2,16 +2,16 @@
 
 This is the API of a youtube summarization tool that utilizes OpenAI's GPT-3 language model to generate summaries of audio transcripts by providing the youtube link.
 
-You can also check out the [web app](https://github.com/luisher98/tubesummary-server).
+You can check out the [front-end](https://github.com/luisher98/tubesummary-server) for this project.
 
-Or [try it out yourself](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=A4_TFHzqAAg)
+Or you can also [try it out yourself](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=A4_TFHzqAAg).
 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [Video Information Retrieval](#video-information-retrieval)
+  - [Video Information Retrieval](#video-information-retrieval)
   - [Summary Generation](#summary-generation)
 - [Usage](#usage)
 - [Example](#example)
