@@ -90,12 +90,13 @@ Specify the desired word count for the summary. This returns a JSON object with 
 
 ## Examples
 1. Video Information Retrieval:
-```
-https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=-yIsQPp31L0
-```
+  ```
+  https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=-yIsQPp31L0
+  ```
 Output: JSON with video details like title, description, and thumbnail.
+
 2. Summary Generation:
-```
-https://youtube-summary-ezim.onrender.com/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0&words=400
-```
+  ```
+  https://youtube-summary-ezim.onrender.com/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0&words=400
+  ```
 Output: A 400-word summary of the video in JSON format.
