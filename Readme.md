@@ -64,7 +64,9 @@ Before you begin, ensure you have met the following requirements:
    }
    ```
 ## Usage
-The server is hosted at (https://youtube-summary-ezim.onrender.com)[https://youtube-summary-ezim.onrender.com]. You can use the following endpoints
+The server is hosted at [https://youtube-summary-ezim.onrender.com](https://youtube-summary-ezim.onrender.com). 
+
+You can use the endpoints in the section below.
 
 ### Retrieving Video Information
 To get details about a YouTube Video:
