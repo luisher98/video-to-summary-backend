@@ -1,8 +1,9 @@
 import fs from "fs/promises";
 import ytdl from "ytdl-core";
 import ffmpeg from "fluent-ffmpeg";
+import ffmpegPath from "ffmpeg-static";
 
-ffmpeg.setFfmpegPath("/usr/bin/ffmpeg");
+ffmpeg.setFfmpegPath(process.env.FFMPEG_PATH || ffmpegPath);
 
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
