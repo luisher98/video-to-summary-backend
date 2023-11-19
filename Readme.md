@@ -64,7 +64,7 @@ Before you begin, ensure you have met the following requirements:
    }
    ```
 ## Usage
-The server is hosted at [https://youtube-summary-ezim.onrender.com](https://youtube-summary-ezim.onrender.com). 
+The server is hosted at [https://youtube-summary-ezim.onrender.com]([https://youtube-summary-ezim.onrender.com](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=-yIsQPp31L0)). 
 
 You can use the endpoints in the section below.
 
