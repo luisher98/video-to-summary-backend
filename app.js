@@ -1,14 +1,24 @@
 import express from "express";
-import bodyParser from "body-parser";
+import { Server } from "ws";
+import http from "http";
 
 import outputSummary from "./src/summary/outputSummary.mjs";
 import videoInfo from "./src/info/videoInfo.mjs";
 
-const port = 5000;
-
+const port = process.env.PORT || 5000;
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
+
+const server = http.createServer(app);
+const webSocketServer = new Server({ server });
+
+const errorHandler = (err, req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500).json({ error: `Internal Server Error ${err}` });
+};
 
 app.get("/api/summary", async (req, res) => {
   const inputUrl = req.query.url;
@@ -19,9 +29,7 @@ app.get("/api/summary", async (req, res) => {
     res.json({ content: summary });
     console.log("Summary generated successfully.");
   } catch (error) {
-    console.error(error);
-    // code 500 is internal server error
-    res.status(500).json({ error: "An error occurred" });
+    next(error);
   }
 });
 
@@ -40,12 +48,19 @@ app.get("/api/info", async (req, res) => {
     });
     console.log("Youtube info generated successfully.");
   } catch (error) {
-    console.error(error);
-    // code 500 is internal server error
-    res.status(500).json({ error: "An error occurred" });
+    next(error);
   }
 });
 
-app.listen(port, () => {
+webSocketServer.on("connection", (socket) => {
+  socket.on("message", (message) => {
+    console.log("Message client connected: " + message);
+    webSocketServer.on("close", () => console.log("Client disconnected"));
+  });
+});
+
+app.use(errorHandler);
+
+server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

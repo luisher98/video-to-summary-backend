@@ -29,6 +29,7 @@
     "node-fetch": "^3.3.2",
     "openai": "^3.3.0",
     "webpack-node-externals": "^3.0.0",
+    "ws": "^8.15.0",
     "ytdl-core": "^4.11.5"
   },
   "devDependencies": {
