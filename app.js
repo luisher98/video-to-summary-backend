@@ -29,17 +29,14 @@ app.get("/api/info", async (req, res) => {
   const inputUrl = req.query.url;
 
   try {
-    const { id, title, mediumThumbnail, trimmedDescription, channelTitle } = await videoInfo(
-      inputUrl
-    );
+    const { id, title, mediumThumbnail, trimmedDescription, channelTitle } =
+      await videoInfo(inputUrl);
     res.json({
-      info: {
-        id: id,
-        title: title,
-        description: trimmedDescription,
-        thumbnail: mediumThumbnail,
-        channel: channelTitle,
-      },
+      id: id,
+      title: title,
+      description: trimmedDescription,
+      thumbnail: mediumThumbnail,
+      channel: channelTitle,
     });
     console.log("Youtube info generated successfully.");
   } catch (error) {
