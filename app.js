@@ -1,19 +1,20 @@
 import express from "express";
-import { Server } from "ws";
-import http from "http";
+import { Server } from "socket.io";
+import { createServer } from "http";
 
 import outputSummary from "./src/summary/outputSummary.mjs";
 import videoInfo from "./src/info/videoInfo.mjs";
 
 const port = process.env.PORT || 5000;
+
 const app = express();
+const server = createServer(app);
+export const webSocketServer = new Server({ server });
 
 app.use(express.json());
 
-const server = http.createServer(app);
-const webSocketServer = new Server({ server });
 
-const errorHandler = (err, req, res, next) => {
+export const errorHandler = (err, req, res, next) => {
   if (res.headersSent) {
     return next(err);
   }
@@ -55,7 +56,9 @@ app.get("/api/info", async (req, res) => {
 webSocketServer.on("connection", (socket) => {
   socket.on("message", (message) => {
     console.log("Message client connected: " + message);
-    webSocketServer.on("close", () => console.log("Client disconnected"));
+  });
+  socket.on("close", () => {
+    console.log("Client disconnected");
   });
 });
 

@@ -46,7 +46,7 @@ Before you begin, ensure you have met the following requirements:
     YOUTUBE_API_KEY = ...
 5. Run the following command to start the server
    ```
-   node app
+   npm start
 6. Paste this link following a YouTube link in the browser to test it
    ```
    http://localhost:5000/api/summary?url=...
