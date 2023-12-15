@@ -1,5 +1,5 @@
 import express from "express";
-import { createServer } from "http";
+import bodyParser from "body-parser";
 
 import outputSummary from "./src/summary/outputSummary.mjs";
 import videoInfo from "./src/info/videoInfo.mjs";
@@ -7,17 +7,8 @@ import videoInfo from "./src/info/videoInfo.mjs";
 const port = process.env.PORT || 5000;
 
 const app = express();
-const server = createServer(app);
 
-app.use(express.json());
-
-
-export const errorHandler = (err, req, res, next) => {
-  if (res.headersSent) {
-    return next(err);
-  }
-  res.status(500).json({ error: `Internal Server Error ${err}` });
-};
+app.use(bodyParser.json());
 
 app.get("/api/summary", async (req, res) => {
   const inputUrl = req.query.url;
@@ -29,6 +20,8 @@ app.get("/api/summary", async (req, res) => {
     console.log("Summary generated successfully.");
   } catch (error) {
     console.error(error);
+    // code 500 is internal server error
+    res.status(500).json({ error: "An error occurred" });
   }
 });
 
@@ -73,17 +66,6 @@ app.get("/api/info", async (req, res) => {
   }
 });
 
-webSocketServer.on("connection", (socket) => {
-  socket.on("message", (message) => {
-    console.log("Message client connected: " + message);
-  });
-  socket.on("close", () => {
-    console.log("Client disconnected");
-  });
-});
-
-app.use(errorHandler);
-
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
