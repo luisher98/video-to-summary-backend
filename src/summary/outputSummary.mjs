@@ -1,40 +1,35 @@
-import { webSocketServer } from "./../../app.js";
-
 import { downloadVideo, deleteVideo } from "./videoTools.mjs";
 import { generateTranscript, generateSummary } from "./openAI.mjs";
 
-function sendMessage(message) {
-  webSocketServer.clients.forEach((client) => client.send(message));
-  console.log(message);
-}
-
-async function outputSummary(url, words) {
+// noop function to pass to outputSummary. if a function is not passed, it will work without any issues
+async function outputSummary(url, words, updateProgress = () => {}) {
+  if (typeof url !== "string" || !url.includes("?v=")) {
+    throw new Error("Invalid YouTube URL");
+  }
   const id = url.split("=")[1].split("?")[0];
-
-try {
+  try {
     // 1. Download video from YouTube
-    sendMessage("Downloading video...");
+    updateProgress({ status: "progress", message: "Downloading video..." });
     await downloadVideo(url, id);
-    sendMessage("Video downloaded successfully.");
-  
     // 2. Generate transcript
-    sendMessage("Generating transcript...");
+    updateProgress({ status: "progress", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
-    sendMessage("Transcript generated successfully.");
-  
-    // Make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
-    sendMessage("Generating summary... Almost done!");
+    // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
+    updateProgress({
+      status: "progress",
+      message: "Almost done!\nGenerating summary...",
+    });
     const [_, summary] = await Promise.all([
       // 3. Delete video
       deleteVideo(id),
       // 4. Generate summary
       generateSummary(transcript, words),
     ]);
-  
+
     return summary;
-} catch (error) {
-  next(error)
-}
+  } catch (error) {
+    console.error("Error during video processing: ", error);
+  }
 }
 
 export default outputSummary;

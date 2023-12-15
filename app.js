@@ -1,5 +1,4 @@
 import express from "express";
-import { Server } from "socket.io";
 import { createServer } from "http";
 
 import outputSummary from "./src/summary/outputSummary.mjs";
@@ -9,7 +8,6 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 const server = createServer(app);
-export const webSocketServer = new Server({ server });
 
 app.use(express.json());
 
@@ -30,7 +28,29 @@ app.get("/api/summary", async (req, res) => {
     res.json({ content: summary });
     console.log("Summary generated successfully.");
   } catch (error) {
-    next(error);
+    console.error(error);
+  }
+});
+
+app.get("/api/summary-updates", async (req, res) => {
+  const inputUrl = req.query.url;
+  const words = req.query.words;
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  try {
+    const summary = await outputSummary(inputUrl, words, (updateProgress) => {
+      res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
+    });
+    // Send the final summary to the client
+    res.write(`data: ${JSON.stringify({ status: "done", summary })}\n\n`);
+    res.end();
+    console.log("Summary generated successfully.");
+  } catch (error) {
+    console.error(error);
+    res.write(`data: ${JSON.stringify({ status: "error", error: error.message })}\n\n`);
   }
 });
 
@@ -49,7 +69,7 @@ app.get("/api/info", async (req, res) => {
     });
     console.log("Youtube info generated successfully.");
   } catch (error) {
-    next(error);
+    console.error(error);
   }
 });
 
