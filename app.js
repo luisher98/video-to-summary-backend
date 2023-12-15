@@ -25,7 +25,7 @@ app.get("/api/summary", async (req, res) => {
   }
 });
 
-app.get("/api/summary-updates", async (req, res) => {
+app.get("/api/summary-sse", async (req, res) => {
   const inputUrl = req.query.url;
   const words = req.query.words;
 

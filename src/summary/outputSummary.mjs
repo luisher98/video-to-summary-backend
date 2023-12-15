@@ -2,8 +2,7 @@ import { downloadVideo, deleteVideo } from "./videoTools.mjs";
 import { generateTranscript, generateSummary } from "./openAI.mjs";
 
 // noop function to pass to outputSummary. if a function is not passed, it will work without any issues
-// , updateProgress = () => {}
-async function outputSummary(url, words) {
+async function outputSummary(url, words, updateProgress = () => {}) {
   if (typeof url !== "string" || !url.includes("?v=")) {
     throw new Error("Invalid YouTube URL");
   }
@@ -11,18 +10,18 @@ async function outputSummary(url, words) {
 
   try {
     // 1. Download video from YouTube
-    // updateProgress({ status: "progress", message: "Downloading video..." });
+    updateProgress({ status: "progress", message: "Downloading video..." });
     await downloadVideo(url, id);
 
     // 2. Generate transcript
-    // updateProgress({ status: "progress", message: "Generating transcript..." });
+    updateProgress({ status: "progress", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
 
     // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
-    // updateProgress({
-    //   status: "progress",
-    //   message: "Almost done!\nGenerating summary...",
-    // });
+    updateProgress({
+      status: "progress",
+      message: "Almost done!<br>Generating summary...",
+    });
     const [_, summary] = await Promise.all([
       // 3. Delete video
       deleteVideo(id),

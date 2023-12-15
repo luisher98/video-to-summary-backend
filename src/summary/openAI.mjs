@@ -5,6 +5,7 @@ import { Configuration, OpenAIApi } from "openai";
 dotenv.config();
 
 const configuration = new Configuration({
+  organization: process.env.OPENAI_ORGANIZATION,
   apiKey: process.env.OPENAI_API_KEY,
 });
 
@@ -26,8 +27,6 @@ async function generateTranscript(id) {
     );
 
     const data = transcription.data.text;
-
-    console.log("Transcription generated successfully. ");
     return data;
   } catch (error) {
     console.error("Error transcribing the audio: ", error.message);
@@ -35,8 +34,8 @@ async function generateTranscript(id) {
 }
 
 async function generateSummary(transcript, wordCount = 400) {
-  console.log("Generating summary...");
-  const message = `Return a summary of ${wordCount} words for the following transcript: ${transcript}`;
+  const message = `Return a summary of ${wordCount} words for the following transcript: ${transcript}.`;
+
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -47,7 +46,6 @@ async function generateSummary(transcript, wordCount = 400) {
     });
 
     const data = response.data.choices[0].message.content;
-    console.log("Summary generated successfully.");
     return data;
   } catch (error) {
     console.error("Error summarizing the transcript: ", error.message);
