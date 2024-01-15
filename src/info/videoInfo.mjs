@@ -23,7 +23,7 @@ export default async function videoInfo(url) {
 
   const trimmedDescription = shortenString(description, 200);
 
-  const mediumThumbnail = thumbnails.medium;
+  // const mediumThumbnail = thumbnails.medium;
 
-  return { id, title, trimmedDescription, mediumThumbnail, channelTitle };
+  return { id, title, trimmedDescription, thumbnails, channelTitle };
 }
