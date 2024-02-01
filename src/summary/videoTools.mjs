@@ -8,9 +8,9 @@ ffmpeg.setFfmpegPath(process.env.FFMPEG_PATH || ffmpegPath);
 async function downloadVideo(videoUrl, id) {
   return new Promise((resolve, reject) => {
     try {
-      // if (typeof videoUrl !== 'string' || typeof id !== 'string') {
-      //   throw new Error('Invalid input types');
-      // }
+      if (typeof videoUrl !== 'string' || typeof id !== 'string') {
+        throw new Error('Invalid input types');
+      }
       // Download video from YouTube
       let video = ytdl(videoUrl, {
         quality: "lowest",

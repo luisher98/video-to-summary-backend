@@ -43,7 +43,9 @@ app.get("/api/summary-sse", async (req, res) => {
     console.log("Summary generated successfully.");
   } catch (error) {
     console.error(error);
-    res.write(`data: ${JSON.stringify({ status: "error", error: error.message })}\n\n`);
+    res.write(
+      `data: ${JSON.stringify({ status: "error", error: error.message })}\n\n`
+    );
   }
 });
 
@@ -64,6 +66,29 @@ app.get("/api/info", async (req, res) => {
   } catch (error) {
     console.error(error);
   }
+});
+
+app.get("/api/test-sse", async (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Connection", "keep-alive");
+  
+  let counter = 0;
+  let interValID = setInterval(() => {
+    counter++;
+    if (counter >= 10) {
+      clearInterval(interValID);
+      res.end(); 
+      return;
+    }
+    res.write(`data: ${JSON.stringify({ num: counter })}\n\n`); 
+  }, 1000);
+
+  res.on("close", () => {
+    console.log("client dropped me");
+    clearInterval(interValID);
+    res.end();
+  });
 });
 
 app.listen(port, () => {
