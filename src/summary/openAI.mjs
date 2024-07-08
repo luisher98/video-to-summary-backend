@@ -33,8 +33,8 @@ async function generateTranscript(id) {
   }
 }
 
-async function generateSummary(transcript, wordCount = 400) {
-  const message = `Return a summary of ${wordCount} words for the following transcript: ${transcript}.`;
+async function generateSummary(transcript, wordCount = 400, extraMessage = "touch on the main points of the conversation.") {
+  const message = `Return a summary of ${wordCount} words for the following transcript: ${transcript}. ${extraMessage}`;
 
   try {
     const response = await openai.createChatCompletion({

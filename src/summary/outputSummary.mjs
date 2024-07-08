@@ -9,18 +9,18 @@ async function outputSummary(url, words, updateProgress = () => {}) {
   const id = url.split("=")[1].split("?")[0];
 
   try {
-    // 1. Download video from YouTube
-    updateProgress({ status: "progress", message: "Downloading video..." });
+    // 1. Download video from YouTube and convert to mp3
+    updateProgress({ status: "pending", message: "Downloading video..." });
     await downloadVideo(url, id);
 
     // 2. Generate transcript
-    updateProgress({ status: "progress", message: "Generating transcript..." });
+    updateProgress({ status: "pending", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
 
     // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
     updateProgress({
-      status: "progress",
-      message: "Almost done!<br>Generating summary...",
+      status: "pending",
+      message: "Almost done! Generating summary...",
     });
     const [_, summary] = await Promise.all([
       // 3. Delete video

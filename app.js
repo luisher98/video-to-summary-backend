@@ -4,7 +4,8 @@ import bodyParser from "body-parser";
 import outputSummary from "./src/summary/outputSummary.mjs";
 import videoInfo from "./src/info/videoInfo.mjs";
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
+const url = process.env.URL || "http://localhost";
 
 const app = express();
 
@@ -25,7 +26,7 @@ app.get("/api/summary", async (req, res) => {
   }
 });
 
-app.get("/api/summary-sse", async (req, res) => {
+app.get("/api/summary-sse", (req, res) => {
   const inputUrl = req.query.url;
   const words = req.query.words;
 
@@ -33,20 +34,26 @@ app.get("/api/summary-sse", async (req, res) => {
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
 
-  try {
-    const summary = await outputSummary(inputUrl, words, (updateProgress) => {
-      res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
-    });
-    // Send the final summary to the client
-    res.write(`data: ${JSON.stringify({ status: "done", summary })}\n\n`);
-    res.end();
-    console.log("Summary generated successfully.");
-  } catch (error) {
-    console.error(error);
-    res.write(
-      `data: ${JSON.stringify({ status: "error", error: error.message })}\n\n`
-    );
+  async function* generateSummary() {
+    try {
+      await outputSummary(inputUrl, words, (updateProgress) => {
+        // Send progress update to the client
+        res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
+      });
+      const summary = await outputSummary(inputUrl, words);
+      yield { status: "done", message: summary };
+    } catch (error) {
+      yield { status: "error", error: error.message };
+    } finally {
+      res.end();
+    }
   }
+
+  (async () => {
+    for await (const data of generateSummary()) {
+      res.write(`data: ${JSON.stringify(data)}\n\n`);
+    }
+  })();
 });
 
 app.get("/api/info", async (req, res) => {
@@ -92,5 +99,5 @@ app.get("/api/test-sse", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on ${url}:${port}`);
 });
