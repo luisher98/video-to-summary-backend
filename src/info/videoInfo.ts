@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export default async function videoInfo(url) {
+export default async function videoInfo(url: string) {
   const id = url.split("?v=")[1];
 
   const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;

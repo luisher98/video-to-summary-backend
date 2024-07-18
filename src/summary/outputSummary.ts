@@ -1,8 +1,14 @@
-import { downloadVideo, deleteVideo } from "./videoTools.mjs";
-import { generateTranscript, generateSummary } from "./openAI.mjs";
+import { downloadVideo, deleteVideo } from "./videoTools";
+import { generateTranscript, generateSummary } from "./openAI";
+
+import { ProgressUpdate } from "../../types/global.types";
 
 // noop function to pass to outputSummary. if a function is not passed, it will work without any issues
-async function outputSummary(url, words, updateProgress = () => {}) {
+export async function outputSummary(
+  url: string,
+  words: number,
+  updateProgress: (progress: ProgressUpdate) => void = () => {}
+): Promise<string> {
   if (typeof url !== "string" || !url.includes("?v=")) {
     throw new Error("Invalid YouTube URL");
   }
@@ -18,10 +24,7 @@ async function outputSummary(url, words, updateProgress = () => {}) {
     const transcript = await generateTranscript(id);
 
     // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
-    updateProgress({
-      status: "pending",
-      message: "Almost done! Generating summary...",
-    });
+    updateProgress({status: "pending", message: "Almost done! Generating summary..."});
     const [_, summary] = await Promise.all([
       // 3. Delete video
       deleteVideo(id),
@@ -32,7 +35,6 @@ async function outputSummary(url, words, updateProgress = () => {}) {
     return summary;
   } catch (error) {
     console.error("Error during video processing: ", error);
+    throw new Error("An error occurred: ");
   }
 }
-
-export default outputSummary;

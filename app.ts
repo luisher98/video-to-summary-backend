@@ -1,8 +1,10 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 
-import outputSummary from "./src/summary/outputSummary.mjs";
-import videoInfo from "./src/info/videoInfo.mjs";
+import { outputSummary } from "./src/summary/outputSummary";
+import videoInfo from "./src/info/videoInfo";
+
+import { ProgressUpdate } from "./types/global.types";
 
 const port = process.env.PORT || 5050;
 const url = process.env.URL || "http://localhost";
@@ -11,9 +13,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.get("/api/summary", async (req, res) => {
-  const inputUrl = req.query.url;
-  const words = req.query.words;
+app.get("/api/summary", async (req: Request, res: Response) => {
+  const inputUrl = req.query.url as string;
+  const words = Number(req.query.words) as number;
 
   try {
     const summary = await outputSummary(inputUrl, words);
@@ -26,24 +28,27 @@ app.get("/api/summary", async (req, res) => {
   }
 });
 
-app.get("/api/summary-sse", (req, res) => {
-  const inputUrl = req.query.url;
-  const words = req.query.words;
-
+app.get("/api/summary-sse", (req: Request, res: Response) => {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
 
+  const inputUrl = req.query.url as string;
+  const words = Number(req.query.words) as number;
+
   async function* generateSummary() {
     try {
-      await outputSummary(inputUrl, words, (updateProgress) => {
-        // Send progress update to the client
-        res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
-      });
-      const summary = await outputSummary(inputUrl, words);
+      const summary = await outputSummary(
+        inputUrl,
+        words,
+        (updateProgress: ProgressUpdate) => {
+          // Send progress update to the client
+          res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
+        }
+      );
       yield { status: "done", message: summary };
     } catch (error) {
-      yield { status: "error", error: error.message };
+      yield { status: "error", error: (error as Error).message };
     } finally {
       res.end();
     }
@@ -57,7 +62,7 @@ app.get("/api/summary-sse", (req, res) => {
 });
 
 app.get("/api/info", async (req, res) => {
-  const inputUrl = req.query.url;
+  const inputUrl = req.query.url as string;
 
   try {
     const { id, title, mediumThumbnail, trimmedDescription, channelTitle } =
@@ -79,16 +84,16 @@ app.get("/api/test-sse", async (req, res) => {
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Connection", "keep-alive");
-  
+
   let counter = 0;
   let interValID = setInterval(() => {
     counter++;
     if (counter >= 10) {
       clearInterval(interValID);
-      res.end(); 
+      res.end();
       return;
     }
-    res.write(`data: ${JSON.stringify({ num: counter })}\n\n`); 
+    res.write(`data: ${JSON.stringify({ num: counter })}\n\n`);
   }, 1000);
 
   res.on("close", () => {
