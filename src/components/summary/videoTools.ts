@@ -1,21 +1,12 @@
 import fs from "fs/promises";
 import ytdl from "ytdl-core";
 import ffmpeg from "fluent-ffmpeg";
-import ffmpegPath from "ffmpeg-static";
-
-
-function getFfmpegPath(): string {
-  const path = process.env.FFMPEG_PATH ?? ffmpegPath;
-  if (!path) {
-    throw new Error('FFMPEG_PATH is not defined and fallback path is unavailable.');
-  }
-  return path;
-}
+import { getFfmpegPath } from "../../utils/index.js";
 
 // Set ffmpeg path
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
-async function downloadVideo(videoUrl: string, id: string): Promise<void> {
+export async function downloadVideo(videoUrl: string, id: string): Promise<void> {
   return new Promise((resolve, reject) => {
     try {
       if (typeof videoUrl !== 'string' || typeof id !== 'string') {
@@ -45,7 +36,7 @@ async function downloadVideo(videoUrl: string, id: string): Promise<void> {
   });
 }
 
-async function deleteVideo(id: string): Promise<void> {
+export async function deleteVideo(id: string): Promise<void> {
   try {
     await fs.unlink(`./${id}.mp3`);
   } catch (error) {
@@ -53,4 +44,3 @@ async function deleteVideo(id: string): Promise<void> {
   }
 }
 
-export { downloadVideo, deleteVideo };

@@ -1,10 +1,10 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 
-import { outputSummary } from "./src/summary/outputSummary";
-import videoInfo from "./src/info/videoInfo";
+import { outputSummary } from "./components/summary/outputSummary.js";
+import videoInfo from "./components/info/videoInfo.js";
 
-import { ProgressUpdate } from "./types/global.types";
+import { ProgressUpdate } from "./types/global.types.js";
 
 const port = process.env.PORT || 5050;
 const url = process.env.URL || "http://localhost";

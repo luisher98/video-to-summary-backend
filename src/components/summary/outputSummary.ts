@@ -1,7 +1,7 @@
-import { downloadVideo, deleteVideo } from "./videoTools";
-import { generateTranscript, generateSummary } from "./openAI";
+import { downloadVideo, deleteVideo } from "./videoTools.js";
+import { generateTranscript, generateSummary } from "../../lib/openAI.js";
 
-import { ProgressUpdate } from "../../types/global.types";
+import { ProgressUpdate } from "../../types/global.types.js";
 
 // noop function to pass to outputSummary. if a function is not passed, it will work without any issues
 export async function outputSummary(
@@ -35,6 +35,6 @@ export async function outputSummary(
     return summary;
   } catch (error) {
     console.error("Error during video processing: ", error);
-    throw new Error("An error occurred: ");
+    throw new Error(`An error occurred: `);
   }
 }
