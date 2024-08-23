@@ -1,10 +1,10 @@
-# TubeSummary server by Luis Hernández
+# YouTube Summary API by Luis Hernández
 
-This is the API of a youtube summarization tool that utilizes OpenAI's GPT-3 language model to generate summaries of audio transcripts by providing the youtube link.
+This is the API of a youtube summarization tool that utilizes OpenAI's GPT-4o language model to generate summaries of audio transcripts when provided the youtube link.
 
 You can check out the [front-end](https://github.com/luisher98/tubesummary-server) for this project.
 
-Or you can also [try it out yourself](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=A4_TFHzqAAg).
+Or you can also [try it out yourself](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=A4_TFHzqAAg). (not active right now)
 
 ## Table of Contents
 
@@ -15,6 +15,7 @@ Or you can also [try it out yourself](https://youtube-summary-ezim.onrender.com/
   - [Summary Generation](#summary-generation)
 - [Usage](#usage)
 - [Example](#example)
+- [Pending implementations] (#pending-implementations)
 
 ## Getting Started
 
@@ -49,12 +50,12 @@ Before you begin, ensure you have met the following requirements:
    npm start
 6. Paste this link following a YouTube link in the browser to test it
    ```
-   http://localhost:5000/api/summary?url=...
+   http://localhost:5050/api/summary?url=...
 ### Example
 
    This request:
    ```
-   http://localhost:5000/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0
+   http://localhost:5050/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0
    ```
 
    Should return the following JSON:
@@ -100,3 +101,7 @@ Output: JSON with video details like title, description, and thumbnail.
   https://youtube-summary-ezim.onrender.com/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0&words=400
   ```
 Output: A 400-word summary of the video in JSON format.
+
+## Pending implementations
+- [ ] Limit maximum video length of 10 minutes.
+- [ ] 

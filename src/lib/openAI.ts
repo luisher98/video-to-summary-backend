@@ -8,7 +8,9 @@ const configuration = {
   apiKey: process.env.OPENAI_API_KEY,
 };
 
+
 const openai = new OpenAI(configuration);
+
 
 async function generateTranscript(id: string): Promise<string> {
   console.log("Generating transcript...");
@@ -21,7 +23,7 @@ async function generateTranscript(id: string): Promise<string> {
     const data = transcription.text;
     return data;
   } catch (error) {
-    throw new Error(`there was an error transcribing the audio (${error})`);
+    throw new Error(`there was an issue transcribing the audio (${error})`);
   }
 }
 
