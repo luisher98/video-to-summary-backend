@@ -1,5 +1,5 @@
 import { downloadVideo, deleteVideo } from "./videoTools.ts";
-import { generateTranscript, generateSummary } from "../../lib/openAI.ts";
+import { generateTranscript, generateSummary} from "../../lib/openAI.ts";
 
 import { ProgressUpdate } from "../../types/global.types.ts";
 

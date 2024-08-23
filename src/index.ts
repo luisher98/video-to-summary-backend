@@ -27,6 +27,20 @@ app.get("/api/summary", getSummary);
 app.get("/api/summary-sse", getSummarySSE);
 app.get("/api/test-sse", getTestSSE);
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server running on ${url}:${port}`);
+});
+
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught exception:', error);
+  server.close(() => {
+    process.kill(process.pid, 'SIGTERM');
+  });
+});
+
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled rejection:', error);
+  server.close(() => {
+    process.kill(process.pid, 'SIGTERM');
+  });
 });
