@@ -12,7 +12,6 @@
     "prettify": "prettier -l --write \"**/*.ts\"",
     "dev": "tsx watch src/index.ts",
     "view": "node dist/src/index.js",
-    "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watchAll"
   },
