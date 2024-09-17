@@ -1,5 +1,7 @@
 import ffmpegPath from 'ffmpeg-static';
 
+export const VIDEO_DOWNLOAD_PATH = process.env.VIDEO_DOWNLOAD_PATH || './src/tmp/videos/';
+
 export function getFfmpegPath(): string {
     const path = process.env.FFMPEG_PATH ?? (ffmpegPath as unknown as string);
     if (!path) {
@@ -18,7 +20,7 @@ export function getEnvVar(name: string): string {
     return value;
 }
 
-export async function ytVideoExists(id: string) {
+export async function checkVideoExists(id: string) {
     const url = `https://www.youtube.com/watch?v=${id}`;
 
     try {
@@ -27,4 +29,8 @@ export async function ytVideoExists(id: string) {
     } catch (error) {
         return false;
     }
+}
+
+export async function clearDownloadFolder() {
+
 }

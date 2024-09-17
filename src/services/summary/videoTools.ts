@@ -2,9 +2,8 @@ import fs from 'fs/promises';
 import { createWriteStream } from 'fs';
 import ytdl from '@distube/ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
-import { getFfmpegPath, ytVideoExists } from '../../utils/utils.ts';
+import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.ts';
 
-// Set FFmpeg path
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
 /**
@@ -18,17 +17,16 @@ export async function downloadVideo(
     id: string,
 ): Promise<void> {
 
-
     if (typeof videoUrl !== 'string' || typeof id !== 'string') {
         throw new Error('Invalid input types');
     }
 
-    const videoExists = await ytVideoExists(id);
+    const videoExists = await checkVideoExists(id);
     if (!videoExists) {
         throw new Error('Video does not exist');
     }
 
-    const outputFilePath = `./src/tmp/videos/${id}.mp3`;
+    const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${id}.mp3`;
 
     // Download the video stream
     const videoStream = ytdl(videoUrl, { filter: 'audioonly' })
@@ -65,7 +63,7 @@ export async function downloadVideo(
  */
 export async function deleteVideo(id: string): Promise<void> {
     try {
-        await fs.unlink(`./src/tmp/videos/${id}.mp3`);
+        await fs.unlink(`${VIDEO_DOWNLOAD_PATH}/${id}.mp3`);
     } catch (error) {
         if (error instanceof Error) {
             console.error('Error deleting the video:', error.message);

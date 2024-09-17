@@ -1,6 +1,7 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
+import { VIDEO_DOWNLOAD_PATH } from '../utils/utils.ts';
 
 dotenv.config();
 
@@ -46,7 +47,7 @@ export async function generateTranscript(id: string): Promise<string> {
     console.log('Generating transcript...');
     try {
         const transcription = await openai.audio.transcriptions.create({
-            file: fs.createReadStream(`./${id}.mp3`),
+            file: fs.createReadStream(`${VIDEO_DOWNLOAD_PATH}/${id}.mp3`),
             model: 'whisper-1',
         });
 

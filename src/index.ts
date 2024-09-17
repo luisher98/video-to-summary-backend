@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
-import rateLimit from "express-rate-limit";
+// import rateLimit from "express-rate-limit";
 
 import getVideoInfo from "./routes/getVideoInfo.ts";
 import getSummary from "./routes/getSummary.ts";
