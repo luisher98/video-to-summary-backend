@@ -58,4 +58,3 @@ jobs:
           app-name: 'youtube-summary-api'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A285841B3E91437B8ADD96B4E3129B7F }}
