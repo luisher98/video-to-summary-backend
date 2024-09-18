@@ -51,6 +51,11 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
       
+      - name: 'Login to Azure'
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
