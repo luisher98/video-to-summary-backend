@@ -1,6 +1,6 @@
 import ffmpegPath from 'ffmpeg-static';
 
-export const VIDEO_DOWNLOAD_PATH = process.env.VIDEO_DOWNLOAD_PATH || './src/tmp/videos/';
+export const VIDEO_DOWNLOAD_PATH = process.env.VIDEO_DOWNLOAD_PATH || './src/tmp/audios/';
 
 export function getFfmpegPath(): string {
     const path = process.env.FFMPEG_PATH ?? (ffmpegPath as unknown as string);
