@@ -61,11 +61,11 @@ export async function generateTranscript(id: string): Promise<string> {
 export async function generateSummary(
     transcript: string,
     wordCount: number,
-    extraMessage = 'Touch on the main point.',
+    additionalPrompt = '',
 ): Promise<string> {
     const assistantMessage =
         'You are a helpful assistant that will return a summary of the provided transcript.';
-    const userMessage = `Return a summary of ${wordCount} words for the following transcript: ${transcript}. ${extraMessage}`;
+    const userMessage = `Return a summary of ${wordCount} words for the following transcript: ${transcript}. ${additionalPrompt}`;
 
     try {
         const response = await openai.chat.completions.create({

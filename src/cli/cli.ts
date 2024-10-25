@@ -1,28 +1,22 @@
 import readline from 'readline';
 import { handleHelpCommand } from './commands/help.ts';
-import { handleYouTubeCommand } from './commands/youtube.ts';
-// import { handleStatus } from './commands/status.ts';
-// import { handleStop } from './commands/stop.ts';
+import { handleCommand } from './commands/youtube.ts';
 
 // Command registry
 const commands: { [key: string]: Function } = {
   help: handleHelpCommand,
-  // status: handleStatus,
-  // stop: handleStop,
-  youtube: handleYouTubeCommand,
+  summary: (args: string[]) => handleCommand('summary', args),
+  transcript: (args: string[]) => handleCommand('transcript', args),
 };
 
 // Start the CLI
 export function startCLI() {
-  console.log(`
-    YouTube Summary CLI mode activated.
-    Type 'help' to see available commands.
-  `);
+  console.log('\nYouTube Summary CLI mode activated.\nType \'help\' to see available commands.');
 
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
-    prompt: 'YouTubeSummary> ',
+    prompt: '\nYouTubeSummary > ',
   });
 
   rl.prompt();
@@ -34,12 +28,12 @@ export function startCLI() {
       console.log('Please enter a command.');
     } else if (commands[command]) {
       try {
-        await commands[command](...args); // Pass command arguments (e.g., YouTube link)
+        await commands[command](args); // Pass command arguments (as an array) to the command
       } catch (error) {
         console.error(`Error executing '${command}':`, error.message);
       }
     } else {
-      console.log(`Unknown command: '${command}'`);
+      console.log(`Unknown command: '${command}'. Type 'help' to see available commands.`);
     }
 
     rl.prompt();
@@ -47,7 +41,6 @@ export function startCLI() {
 
   rl.on('close', async () => {
     console.log('Shutting down CLI...');
-    // await handleStopCommand(); // not implemented for now
     process.exit(0);
   });
 }

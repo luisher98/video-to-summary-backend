@@ -1,15 +1,23 @@
 import { downloadVideo, deleteVideo } from "./videoTools.ts";
-import { generateTranscript, generateSummary} from "../../lib/openAI.ts";
+import { generateTranscript, generateSummary } from "../../lib/openAI.ts";
 import { ProgressUpdate } from "../../types/global.types.ts";
 import { BadRequestError, InternalServerError } from "../../utils/errorHandling.ts";
 
-export async function outputSummary(
-  url: string,
-  words: number = 400,
-  // noop function to pass to outputSummary. if a function is not passed, it will work without any issues
-  updateProgress: (progress: ProgressUpdate) => void = () => {},
-  returnTranscriptOnly: boolean = false
-): Promise<string> {
+interface OutputSummaryOptions {
+  url: string;
+  words?: number;
+  updateProgress?: (progress: ProgressUpdate) => void;
+  additionalPrompt?: string;
+  returnTranscriptOnly?: boolean;
+}
+
+export async function outputSummary({
+  url,
+  words = 400,
+  updateProgress = () => {}, // Default is a no-op function
+  additionalPrompt = "",
+  returnTranscriptOnly = false,
+}: OutputSummaryOptions): Promise<string> {
   if (typeof url !== "string" || !url.includes("?v=")) {
     throw new BadRequestError("Invalid YouTube URL");
   }
@@ -24,24 +32,22 @@ export async function outputSummary(
     updateProgress({ status: "pending", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
 
-
+    // If returnTranscriptOnly flag is set, return the transcript without generating summary
     if (returnTranscriptOnly) {
       await deleteVideo(id);
       return transcript;
     }
 
-    // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
-    updateProgress({status: "pending", message: "Almost done! Generating summary..."});
+    // 3. Generate summary and delete the video in parallel
+    updateProgress({ status: "pending", message: "Almost done! Generating summary..." });
     const [_, summary] = await Promise.all([
-      // 3. Delete video
       deleteVideo(id),
-      // 4. Generate summary
-      generateSummary(transcript, words),
+      generateSummary(transcript, words, additionalPrompt),
     ]);
 
     return summary;
   } catch (error) {
     console.error("Error during video processing: ", error);
-    throw new InternalServerError(`Something went wrong during video processing: ${error} `);
+    throw new InternalServerError(`Something went wrong during video processing: ${error}`);
   }
 }

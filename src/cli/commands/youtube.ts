@@ -1,31 +1,62 @@
 import { outputSummary } from '../../services/summary/outputSummary.ts';
-import { ProgressUpdate } from '../../types/global.types.ts';
-import { BadRequestError } from '../../utils/errorHandling.ts';
+import { BadRequestError } from './../../utils/errorHandling.ts';
+import { parseArgs } from './utils.ts';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-export async function handleYouTubeCommand(url: string, words: string) {
-  if (!url || !words) {
-    console.error("Usage: youtube <url> <words>");
+// Get the current directory in ESM context (like __dirname in CommonJS)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Set the local directory where files will be saved
+const localDirectory = path.resolve(__dirname, '../../tmp/savedTranscriptsAndSummaries');
+
+// Unified handler for both summary and transcript
+export async function handleCommand(commandType: 'summary' | 'transcript', args: string[]) {
+  const { url, words, additionalPrompt, returnTranscriptOnly, fileName } = parseArgs(args);
+
+  if (!url) {
+    console.error(
+      `Usage: ${commandType} <url> ${commandType === 'summary' ? `[--words=<number of words>] [--prompt=<your prompt>]`: ''} [--save=<file name>]`
+    );
     return;
   }
 
-  const numWords = parseInt(words);
-  if (isNaN(numWords) || numWords <= 0) {
-    throw new BadRequestError("Words must be a positive integer.");
-  }
-
   try {
-    console.log('Processing YouTube video summary...');
-    
-    // Progress update callback
-    const updateProgress = (progress: ProgressUpdate) => {
-      console.log(`Progress: ${progress.message}`);
-    };
+    console.log(`Processing YouTube video ${returnTranscriptOnly ? 'transcript' : 'summary'}...`);
 
-    const summary = await outputSummary(url, numWords, updateProgress);
-    console.log('Summary generated:');
-    console.log(summary);
+    // Call the outputSummary function
+    const result = await outputSummary({
+      url,
+      words,
+      returnTranscriptOnly,
+      additionalPrompt,
+    });
 
+    const outputType = returnTranscriptOnly ? 'Transcript' : 'Summary';
+
+    // Check if the local directory exists, create it if not
+    if (!fs.existsSync(localDirectory)) {
+      fs.mkdirSync(localDirectory, { recursive: true });
+    }
+
+    // If the --save flag is provided, save the result to the file
+    if (fileName) {
+      const filePath = path.join(localDirectory, fileName);
+      fs.writeFile(filePath, result, (err) => {
+        if (err) {
+          console.error(`Error writing to file: ${err.message}`);
+        } else {
+          console.log(`${outputType} saved to ${filePath}`);
+        }
+      });
+    } else {
+      // If no --save flag, output result to the console
+      console.log(`${outputType} generated:`);
+      console.log(result);
+    }
   } catch (error) {
-    console.error('Error during summary generation:', error.message);
+    console.error('Error during processing:', error.message);
   }
 }
