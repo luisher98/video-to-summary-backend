@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../services/summary/outputSummary.ts";
-import { ProgressUpdate } from "../types/global.types.ts";
+import { outputSummary } from "../../services/summary/outputSummary.ts";
+import { ProgressUpdate } from "../../types/global.types.ts";
 
 export default async function getSummarySSE(req: Request, res: Response) {
     res.setHeader("Content-Type", "text/event-stream");
@@ -16,7 +16,7 @@ export default async function getSummarySSE(req: Request, res: Response) {
           inputUrl,
           words,
           (updateProgress: ProgressUpdate) => {
-            // Send progress update to the client
+            // Send progress update to client
             res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
           }
         );
@@ -24,6 +24,7 @@ export default async function getSummarySSE(req: Request, res: Response) {
       } catch (error) {
         yield { status: "error", error: (error as Error).message };
       } finally {
+        // -- delete any temporary files -- ? or/and maybe do it on index.ts?
         res.end();
       }
     }

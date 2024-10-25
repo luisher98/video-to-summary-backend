@@ -60,7 +60,7 @@ export async function generateTranscript(id: string): Promise<string> {
 
 export async function generateSummary(
     transcript: string,
-    wordCount: number = 400,
+    wordCount: number,
     extraMessage = 'Touch on the main point.',
 ): Promise<string> {
     const assistantMessage =

@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-import { YouTubeApiResponse } from "./videoInfo.types.js";
+import { InternalServerError, BadRequestError } from "../../utils/errorHandling.ts";
+import { YouTubeApiResponse } from "./videoInfo.types.ts";
 
 export default async function videoInfo(url: string) {
   try {
@@ -15,7 +15,7 @@ export default async function videoInfo(url: string) {
     const snippet = data.items[0].snippet;
 
     if (!snippet) {
-      throw new Error("video not found");
+      throw new BadRequestError("Invalid video URL");
     }
 
     const { title, description, thumbnails, channelTitle } = snippet;
@@ -33,6 +33,6 @@ export default async function videoInfo(url: string) {
 
     return { id, title, trimmedDescription, mediumThumbnail, channelTitle };
   } catch (error) {
-    throw new Error(`An error occurred fetching video info (${error})`);
+    throw new InternalServerError(`An error occurred fetching video info (${error})`);
   }
 }

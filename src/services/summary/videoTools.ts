@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
-import { createWriteStream } from 'fs';
 import ytdl from '@distube/ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
 import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.ts';
+import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.ts';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
@@ -32,7 +32,7 @@ export async function downloadVideo(
     const videoStream = ytdl(videoUrl, { filter: 'audioonly' })
         .on('error', (error: Error) => {
             console.error(`Error downloading the video: ${error.message}`);
-            throw new Error(`Error downloading the video: ${error.message}`);
+            throw new DownloadError(error.message);
         });
 
     return new Promise<void>((resolve, reject) => {
@@ -44,15 +44,13 @@ export async function downloadVideo(
             .on('error', async (error: Error) => {
                 console.error(`Error during conversion: ${error.message}`);
                 await deleteVideo(id);
-                reject(new Error(`Error during conversion: ${error.message}`));
+                reject(new ConversionError(error.message));
             })
             .on('end', resolve);
     }).catch(async (error) => {
         console.error('Error in download process:', error.message);
         await deleteVideo(id);
-        throw new Error(
-            `An error occurred during the download process (${error.message})`,
-        );
+        throw new DownloadError(error.message);
     });
 }
 
@@ -67,11 +65,11 @@ export async function deleteVideo(id: string): Promise<void> {
     } catch (error) {
         if (error instanceof Error) {
             console.error('Error deleting the video:', error.message);
-            throw error;
+            throw new DeletionError(error.message);
         } else {
             console.error('Unknown error:', error);
             throw new Error('An unknown error occurred');
-            // notify error. this can be a problem with the server
+            // --- notify error. this can be a problem with the server
         }
     }
 }

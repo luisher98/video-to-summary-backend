@@ -1,16 +1,17 @@
 import { downloadVideo, deleteVideo } from "./videoTools.ts";
 import { generateTranscript, generateSummary} from "../../lib/openAI.ts";
-
 import { ProgressUpdate } from "../../types/global.types.ts";
+import { BadRequestError, InternalServerError } from "../../utils/errorHandling.ts";
 
-// noop function to pass to outputSummary. if a function is not passed, it will work without any issues
 export async function outputSummary(
   url: string,
-  words: number,
-  updateProgress: (progress: ProgressUpdate) => void = () => {}
+  words: number = 400,
+  // noop function to pass to outputSummary. if a function is not passed, it will work without any issues
+  updateProgress: (progress: ProgressUpdate) => void = () => {},
+  returnTranscriptOnly: boolean = false
 ): Promise<string> {
   if (typeof url !== "string" || !url.includes("?v=")) {
-    throw new Error("Invalid YouTube URL");
+    throw new BadRequestError("Invalid YouTube URL");
   }
   const id = url.split("=")[1].split("?")[0];
 
@@ -22,6 +23,12 @@ export async function outputSummary(
     // 2. Generate transcript
     updateProgress({ status: "pending", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
+
+
+    if (returnTranscriptOnly) {
+      await deleteVideo(id);
+      return transcript;
+    }
 
     // make deleteVideo and generateSummary run in parallel, so it doesnt have to wait for one to finish before starting the other
     updateProgress({status: "pending", message: "Almost done! Generating summary..."});
@@ -35,6 +42,6 @@ export async function outputSummary(
     return summary;
   } catch (error) {
     console.error("Error during video processing: ", error);
-    throw new Error(`Something went wrong during video processing: ${error} `);
+    throw new InternalServerError(`Something went wrong during video processing: ${error} `);
   }
 }
