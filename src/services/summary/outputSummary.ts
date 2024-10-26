@@ -14,7 +14,7 @@ interface OutputSummaryOptions {
 export async function outputSummary({
   url,
   words = 400,
-  updateProgress = () => {}, // Default is a no-op function
+  updateProgress = () => {},
   additionalPrompt = "",
   returnTranscriptOnly = false,
 }: OutputSummaryOptions): Promise<string> {
@@ -24,7 +24,7 @@ export async function outputSummary({
   const id = url.split("=")[1].split("?")[0];
 
   try {
-    // 1. Download video from YouTube and convert to mp3
+    // 1. Download video from YouTube
     updateProgress({ status: "pending", message: "Downloading video..." });
     await downloadVideo(url, id);
 
@@ -32,22 +32,23 @@ export async function outputSummary({
     updateProgress({ status: "pending", message: "Generating transcript..." });
     const transcript = await generateTranscript(id);
 
-    // If returnTranscriptOnly flag is set, return the transcript without generating summary
     if (returnTranscriptOnly) {
-      await deleteVideo(id);
+      await deleteVideo(id); // Ensure deletion in case of early return
       return transcript;
     }
 
-    // 3. Generate summary and delete the video in parallel
-    updateProgress({ status: "pending", message: "Almost done! Generating summary..." });
+    // 3. Generate summary and delete video in parallel
+    updateProgress({ status: "pending", message: "Generating summary..." });
     const [_, summary] = await Promise.all([
-      deleteVideo(id),
+      deleteVideo(id), // Ensure video deletion happens even in case of error
       generateSummary(transcript, words, additionalPrompt),
     ]);
 
     return summary;
   } catch (error) {
-    console.error("Error during video processing: ", error);
+    console.error("Error during video processing:", error);
     throw new InternalServerError(`Something went wrong during video processing: ${error}`);
+  } finally {
+    await deleteVideo(id); // Ensure cleanup in the finally block
   }
 }

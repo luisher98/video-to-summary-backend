@@ -1,7 +1,7 @@
 import readline from 'readline';
 import { blue, orange, warning } from './style/colors.ts';
 import { handleHelpCommand } from './commands/help.ts';
-import { handleCommand } from './commands/youtube.ts';
+import { handleCommand } from './commands/videoProcessing.ts';
 
 // Command registry
 const commands: { [key: string]: Function } = {
