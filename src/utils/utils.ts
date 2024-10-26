@@ -35,6 +35,13 @@ export async function clearDownloadFolder() {
 
 }
 
+export function sanitizeFileName(fileName: string): string {
+    // Invalid characters: \ / : * ? " < > | and -
+    const invalidCharacters = /[\\\/:*?"<>| -]/g;
+    // Replace with underscore
+    return fileName.replace(invalidCharacters, '_');
+}
+
 export const getCurrentDateTime = () => {
     const now = new Date();
     const year = now.getFullYear();

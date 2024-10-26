@@ -2,6 +2,7 @@ import { downloadVideo, deleteVideo } from "./videoTools.ts";
 import { generateTranscript, generateSummary } from "../../lib/openAI.ts";
 import { ProgressUpdate } from "../../types/global.types.ts";
 import { BadRequestError, InternalServerError } from "../../utils/errorHandling.ts";
+import { sanitizeFileName } from "../../utils/utils.ts";
 
 interface OutputSummaryOptions {
   url: string;
@@ -21,7 +22,7 @@ export async function outputSummary({
   if (typeof url !== "string" || !url.includes("?v=")) {
     throw new BadRequestError("Invalid YouTube URL");
   }
-  const id = url.split("=")[1].split("?")[0];
+  const id = sanitizeFileName(url.split("=")[1].split("?")[0]);
 
   try {
     // 1. Download video from YouTube
