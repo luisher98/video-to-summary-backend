@@ -1,4 +1,5 @@
 import readline from 'readline';
+import { blue, orange, warning } from './style/colors.ts';
 import { handleHelpCommand } from './commands/help.ts';
 import { handleCommand } from './commands/youtube.ts';
 
@@ -11,7 +12,9 @@ const commands: { [key: string]: Function } = {
 
 // Start the CLI
 export function startCLI() {
-  console.log('\nYouTube Summary CLI mode activated.\nType \'help\' to see available commands.');
+  console.clear();
+  console.log(orange('Welcome to the YouTubeSummary CLI!'));
+  console.log(blue('\nType \'help\' to see available commands.'));
 
   const rl = readline.createInterface({
     input: process.stdin,
@@ -25,7 +28,7 @@ export function startCLI() {
     const [command, ...args] = line.trim().split(' ');
 
     if (!command) {
-      console.log('Please enter a command.');
+      console.log(warning('\nPlease enter a command.'));
     } else if (commands[command]) {
       try {
         await commands[command](args); // Pass command arguments (as an array) to the command

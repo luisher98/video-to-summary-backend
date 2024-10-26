@@ -1,3 +1,4 @@
+import inquirer from 'inquirer';
 import { outputSummary } from '../../services/summary/outputSummary.ts';
 import { BadRequestError } from './../../utils/errorHandling.ts';
 import { parseArgs } from './utils.ts';
@@ -5,55 +6,55 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// Get the current directory in ESM context (like __dirname in CommonJS)
+// Get the current directory in ESM context
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Set the local directory where files will be saved
 const localDirectory = path.resolve(__dirname, '../../tmp/savedTranscriptsAndSummaries');
 
-// Unified handler for both summary and transcript
 export async function handleCommand(commandType: 'summary' | 'transcript', args: string[]) {
-  const { url, words, additionalPrompt, returnTranscriptOnly, fileName } = parseArgs(args);
+  const { url, words, additionalPrompt, fileName } = parseArgs(args);
 
   if (!url) {
     console.error(
-      `Usage: ${commandType} <url> ${commandType === 'summary' ? `[--words=<number of words>] [--prompt=<your prompt>]`: ''} [--save=<file name>]`
+      `Usage: ${commandType} <url> ${commandType === 'summary' ? `[--words=<number of words>] [--prompt=<your prompt>]` : ''} [--save=<file name>]`
     );
     return;
   }
 
   try {
-    console.log(`Processing YouTube video ${returnTranscriptOnly ? 'transcript' : 'summary'}...`);
+    console.log(`Processing YouTube video ${commandType ? 'transcript' : 'summary'}...`);
 
-    // Call the outputSummary function
     const result = await outputSummary({
       url,
       words,
-      returnTranscriptOnly,
+      returnTranscriptOnly: commandType === 'transcript',
       additionalPrompt,
     });
 
-    const outputType = returnTranscriptOnly ? 'Transcript' : 'Summary';
+    // Prompt the user for output options
+    const { outputOption } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'outputOption',
+        message: 'How would you like to output the result?',
+        choices: [
+          { name: 'Display in terminal', value: 'terminal' },
+          { name: 'Save to file', value: 'file' },
+        ],
+      },
+    ]);
 
-    // Check if the local directory exists, create it if not
-    if (!fs.existsSync(localDirectory)) {
-      fs.mkdirSync(localDirectory, { recursive: true });
-    }
-
-    // If the --save flag is provided, save the result to the file
-    if (fileName) {
-      const filePath = path.join(localDirectory, fileName);
-      fs.writeFile(filePath, result, (err) => {
-        if (err) {
-          console.error(`Error writing to file: ${err.message}`);
-        } else {
-          console.log(`${outputType} saved to ${filePath}`);
-        }
-      });
+    if (outputOption === 'file') {
+      // Ensure the local directory exists
+      if (!fs.existsSync(localDirectory)) {
+        fs.mkdirSync(localDirectory, { recursive: true });
+      }
+      const filePath = path.join(localDirectory, fileName || `${commandType}_output.txt`);
+      fs.writeFileSync(filePath, result);
+      console.log(`Result saved to ${filePath}`);
     } else {
-      // If no --save flag, output result to the console
-      console.log(`${outputType} generated:`);
+      console.log(`Generated ${commandType === 'transcript' ? 'Transcript' : 'Summary'}:`);
       console.log(result);
     }
   } catch (error) {

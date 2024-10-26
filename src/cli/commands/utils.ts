@@ -37,9 +37,7 @@ export function parseArgs(args: string[]) {
         fileName += '.txt'; // Ensure the file has a .txt extension
       }
       parsed.fileName = fileName;
-    } else if (args[i] === '--transcriptOnly') {
-      parsed.returnTranscriptOnly = true;
-    }
+    } 
   }
 
   return parsed;
