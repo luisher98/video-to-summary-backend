@@ -5,6 +5,6 @@ export async function handleStopCommand() {
     await app.stop(); // it doesn't exist for now. must be implemented
     console.log('Server stopped successfully.');
   } catch (error) {
-    console.error('Error stopping the server:', error.message);
+    console.error('Error stopping the server:', (error as Error).message);
   }
 }

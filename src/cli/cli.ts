@@ -2,12 +2,21 @@ import readline from 'readline';
 import { blue, orange, warning } from './style/colors.ts';
 import { handleHelpCommand } from './commands/help.ts';
 import { handleCommand } from './commands/videoProcessing.ts';
+import { handleStatusCommand } from './commands/status.ts';
+import { handleStopCommand } from './commands/stop.ts';
+import { handleMonitorCommand } from './commands/monitor.ts';
 
 // Command registry
 const commands: { [key: string]: Function } = {
   help: handleHelpCommand,
   summary: (args: string[]) => handleCommand('summary', args),
   transcript: (args: string[]) => handleCommand('transcript', args),
+  status: handleStatusCommand,
+  stop: handleStopCommand,
+  monitor: handleMonitorCommand,
+  youtube: (args: string[]) => handleCommand('summary', args),
+  q: () => process.exit(0),
+  quit: () => process.exit(0),
 };
 
 // Start the CLI
@@ -26,19 +35,25 @@ export function startCLI() {
 
   rl.on('line', async (line) => {
     const [command, ...args] = line.trim().split(' ');
-
+  
     if (!command) {
-      console.log(warning('\nPlease enter a command.'));
+      console.log(warning('\nPlease enter a valid command.'));
     } else if (commands[command]) {
       try {
-        await commands[command](args); // Pass command arguments (as an array) to the command
-      } catch (error) {
-        console.error(`Error executing '${command}':`, error.message);
+        const commandsWithoutArgs = ['help', 'q', 'quit', 'status', 'stop', 'monitor'];
+        if (!commandsWithoutArgs.includes(command) && args.length === 0) {
+          console.log(warning(`\nCommand '${command}' requires arguments. Type 'help' for usage.`));
+        } else {
+          await commands[command](args);
+        }
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+        console.error(warning(`Error executing '${command}': ${errorMessage}`));
       }
     } else {
-      console.log(`Unknown command: '${command}'. Type 'help' to see available commands.`);
+      console.log(warning(`Unknown command: '${command}'. Type 'help' to see available commands.`));
     }
-
+  
     rl.prompt();
   });
 

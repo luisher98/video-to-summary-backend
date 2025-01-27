@@ -20,9 +20,7 @@ export function getEnvVar(name: string): string {
     return value;
 }
 
-export async function checkVideoExists(id: string) {
-    const url = `https://www.youtube.com/watch?v=${id}`;
-
+export async function checkVideoExists(url: string) {
     try {
         const response = await fetch(url);
         return response.status === 200;
@@ -50,6 +48,6 @@ export const getCurrentDateTime = () => {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
   
-    return `${day}_${month}_${year}__${hours}:${minutes}`;
+    return `${day}_${month}_${year}___${hours}_${minutes}`;
   };
   

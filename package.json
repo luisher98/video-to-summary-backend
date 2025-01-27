@@ -14,7 +14,8 @@
     "cli": "tsx src/index.ts --cli",
     "view": "node dist/src/index.js",
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "test:prod": "cross-env TEST_ENV=production jest --config jest.config.prod.js --testMatch '**/tests/production/**/*.test.ts'"
   },
   "keywords": [
     "youtube",
@@ -22,7 +23,7 @@
     "api"
   ],
   "dependencies": {
-    "@distube/ytdl-core": "^4.14.4",
+    "@distube/ytdl-core": "^4.15.9",
     "@types/body-parser": "^1.19.5",
     "cli-color": "^2.0.4",
     "dotenv": "^16.3.1",
@@ -35,7 +36,11 @@
     "node-fetch": "^3.3.2",
     "openai": "^4.52.7",
     "tsconfig-paths": "^4.2.0",
-    "webpack-node-externals": "^3.0.0"
+    "uuid": "^11.0.5",
+    "webpack-node-externals": "^3.0.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.8",
@@ -44,7 +49,7 @@
     "@types/express": "^4.17.21",
     "@types/fluent-ffmpeg": "^2.1.24",
     "@types/jest": "^29.5.13",
-    "@types/node": "^17.0.45",
+    "@types/node": "^18.19.64",
     "@types/supertest": "^6.0.2",
     "@types/webpack": "^5.28.5",
     "clean-webpack-plugin": "^4.0.0",
@@ -64,7 +69,9 @@
     "typescript": "^5.6.3",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
-    "wepack-cli": "^0.0.1-security"
+    "wepack-cli": "^0.0.1-security",
+    "@types/cors": "^2.8.17",
+    "@types/helmet": "^4.0.0"
   },
   "prettier": {
     "trailingComma": "all",

@@ -18,7 +18,6 @@ export default async function getSummarySSE(req: Request, res: Response) {
         words,
         updateProgress: (updateProgress: ProgressUpdate) => {
           res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
-          res.flush(); // Flush data to the client
         },
       });
       yield { status: "done", message: summary };
@@ -32,7 +31,6 @@ export default async function getSummarySSE(req: Request, res: Response) {
   (async () => {
     for await (const data of generateSummary()) {
       res.write(`data: ${JSON.stringify(data)}\n\n`);
-      res.flush(); // Flush each data item to the client
     }
   })();
 }

@@ -1,30 +1,153 @@
-import express from 'express';
+import express, { NextFunction } from 'express';
 import getVideoInfo from './routes/getVideoInfo.ts';
 import getSummary from './routes/getSummary.ts';
 import getSummarySSE from './routes/getSummarySSE.ts';
+import getTranscript from './routes/getTranscript.ts';
 import getTestSSE from './routes/getTestSSE.ts';
 import { handleUncaughtErrors } from '../utils/errorHandling.ts';
+import rateLimit from 'express-rate-limit';
+import { v4 as uuidv4 } from 'uuid';
 
-const port = process.env.PORT || 5050;
-const url = process.env.URL || 'http://localhost';
+// Configuration constants
+const CONFIG = {
+    port: process.env.PORT || 5050,
+    url: process.env.URL || 'http://localhost',
+    rateLimit: {
+        windowMs: 1 * 60 * 1000, // 1 minute
+        maxRequests: 10,
+        message: 'Too many requests from this IP, please try again later'
+    },
+    queue: {
+        maxConcurrentRequests: 2
+    }
+} as const;
 
+// Types
+interface QueueEntry {
+    timestamp: number;
+    ip: string;
+}
+
+interface ServerStatus {
+    running: boolean;
+    port: number;
+    url: string;
+    activeRequests: number;
+    uptime: number;
+}
+
+// Server state
+let serverInstance: ReturnType<typeof app.listen> | null = null;
+
+// Initialize Express app
 export const app = express();
 
-app.use(express.json());
+// Configure rate limiting
+const rateLimiter = rateLimit({
+    windowMs: CONFIG.rateLimit.windowMs,
+    max: CONFIG.rateLimit.maxRequests,
+    message: CONFIG.rateLimit.message
+});
 
-// Routes
-app.get('/api/info', getVideoInfo);
-app.get('/api/summary', getSummary);
-app.get('/api/summary-sse', getSummarySSE);
-app.get('/api/test-sse', getTestSSE);
+app.use(rateLimiter);
 
-// Start server
-export function startServer() {
-  const server = app.listen(port, () => {
-    console.log(`Server running on ${url}:${port}`);
-    console.log(`Test response: ${url}:${port}/api/summary/?url=https://www.youtube.com/watch?v=Knd4wvmqK3g`);
-  });
+// Request queue management
+export const activeRequests = new Map<string, QueueEntry>();
 
-  // Error handling
-  handleUncaughtErrors(server);
+/**
+ * Get current server status
+ */
+export function getServerStatus(): ServerStatus {
+    return {
+        running: serverInstance !== null,
+        port: Number(CONFIG.port),
+        url: CONFIG.url,
+        activeRequests: activeRequests.size,
+        uptime: process.uptime()
+    };
+}
+
+/**
+ * Middleware to manage concurrent request queue
+ */
+const requestQueueMiddleware = async (
+    req: express.Request, 
+    res: express.Response, 
+    next: NextFunction
+): Promise<void> => {
+    const requestId = uuidv4();
+    
+    if (activeRequests.size >= CONFIG.queue.maxConcurrentRequests) {
+        res.status(503).json({
+            error: 'Server is busy. Please try again later.'
+        });
+        return;
+    }
+
+    activeRequests.set(requestId, {
+        timestamp: Date.now(),
+        ip: req.ip || 'unknown'
+    });
+
+    res.once('finish', () => {
+        activeRequests.delete(requestId);
+    });
+
+    next();
+};
+
+// API Routes
+const apiRoutes = {
+    info: '/api/info',
+    summary: '/api/summary',
+    summarySSE: '/api/summary-sse',
+    transcript: '/api/transcript',
+    testSSE: '/api/test-sse'
+} as const;
+
+// Configure routes
+app.get(apiRoutes.info, getVideoInfo);
+app.get(apiRoutes.summary, requestQueueMiddleware as express.RequestHandler, getSummary);
+app.get(apiRoutes.summarySSE, requestQueueMiddleware as express.RequestHandler, getSummarySSE);
+app.get(apiRoutes.transcript, requestQueueMiddleware as express.RequestHandler, getTranscript);
+app.get(apiRoutes.testSSE, getTestSSE);
+
+/**
+ * Start the server and configure error handling
+ */
+export function startServer(): void {
+    if (serverInstance) {
+        console.log('Server is already running');
+        return;
+    }
+
+    serverInstance = app.listen(CONFIG.port, () => {
+        console.log(`Server running on ${CONFIG.url}:${CONFIG.port}`);
+        console.log(`Test endpoint: ${CONFIG.url}:${CONFIG.port}${apiRoutes.summary}/?url=https://www.youtube.com/watch?v=example`);
+    });
+
+    handleUncaughtErrors(serverInstance);
+}
+
+/**
+ * Stop the server
+ */
+export function stopServer(): Promise<void> {
+    return new Promise((resolve, reject) => {
+        if (!serverInstance) {
+            console.log('Server is not running');
+            resolve();
+            return;
+        }
+
+        serverInstance.close((err) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            serverInstance = null;
+            activeRequests.clear();
+            resolve();
+        });
+    });
 }

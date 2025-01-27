@@ -3,6 +3,7 @@ import ytdl from '@distube/ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
 import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.ts';
 import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.ts';
+import { sanitizeFileName } from '../../utils/utils.ts';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
@@ -14,19 +15,19 @@ ffmpeg.setFfmpegPath(getFfmpegPath());
  */
 export async function downloadVideo(
     videoUrl: string,
-    id: string,
-): Promise<void> {
+): Promise<string> {
 
-    if (typeof videoUrl !== 'string' || typeof id !== 'string') {
+    if (typeof videoUrl !== 'string') {
         throw new Error('Invalid input types');
     }
 
-    const videoExists = await checkVideoExists(id);
+    const videoExists = await checkVideoExists(videoUrl);
     if (!videoExists) {
         throw new Error('Video does not exist');
     }
+    const fileId = sanitizeFileName(videoUrl.split("=")[1].split("?")[0]);
 
-    const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${id}.mp3`;
+    const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
 
     // Download the video stream
     const videoStream = ytdl(videoUrl, { filter: 'audioonly' })
@@ -35,7 +36,7 @@ export async function downloadVideo(
             throw new DownloadError(error.message);
         });
 
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         // Use FFmpeg to convert the audio stream to MP3 and save it to the output file
         ffmpeg(videoStream)
             .audioCodec('libmp3lame')
@@ -43,13 +44,18 @@ export async function downloadVideo(
             .save(outputFilePath)
             .on('error', async (error: Error) => {
                 console.error(`Error during conversion: ${error.message}`);
-                await deleteVideo(id);
+                await deleteVideo(fileId);
                 reject(new ConversionError(error.message));
             })
-            .on('end', resolve);
+            .on('end', () => {
+                console.log(
+                    `Successfully downloaded and converted: ${outputFilePath}`,
+                );
+                resolve(fileId);
+            });
     }).catch(async (error) => {
         console.error('Error in download process:', error.message);
-        await deleteVideo(id);
+        await deleteVideo(fileId);
         throw new DownloadError(error.message);
     });
 }

@@ -1,23 +1,36 @@
 import fs from 'fs';
 import path from 'path';
-import readline from 'readline';
 import inquirer from 'inquirer';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 const localDirectory = path.resolve(__dirname, '../../../tmp/savedTranscriptsAndSummaries');
 
 export function getLocalDirectoryPath(fileName: string): string {
-  if (!fs.existsSync(localDirectory)) {
-    fs.mkdirSync(localDirectory, { recursive: true });
+  try {
+    console.log('Resolved local directory path:', localDirectory); // Debug log
+    if (!fs.existsSync(localDirectory)) {
+      console.log('Directory does not exist. Creating...');
+      fs.mkdirSync(localDirectory, { recursive: true });
+    }
+    return path.join(localDirectory, fileName);
+  } catch (error) {
+    console.error('Error resolving local directory path:', error);
+    throw error;
   }
-  return path.join(localDirectory, fileName);
 }
 
 export function saveResultToFile(filePath: string, result: string) {
-  fs.writeFileSync(filePath, result);
-  console.log(`Result saved to ${filePath}`);
+  try {
+    console.log(`Attempting to save file at: ${filePath}`);
+    fs.writeFileSync(filePath, result);
+    console.log(`Result successfully saved to ${filePath}`);
+  } catch (error) {
+    console.error('Error saving result to file:', error);
+    throw error;
+  }
 }
 
 export async function promptOutputOption(): Promise<'terminal' | 'file'> {
@@ -36,46 +49,66 @@ export async function promptOutputOption(): Promise<'terminal' | 'file'> {
   return outputOption;
 }
 
-export function askQuestion(query: string): Promise<string> {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  return new Promise(resolve => rl.question(query, (answer: string) => {
-    rl.close();
-    resolve(answer);
-  }));
-}
-
 export function parseArgs(args: string[]) {
-  const parsed: {
-    url?: string;
-    additionalPrompt?: string;
-    words?: number;
-    fileName?: string;
-    returnTranscriptOnly?: boolean;
-  } = { returnTranscriptOnly: false, words: 400 }; // Default values
+  const parsed: { url?: string; words?: number; fileName?: string } = { words: 400 };
 
-  for (let i = 0; i < args.length; i++) {
-    if (i === 0) {
-      parsed.url = args[i]; // First argument is always the URL
-    } else if (args[i].startsWith('--prompt=')) {
-      parsed.additionalPrompt = args[i].split('=')[1];
-    } else if (args[i].startsWith('--words=')) {
-      const wordCount = parseInt(args[i].split('=')[1], 10);
-      if (!isNaN(wordCount) && wordCount > 0) {
-        parsed.words = wordCount;
+  for (const arg of args) {
+    if (arg.startsWith('--words=')) {
+      const words = parseInt(arg.split('=')[1], 10);
+      if (!isNaN(words) && words > 0) {
+        parsed.words = words;
+      } else {
+        console.warn('Invalid word count specified. Using default value: 400.');
       }
-    } else if (args[i].startsWith('--save=')) {
-      let fileName = args[i].split('=')[1];
-      if (!fileName.endsWith('.txt')) {
-        fileName += '.txt'; // Ensure the file has a .txt extension
-      }
-      parsed.fileName = fileName;
-    } 
+    } else if (arg.startsWith('--save=')) {
+      parsed.fileName = arg.split('=')[1];
+    } else {
+      parsed.url = arg;
+    }
+  }
+
+  if (!parsed.url) {
+    throw new Error('No URL provided.');
   }
 
   return parsed;
 }
 
+/**
+ * Format bytes to human readable string
+ */
+export function formatBytes(bytes: number): string {
+    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+    let size = bytes;
+    let unitIndex = 0;
+    
+    while (size >= 1024 && unitIndex < units.length - 1) {
+        size /= 1024;
+        unitIndex++;
+    }
+    
+    return `${size.toFixed(1)} ${units[unitIndex]}`;
+}
+
+/**
+ * Format duration in seconds to human readable string
+ */
+export function formatDuration(seconds: number): string {
+    const days = Math.floor(seconds / (24 * 60 * 60));
+    seconds %= 24 * 60 * 60;
+    
+    const hours = Math.floor(seconds / (60 * 60));
+    seconds %= 60 * 60;
+    
+    const minutes = Math.floor(seconds / 60);
+    seconds = Math.floor(seconds % 60);
+    
+    const parts = [];
+    
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
+    
+    return parts.join(' ');
+}
