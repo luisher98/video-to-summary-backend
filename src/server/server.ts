@@ -19,7 +19,8 @@ const CONFIG = {
     },
     queue: {
         maxConcurrentRequests: 2
-    }
+    },
+    exampleVideoId: 'N-ZNfuCdkUo' 
 } as const;
 
 // Types
@@ -123,7 +124,18 @@ export function startServer(): void {
 
     serverInstance = app.listen(CONFIG.port, () => {
         console.log(`Server running on ${CONFIG.url}:${CONFIG.port}`);
-        console.log(`Test endpoint: ${CONFIG.url}:${CONFIG.port}${apiRoutes.summary}/?url=https://www.youtube.com/watch?v=example`);
+        console.log(`Example endpoint: ${CONFIG.url}:${CONFIG.port}${apiRoutes.summary}/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+    });
+
+    // Add global error handlers
+    process.on('unhandledRejection', (reason, promise) => {
+        console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+        // Don't exit the process, just log the error
+    });
+
+    process.on('uncaughtException', (error) => {
+        console.error('Uncaught Exception:', error);
+        // Don't exit the process, just log the error
     });
 
     handleUncaughtErrors(serverInstance);

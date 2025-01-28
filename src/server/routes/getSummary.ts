@@ -7,7 +7,7 @@ export default async function getSummary(req: Request, res: Response) {
     const words = Number(req.query.words) as number;
 
     if (!inputUrl || !inputUrl.includes("?v=")) {
-      return new BadRequestError("Invalid YouTube URL");
+      throw new BadRequestError("Invalid YouTube URL");
     }
   
     try {
@@ -16,5 +16,7 @@ export default async function getSummary(req: Request, res: Response) {
       console.log("Summary generated successfully.");
     } catch (error) {
       console.error(error);
+      // Add proper error response
+      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error occurred' });
     }
-  }
+}
