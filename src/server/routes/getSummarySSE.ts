@@ -6,6 +6,8 @@ export default async function getSummarySSE(req: Request, res: Response) {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("X-Accel-Buffering", "no"); // Prevents Azure from buffering
 
   const inputUrl = req.query.url as string;
   let words = Number(req.query.words);

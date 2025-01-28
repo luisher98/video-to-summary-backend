@@ -1,17 +1,19 @@
-import express, { Express, NextFunction } from 'express';
-import getVideoInfo from './routes/getVideoInfo.js';
-import getSummary from './routes/getSummary.js';
-import getSummarySSE from './routes/getSummarySSE.js';
-import getTranscript from './routes/getTranscript.js';
-import getTestSSE from './routes/getTestSSE.js';
-import { handleUncaughtErrors } from '../utils/errorHandling.js';
+import express, { NextFunction } from 'express';
+import getVideoInfo from './routes/getVideoInfo.ts';
+import getSummary from './routes/getSummary.ts';
+import getSummarySSE from './routes/getSummarySSE.ts';
+import getTranscript from './routes/getTranscript.ts';
+import getTestSSE from './routes/getTestSSE.ts';
+import { handleUncaughtErrors } from '../utils/errorHandling.ts';
 import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
 
 // Configuration constants
 const CONFIG = {
     port: process.env.PORT || 5050,
-    url: process.env.URL || 'http://localhost',
+    url: process.env.WEBSITE_HOSTNAME 
+        ? `https://${process.env.WEBSITE_HOSTNAME}`
+        : `http://localhost:${process.env.PORT || 5050}`,
     rateLimit: {
         windowMs: 1 * 60 * 1000, // 1 minute
         maxRequests: 10,
@@ -37,16 +39,11 @@ interface ServerStatus {
     uptime: number;
 }
 
-// Define our custom Express interface
-export interface CustomExpress extends Express {
-    stop(): Promise<void>;
-}
-
 // Server state
 let serverInstance: ReturnType<typeof app.listen> | null = null;
 
-// Initialize Express app with custom type
-export const app = express() as CustomExpress;
+// Initialize Express app
+export const app = express();
 
 // Configure rate limiting
 const rateLimiter = rateLimit({
@@ -128,8 +125,8 @@ export function startServer(): void {
     }
 
     serverInstance = app.listen(CONFIG.port, () => {
-        console.log(`Server running on ${CONFIG.url}:${CONFIG.port}`);
-        console.log(`Example endpoint: ${CONFIG.url}:${CONFIG.port}${apiRoutes.summary}/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+        console.log(`Server running on ${CONFIG.url}`);
+        console.log(`Example endpoint: ${CONFIG.url}${apiRoutes.summarySSE}/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
     });
 
     // Add global error handlers
@@ -168,6 +165,3 @@ export function stopServer(): Promise<void> {
         });
     });
 }
-
-// Add the stop method to the app
-app.stop = stopServer;
