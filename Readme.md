@@ -2,22 +2,6 @@
 
 A Node.js API and CLI tool that utilizes OpenAI's GPT and Whisper models to generate summaries and transcripts from YouTube videos.
 
-## Important Note About TypeScript Imports
-
-This project uses TypeScript with ES Modules. You'll notice that imports use `.js` extensions even for TypeScript files:
-
-```typescript
-// Correct way (even for .ts files):
-import { outputSummary } from "../../services/summary/outputSummary.js";
-
-// Wrong way:
-import { outputSummary } from "../../services/summary/outputSummary.ts";
-```
-
-This is because:
-1. We use `"type": "module"` in package.json and `"moduleResolution": "NodeNext"` in tsconfig.json
-2. Node.js requires explicit file extensions for ESM imports
-3. The `.js` extension refers to the compiled output that will exist at runtime
 
 ## Features
 
@@ -131,6 +115,24 @@ The application includes comprehensive error handling for:
 - File operations
 - Video processing issues
 - Network errors
+
+## Important Note About TypeScript Imports
+
+This project uses TypeScript with ES Modules. You'll notice that imports use `.js` extensions even for TypeScript files:
+
+```typescript
+// Correct way (even for .ts files):
+import { outputSummary } from "../../services/summary/outputSummary.js";
+
+// Wrong way:
+import { outputSummary } from "../../services/summary/outputSummary.ts";
+```
+
+This is because:
+1. We use `"type": "module"` in package.json and `"moduleResolution": "NodeNext"` in tsconfig.json
+2. Node.js requires explicit file extensions for ESM imports
+3. The `.js` extension refers to the compiled output that will exist at runtime
+
 
 ## Author
 

@@ -1,10 +1,10 @@
 import express, { NextFunction } from 'express';
-import getVideoInfo from './routes/getVideoInfo.ts';
-import getSummary from './routes/getSummary.ts';
-import getSummarySSE from './routes/getSummarySSE.ts';
-import getTranscript from './routes/getTranscript.ts';
-import getTestSSE from './routes/getTestSSE.ts';
-import { handleUncaughtErrors } from '../utils/errorHandling.ts';
+import getVideoInfo from './routes/getVideoInfo.js';
+import getSummary from './routes/getSummary.js';
+import getSummarySSE from './routes/getSummarySSE.js';
+import getTranscript from './routes/getTranscript.js';
+import getTestSSE from './routes/getTestSSE.js';
+import { handleUncaughtErrors } from '../utils/errorHandling.js';
 import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -44,6 +44,17 @@ let serverInstance: ReturnType<typeof app.listen> | null = null;
 
 // Initialize Express app
 export const app = express();
+
+// Add stop method type to app
+export interface CustomExpress extends express.Express {
+    stop(): Promise<void>;
+}
+
+// Cast app to CustomExpress and add stop method
+(app as CustomExpress).stop = stopServer;
+
+// Export the typed app
+export const typedApp = app as CustomExpress;
 
 // Configure rate limiting
 const rateLimiter = rateLimit({

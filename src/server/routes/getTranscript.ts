@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { outputSummary } from "../../services/summary/outputSummary.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
 
-export default async function getSummary(req: Request, res: Response) {
+export default async function getTranscript(req: Request, res: Response) {
     const inputUrl = req.query.url as string;
 
     if (!inputUrl || !inputUrl.includes("?v=")) {
@@ -14,6 +14,10 @@ export default async function getSummary(req: Request, res: Response) {
       res.json({ content: transcript });
       console.log("Transcript generated successfully.");
     } catch (error) {
-      console.error(error);
+      console.error('Transcript generation error:', error);
+      res.status(500).json({ 
+          error: error instanceof Error ? error.message : 'Unknown error occurred',
+          code: 'TRANSCRIPT_GENERATION_ERROR'
+      });
     }
   }
