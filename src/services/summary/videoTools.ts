@@ -15,6 +15,7 @@ function createYoutubeAgent() {
             return null;
         }
 
+        console.log('Found YouTube cookies, creating agent...');
         const cookies = JSON.parse(cookiesString);
         return ytdl.createAgent(cookies);
     } catch (error) {

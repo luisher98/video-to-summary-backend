@@ -47,6 +47,9 @@ let serverInstance: ReturnType<typeof app.listen> | null = null;
 // Initialize Express app
 export const app = express();
 
+// Trust only Azure's proxy
+app.set('trust proxy', 'uniquelocal');
+
 // Security middleware
 app.use(helmet());
 
@@ -73,7 +76,16 @@ export const typedApp = app as CustomExpress;
 const rateLimiter = rateLimit({
     windowMs: CONFIG.rateLimit.windowMs,
     max: CONFIG.rateLimit.maxRequests,
-    message: CONFIG.rateLimit.message
+    message: CONFIG.rateLimit.message,
+    // Use a more secure key generator
+    keyGenerator: (req) => {
+        const xForwardedFor = req.headers['x-forwarded-for'];
+        if (typeof xForwardedFor === 'string') {
+            // Get the first IP in the chain (original client)
+            return xForwardedFor.split(',')[0].trim();
+        }
+        return req.socket.remoteAddress || 'unknown';
+    }
 });
 
 app.use(rateLimiter);

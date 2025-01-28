@@ -1,5 +1,7 @@
 # custom
 src/mocks/
+process.stderr
+process.stdout∫
 
 # Logs
 logs
