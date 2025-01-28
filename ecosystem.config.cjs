@@ -6,9 +6,14 @@ module.exports = {
     exec_mode: 'cluster',
     autorestart: true,
     watch: false,
+    min_uptime: '60s',
+    max_restarts: 5,
     max_memory_restart: '1G',
     env: {
       NODE_ENV: 'production'
-    }
+    },
+    output: 'process.stdout',
+    error: 'process.stderr',
+    merge_logs: true
   }]
 }; 

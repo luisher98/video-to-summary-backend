@@ -18,7 +18,7 @@
     "test:prod": "cross-env TEST_ENV=production jest --config jest.config.prod.js --testMatch '**/tests/production/**/*.production.test.ts'",
     "test:all": "jest --testMatch '**/*.test.ts'",
     "lint": "eslint . --ext .ts",
-    "start": "pm2-runtime start ecosystem.config.cjs --env production",
+    "start": "pm2 start ecosystem.config.cjs --no-daemon",
     "build": "tsc"
   },
   "keywords": [
