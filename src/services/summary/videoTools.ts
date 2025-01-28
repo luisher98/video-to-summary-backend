@@ -7,6 +7,22 @@ import { sanitizeFileName } from '../../utils/utils.js';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
+function createYoutubeAgent() {
+    try {
+        const cookiesString = process.env.YOUTUBE_COOKIES;
+        if (!cookiesString) {
+            console.warn('No YouTube cookies found in environment variables');
+            return null;
+        }
+
+        const cookies = JSON.parse(cookiesString);
+        return ytdl.createAgent(cookies);
+    } catch (error) {
+        console.error('Error creating YouTube agent:', error);
+        return null;
+    }
+}
+
 /**
  * Downloads and converts a YouTube video to mp3.
  * @param videoUrl - The URL of the YouTube video.
@@ -16,7 +32,6 @@ ffmpeg.setFfmpegPath(getFfmpegPath());
 export async function downloadVideo(
     videoUrl: string,
 ): Promise<string> {
-
     if (typeof videoUrl !== 'string') {
         throw new Error('Invalid input types');
     }
@@ -29,12 +44,17 @@ export async function downloadVideo(
 
     const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
 
-    // Download the video stream
-    const videoStream = ytdl(videoUrl, { filter: 'audioonly' })
-        .on('error', (error: Error) => {
-            console.error(`Error downloading the video: ${error.message}`);
-            throw new DownloadError(error.message);
-        });
+    // Create YouTube agent with cookies if available
+    const agent = createYoutubeAgent();
+
+    // Download the video stream with agent if available
+    const videoStream = ytdl(videoUrl, { 
+        filter: 'audioonly',
+        ...(agent && { agent }) // Only include agent if it exists
+    }).on('error', (error: Error) => {
+        console.error(`Error downloading the video: ${error.message}`);
+        throw new DownloadError(error.message);
+    });
 
     return new Promise<string>((resolve, reject) => {
         // Use FFmpeg to convert the audio stream to MP3 and save it to the output file

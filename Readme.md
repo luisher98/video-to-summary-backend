@@ -1,130 +1,114 @@
-# YouTube Summary API by Luis Hernández
+# YouTube Summary API
 
-A powerful Node.js API that leverages OpenAI's GPT and Whisper models to automatically generate concise summaries and accurate transcripts from YouTube videos. Perfect for content creators, researchers, or anyone needing quick video content analysis.
+An AI-powered API that generates concise summaries and transcripts from YouTube videos using OpenAI's GPT and Whisper models.
 
-## 🚀 Quick Start
+## Architecture Overview
 
-1. **Clone and Install**
+### Core Services
+- **Summary Service**: Orchestrates video processing, transcription, and AI summarization
+- **Video Service**: Handles YouTube video downloads and audio extraction
+- **OpenAI Service**: Manages interactions with GPT and Whisper APIs
+- **Info Service**: Retrieves and validates YouTube video metadata
+
+### Technical Stack
+- **Backend**: Node.js with TypeScript
+- **Framework**: Express.js with middleware architecture
+- **AI Integration**: OpenAI GPT-4 and Whisper APIs
+- **Process Management**: PM2 for production reliability
+- **Testing**: Jest with separate development/production configs
+- **Security**: Rate limiting, CORS, and Helmet implementation
+
+## Features
+
+- 🤖 AI-powered video summaries using GPT-4
+- 📝 Accurate transcripts via Whisper
+- 🔄 Real-time progress updates using Server-Sent Events
+- 🛡️ Comprehensive error handling and security measures
+
+## API Design
+
+### Generate Summary (SSE)
+```http
+GET /api/summary-sse?url=<YouTube-URL>&words=<number>
+```
+Streams real-time progress updates during:
+1. Video download and processing
+2. Audio transcription
+3. AI summary generation
+
+### Get Transcript
+```http
+GET /api/transcript?url=<YouTube-URL>
+```
+Handles audio extraction and Whisper transcription
+
+### Video Information
+```http
+GET /api/info?url=<YouTube-URL>
+```
+Validates and retrieves video metadata
+
+## Implementation
+
+### Project Structure
+```
+src/
+├── services/         # Core business logic
+│   ├── summary/      # Video processing and AI integration
+│   ├── info/         # YouTube metadata handling
+│   └── openai/       # AI service integration
+├── middleware/       # Express middleware
+├── utils/            # Shared utilities
+├── types/            # TypeScript definitions
+└── config/           # Configuration management
+```
+
+### Development Workflow
+
+1. **Setup**
 ```bash
 git clone https://github.com/luisher98/youtube-summary-api.git
 cd youtube-summary-api
 npm install
 ```
 
-2. **Configure Environment**
+2. **Configuration**
 Create a `.env` file:
 ```env
 OPENAI_API_KEY=your_openai_api_key
 YOUTUBE_API_KEY=your_youtube_api_key
 ```
 
-3. **Start the Server**
+3. **Development**
 ```bash
-npm run dev
+npm run dev      # Start development server
+npm test        # Run test suite
+npm run build   # Build for production
+npm start       # Run production server
 ```
 
-4. **Try it out**
-```bash
-curl "http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=your-video-id"
-```
+## Error Handling
 
-## ✨ Features
+The API implements a comprehensive error handling system:
+- Custom error classes for specific scenarios
+- Consistent error response format
+- Detailed logging for debugging
+- Graceful fallbacks for service failures
 
-### Core Functionality
-- Generate intelligent AI-powered summaries of YouTube videos
-- Extract accurate transcripts of YouTube videos using OpenAI's Whisper
-- Get video metadata
-- Monitor progress in real-time through SSE
+## Security Measures
 
-### Technical Features
-- Real-time progress updates via Server-Sent Events
-- Automatic temporary file cleanup
-- Comprehensive error handling
-- Rate limiting and security protections
-- CORS and Helmet security headers
+- Rate limiting per IP
+- Request validation
+- Security headers via Helmet
+- CORS configuration
+- Environment variable protection
+- Cookie-based authentication
 
-## 🛠 API Endpoints
+## Author
 
-### Generate Summary (SSE)
-```http
-GET /api/summary-sse?url=<YouTube-URL>&words=<number>
-```
-Generates an AI-powered summary with real-time progress updates
-
-### Get Transcript
-```http
-GET /api/transcript?url=<YouTube-URL>
-```
-Extracts the complete video transcript
-
-### Video Information
-```http
-GET /api/info?url=<YouTube-URL>
-```
-Returns video metadata and statistics
-
-## 🔧 Technical Requirements
-
-### Prerequisites
-- Node.js
-- OpenAI API Key
-- YouTube Data API Key
-
-### Environment Variables
-Required:
-```
-OPENAI_API_KEY - Your OpenAI API key
-YOUTUBE_API_KEY - Your YouTube Data API key
-```
-
-Optional:
-```
-PORT - Server port (default: 5050)
-NODE_ENV - Environment (development/production)
-WEBSITE_HOSTNAME - Azure Web App hostname
-```
-
-## 💻 Development
-
-### Available Scripts
-```bash
-# Development server
-npm run dev
-
-# Build project
-npm run build
-
-# Run tests
-npm test
-
-# Format code
-npm run prettify
-```
-
-## 🚀 Deployment
-
-### Production Setup
-The API is configured to run on Azure App Service using PM2:
-```bash
-# Build for production
-npm run build
-
-# Start with PM2
-npm start
-```
-
-### Tech Stack
-- Node.js & TypeScript
-- Express.js for API routing
-- OpenAI's GPT & Whisper
-- PM2 for process management
-- Azure App Service for hosting
-
-## 👤 Author
-
-Luis Hernández Martín
+Luis Hernández Martín  
 luisheratm@gmail.com
 
-## 📝 License
+## License
 
 MIT

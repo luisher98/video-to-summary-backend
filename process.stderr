@@ -1,0 +1,88 @@
+TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+    at ClientRequest.setHeader (node:_http_outgoing:662:3)
+    at new ClientRequest (node:_http_client:300:14)
+    at Object.request (node:https:379:10)
+    at doDownload (/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/miniget/dist/index.js:170:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Uncaught Exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+Uncaught exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+    at ClientRequest.setHeader (node:_http_outgoing:662:3)
+    at new ClientRequest (node:_http_client:300:14)
+    at Object.request (node:https:379:10)
+    at doDownload (/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/miniget/dist/index.js:170:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Uncaught Exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+Uncaught exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+    at ClientRequest.setHeader (node:_http_outgoing:662:3)
+    at new ClientRequest (node:_http_client:300:14)
+    at Object.request (node:https:379:10)
+    at doDownload (/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/miniget/dist/index.js:170:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Uncaught Exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+Uncaught exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "x-youtube-identity-token"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+    at ClientRequest.setHeader (node:_http_outgoing:662:3)
+    at new ClientRequest (node:_http_client:300:14)
+    at Object.request (node:https:379:10)
+    at doDownload (/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/miniget/dist/index.js:170:33)
+    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)
+Uncaught Exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}
+Uncaught exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "undefined" for header "X-Goog-Visitor-Id"
+[90m    at ClientRequest.setHeader (node:_http_outgoing:662:3)[39m
+[90m    at new ClientRequest (node:_http_client:300:14)[39m
+[90m    at Object.request (node:https:379:10)[39m
+    at doDownload [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mminiget[24m/dist/index.js:170:33[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
+  code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
+}

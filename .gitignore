@@ -81,6 +81,11 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+cookies.json
+
+# Local Azure testing
+azure.settings.json
+start-azure-local.sh
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
