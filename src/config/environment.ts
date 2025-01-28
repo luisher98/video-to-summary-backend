@@ -4,7 +4,10 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
-// Environment schema with validation
+/**
+ * Environment configuration schema with validation using Zod.
+ * Ensures all required environment variables are present and correctly typed.
+ */
 const envSchema = z.object({
     // API Keys
     OPENAI_API_KEY: z.string().min(1, 'OpenAI API key is required'),
@@ -37,6 +40,20 @@ if (!env.success) {
     process.exit(1);
 }
 
+/**
+ * Validated and typed configuration object.
+ * Contains all application settings derived from environment variables.
+ * 
+ * @example
+ * // Access configuration values
+ * config.server.port; // Server port number
+ * config.apis.openai.apiKey; // OpenAI API key
+ * 
+ * // Check environment
+ * if (config.isProduction) {
+ *   // Apply production-specific logic
+ * }
+ */
 export const config = {
     isProduction: env.data.NODE_ENV === 'production',
     isDevelopment: env.data.NODE_ENV === 'development',

@@ -6,9 +6,15 @@ import { handleStatusCommand } from './commands/status.js';
 import { handleStopCommand } from './commands/stop.js';
 import { handleMonitorCommand } from './commands/monitor.js';
 
+/**
+ * Registry of available CLI commands and their handlers
+ * @type {Object.<string, CommandFunction>}
+ */
 type CommandFunction = (args: string[]) => void | Promise<void>;
 
-// Command registry
+/**
+ * Command registry mapping command names to their handler functions
+ */
 const commands: { [key: string]: CommandFunction } = {
   help: handleHelpCommand,
   summary: (args: string[]) => handleCommand('summary', args),
@@ -21,7 +27,12 @@ const commands: { [key: string]: CommandFunction } = {
   quit: () => process.exit(0),
 };
 
-// Start the CLI
+/**
+ * Starts the CLI interface for the YouTube Summary application.
+ * Handles user input and routes commands to appropriate handlers.
+ * 
+ * @returns {void}
+ */
 export function startCLI() {
   console.clear();
   console.log(orange('Welcome to the YouTubeSummary CLI!'));

@@ -4,6 +4,14 @@ import inquirer from 'inquirer';
 
 const localDirectory = path.resolve(process.cwd(), 'tmp/savedTranscriptsAndSummaries');
 
+/**
+ * Gets the absolute path for saving files in the local directory.
+ * Creates the directory if it doesn't exist.
+ * 
+ * @param {string} fileName - Name of the file to save
+ * @returns {string} Absolute path to the file
+ * @throws {Error} If directory creation fails
+ */
 export function getLocalDirectoryPath(fileName: string): string {
   try {
     console.log('Resolved local directory path:', localDirectory); // Debug log
@@ -18,6 +26,13 @@ export function getLocalDirectoryPath(fileName: string): string {
   }
 }
 
+/**
+ * Saves content to a file in the local directory.
+ * 
+ * @param {string} filePath - Path where the file should be saved
+ * @param {string} result - Content to write to the file
+ * @throws {Error} If file write operation fails
+ */
 export function saveResultToFile(filePath: string, result: string) {
   try {
     console.log(`Attempting to save file at: ${filePath}`);
@@ -29,6 +44,11 @@ export function saveResultToFile(filePath: string, result: string) {
   }
 }
 
+/**
+ * Prompts user to choose output method (terminal or file).
+ * 
+ * @returns {Promise<'terminal' | 'file'>} Selected output option
+ */
 export async function promptOutputOption(): Promise<'terminal' | 'file'> {
   const { outputOption } = await inquirer.prompt([
     {
@@ -45,6 +65,17 @@ export async function promptOutputOption(): Promise<'terminal' | 'file'> {
   return outputOption;
 }
 
+/**
+ * Parses command line arguments into structured format.
+ * 
+ * @param {string[]} args - Raw command line arguments
+ * @returns {Object} Parsed arguments object
+ * @throws {Error} If required URL is missing
+ * 
+ * @example
+ * parseArgs(['https://youtube.com/...', '--words=300']);
+ * // Returns: { url: 'https://youtube.com/...', words: 300 }
+ */
 export function parseArgs(args: string[]) {
   const parsed: { url?: string; words?: number; fileName?: string } = { words: 400 };
 
@@ -71,7 +102,10 @@ export function parseArgs(args: string[]) {
 }
 
 /**
- * Format bytes to human readable string
+ * Formats bytes into human-readable string.
+ * 
+ * @param {number} bytes - Number of bytes
+ * @returns {string} Formatted string (e.g., "1.5 MB")
  */
 export function formatBytes(bytes: number): string {
     const units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -87,7 +121,10 @@ export function formatBytes(bytes: number): string {
 }
 
 /**
- * Format duration in seconds to human readable string
+ * Formats duration in seconds into human-readable string.
+ * 
+ * @param {number} seconds - Duration in seconds
+ * @returns {string} Formatted string (e.g., "2h 30m 15s")
  */
 export function formatDuration(seconds: number): string {
     const days = Math.floor(seconds / (24 * 60 * 60));

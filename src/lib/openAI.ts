@@ -7,6 +7,11 @@ dotenv.config();
 
 const apiKey = process.env.OPENAI_API_KEY;
 
+/**
+ * Tests connection to OpenAI API by attempting a simple completion.
+ * 
+ * @returns {Promise<boolean>} True if connection is successful
+ */
 export async function checkOpenAIConnection() {
     if (process.env.NODE_ENV === 'test') return true;
     
@@ -51,6 +56,13 @@ export async function checkOpenAIConnection() {
 const openai = new OpenAI({ apiKey });
 checkOpenAIConnection().catch(console.error);
 
+/**
+ * Generates a transcript from an audio file using OpenAI's Whisper model.
+ * 
+ * @param {string} id - File ID of the audio to transcribe
+ * @returns {Promise<string>} Generated transcript text
+ * @throws {Error} If transcription fails
+ */
 export async function generateTranscript(id: string): Promise<string> {
     console.log('Generating transcript...');
     try {
@@ -66,6 +78,15 @@ export async function generateTranscript(id: string): Promise<string> {
     }
 }
 
+/**
+ * Generates a summary of a transcript using OpenAI's GPT model.
+ * 
+ * @param {string} transcript - Text to summarize
+ * @param {number} wordCount - Maximum words in summary
+ * @param {string} [additionalPrompt=''] - Additional instructions for the AI
+ * @returns {Promise<string>} Generated summary
+ * @throws {Error} If summary generation fails
+ */
 export async function generateSummary(
     transcript: string,
     wordCount: number,

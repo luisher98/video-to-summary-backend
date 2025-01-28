@@ -1,6 +1,23 @@
 import { Request, Response } from "express";
 
-export default async function (req: Request, res: Response) {
+/**
+ * Test endpoint for Server-Sent Events functionality.
+ * Sends numbered events every second for 10 seconds.
+ * 
+ * @param {Request} req - Express request object
+ * @param {Response} res - Express response object
+ * @returns {Promise<void>} SSE stream of numbered events
+ * 
+ * @example
+ * GET /api/test-sse
+ * 
+ * // SSE Response Events:
+ * data: {"num": 1}
+ * data: {"num": 2}
+ * ...
+ * data: {"num": 10}
+ */
+export default async function getTestSSE(req: Request, res: Response) {
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Connection", "keep-alive");

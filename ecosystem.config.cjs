@@ -1,7 +1,13 @@
+/**
+ * PM2 ecosystem configuration
+ * Defines process management settings for production deployment
+ * 
+ * @type {Object}
+ */
 module.exports = {
   apps: [{
     name: 'youtube-summary-api',
-    script: 'dist/index.js',
+    script: './dist/index.js',
     instances: 2,
     exec_mode: 'cluster',
     autorestart: true,

@@ -27,18 +27,23 @@ const CONFIG = {
     exampleVideoId: 'N-ZNfuCdkUo' 
 } as const;
 
-// Types
-interface QueueEntry {
-    timestamp: number;
-    ip: string;
-}
-
+/**
+ * Server configuration and state interfaces
+ */
 interface ServerStatus {
     running: boolean;
     port: number;
     url: string;
     activeRequests: number;
     uptime: number;
+}
+
+/**
+ * Queue entry for tracking active requests
+ */
+interface QueueEntry {
+    timestamp: number;
+    ip: string;
 }
 
 // Server state
@@ -94,7 +99,9 @@ app.use(rateLimiter);
 export const activeRequests = new Map<string, QueueEntry>();
 
 /**
- * Get current server status
+ * Gets current server status including uptime and active requests.
+ * 
+ * @returns {ServerStatus} Current server status
  */
 export function getServerStatus(): ServerStatus {
     return {
@@ -152,7 +159,8 @@ app.get(apiRoutes.transcript, requestQueueMiddleware as express.RequestHandler, 
 app.get(apiRoutes.testSSE, getTestSSE);
 
 /**
- * Start the server and configure error handling
+ * Starts the server and configures error handling.
+ * Sets up routes, middleware, and request queue.
  */
 export function startServer(): void {
     if (serverInstance) {
@@ -183,7 +191,9 @@ export function startServer(): void {
 }
 
 /**
- * Stop the server
+ * Gracefully stops the server and cleans up resources.
+ * 
+ * @returns {Promise<void>} Resolves when server is stopped
  */
 export function stopServer(): Promise<void> {
     return new Promise((resolve, reject) => {

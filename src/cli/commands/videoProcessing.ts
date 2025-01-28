@@ -4,13 +4,34 @@ import { outputSummary } from '../../services/summary/outputSummary.js';
 import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
 import { warning } from '../style/colors.js';
 
+/**
+ * Command arguments for video processing
+ */
 interface CommandArgs {
+  /** YouTube video URL */
   url?: string;
+  /** Number of words for summary */
   words?: number;
+  /** Additional instructions for AI */
   additionalPrompt?: string;
+  /** Output file name */
   fileName?: string;
 }
 
+/**
+ * Handles CLI commands for generating video summaries and transcripts.
+ * 
+ * @param {('summary'|'transcript')} commandType - Type of output to generate
+ * @param {string[]} args - Command line arguments
+ * @returns {Promise<void>}
+ * 
+ * @example
+ * // Generate summary
+ * handleCommand('summary', ['https://youtube.com/watch?v=...', '--words=300']);
+ * 
+ * // Generate transcript
+ * handleCommand('transcript', ['https://youtube.com/watch?v=...']);
+ */
 export async function handleCommand(commandType: 'summary' | 'transcript', args: string[]) {
   try {
     const { url, words, additionalPrompt, fileName } = parseArgs(args) as CommandArgs;
@@ -57,6 +78,12 @@ export async function handleCommand(commandType: 'summary' | 'transcript', args:
   }
 }
 
+/**
+ * Displays command usage information.
+ * 
+ * @param {('summary'|'transcript')} commandType - Type of command
+ * @private
+ */
 function displayUsage(commandType: 'summary' | 'transcript') {
   const baseUsage = `${commandType} <url>`;
   const options = commandType === 'summary' 

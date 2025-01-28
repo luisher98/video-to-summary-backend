@@ -1,3 +1,15 @@
+/**
+ * Main application entry point.
+ * Starts either the CLI or server based on command line arguments.
+ * 
+ * @example
+ * // Start server mode
+ * npm start
+ * 
+ * // Start CLI mode
+ * npm start -- --cli
+ */
+
 import { startServer } from './server/server.js';
 import { startCLI } from './cli/cli.js';
 import express from 'express';

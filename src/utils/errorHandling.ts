@@ -16,21 +16,57 @@ export class HttpError extends Error {
   }
 }
 
+/**
+ * Custom error classes for specific error scenarios
+ */
+
+/**
+ * Error thrown when video download fails
+ */
+export class DownloadError extends HttpError {
+  constructor(message: string) {
+      super(HttpStatusCode.INTERNAL_SERVER_ERROR, message);
+      this.name = 'DownloadError';
+  }
+}
+
+/**
+ * Error thrown when audio conversion fails
+ */
+export class ConversionError extends HttpError {
+  constructor(message: string) {
+      super(HttpStatusCode.INTERNAL_SERVER_ERROR, message);
+      this.name = 'ConversionError';
+  }
+}
+
+/**
+ * Error thrown when file deletion fails
+ */
+export class DeletionError extends HttpError {
+  constructor(message: string) {
+      super(HttpStatusCode.INTERNAL_SERVER_ERROR, message);
+      this.name = 'DeletionError';
+  }
+}
+
+/**
+ * Error thrown for invalid request parameters
+ */
 export class BadRequestError extends HttpError {
   constructor(message: string) {
       super(HttpStatusCode.BAD_REQUEST, message);
+      this.name = 'BadRequestError';
   }
 }
 
-export class NotFoundError extends HttpError {
-  constructor(message: string) {
-      super(HttpStatusCode.NOT_FOUND, message);
-  }
-}
-
+/**
+ * Error thrown for server-side failures
+ */
 export class InternalServerError extends HttpError {
   constructor(message: string) {
       super(HttpStatusCode.INTERNAL_SERVER_ERROR, message);
+      this.name = 'InternalServerError';
   }
 }
 
@@ -38,24 +74,6 @@ export class CustomError extends InternalServerError {
   constructor(message: string, statusCode: HttpStatusCode = HttpStatusCode.INTERNAL_SERVER_ERROR) {
       super(message);
       this.statusCode = statusCode; // Only set if different from default
-  }
-}
-
-export class ConversionError extends CustomError {
-  constructor(message = "Error during conversion") {
-      super(message);
-  }
-}
-
-export class DownloadError extends CustomError {
-  constructor(message = "Error during download process") {
-      super(message);
-  }
-}
-
-export class DeletionError extends CustomError {
-  constructor(message = "Error deleting the video") {
-      super(message);
   }
 }
 

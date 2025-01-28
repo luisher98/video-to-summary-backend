@@ -1,16 +1,18 @@
 # YouTube Summary API
 
-An AI-powered API that generates concise summaries and transcripts from YouTube videos using OpenAI's GPT and Whisper models.
+AI-powered API that generates concise summaries and transcripts from YouTube videos using OpenAI's GPT and Whisper models.
 
 ## Architecture Overview
 
 ### Core Services
+I've structured the application around these key services:
 - **Summary Service**: Orchestrates video processing, transcription, and AI summarization
 - **Video Service**: Handles YouTube video downloads and audio extraction
 - **OpenAI Service**: Manages interactions with GPT and Whisper APIs
 - **Info Service**: Retrieves and validates YouTube video metadata
 
 ### Technical Stack
+I've chosen these technologies:
 - **Backend**: Node.js with TypeScript
 - **Framework**: Express.js with middleware architecture
 - **AI Integration**: OpenAI GPT-4 and Whisper APIs
@@ -20,6 +22,7 @@ An AI-powered API that generates concise summaries and transcripts from YouTube 
 
 ## Features
 
+I've implemented:
 - 🤖 AI-powered video summaries using GPT-4
 - 📝 Accurate transcripts via Whisper
 - 🔄 Real-time progress updates using Server-Sent Events
@@ -112,3 +115,32 @@ luisheratm@gmail.com
 ## License
 
 MIT
+
+## Important Notes
+
+I recently encountered an issue where `@distube/ytdl-core` stopped working on server deployments (Azure, AWS, etc.). This likely happened because Google's bot detection started flagging data center IP addresses more aggressively.
+
+### My Solution
+I've implemented `youtube-dl-exec` ([npm package](https://www.npmjs.com/package/youtube-dl-exec)) as a workaround. This library:
+- Uses `yt-dlp` under the hood, which better handles YouTube's restrictions
+- Provides better handling of rate limits and IP blocks
+- Requires Python 3.7+ on the system
+- Offers more configuration options for bypassing restrictions
+
+### Implementation Details
+I've maintained both implementations in the codebase:
+- Kept the original `@distube/ytdl-core` code for when YouTube possibly relaxes their restrictions
+- Added new `youtube-dl-exec` implementation for current production use
+- May implement an automatic fallback mechanism in future versions
+
+### Requirements
+To use my current version, you'll need:
+- Python 3.7 or higher installed
+- Node.js 16 or higher
+- Proper environment variables set (see Configuration section)
+
+### Known Issues
+In my testing, I've found:
+- Some cloud providers need extra configuration for Python
+- First-time downloads are slower due to yt-dlp binary installation
+- Rate limiting still happens but less frequently than with ytdl-core

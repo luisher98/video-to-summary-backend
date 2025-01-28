@@ -1,4 +1,4 @@
-import { downloadVideo, deleteVideo } from './videoTools.js';
+import { downloadVideoWithExec as downloadVideo, deleteVideo } from './videoTools.js';
 import { generateTranscript, generateSummary } from '../../lib/openAI.js';
 import { ProgressUpdate } from '../../types/global.types.js';
 import {
@@ -9,14 +9,38 @@ import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';
 
+/**
+ * Options for generating a summary or transcript of a YouTube video
+ * @interface OutputSummaryOptions
+ */
 interface OutputSummaryOptions {
+    /** The YouTube video URL */
     url: string;
+    /** Number of words for the summary (default: 400) */
     words?: number;
+    /** Callback function to report progress updates */
     updateProgress?: (progress: ProgressUpdate) => void;
+    /** Additional instructions for the AI summarizer */
     additionalPrompt?: string;
+    /** Whether to return only the transcript without summarizing */
     returnTranscriptOnly?: boolean;
 }
 
+/**
+ * Processes a YouTube video to generate either a summary or transcript
+ * 
+ * @param {OutputSummaryOptions} options - Configuration options
+ * @returns {Promise<string>} The generated summary or transcript
+ * @throws {BadRequestError} If the URL is invalid
+ * @throws {InternalServerError} If processing fails
+ * 
+ * @example
+ * const summary = await outputSummary({
+ *   url: 'https://youtube.com/watch?v=...',
+ *   words: 400,
+ *   updateProgress: (progress) => console.log(progress)
+ * });
+ */
 export async function outputSummary({
     url,
     words = 400,

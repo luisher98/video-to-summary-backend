@@ -86,3 +86,109 @@ Uncaught exception: TypeError [ERR_HTTP_INVALID_HEADER_VALUE]: Invalid value "un
 [90m    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)[39m {
   code: [32m'ERR_HTTP_INVALID_HEADER_VALUE'[39m
 }
+Error downloading the video: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats`
+
+exited with:
+
+  `{ signal: 'null', code: 1 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m1[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--quiet'[39m,
+    [32m'--no-warnings'[39m,
+    [32m'--prefer-free-formats'[39m
+  ],
+  pid: [33m20705[39m,
+  stdout: [32m''[39m,
+  stderr: [32m'ERROR: Postprocessing: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location'[39m
+}
+Error during video processing: DownloadError: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats`
+
+exited with:
+
+  `{ signal: 'null', code: 1 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:101:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:20:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:14:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:31:26 {
+  statusCode: [33m500[39m
+}
+Error downloading the video: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats`
+
+exited with:
+
+  `{ signal: 'null', code: 1 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m1[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--quiet'[39m,
+    [32m'--no-warnings'[39m,
+    [32m'--prefer-free-formats'[39m
+  ],
+  pid: [33m20965[39m,
+  stdout: [32m''[39m,
+  stderr: [32m'ERROR: Postprocessing: ffprobe and ffmpeg not found. Please install or provide the path using --ffmpeg-location'[39m
+}
+Error during video processing: DownloadError: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --quiet --no-warnings --prefer-free-formats`
+
+exited with:
+
+  `{ signal: 'null', code: 1 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:101:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:20:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:14:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:31:26 {
+  statusCode: [33m500[39m
+}

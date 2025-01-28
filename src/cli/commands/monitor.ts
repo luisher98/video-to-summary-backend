@@ -3,14 +3,21 @@ import { activeRequests } from '../../server/server.js';
 import { formatBytes, formatDuration } from '../utils/utils.js';
 import os from 'os';
 
+/**
+ * Server statistics interface
+ */
 interface ServerStats {
+    /** Server uptime in seconds */
     uptime: number;
+    /** Number of active requests */
     activeRequests: number;
+    /** Memory usage statistics */
     memory: {
         total: number;
         used: number;
         free: number;
     };
+    /** CPU usage percentage */
     cpuUsage: number;
 }
 
@@ -18,6 +25,11 @@ let monitoring = false;
 let lastCpuUsage = process.cpuUsage();
 let lastCpuTime = Date.now();
 
+/**
+ * Calculates current CPU usage percentage
+ * @returns {number} CPU usage as percentage (0-100)
+ * @private
+ */
 function getCpuUsage(): number {
     const currentCpuUsage = process.cpuUsage(lastCpuUsage);
     const currentTime = Date.now();
@@ -32,6 +44,11 @@ function getCpuUsage(): number {
     return Math.min(100, Math.max(0, cpuPercentage));
 }
 
+/**
+ * Retrieves current server statistics
+ * @returns {ServerStats} Current server metrics
+ * @private
+ */
 function getServerStats(): ServerStats {
     const totalMemory = os.totalmem();
     const freeMemory = os.freemem();
@@ -48,6 +65,11 @@ function getServerStats(): ServerStats {
     };
 }
 
+/**
+ * Displays server statistics in a formatted console output
+ * @param {ServerStats} stats - Server statistics to display
+ * @private
+ */
 function displayStats(stats: ServerStats): void {
     console.clear();
     console.log(blue('=== Server Monitor ==='));
@@ -72,6 +94,15 @@ function displayStats(stats: ServerStats): void {
     console.log('\nPress Ctrl+C to stop monitoring');
 }
 
+/**
+ * Starts real-time server monitoring.
+ * Displays CPU, memory, and request statistics.
+ * 
+ * @returns {Promise<void>}
+ * @example
+ * await handleMonitorCommand();
+ * // Displays continuous updates until Ctrl+C
+ */
 export async function handleMonitorCommand(): Promise<void> {
     if (monitoring) {
         console.log(yellow('Monitoring is already running'));
