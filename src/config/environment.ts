@@ -22,7 +22,7 @@ const envSchema = z.object({
     // Security
     CORS_ORIGINS: z.string().default('*'),
     API_KEY_HEADER: z.string().default('x-api-key'),
-    API_KEYS: z.string().transform(keys => keys.split(',')).default(''),
+    API_KEYS: z.string().transform((keys: string) => keys.split(',')).default(''),
     
     // Request Queue
     MAX_CONCURRENT_REQUESTS: z.string().transform(Number).default('2'),

@@ -54,7 +54,7 @@ export async function outputSummary({
 
             // 3. Generate summary and delete video in parallel
             updateProgress({ status: 'pending', message: 'Generating summary...' });
-            const [_, summary] = await Promise.all([
+            const [, summary] = await Promise.all([
                 deleteVideo(fileId).then(() => fileId = undefined), 
                 generateSummary(transcript, words, additionalPrompt),
             ]);

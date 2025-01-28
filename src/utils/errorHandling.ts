@@ -1,3 +1,5 @@
+import { Server } from 'http';
+
 enum HttpStatusCode {
   BAD_REQUEST = 400,
   NOT_FOUND = 404,
@@ -57,7 +59,7 @@ export class DeletionError extends CustomError {
   }
 }
 
-export function handleUncaughtErrors(server: any) {
+export function handleUncaughtErrors(server: Server | null) {
   process.on('uncaughtException', (error) => {
     console.error('Uncaught exception:', error);
     if (server?.listening) {

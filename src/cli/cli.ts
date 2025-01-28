@@ -6,8 +6,10 @@ import { handleStatusCommand } from './commands/status.ts';
 import { handleStopCommand } from './commands/stop.ts';
 import { handleMonitorCommand } from './commands/monitor.ts';
 
+type CommandFunction = (args: string[]) => void | Promise<void>;
+
 // Command registry
-const commands: { [key: string]: Function } = {
+const commands: { [key: string]: CommandFunction } = {
   help: handleHelpCommand,
   summary: (args: string[]) => handleCommand('summary', args),
   transcript: (args: string[]) => handleCommand('transcript', args),

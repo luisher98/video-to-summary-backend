@@ -1,0 +1,11 @@
+{
+    "jest.jestCommandLine": "npm run test",
+    "jest.runMode": {
+        "type": "on-save",
+        "mode": "development-test-file"
+    },
+    "jest.showCoverageOnLoad": false,
+    "jest.debugMode": false,
+    "jest.runMode": "on-save",
+    "jest.autoEnable": false
+} 

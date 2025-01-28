@@ -6,7 +6,7 @@ import os from 'os';
 interface ServerStats {
     uptime: number;
     activeRequests: number;
-    memoryUsage: {
+    memory: {
         total: number;
         used: number;
         free: number;
@@ -33,14 +33,13 @@ function getCpuUsage(): number {
 }
 
 function getServerStats(): ServerStats {
-    const memoryUsage = process.memoryUsage();
     const totalMemory = os.totalmem();
     const freeMemory = os.freemem();
     
     return {
         uptime: process.uptime(),
         activeRequests: activeRequests.size,
-        memoryUsage: {
+        memory: {
             total: totalMemory,
             used: totalMemory - freeMemory,
             free: freeMemory
@@ -59,12 +58,12 @@ function displayStats(stats: ServerStats): void {
     console.log(`Active Requests: ${requestColor(stats.activeRequests.toString())}`);
     
     // Memory Usage
-    const memoryPercentage = (stats.memoryUsage.used / stats.memoryUsage.total) * 100;
+    const memoryPercentage = (stats.memory.used / stats.memory.total) * 100;
     const memoryColor = memoryPercentage > 80 ? red : memoryPercentage > 60 ? yellow : green;
     console.log('Memory Usage:');
-    console.log(`  Total: ${formatBytes(stats.memoryUsage.total)}`);
-    console.log(`  Used:  ${memoryColor(formatBytes(stats.memoryUsage.used))} (${memoryColor(memoryPercentage.toFixed(1))}%)`);
-    console.log(`  Free:  ${formatBytes(stats.memoryUsage.free)}`);
+    console.log(`  Total: ${formatBytes(stats.memory.total)}`);
+    console.log(`  Used:  ${memoryColor(formatBytes(stats.memory.used))} (${memoryColor(memoryPercentage.toFixed(1))}%)`);
+    console.log(`  Free:  ${formatBytes(stats.memory.free)}`);
     
     // CPU Usage
     const cpuColor = stats.cpuUsage > 80 ? red : stats.cpuUsage > 60 ? yellow : green;

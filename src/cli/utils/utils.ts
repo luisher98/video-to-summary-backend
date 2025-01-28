@@ -1,12 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const localDirectory = path.resolve(__dirname, '../../../tmp/savedTranscriptsAndSummaries');
+const localDirectory = path.resolve(process.cwd(), 'tmp/savedTranscriptsAndSummaries');
 
 export function getLocalDirectoryPath(fileName: string): string {
   try {

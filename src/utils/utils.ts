@@ -24,7 +24,7 @@ export async function checkVideoExists(url: string) {
     try {
         const response = await fetch(url);
         return response.status === 200;
-    } catch (error) {
+    } catch {
         return false;
     }
 }
@@ -35,7 +35,7 @@ export async function clearDownloadFolder() {
 
 export function sanitizeFileName(fileName: string): string {
     // Invalid characters: \ / : * ? " < > | and -
-    const invalidCharacters = /[\\\/:*?"<>| -]/g;
+    const invalidCharacters = /[\\/:*?"<>| -]/g;
     // Replace with underscore
     return fileName.replace(invalidCharacters, '_');
 }

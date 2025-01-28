@@ -7,41 +7,49 @@ dotenv.config();
 
 const apiKey = process.env.OPENAI_API_KEY;
 
-(async function checkConectionToOpenAI() {
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-    });
+export async function checkOpenAIConnection() {
+    if (process.env.NODE_ENV === 'test') return true;
+    
+    try {
+        const headers = new Headers({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${apiKey}`,
+        });
 
-    const payload = {
-        model: 'gpt-4o-mini',
-        messages: [
-            {
-                role: 'system',
-                content: 'You are a helpful assistant.',
-            },
-            {
-                role: 'user',
-                content:
-                    'Write a haiku that explains the concept of recursion.',
-            },
-        ],
-    };
+        const payload = {
+            model: 'gpt-3.5-turbo',
+            messages: [
+                {
+                    role: 'system',
+                    content: 'You are a helpful assistant.',
+                },
+                {
+                    role: 'user',
+                    content: 'Write a haiku that explains the concept of recursion.',
+                },
+            ],
+        };
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(payload),
-    });
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(payload),
+        });
 
-    const data = await response.json();
-
-    if (data.error) {
-        throw new Error(data.error.message);
+        const data = await response.json();
+        if (data.error) {
+            throw new Error(data.error.message);
+        }
+        return true;
+    } catch (error) {
+        console.error('Failed to connect to OpenAI:', error);
+        return false;
     }
-})();
+}
 
+// Initialize OpenAI client
 const openai = new OpenAI({ apiKey });
+checkOpenAIConnection().catch(console.error);
 
 export async function generateTranscript(id: string): Promise<string> {
     console.log('Generating transcript...');
@@ -73,7 +81,7 @@ export async function generateSummary(
                 { role: 'system', content: assistantMessage },
                 { role: 'user', content: userMessage },
             ],
-            model: 'gpt-4o-mini',
+            model: 'gpt-3.5-turbo',
             n: 1,
             temperature: 0.3,
         });
