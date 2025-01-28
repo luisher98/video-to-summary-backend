@@ -192,3 +192,460 @@ with the following trace:
     at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:31:26 {
   statusCode: [33m500[39m
 }
+Download error details: {
+  error: [32m'The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099685417.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099685417.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:110:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+youtube-dl error: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m2[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--no-no-warnings'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt'[39m
+  ],
+  pid: [33m36443[39m,
+  stdout: [32m''[39m,
+  stderr: [32m"[debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', './src/tmp/audios//N_ZNfuCdkUo.mp3', '--no-quiet', '--no-no-warnings', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--cookies', '/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt']\n"[39m +
+    [32m'\n'[39m +
+    [32m'Usage: yt-dlp [OPTIONS] URL [URL...]\n'[39m +
+    [32m'\n'[39m +
+    [32m'yt-dlp: error: no such option: --no-no-warnings'[39m
+}
+Download error details: {
+  error: [32m'YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099774196.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:119:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+youtube-dl error: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m2[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--no-no-warnings'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt'[39m
+  ],
+  pid: [33m37477[39m,
+  stdout: [32m''[39m,
+  stderr: [32m"[debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', './src/tmp/audios//N_ZNfuCdkUo.mp3', '--no-quiet', '--no-no-warnings', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--cookies', '/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt']\n"[39m +
+    [32m'\n'[39m +
+    [32m'Usage: yt-dlp [OPTIONS] URL [URL...]\n'[39m +
+    [32m'\n'[39m +
+    [32m'yt-dlp: error: no such option: --no-no-warnings'[39m
+}
+Download error details: {
+  error: [32m'YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099870271.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:120:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+youtube-dl error: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m2[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--no-no-warnings'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt'[39m
+  ],
+  pid: [33m38048[39m,
+  stdout: [32m''[39m,
+  stderr: [32m"[debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', './src/tmp/audios//N_ZNfuCdkUo.mp3', '--no-quiet', '--no-no-warnings', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--cookies', '/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt']\n"[39m +
+    [32m'\n'[39m +
+    [32m'Usage: yt-dlp [OPTIONS] URL [URL...]\n'[39m +
+    [32m'\n'[39m +
+    [32m'yt-dlp: error: no such option: --no-no-warnings'[39m
+}
+Download error details: {
+  error: [32m'YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --no-no-warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738099922399.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:125:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+youtube-dl error: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m2[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--warnings'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt'[39m
+  ],
+  pid: [33m39075[39m,
+  stdout: [32m''[39m,
+  stderr: [32m"[debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', './src/tmp/audios//N_ZNfuCdkUo.mp3', '--no-quiet', '--warnings', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--cookies', '/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt']\n"[39m +
+    [32m'\n'[39m +
+    [32m'Usage: yt-dlp [OPTIONS] URL [URL...]\n'[39m +
+    [32m'\n'[39m +
+    [32m'yt-dlp: error: no such option: --warnings'[39m
+}
+Download error details: {
+  error: [32m'YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100009437.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:123:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+youtube-dl error: Error [ChildProcessError]: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at createChildProcessError [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:20:17[90m)[39m
+    at ChildProcess.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4mtinyspawn[24m/src/index.js:63:18[90m)[39m
+[90m    at ChildProcess.emit (node:events:519:28)[39m
+[90m    at ChildProcess._handle.onexit (node:internal/child_process:294:12)[39m {
+  command: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt'[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m2[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--warnings'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt'[39m
+  ],
+  pid: [33m39574[39m,
+  stdout: [32m''[39m,
+  stderr: [32m"[debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', './src/tmp/audios//N_ZNfuCdkUo.mp3', '--no-quiet', '--warnings', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--cookies', '/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt']\n"[39m +
+    [32m'\n'[39m +
+    [32m'Usage: yt-dlp [OPTIONS] URL [URL...]\n'[39m +
+    [32m'\n'[39m +
+    [32m'yt-dlp: error: no such option: --warnings'[39m
+}
+Download error details: {
+  error: [32m'YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:\n'[39m +
+    [32m'\n'[39m +
+    [32m'  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt`\n'[39m +
+    [32m'\n'[39m +
+    [32m'exited with:\n'[39m +
+    [32m'\n'[39m +
+    [32m"  `{ signal: 'null', code: 2 }` \n"[39m +
+    [32m'\n'[39m +
+    [32m'with the following trace:\n'[39m,
+  videoUrl: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  outputPath: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  ffmpegPath: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  nodeEnv: [32m'production'[39m,
+  platform: [32m'darwin'[39m,
+  pwd: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API'[39m,
+  uid: [33m502[39m,
+  gid: [33m20[39m
+}
+Error during video processing: DownloadError: Failed to download video: YouTube requires authentication. Please check your cookies configuration. Error: The command spawned as:
+
+  `/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output ./src/tmp/audios//N_ZNfuCdkUo.mp3 --no-quiet --warnings --prefer-free-formats --ffmpeg-location /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg --verbose --cookies /var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100064448.txt`
+
+exited with:
+
+  `{ signal: 'null', code: 2 }` 
+
+with the following trace:
+
+    at downloadVideoWithExec [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/videoTools.js:123:15[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)[39m
+    at async outputSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/services/summary/outputSummary.js:35:22[90m)[39m
+    at async generateSummary [90m(file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:39:29[90m)[39m
+    at async [90mfile:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mdist/server/routes/getSummarySSE.js:56:26 {
+  statusCode: [33m500[39m
+}
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/dist/server/routes/getVideoInfo.js:3
+import { handleError } from '../../utils/errorHandling.js';
+         ^^^^^^^^^^^
+SyntaxError: The requested module '../../utils/errorHandling.js' does not provide an export named 'handleError'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:146:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:229:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:473:24)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+file:///Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/dist/server/routes/getVideoInfo.js:3
+import { handleError } from '../../utils/errorHandling.js';
+         ^^^^^^^^^^^
+SyntaxError: The requested module '../../utils/errorHandling.js' does not provide an export named 'handleError'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:146:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:229:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:473:24)

@@ -32,8 +32,15 @@ export default async function getTranscript(req: Request, res: Response) {
     }
   
     try {
-      const transcript = await outputSummary({url: inputUrl, returnTranscriptOnly: true});
-      res.json({ content: transcript });
+      const summary = await outputSummary({
+        url: inputUrl,
+        returnTranscriptOnly: true,
+        requestInfo: {
+          ip: req.ip || req.socket.remoteAddress || 'unknown',
+          userAgent: req.get('user-agent')
+        }
+      });
+      res.json({ transcript: summary });
       console.log("Transcript generated successfully.");
     } catch (error) {
       console.error('Transcript generation error:', error);

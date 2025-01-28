@@ -43,6 +43,11 @@ export default async function getSummarySSE(req: Request, res: Response) {
       const summary = await outputSummary({
         url: inputUrl,
         words,
+        additionalPrompt: req.query.prompt as string,
+        requestInfo: {
+          ip: req.ip || req.socket.remoteAddress || 'unknown',
+          userAgent: req.get('user-agent')
+        },
         updateProgress: (updateProgress: ProgressUpdate) => {
           res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
         },

@@ -24,6 +24,11 @@ interface OutputSummaryOptions {
     additionalPrompt?: string;
     /** Whether to return only the transcript without summarizing */
     returnTranscriptOnly?: boolean;
+    /** Request information */
+    requestInfo?: {
+        ip: string;
+        userAgent?: string;
+    };
 }
 
 /**
@@ -47,6 +52,7 @@ export async function outputSummary({
     updateProgress = () => {},
     additionalPrompt = '',
     returnTranscriptOnly = false,
+    requestInfo,
 }: OutputSummaryOptions): Promise<string> {
     const sessionId = uuidv4();
     const tempDir = path.join(process.env.TEMP_DIR || './tmp', sessionId);
@@ -83,6 +89,12 @@ export async function outputSummary({
                 generateSummary(transcript, words, additionalPrompt),
             ]);
 
+            console.log('Successfully generated summary:', {
+                url,
+                ip: requestInfo?.ip || 'unknown',
+                userAgent: requestInfo?.userAgent || 'unknown',
+                timestamp: new Date().toISOString()
+            });
             return summary;
         } catch (error) {
             console.error('Error during video processing:', error);

@@ -63,5 +63,8 @@ jobs:
         with:
           app-name: 'youtube-summary-api'
           slot-name: 'Production'
-          startup-command: 'npm run start'
+          startup-command: |
+            mkdir -p ./src/tmp/audios && 
+            chmod -R 755 ./src/tmp/audios && 
+            npm run start
           package: .

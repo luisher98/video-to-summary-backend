@@ -49,3 +49,594 @@ Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube
 Successfully processed YouTube cookies
 Successfully downloaded and converted: ./src/tmp/audios//N_ZNfuCdkUo.mp3
 Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Successfully downloaded and converted: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  extractAudio: [33mtrue[39m,
+  audioFormat: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  noWarnings: [33mfalse[39m,
+  preferFreeFormats: [33mtrue[39m,
+  ffmpegLocation: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  extractAudio: [33mtrue[39m,
+  audioFormat: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  noWarnings: [33mfalse[39m,
+  preferFreeFormats: [33mtrue[39m,
+  ffmpegLocation: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  [32m'no-warnings'[39m: [33mfalse[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m,
+  ffmpegLocation: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  [32m'no-warnings'[39m: [33mfalse[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m,
+  ffmpegLocation: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  warnings: [33mtrue[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  quiet: [33mfalse[39m,
+  warnings: [33mtrue[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  cookies: [32m'present'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  extractAudio: [33mtrue[39m,
+  audioFormat: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  preferFreeFormats: [33mtrue[39m,
+  ffmpegLocation: [32m'present'[39m,
+  cookies: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+youtube-dl output: ChildProcess {
+  _events: [Object: null prototype] {
+    error: [36m[Function (anonymous)][39m,
+    exit: [36m[Function (anonymous)][39m
+  },
+  _eventsCount: [33m2[39m,
+  _maxListeners: [90mundefined[39m,
+  _closesNeeded: [33m3[39m,
+  _closesGot: [33m3[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m0[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  _handle: [1mnull[22m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100092895.txt'[39m,
+    [32m'--verbose'[39m,
+    [32m'--no-quiet'[39m
+  ],
+  pid: [33m39831[39m,
+  stdin: Socket {
+    connecting: [33mfalse[39m,
+    _hadError: [33mfalse[39m,
+    _parent: [1mnull[22m,
+    _host: [1mnull[22m,
+    _closeAfterHandlingError: [33mfalse[39m,
+    _events: {
+      close: [90mundefined[39m,
+      error: [90mundefined[39m,
+      prefinish: [90mundefined[39m,
+      finish: [90mundefined[39m,
+      drain: [90mundefined[39m,
+      data: [90mundefined[39m,
+      end: [36m[Function: onReadableStreamEnd][39m,
+      readable: [90mundefined[39m
+    },
+    _readableState: ReadableState {
+      highWaterMark: [33m16384[39m,
+      buffer: [],
+      bufferIndex: [33m0[39m,
+      length: [33m0[39m,
+      pipes: [],
+      awaitDrainWriters: [1mnull[22m,
+      readable: [33mfalse[39m,
+      [[32mSymbol(kState)[39m]: [33m1054580[39m
+    },
+    _writableState: WritableState {
+      highWaterMark: [33m16384[39m,
+      length: [33m0[39m,
+      corked: [33m0[39m,
+      onwrite: [36m[Function: bound onwrite][39m,
+      writelen: [33m0[39m,
+      bufferedIndex: [33m0[39m,
+      pendingcb: [33m0[39m,
+      [[32mSymbol(kState)[39m]: [33m17564532[39m,
+      [[32mSymbol(kBufferedValue)[39m]: [1mnull[22m
+    },
+    allowHalfOpen: [33mfalse[39m,
+    _maxListeners: [90mundefined[39m,
+    _eventsCount: [33m1[39m,
+    _sockname: [1mnull[22m,
+    _pendingData: [1mnull[22m,
+    _pendingEncoding: [32m''[39m,
+    server: [1mnull[22m,
+    _server: [1mnull[22m,
+    [[32mSymbol(async_id_symbol)[39m]: [33m1076[39m,
+    [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+    [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+    [[32mSymbol(timeout)[39m]: [1mnull[22m,
+    [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+    [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+  },
+  stdout: [36m[Getter][39m,
+  stderr: [36m[Getter][39m,
+  stdio: [
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m1[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1076[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    },
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m3[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      write: [36m[Function: writeAfterFIN][39m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1077[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m1436[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    },
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m3[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      write: [36m[Function: writeAfterFIN][39m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1078[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m5145[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    }
+  ],
+  [[32mSymbol(shapeMode)[39m]: [33mfalse[39m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+Successfully downloaded and converted: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Downloading with options: {
+  extractAudio: [33mtrue[39m,
+  audioFormat: [32m'mp3'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  preferFreeFormats: [33mtrue[39m,
+  ffmpegLocation: [32m'present'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  cookies: [32m'present'[39m
+}
+youtube-dl output: ChildProcess {
+  _events: [Object: null prototype] {
+    error: [36m[Function (anonymous)][39m,
+    exit: [36m[Function (anonymous)][39m
+  },
+  _eventsCount: [33m2[39m,
+  _maxListeners: [90mundefined[39m,
+  _closesNeeded: [33m3[39m,
+  _closesGot: [33m3[39m,
+  connected: [33mfalse[39m,
+  signalCode: [1mnull[22m,
+  exitCode: [33m0[39m,
+  killed: [33mfalse[39m,
+  spawnfile: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+  _handle: [1mnull[22m,
+  spawnargs: [
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/youtube-dl-exec/bin/yt-dlp'[39m,
+    [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+    [32m'--extract-audio'[39m,
+    [32m'--audio-format'[39m,
+    [32m'mp3'[39m,
+    [32m'--output'[39m,
+    [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+    [32m'--prefer-free-formats'[39m,
+    [32m'--ffmpeg-location'[39m,
+    [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+    [32m'--verbose'[39m,
+    [32m'--no-quiet'[39m,
+    [32m'--cookies'[39m,
+    [32m'/var/folders/j_/r144_gvx0ygfvx9ks514y37m0000gp/T/yt_cookies_1738100244568.txt'[39m
+  ],
+  pid: [33m41160[39m,
+  stdin: Socket {
+    connecting: [33mfalse[39m,
+    _hadError: [33mfalse[39m,
+    _parent: [1mnull[22m,
+    _host: [1mnull[22m,
+    _closeAfterHandlingError: [33mfalse[39m,
+    _events: {
+      close: [90mundefined[39m,
+      error: [90mundefined[39m,
+      prefinish: [90mundefined[39m,
+      finish: [90mundefined[39m,
+      drain: [90mundefined[39m,
+      data: [90mundefined[39m,
+      end: [36m[Function: onReadableStreamEnd][39m,
+      readable: [90mundefined[39m
+    },
+    _readableState: ReadableState {
+      highWaterMark: [33m16384[39m,
+      buffer: [],
+      bufferIndex: [33m0[39m,
+      length: [33m0[39m,
+      pipes: [],
+      awaitDrainWriters: [1mnull[22m,
+      readable: [33mfalse[39m,
+      [[32mSymbol(kState)[39m]: [33m1054580[39m
+    },
+    _writableState: WritableState {
+      highWaterMark: [33m16384[39m,
+      length: [33m0[39m,
+      corked: [33m0[39m,
+      onwrite: [36m[Function: bound onwrite][39m,
+      writelen: [33m0[39m,
+      bufferedIndex: [33m0[39m,
+      pendingcb: [33m0[39m,
+      [[32mSymbol(kState)[39m]: [33m17564532[39m,
+      [[32mSymbol(kBufferedValue)[39m]: [1mnull[22m
+    },
+    allowHalfOpen: [33mfalse[39m,
+    _maxListeners: [90mundefined[39m,
+    _eventsCount: [33m1[39m,
+    _sockname: [1mnull[22m,
+    _pendingData: [1mnull[22m,
+    _pendingEncoding: [32m''[39m,
+    server: [1mnull[22m,
+    _server: [1mnull[22m,
+    [[32mSymbol(async_id_symbol)[39m]: [33m1069[39m,
+    [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+    [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+    [[32mSymbol(timeout)[39m]: [1mnull[22m,
+    [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+    [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+    [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+    [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+    [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+    [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+  },
+  stdout: [36m[Getter][39m,
+  stderr: [36m[Getter][39m,
+  stdio: [
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m1[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1069[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    },
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m3[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      write: [36m[Function: writeAfterFIN][39m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1070[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m1440[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    },
+    Socket {
+      connecting: [33mfalse[39m,
+      _hadError: [33mfalse[39m,
+      _parent: [1mnull[22m,
+      _host: [1mnull[22m,
+      _closeAfterHandlingError: [33mfalse[39m,
+      _events: [36m[Object][39m,
+      _readableState: [36m[ReadableState][39m,
+      _writableState: [36m[WritableState][39m,
+      allowHalfOpen: [33mfalse[39m,
+      _maxListeners: [90mundefined[39m,
+      _eventsCount: [33m3[39m,
+      _sockname: [1mnull[22m,
+      _pendingData: [1mnull[22m,
+      _pendingEncoding: [32m''[39m,
+      server: [1mnull[22m,
+      _server: [1mnull[22m,
+      write: [36m[Function: writeAfterFIN][39m,
+      [[32mSymbol(async_id_symbol)[39m]: [33m1071[39m,
+      [[32mSymbol(kHandle)[39m]: [1mnull[22m,
+      [[32mSymbol(lastWriteQueueSize)[39m]: [33m0[39m,
+      [[32mSymbol(timeout)[39m]: [1mnull[22m,
+      [[32mSymbol(kBuffer)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferCb)[39m]: [1mnull[22m,
+      [[32mSymbol(kBufferGen)[39m]: [1mnull[22m,
+      [[32mSymbol(shapeMode)[39m]: [33mtrue[39m,
+      [[32mSymbol(kCapture)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetNoDelay)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAlive)[39m]: [33mfalse[39m,
+      [[32mSymbol(kSetKeepAliveInitialDelay)[39m]: [33m0[39m,
+      [[32mSymbol(kBytesRead)[39m]: [33m5121[39m,
+      [[32mSymbol(kBytesWritten)[39m]: [33m0[39m
+    }
+  ],
+  [[32mSymbol(shapeMode)[39m]: [33mfalse[39m,
+  [[32mSymbol(kCapture)[39m]: [33mfalse[39m
+}
+Successfully downloaded and converted: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  hasCookies: [33mtrue[39m
+}
+Successfully downloaded: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  hasCookies: [33mtrue[39m
+}
+Successfully downloaded: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-01-28T21:45:49.275Z'[39m
+}

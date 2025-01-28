@@ -2,23 +2,122 @@ import fs from 'fs/promises';  // Keep promises version for async operations
 import youtubedl from 'youtube-dl-exec';
 import ffmpeg from 'fluent-ffmpeg';
 import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.js';
-import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.js';
+import { DeletionError, DownloadError } from '../../utils/errorHandling.js';
 import { sanitizeFileName } from '../../utils/utils.js';
 import { PassThrough } from 'stream';
-import path from 'path';
-import os from 'os';
 import { CookieHandler } from '../../utils/cookieHandler.js';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
+// Define types for youtube-dl-exec options
+interface DownloadOptions {
+    extractAudio?: boolean;
+    audioFormat?: string;
+    output?: string;
+    quiet?: boolean;
+    verbose?: boolean;
+    preferFreeFormats?: boolean;
+    ffmpegLocation?: string;
+    cookies?: string;
+}
+
+/**
+ * Converts camelCase object keys to kebab-case for yt-dlp
+ */
+function toYtDlpOptions(options: Record<string, any>): Record<string, any> {
+    return Object.entries(options).reduce((acc, [key, value]) => {
+        const kebabKey = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+        acc[kebabKey] = value;
+        return acc;
+    }, {} as Record<string, any>);
+}
+
+/**
+ * Common download logic used by both download methods
+ * @internal
+ */
+async function downloadWithOptions(videoUrl: string, outputFilePath: string): Promise<void> {
+    const cookieOptions = await CookieHandler.processYouTubeCookies();
+    
+    const options: DownloadOptions = {
+        extractAudio: true,
+        audioFormat: 'mp3',
+        output: outputFilePath,
+        preferFreeFormats: true,
+        ffmpegLocation: getFfmpegPath(),
+        ...(process.env.NODE_ENV === 'production' 
+            ? { verbose: true, quiet: false }
+            : { verbose: false, quiet: true }
+        ),
+        ...cookieOptions
+    };
+
+    // Simplified logging
+    console.log('Starting download:', {
+        url: videoUrl,
+        output: outputFilePath,
+        hasCookies: Boolean(cookieOptions.cookies)
+    });
+
+    try {
+        const ytDlpOptions = toYtDlpOptions(options);
+        await youtubedl.exec(videoUrl, ytDlpOptions);
+        
+        await fs.access(outputFilePath);
+        console.log(`Successfully downloaded: ${outputFilePath}`);
+    } catch (err) {
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        
+        // Simplified error logging
+        if (errorMsg.includes('Sign in') || errorMsg.includes('cookie')) {
+            throw new DownloadError('YouTube requires authentication. Please check your cookies configuration.');
+        }
+        
+        if (errorMsg.includes('no such option')) {
+            throw new DownloadError('Configuration error: Invalid yt-dlp options');
+        }
+        
+        throw new DownloadError(`Download failed: ${errorMsg}`);
+    }
+}
+
+/**
+ * @deprecated This method is temporarily disabled due to YouTube restrictions.
+ * Will be re-enabled when YouTube relaxes their policies.
+ * Use downloadVideoWithExec() instead.
+ */
+export async function downloadVideo(videoUrl: string): Promise<string> {
+    console.warn('Warning: Using deprecated downloadVideo method. Consider using downloadVideoWithExec instead.');
+    
+    if (typeof videoUrl !== 'string') {
+        throw new DownloadError('Invalid input type');
+    }
+
+    const videoExists = await checkVideoExists(videoUrl);
+    if (!videoExists) {
+        throw new DownloadError('Video does not exist');
+    }
+
+    const fileId = sanitizeFileName(videoUrl.split("=")[1].split("?")[0]);
+    const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
+
+    try {
+        await fs.mkdir(VIDEO_DOWNLOAD_PATH, { recursive: true });
+        await downloadWithOptions(videoUrl, outputFilePath);
+        return fileId;
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unknown error during download';
+        throw new DownloadError(`Failed to download video (deprecated method): ${message}`);
+    }
+}
+
 /**
  * Downloads and saves audio from a YouTube video using youtube-dl-exec.
- * This is the preferred method for server deployments as it better handles YouTube restrictions.
+ * Currently the preferred method due to better handling of YouTube restrictions.
  * 
  * @param {string} videoUrl - The URL of the YouTube video
  * @returns {Promise<string>} A promise that resolves with the file ID
  * @throws {DownloadError} If download fails or input is invalid
- * @throws {ConversionError} If audio conversion fails
  */
 export async function downloadVideoWithExec(videoUrl: string): Promise<string> {
     if (typeof videoUrl !== 'string') {
@@ -34,30 +133,18 @@ export async function downloadVideoWithExec(videoUrl: string): Promise<string> {
     const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
 
     try {
-        const cookieOptions = await CookieHandler.processYouTubeCookies();
-
-        await youtubedl.exec(videoUrl, {
-            extractAudio: true,
-            audioFormat: 'mp3',
-            output: outputFilePath,
-            quiet: true,
-            noWarnings: true,
-            preferFreeFormats: true,
-            ffmpegLocation: getFfmpegPath(),
-            ...cookieOptions
-        });
-
-        console.log(`Successfully downloaded and converted: ${outputFilePath}`);
+        await fs.mkdir(VIDEO_DOWNLOAD_PATH, { recursive: true });
+        await downloadWithOptions(videoUrl, outputFilePath);
         return fileId;
     } catch (error) {
-        const message = error instanceof Error ? error.message : 'Unknown error during download';
-        if (message.includes('Sign in to confirm')) {
-            throw new DownloadError(
-                'YouTube requires authentication. Please configure YOUTUBE_COOKIES environment variable ' +
-                'with valid cookies in JSON format.'
-            );
-        }
-        throw new DownloadError(`Failed to download video: ${message}`);
+        // Simplified error logging
+        console.error('Download failed:', {
+            error: error instanceof Error ? error.message : 'Unknown error',
+            videoUrl,
+            outputPath: outputFilePath
+        });
+
+        throw error instanceof Error ? error : new DownloadError('Unknown error during download');
     }
 }
 
@@ -105,18 +192,25 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
     const stream = new PassThrough();
     
     try {
-        // Get cookie options using CookieHandler
         const cookieOptions = await CookieHandler.processYouTubeCookies();
 
-        const subprocess = youtubedl.exec(url, {
+        const options = {
             extractAudio: true,
             audioFormat: 'mp3',
             output: '-',
             quiet: true,
-            noWarnings: true,
             preferFreeFormats: true,
             ...cookieOptions
-        });
+        };
+
+        // Convert camelCase to kebab-case for yt-dlp
+        const ytDlpOptions = Object.entries(options).reduce((acc, [key, value]) => {
+            const kebabKey = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
+            acc[kebabKey] = value;
+            return acc;
+        }, {} as Record<string, any>);
+
+        const subprocess = youtubedl.exec(url, ytDlpOptions);
 
         if (!subprocess.stdout) {
             throw new DownloadError('No stdout available from youtube-dl process');

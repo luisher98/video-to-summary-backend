@@ -1,4 +1,5 @@
 import { Server } from 'http';
+import { Response } from 'express';
 
 enum HttpStatusCode {
   BAD_REQUEST = 400,
@@ -77,7 +78,30 @@ export class CustomError extends InternalServerError {
   }
 }
 
-export function handleUncaughtErrors(server: Server | null) {
+/**
+ * Handles errors in route handlers and sends appropriate response
+ * @param error - The error to handle
+ * @param res - Express response object
+ */
+export function handleError(error: unknown, res: Response): void {
+  if (error instanceof HttpError) {
+    res.status(error.statusCode).json({
+      error: error.message,
+      code: error.constructor.name
+    });
+  } else {
+    const message = error instanceof Error ? error.message : 'An unknown error occurred';
+    res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
+      error: message,
+      code: 'INTERNAL_SERVER_ERROR'
+    });
+  }
+}
+
+/**
+ * Sets up global error handlers for the server
+ */
+export function handleUncaughtErrors(server: Server): void {
   process.on('uncaughtException', (error) => {
     console.error('Uncaught exception:', error);
     if (server?.listening) {

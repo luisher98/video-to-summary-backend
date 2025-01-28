@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { outputSummary } from "../../services/summary/outputSummary.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
+import { logRequest } from '../../utils/logger.js';
+import { handleError } from '../../utils/errorHandling.js';
 
 /**
  * Endpoint for generating video summaries.
@@ -20,6 +22,7 @@ import { BadRequestError } from "../../utils/errorHandling.js";
  * }
  */
 export default async function getSummary(req: Request, res: Response) {
+    const startTime = Date.now();
     const inputUrl = req.query.url as string;
     const words = Number(req.query.words) as number;
 
@@ -28,12 +31,36 @@ export default async function getSummary(req: Request, res: Response) {
     }
   
     try {
-      const summary = await outputSummary({url: inputUrl, words});
-      res.json({ content: summary });
+      const summary = await outputSummary({
+        url: inputUrl,
+        words: Number(req.query.words) || 400,
+        additionalPrompt: req.query.prompt as string,
+        requestInfo: {
+          ip: req.ip || req.socket.remoteAddress || 'unknown',
+          userAgent: req.get('user-agent')
+        }
+      });
+
+      logRequest({
+        event: 'summary_generated',
+        url: inputUrl,
+        ip: req.ip || req.socket.remoteAddress || 'unknown',
+        userAgent: req.get('user-agent'),
+        duration: Date.now() - startTime,
+        words: Number(req.query.words) || 400
+      });
+
+      res.json({ summary });
       console.log("Summary generated successfully.");
     } catch (error) {
-      console.error(error);
-      // Add proper error response
-      res.status(500).json({ error: error instanceof Error ? error.message : 'Unknown error occurred' });
+      logRequest({
+        event: 'summary_error',
+        url: inputUrl,
+        ip: req.ip || req.socket.remoteAddress || 'unknown',
+        userAgent: req.get('user-agent'),
+        duration: Date.now() - startTime,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+      handleError(error, res);
     }
 }
