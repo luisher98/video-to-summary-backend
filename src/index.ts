@@ -13,6 +13,7 @@
 import { startServer } from './server/server.js';
 import { startCLI } from './cli/cli.js';
 import express from 'express';
+import { CookieHandler } from './utils/cookieHandler.js';
 
 const mode = process.argv.includes('--cli') ? 'cli' : 'server';
 
@@ -26,3 +27,17 @@ if (mode === 'cli') {
 } else {
   startServer();
 }
+
+/**
+ * Cleanup handler for graceful shutdown
+ * Removes temporary cookie files before exit
+ */
+async function handleShutdown(signal: string): Promise<void> {
+    console.log(`\nReceived ${signal}. Cleaning up...`);
+    await CookieHandler.cleanupAll();
+    process.exit(0);
+}
+
+// Cleanup on exit
+process.on('SIGINT', () => handleShutdown('SIGINT'));
+process.on('SIGTERM', () => handleShutdown('SIGTERM'));

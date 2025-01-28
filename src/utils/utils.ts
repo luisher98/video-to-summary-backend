@@ -51,3 +51,29 @@ export const getCurrentDateTime = () => {
     return `${day}_${month}_${year}___${hours}_${minutes}`;
   };
   
+/**
+ * Converts JSON cookies to Netscape/Mozilla format.
+ * Required format:
+ * # Netscape HTTP Cookie File
+ * domain  domain_flag  path  secure_flag  expiry  name  value
+ * 
+ * @param {any[]} jsonCookies - Array of cookie objects
+ * @returns {string} Cookies in Netscape format
+ */
+export function convertJsonCookiesToNetscape(jsonCookies: any[]): string {
+    const header = '# Netscape HTTP Cookie File\n';
+    const cookieLines = jsonCookies.map(cookie => {
+        return [
+            cookie.domain,
+            'FALSE',                    // domain_flag (Host only)
+            cookie.path || '/',         // path
+            cookie.secure ? 'TRUE' : 'FALSE', // secure_flag
+            cookie.expirationDate || '0', // expiry
+            cookie.name,                // name
+            cookie.value               // value
+        ].join('\t');
+    });
+    
+    return header + cookieLines.join('\n');
+}
+  

@@ -1,98 +1,15 @@
-import fs from 'fs/promises';
-import ytdl from '@distube/ytdl-core';
+import fs from 'fs/promises';  // Keep promises version for async operations
 import youtubedl from 'youtube-dl-exec';
 import ffmpeg from 'fluent-ffmpeg';
 import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.js';
 import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.js';
 import { sanitizeFileName } from '../../utils/utils.js';
 import { PassThrough } from 'stream';
+import path from 'path';
+import os from 'os';
+import { CookieHandler } from '../../utils/cookieHandler.js';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
-
-/**
- * Creates a YouTube agent with cookies for authenticated requests.
- * This helps bypass some rate limiting and region restrictions.
- * 
- * @returns {ytdl.Agent | null} A configured agent if cookies are available, null otherwise
- * @private
- */
-function createYoutubeAgent() {
-    try {
-        const cookiesString = process.env.YOUTUBE_COOKIES;
-        if (!cookiesString) {
-            console.warn('No YouTube cookies found in environment variables');
-            return null;
-        }
-
-        console.log('Found YouTube cookies, creating agent...');
-        const cookies = JSON.parse(cookiesString);
-        return ytdl.createAgent(cookies);
-    } catch (error) {
-        console.error('Error creating YouTube agent:', error);
-        return null;
-    }
-}
-
-/**
- * Downloads a YouTube video and converts it to MP3 format using ytdl-core.
- * @deprecated Use downloadVideoWithExec instead. This function uses ytdl-core which has issues with server deployments.
- * 
- * @param {string} videoUrl - The URL of the YouTube video to download
- * @returns {Promise<string>} A promise that resolves with the file ID of the downloaded audio
- * @throws {Error} If the input is invalid or video doesn't exist
- * @throws {DownloadError} If the download fails
- * @throws {ConversionError} If the audio conversion fails
- */
-export async function downloadVideo(
-    videoUrl: string,
-): Promise<string> {
-    if (typeof videoUrl !== 'string') {
-        throw new Error('Invalid input types');
-    }
-
-    const videoExists = await checkVideoExists(videoUrl);
-    if (!videoExists) {
-        throw new Error('Video does not exist');
-    }
-    const fileId = sanitizeFileName(videoUrl.split("=")[1].split("?")[0]);
-
-    const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
-
-    // Create YouTube agent with cookies if available
-    const agent = createYoutubeAgent();
-
-    // Download the video stream with agent if available
-    const videoStream = ytdl(videoUrl, { 
-        filter: 'audioonly',
-        ...(agent && { agent }) // Only include agent if it exists
-    }).on('error', (error: Error) => {
-        console.error(`Error downloading the video: ${error.message}`);
-        throw new DownloadError(error.message);
-    });
-
-    return new Promise<string>((resolve, reject) => {
-        // Use FFmpeg to convert the audio stream to MP3 and save it to the output file
-        ffmpeg(videoStream)
-            .audioCodec('libmp3lame')
-            .toFormat('mp3')
-            .save(outputFilePath)
-            .on('error', async (error: Error) => {
-                console.error(`Error during conversion: ${error.message}`);
-                await deleteVideo(fileId);
-                reject(new ConversionError(error.message));
-            })
-            .on('end', () => {
-                console.log(
-                    `Successfully downloaded and converted: ${outputFilePath}`,
-                );
-                resolve(fileId);
-            });
-    }).catch(async (error) => {
-        console.error('Error in download process:', error.message);
-        await deleteVideo(fileId);
-        throw new DownloadError(error.message);
-    });
-}
 
 /**
  * Downloads and saves audio from a YouTube video using youtube-dl-exec.
@@ -102,10 +19,6 @@ export async function downloadVideo(
  * @returns {Promise<string>} A promise that resolves with the file ID
  * @throws {DownloadError} If download fails or input is invalid
  * @throws {ConversionError} If audio conversion fails
- * 
- * @example
- * const fileId = await downloadVideoWithExec('https://youtube.com/watch?v=...');
- * // fileId can be used to access the audio file or for cleanup
  */
 export async function downloadVideoWithExec(videoUrl: string): Promise<string> {
     if (typeof videoUrl !== 'string') {
@@ -121,7 +34,8 @@ export async function downloadVideoWithExec(videoUrl: string): Promise<string> {
     const outputFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
 
     try {
-        // Use youtube-dl-exec to download directly to mp3
+        const cookieOptions = await CookieHandler.processYouTubeCookies();
+
         await youtubedl.exec(videoUrl, {
             extractAudio: true,
             audioFormat: 'mp3',
@@ -130,12 +44,20 @@ export async function downloadVideoWithExec(videoUrl: string): Promise<string> {
             noWarnings: true,
             preferFreeFormats: true,
             ffmpegLocation: getFfmpegPath(),
+            ...cookieOptions
         });
 
+        console.log(`Successfully downloaded and converted: ${outputFilePath}`);
         return fileId;
     } catch (error) {
-        console.error('Error downloading the video:', error);
-        throw new DownloadError(error instanceof Error ? error.message : 'Unknown error during download');
+        const message = error instanceof Error ? error.message : 'Unknown error during download';
+        if (message.includes('Sign in to confirm')) {
+            throw new DownloadError(
+                'YouTube requires authentication. Please configure YOUTUBE_COOKIES environment variable ' +
+                'with valid cookies in JSON format.'
+            );
+        }
+        throw new DownloadError(`Failed to download video: ${message}`);
     }
 }
 
@@ -161,11 +83,9 @@ export async function deleteVideo(id: string): Promise<void> {
         if (error instanceof Error) {
             console.error('Error deleting the video:', error.message);
             throw new DeletionError(error.message);
-        } else {
-            console.error('Unknown error:', error);
-            throw new Error('An unknown error occurred');
-            // --- notify error. this can be a problem with the server
         }
+        console.error('Unknown error:', error);
+        throw new Error('An unknown error occurred');
     }
 }
 
@@ -185,6 +105,9 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
     const stream = new PassThrough();
     
     try {
+        // Get cookie options using CookieHandler
+        const cookieOptions = await CookieHandler.processYouTubeCookies();
+
         const subprocess = youtubedl.exec(url, {
             extractAudio: true,
             audioFormat: 'mp3',
@@ -192,6 +115,7 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
             quiet: true,
             noWarnings: true,
             preferFreeFormats: true,
+            ...cookieOptions
         });
 
         if (!subprocess.stdout) {
@@ -201,17 +125,20 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
         subprocess.stdout.pipe(stream);
 
         subprocess.stderr?.on('data', (data: Buffer) => {
+            console.error('YouTube-DL Error:', data.toString());
             const error = new DownloadError(data.toString());
             stream.emit('error', error);
         });
 
         subprocess.on('error', (err: Error) => {
+            console.error('Process Error:', err.message);
             const error = new DownloadError(err.message);
             stream.emit('error', error);
         });
 
         return stream;
     } catch (error) {
+        console.error('Download Error:', error);
         const downloadError = error instanceof Error ? 
             new DownloadError(error.message) : 
             new DownloadError('Unknown error during download');

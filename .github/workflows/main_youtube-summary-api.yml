@@ -63,5 +63,5 @@ jobs:
         with:
           app-name: 'youtube-summary-api'
           slot-name: 'Production'
-          startup-command: 'pm2 start ecosystem.config.cjs --no-daemon'
+          startup-command: 'npm run start'
           package: .
