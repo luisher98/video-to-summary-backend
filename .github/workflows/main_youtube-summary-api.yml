@@ -23,6 +23,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+          npm install -g pm2
           npm install
           npm run build --if-present
 

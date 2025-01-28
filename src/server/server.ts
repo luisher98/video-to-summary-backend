@@ -7,6 +7,8 @@ import getTestSSE from './routes/getTestSSE.js';
 import { handleUncaughtErrors } from '../utils/errorHandling.js';
 import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
+import cors from 'cors';
+import helmet from 'helmet';
 
 // Configuration constants
 const CONFIG = {
@@ -44,6 +46,17 @@ let serverInstance: ReturnType<typeof app.listen> | null = null;
 
 // Initialize Express app
 export const app = express();
+
+// Security middleware
+app.use(helmet());
+
+// CORS configuration
+const corsOptions = {
+    origin: '*',  // Allow all origins for now
+    methods: ['GET'],
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 // Add stop method type to app
 export interface CustomExpress extends express.Express {
@@ -135,20 +148,23 @@ export function startServer(): void {
         return;
     }
 
+    // Only log once per cluster
+    const shouldLog = !process.env.NODE_APP_INSTANCE || process.env.NODE_APP_INSTANCE === '0';
+
     serverInstance = app.listen(CONFIG.port, () => {
-        console.log(`Server running on ${CONFIG.url}`);
-        console.log(`Example endpoint: ${CONFIG.url}${apiRoutes.summarySSE}/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+        if (shouldLog) {
+            console.log(`Server running on ${CONFIG.url}`);
+            console.log(`Example endpoint: ${CONFIG.url}/api/summary-sse/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+        }
     });
 
     // Add global error handlers
     process.on('unhandledRejection', (reason, promise) => {
         console.error('Unhandled Rejection at:', promise, 'reason:', reason);
-        // Don't exit the process, just log the error
     });
 
     process.on('uncaughtException', (error) => {
         console.error('Uncaught Exception:', error);
-        // Don't exit the process, just log the error
     });
 
     handleUncaughtErrors(serverInstance);

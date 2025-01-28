@@ -1,95 +1,97 @@
 # YouTube Summary API by Luis Hernández
 
-A Node.js API and CLI tool that utilizes OpenAI's GPT and Whisper models to generate summaries and transcripts from YouTube videos.
+A powerful Node.js API that leverages OpenAI's GPT and Whisper models to automatically generate concise summaries and accurate transcripts from YouTube videos. Perfect for content creators, researchers, or anyone needing quick video content analysis.
 
+## 🚀 Quick Start
 
-## Features
+1. **Clone and Install**
+```bash
+git clone https://github.com/luisher98/youtube-summary-api.git
+cd youtube-summary-api
+npm install
+```
 
-- CLI interface with commands for:
-  - Generating summaries
-  - Getting transcripts
-  - Monitoring server status
-  - Server control
-- REST API endpoints for:
-  - Video information retrieval
-  - Summary generation
-  - Transcript extraction
-- Real-time progress updates via SSE
-- Rate limiting and security features
-- Temporary file cleanup
+2. **Configure Environment**
+Create a `.env` file:
+```env
+OPENAI_API_KEY=your_openai_api_key
+YOUTUBE_API_KEY=your_youtube_api_key
+```
 
-## Prerequisites
+3. **Start the Server**
+```bash
+npm run dev
+```
 
-Before you begin, ensure you have:
+4. **Try it out**
+```bash
+curl "http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=your-video-id"
+```
 
-- Node.js installed (v18+)
-- FFmpeg installed
+## ✨ Features
+
+### Core Functionality
+- Generate intelligent AI-powered summaries of YouTube videos
+- Extract accurate transcripts of YouTube videos using OpenAI's Whisper
+- Get video metadata
+- Monitor progress in real-time through SSE
+
+### Technical Features
+- Real-time progress updates via Server-Sent Events
+- Automatic temporary file cleanup
+- Comprehensive error handling
+- Rate limiting and security protections
+- CORS and Helmet security headers
+
+## 🛠 API Endpoints
+
+### Generate Summary (SSE)
+```http
+GET /api/summary-sse?url=<YouTube-URL>&words=<number>
+```
+Generates an AI-powered summary with real-time progress updates
+
+### Get Transcript
+```http
+GET /api/transcript?url=<YouTube-URL>
+```
+Extracts the complete video transcript
+
+### Video Information
+```http
+GET /api/info?url=<YouTube-URL>
+```
+Returns video metadata and statistics
+
+## 🔧 Technical Requirements
+
+### Prerequisites
+- Node.js
 - OpenAI API Key
 - YouTube Data API Key
 
-## Installation
+### Environment Variables
+Required:
+```
+OPENAI_API_KEY - Your OpenAI API key
+YOUTUBE_API_KEY - Your YouTube Data API key
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/luisher98/youtube-summary-api.git
-   ```
+Optional:
+```
+PORT - Server port (default: 5050)
+NODE_ENV - Environment (development/production)
+WEBSITE_HOSTNAME - Azure Web App hostname
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## 💻 Development
 
-3. Create a .env file with:
-   ```
-   OPENAI_API_KEY=your_openai_api_key
-   YOUTUBE_API_KEY=your_youtube_api_key
-   PORT=5050 # optional
-   ```
-
-## Usage
-
-### CLI Mode
-
-Start the CLI interface:
+### Available Scripts
 ```bash
-npm run cli
-```
-
-Available commands:
-```
-summary <url> [--words=<number>] [--prompt=<text>] [--save=<filename>]
-transcript <url> [--save=<filename>]
-monitor     # Monitor server status
-status      # Check server status
-stop        # Stop the server
-help        # Show all commands
-```
-
-### API Mode
-
-Start the server:
-```bash
-npm run dev
-```
-
-Endpoints:
-```
-GET /api/info?url=<YouTube-URL>
-GET /api/summary?url=<YouTube-URL>&words=<number>
-GET /api/summary-sse?url=<YouTube-URL>&words=<number>
-GET /api/transcript?url=<YouTube-URL>
-```
-
-## Development
-
-```bash
-# Run in development
+# Development server
 npm run dev
 
-# Run CLI
-npm run cli
-
-# Build
+# Build project
 npm run build
 
 # Run tests
@@ -99,46 +101,30 @@ npm test
 npm run prettify
 ```
 
-## Security Features
+## 🚀 Deployment
 
-- Rate limiting
-- API key validation in production
-- CORS configuration
-- Helmet security headers
-- Request timeout protection
+### Production Setup
+The API is configured to run on Azure App Service using PM2:
+```bash
+# Build for production
+npm run build
 
-## Error Handling
-
-The application includes comprehensive error handling for:
-- Invalid YouTube URLs
-- API failures
-- File operations
-- Video processing issues
-- Network errors
-
-## Important Note About TypeScript Imports
-
-This project uses TypeScript with ES Modules. You'll notice that imports use `.js` extensions even for TypeScript files:
-
-```typescript
-// Correct way (even for .ts files):
-import { outputSummary } from "../../services/summary/outputSummary.js";
-
-// Wrong way:
-import { outputSummary } from "../../services/summary/outputSummary.ts";
+# Start with PM2
+npm start
 ```
 
-This is because:
-1. We use `"type": "module"` in package.json and `"moduleResolution": "NodeNext"` in tsconfig.json
-2. Node.js requires explicit file extensions for ESM imports
-3. The `.js` extension refers to the compiled output that will exist at runtime
+### Tech Stack
+- Node.js & TypeScript
+- Express.js for API routing
+- OpenAI's GPT & Whisper
+- PM2 for process management
+- Azure App Service for hosting
 
-
-## Author
+## 👤 Author
 
 Luis Hernández Martín
 luisheratm@gmail.com
 
-## License
+## 📝 License
 
 MIT
