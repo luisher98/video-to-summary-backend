@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import videoInfo from "../../services/info/videoInfo.ts";
+import videoInfo from "../../services/info/videoInfo.js";
 
 export default async function getVideoInfo(req: Request, res: Response) {
     const inputUrl = req.query.url as string;

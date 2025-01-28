@@ -1,10 +1,10 @@
 import readline from 'readline';
-import { blue, orange, warning } from './style/colors.ts';
-import { handleHelpCommand } from './commands/help.ts';
-import { handleCommand } from './commands/videoProcessing.ts';
-import { handleStatusCommand } from './commands/status.ts';
-import { handleStopCommand } from './commands/stop.ts';
-import { handleMonitorCommand } from './commands/monitor.ts';
+import { blue, orange, warning } from './style/colors.js';
+import { handleHelpCommand } from './commands/help.js';
+import { handleCommand } from './commands/videoProcessing.js';
+import { handleStatusCommand } from './commands/status.js';
+import { handleStopCommand } from './commands/stop.js';
+import { handleMonitorCommand } from './commands/monitor.js';
 
 type CommandFunction = (args: string[]) => void | Promise<void>;
 

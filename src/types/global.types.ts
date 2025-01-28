@@ -1,4 +1,5 @@
-export type ProgressUpdate = {
-  status: string;
-  message: string;
-};
+export interface ProgressUpdate {
+    status: 'pending' | 'done' | 'error';
+    message?: string;
+    error?: string;
+}

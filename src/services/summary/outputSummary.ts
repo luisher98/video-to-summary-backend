@@ -1,10 +1,10 @@
-import { downloadVideo, deleteVideo } from './videoTools.ts';
-import { generateTranscript, generateSummary } from '../../lib/openAI.ts';
-import { ProgressUpdate } from '../../types/global.types.ts';
+import { downloadVideo, deleteVideo } from './videoTools.js';
+import { generateTranscript, generateSummary } from '../../lib/openAI.js';
+import { ProgressUpdate } from '../../types/global.types.js';
 import {
     BadRequestError,
     InternalServerError,
-} from '../../utils/errorHandling.ts';
+} from '../../utils/errorHandling.js';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
 import fs from 'fs';

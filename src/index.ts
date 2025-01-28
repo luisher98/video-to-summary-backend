@@ -1,5 +1,5 @@
-import { startServer } from './server/server.ts';
-import { startCLI } from './cli/cli.ts';
+import { startServer } from './server/server.js';
+import { startCLI } from './cli/cli.js';
 
 const mode = process.argv.includes('--cli') ? 'cli' : 'server';
 

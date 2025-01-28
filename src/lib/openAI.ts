@@ -1,7 +1,7 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
-import { VIDEO_DOWNLOAD_PATH } from '../utils/utils.ts';
+import { VIDEO_DOWNLOAD_PATH } from '../utils/utils.js';
 
 dotenv.config();
 

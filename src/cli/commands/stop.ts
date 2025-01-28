@@ -1,8 +1,10 @@
-import { app } from '../../server/server.ts'; 
+import { app } from '../../server/server.js';
+import type { CustomExpress } from '../../server/server.js';
 
 export async function handleStopCommand() {
   try {
-    await app.stop(); // it doesn't exist for now. must be implemented
+    const customApp = app as CustomExpress;
+    await customApp.stop();
     console.log('Server stopped successfully.');
   } catch (error) {
     console.error('Error stopping the server:', (error as Error).message);

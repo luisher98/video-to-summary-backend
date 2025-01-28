@@ -1,6 +1,6 @@
-import { getServerStatus } from '../../server/server.ts';
-import { blue, green, red } from '../style/colors.ts';
-import { formatDuration } from '../utils/utils.ts';
+import { getServerStatus } from '../../server/server.js';
+import { blue, green, red } from '../style/colors.js';
+import { formatDuration } from '../utils/utils.js';
 
 export async function handleStatusCommand(): Promise<void> {
     try {

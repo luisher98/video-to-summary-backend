@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/outputSummary.ts";
-import { BadRequestError } from "../../utils/errorHandling.ts";
+import { outputSummary } from "../../services/summary/outputSummary.js";
+import { BadRequestError } from "../../utils/errorHandling.js";
 
 export default async function getSummary(req: Request, res: Response) {
     const inputUrl = req.query.url as string;

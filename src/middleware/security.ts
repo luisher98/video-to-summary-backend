@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { config } from '../config/environment.ts';
+import { config } from '../config/environment.js';
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';

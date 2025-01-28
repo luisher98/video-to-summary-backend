@@ -1,6 +1,6 @@
-import { blue, green, red, yellow } from '../style/colors.ts';
-import { activeRequests } from '../../server/server.ts';
-import { formatBytes, formatDuration } from '../utils/utils.ts';
+import { blue, green, red, yellow } from '../style/colors.js';
+import { activeRequests } from '../../server/server.js';
+import { formatBytes, formatDuration } from '../utils/utils.js';
 import os from 'os';
 
 interface ServerStats {

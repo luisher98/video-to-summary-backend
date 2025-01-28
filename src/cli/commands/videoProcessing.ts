@@ -1,8 +1,8 @@
-import videoInfo from '../../services/info/videoInfo.ts';
-import { getCurrentDateTime } from '../../utils/utils.ts';
-import { outputSummary } from '../../services/summary/outputSummary.ts';
-import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.ts';
-import { warning } from '../style/colors.ts';
+import videoInfo from '../../services/info/videoInfo.js';
+import { getCurrentDateTime } from '../../utils/utils.js';
+import { outputSummary } from '../../services/summary/outputSummary.js';
+import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
+import { warning } from '../style/colors.js';
 
 interface CommandArgs {
   url?: string;

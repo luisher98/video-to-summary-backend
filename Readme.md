@@ -1,107 +1,142 @@
 # YouTube Summary API by Luis Hernández
 
-This is the API of a youtube summarization tool that utilizes OpenAI's GPT-4o language model to generate summaries of audio transcripts when provided the youtube link.
+A Node.js API and CLI tool that utilizes OpenAI's GPT and Whisper models to generate summaries and transcripts from YouTube videos.
 
-You can check out the [front-end](https://github.com/luisher98/tubesummary-server) for this project.
+## Important Note About TypeScript Imports
 
-Or you can also [try it out yourself](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=A4_TFHzqAAg). (not active right now)
+This project uses TypeScript with ES Modules. You'll notice that imports use `.js` extensions even for TypeScript files:
 
-## Table of Contents
+```typescript
+// Correct way (even for .ts files):
+import { outputSummary } from "../../services/summary/outputSummary.js";
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Video Information Retrieval](#video-information-retrieval)
-  - [Summary Generation](#summary-generation)
-- [Usage](#usage)
-- [Example](#example)
-- [Pending implementations] (#pending-implementations)
+// Wrong way:
+import { outputSummary } from "../../services/summary/outputSummary.ts";
+```
 
-## Getting Started
+This is because:
+1. We use `"type": "module"` in package.json and `"moduleResolution": "NodeNext"` in tsconfig.json
+2. Node.js requires explicit file extensions for ESM imports
+3. The `.js` extension refers to the compiled output that will exist at runtime
 
-### Prerequisites
+## Features
 
-Before you begin, ensure you have met the following requirements:
+- CLI interface with commands for:
+  - Generating summaries
+  - Getting transcripts
+  - Monitoring server status
+  - Server control
+- REST API endpoints for:
+  - Video information retrieval
+  - Summary generation
+  - Transcript extraction
+- Real-time progress updates via SSE
+- Rate limiting and security features
+- Temporary file cleanup
 
-- Node.js installed
-- npm or yarn installed
-- OpenAI API Key and Google Cloud API Key (You can obtain this from the OpenAI website or you can contact me and i'll provide you with mine)
+## Prerequisites
 
+Before you begin, ensure you have:
 
-### Installation
+- Node.js installed (v18+)
+- FFmpeg installed
+- OpenAI API Key
+- YouTube Data API Key
+
+## Installation
 
 1. Clone the repository:
+   ```bash
+   git clone https://github.com/luisher98/youtube-summary-api.git
    ```
-   git clone https://github.com/luisher98/tubesummary-server.git
-2. Navigate to the project directory:
-   ```
-   cd tubesummary-server
-3. Install dependencies
-   ```
+
+2. Install dependencies:
+   ```bash
    npm install
-   # or
-   yarn install
-4. Create a .env file in the directory and add the OpenAI API key
-    ```
-    OPENAI_API_KEY = ...
-    YOUTUBE_API_KEY = ...
-5. Run the following command to start the server
-   ```
-   npm start
-6. Paste this link following a YouTube link in the browser to test it
-   ```
-   http://localhost:5050/api/summary?url=...
-### Example
-
-   This request:
-   ```
-   http://localhost:5050/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0
    ```
 
-   Should return the following JSON:
+3. Create a .env file with:
    ```
-   {
-   "result": "In this transcript, the speaker discusses their experience using two different AI tools: ChatGPT and PentestGPT. They mention that ChatGPT has been very helpful in their daily life, assisting with various tasks and providing valuable information. However, they express some skepticism about PentestGPT, a tool designed for hacking and solving machines on platforms like Hack the Box.\n\nThe speaker explains that PentestGPT has received a lot of attention and positive reviews, but they had previously encountered issues with it and stopped using it. They decide to give it another try and see if it can successfully solve a machine they recently worked on. They follow the instructions provided by the AI, running commands and copying the results.\n\nDuring the process, the speaker realizes that PentestGPT doesn't provide all the necessary information. For example, it doesn't mention the virtual hosting applied to the machine they are trying to hack. They try to communicate this issue to the AI, but it doesn't seem to understand their request properly. The speaker continues to follow the AI's instructions but finds that it doesn't provide the guidance they were hoping for.\n\nThey express frustration with the lack of helpful information and the limitations of the AI tool. They mention that while the concept is interesting, the implementation is not effective. The speaker concludes that PentestGPT is not as useful as they had hoped and expresses disappointment in the amount of money they spent on using the tool.\n\nIn the end, they decide that it is better to learn from human experts rather than relying on AI tools like PentestGPT. They express their intention to seek guidance from experienced individuals in the field of penetration testing. The speaker also mentions their initial plan to create a YouTube video about their experience with PentestGPT but decides against it due to the tool's limitations."
-   }
+   OPENAI_API_KEY=your_openai_api_key
+   YOUTUBE_API_KEY=your_youtube_api_key
+   PORT=5050 # optional
    ```
+
 ## Usage
-The server is hosted at [https://youtube-summary-ezim.onrender.com]([https://youtube-summary-ezim.onrender.com](https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=-yIsQPp31L0)). 
 
-You can use the endpoints in the section below.
+### CLI Mode
 
-### Retrieving Video Information
-To get details about a YouTube Video:
-
-Endpoint
-```
-https://youtube-summary-ezim.onrender.com/api/info?url=<YouTube-Video-URL>
+Start the CLI interface:
+```bash
+npm run cli
 ```
 
-This returns a JSON object with the video's ID, title, description, thumbnail, and channel details.
-
-### Generating Video Summaries
-
-To generate a summary for a YouTube video:
-
-Endpoint:
+Available commands:
 ```
-https://youtube-summary-ezim.onrender.com/api/summary?url=<YouTube-Video-URL>&words=<Word-Count>
+summary <url> [--words=<number>] [--prompt=<text>] [--save=<filename>]
+transcript <url> [--save=<filename>]
+monitor     # Monitor server status
+status      # Check server status
+stop        # Stop the server
+help        # Show all commands
 ```
-Specify the desired word count for the summary. This returns a JSON object with the video summary.
 
-## Examples
-1. Video Information Retrieval:
-  ```
-  https://youtube-summary-ezim.onrender.com/api/info?url=https://www.youtube.com/watch?v=-yIsQPp31L0
-  ```
-Output: JSON with video details like title, description, and thumbnail.
+### API Mode
 
-2. Summary Generation:
-  ```
-  https://youtube-summary-ezim.onrender.com/api/summary?url=https://www.youtube.com/watch?v=NQ0v5ZbKJl0&words=400
-  ```
-Output: A 400-word summary of the video in JSON format.
+Start the server:
+```bash
+npm run dev
+```
 
-## Pending implementations
-- [ ] Limit maximum video length of 10 minutes.
-- [ ] 
+Endpoints:
+```
+GET /api/info?url=<YouTube-URL>
+GET /api/summary?url=<YouTube-URL>&words=<number>
+GET /api/summary-sse?url=<YouTube-URL>&words=<number>
+GET /api/transcript?url=<YouTube-URL>
+```
+
+## Development
+
+```bash
+# Run in development
+npm run dev
+
+# Run CLI
+npm run cli
+
+# Build
+npm run build
+
+# Run tests
+npm test
+
+# Format code
+npm run prettify
+```
+
+## Security Features
+
+- Rate limiting
+- API key validation in production
+- CORS configuration
+- Helmet security headers
+- Request timeout protection
+
+## Error Handling
+
+The application includes comprehensive error handling for:
+- Invalid YouTube URLs
+- API failures
+- File operations
+- Video processing issues
+- Network errors
+
+## Author
+
+Luis Hernández Martín
+luisheratm@gmail.com
+
+## License
+
+MIT

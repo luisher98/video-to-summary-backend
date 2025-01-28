@@ -1,9 +1,9 @@
 import fs from 'fs/promises';
 import ytdl from '@distube/ytdl-core';
 import ffmpeg from 'fluent-ffmpeg';
-import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.ts';
-import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.ts';
-import { sanitizeFileName } from '../../utils/utils.ts';
+import { getFfmpegPath, VIDEO_DOWNLOAD_PATH, checkVideoExists } from '../../utils/utils.js';
+import { ConversionError, DeletionError, DownloadError } from '../../utils/errorHandling.js';
+import { sanitizeFileName } from '../../utils/utils.js';
 
 ffmpeg.setFfmpegPath(getFfmpegPath());
 

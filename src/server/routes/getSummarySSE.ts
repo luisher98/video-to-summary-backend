@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/outputSummary.ts";
-import { ProgressUpdate } from "../../types/global.types.ts";
+import { outputSummary } from "../../services/summary/outputSummary.js";
+import { ProgressUpdate } from "../../types/global.types.js";
 
 export default async function getSummarySSE(req: Request, res: Response) {
   res.setHeader("Content-Type", "text/event-stream");

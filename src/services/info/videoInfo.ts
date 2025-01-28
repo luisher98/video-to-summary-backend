@@ -1,5 +1,5 @@
-import { InternalServerError, BadRequestError } from "../../utils/errorHandling.ts";
-import { YouTubeApiResponse } from "./videoInfo.types.ts";
+import { InternalServerError, BadRequestError } from "../../utils/errorHandling.js";
+import { YouTubeApiResponse } from "./videoInfo.types.js";
 
 export default async function videoInfo(url: string) {
   try {
