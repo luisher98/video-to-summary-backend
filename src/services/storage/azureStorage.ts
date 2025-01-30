@@ -33,19 +33,18 @@ export class AzureStorageService {
             throw new Error('Azure Storage account name not configured');
         }
 
-        // Try environment credentials first, then fall back to default credentials
-        const credential = new EnvironmentCredential();
         const blobServiceUrl = `https://${CONFIG.accountName}.blob.core.windows.net`;
         
         try {
+            // In production (Azure), this will use Managed Identity
+            // In development, it will use environment credentials
+            const credential = new DefaultAzureCredential();
             this.blobServiceClient = new BlobServiceClient(blobServiceUrl, credential);
             this.containerClient = this.blobServiceClient.getContainerClient(CONFIG.containerName);
-            console.log('Using environment credentials for Azure Storage');
-        } catch {
-            console.log('Failed to use environment credentials, falling back to default credentials');
-            const defaultCredential = new DefaultAzureCredential();
-            this.blobServiceClient = new BlobServiceClient(blobServiceUrl, defaultCredential);
-            this.containerClient = this.blobServiceClient.getContainerClient(CONFIG.containerName);
+            console.log('Using DefaultAzureCredential for Azure Storage');
+        } catch (error) {
+            console.error('Failed to initialize Azure Storage:', error);
+            throw new InternalServerError('Failed to initialize storage service');
         }
     }
 

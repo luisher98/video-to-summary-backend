@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import os from 'os';
+import { TEMP_DIRS, createTempFile } from './utils.js';
 
 /**
  * Interface for YouTube cookie structure
@@ -41,8 +41,7 @@ interface Cookie {
 export class CookieHandler {
     private static readonly COOKIE_HEADER = '# Netscape HTTP Cookie File\n';
     private static readonly REQUIRED_FIELDS = ['domain', 'name', 'value'];
-    private static readonly CLEANUP_DELAY = 5000;
-    private static tempFiles = new Set<string>();
+    private static readonly COOKIE_MAX_AGE = 3600000; // 1 hour
 
     /**
      * Validates cookie format and required fields
@@ -80,47 +79,6 @@ export class CookieHandler {
     }
 
     /**
-     * Creates a temporary cookie file and schedules cleanup
-     * 
-     * @param {string} content - Cookie content in Netscape format
-     * @returns {Promise<string>} Path to temporary file
-     * @private
-     */
-    private static async createTempFile(content: string): Promise<string> {
-        const tempPath = path.join(os.tmpdir(), `yt_cookies_${Date.now()}.txt`);
-        await fs.writeFile(tempPath, content, 'utf8');
-        this.tempFiles.add(tempPath);
-        
-        setTimeout(async () => {
-            try {
-                await this.cleanup(tempPath);
-            } catch (err) {
-                console.error('Failed to cleanup cookie file:', err);
-            }
-        }, this.CLEANUP_DELAY);
-
-        return tempPath;
-    }
-
-    /**
-     * Cleans up temporary cookie files
-     * 
-     * @param {string} filePath - Path to file to clean up
-     * @returns {Promise<void>}
-     * @private
-     */
-    private static async cleanup(filePath: string): Promise<void> {
-        try {
-            await fs.unlink(filePath);
-            this.tempFiles.delete(filePath);
-        } catch (err) {
-            if (err instanceof Error && !err.message.includes('ENOENT')) {
-                throw err;
-            }
-        }
-    }
-
-    /**
      * Processes cookies from environment variable.
      * Validates, converts to Netscape format, and creates temporary file.
      * 
@@ -149,7 +107,12 @@ export class CookieHandler {
             }
 
             const netscapeCookies = this.convertToNetscape(cookies);
-            const tempPath = await this.createTempFile(netscapeCookies);
+            const tempPath = await createTempFile(
+                netscapeCookies,
+                '.txt',
+                TEMP_DIRS.cookies,
+                this.COOKIE_MAX_AGE
+            );
 
             console.log('Successfully processed YouTube cookies');
             return { cookies: tempPath };
@@ -157,15 +120,5 @@ export class CookieHandler {
             console.warn('Failed to process YouTube cookies:', err instanceof Error ? err.message : err);
             return {};
         }
-    }
-
-    /**
-     * Cleans up all temporary cookie files
-     * 
-     * @returns {Promise<void>}
-     */
-    public static async cleanupAll(): Promise<void> {
-        const cleanupPromises = Array.from(this.tempFiles).map(file => this.cleanup(file));
-        await Promise.allSettled(cleanupPromises);
     }
 } 

@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
 import multer from "multer";
 import path from "path";
-import fs from "fs";
+import { promises as fsPromises } from "fs";
 import { processUploadedFile } from "../../services/summary/fileUploadSummary.js";
 import { ProgressUpdate } from "../../types/global.types.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
 import { Readable } from "stream";
+import { FILE_SIZE, TEMP_DIRS } from "../../utils/utils.js";
+import { promises as fs } from 'fs';
+import fs_sync from 'fs';
 
 // Constants for file size limits and chunking
 const MEMORY_LIMIT = 200 * 1024 * 1024; // 200MB
@@ -18,24 +21,27 @@ interface MulterFile {
     encoding: string;
     mimetype: string;
     size: number;
-    buffer?: Buffer;
-    path?: string;
+    destination: string;
+    filename: string;
+    path: string;
+    buffer: Buffer;
 }
 
 interface ProgressMessage {
-    status: 'pending' | 'done' | 'error';
+    status: 'uploading' | 'processing' | 'done' | 'error';
     message: string;
     progress: number;
 }
 
 // Configure storage based on file size
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const uploadDir = path.join(process.cwd(), 'tmp', 'uploads');
-        if (!fs.existsSync(uploadDir)) {
-            fs.mkdirSync(uploadDir, { recursive: true });
+    destination: async (req, file, cb) => {
+        try {
+            await fsPromises.mkdir(TEMP_DIRS.uploads, { recursive: true });
+            cb(null, TEMP_DIRS.uploads);
+        } catch (error) {
+            cb(error as Error, TEMP_DIRS.uploads);
         }
-        cb(null, uploadDir);
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
@@ -46,10 +52,9 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage,
     limits: {
-        fileSize: MAX_FILE_SIZE, // 500MB max file size
+        fileSize: FILE_SIZE.MAX_FILE_SIZE,
     },
     fileFilter: (req: Request, file: MulterFile, cb: multer.FileFilterCallback) => {
-        // Accept video files
         if (file.mimetype.startsWith('video/')) {
             cb(null, true);
         } else {
@@ -101,14 +106,12 @@ async function createFileStream(file: MulterFile): Promise<Readable> {
 
     const fileSize = file.size;
     
-    if (fileSize <= MEMORY_LIMIT) {
-        // For small files, read the entire file into memory
-        const buffer = await fs.promises.readFile(file.path);
+    if (fileSize <= FILE_SIZE.MEMORY_LIMIT) {
+        const buffer = await fs.readFile(file.path);
         return Readable.from(buffer);
     } else {
-        // For large files, create a streaming pipeline with appropriate chunk size
-        return fs.createReadStream(file.path, {
-            highWaterMark: CHUNK_SIZE // Read in 50MB chunks
+        return fs_sync.createReadStream(file.path, {
+            highWaterMark: FILE_SIZE.CHUNK_SIZE
         });
     }
 }
@@ -156,7 +159,7 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
         if (contentLength > 0) {
             const progress = Math.min((uploadedBytes / contentLength) * 100, 100);
             sendProgress({
-                status: 'pending',
+                status: 'uploading',
                 message: `Uploading: ${Math.round(progress)}%`,
                 progress
             });
@@ -166,9 +169,14 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
     // Handle file upload
     upload.single('video')(req, res, async (err) => {
         if (err) {
+            console.error('Upload error:', err);
             sendProgress({
                 status: "error",
-                message: err instanceof multer.MulterError ? err.message : 'Unknown error',
+                message: err instanceof multer.MulterError 
+                    ? `Upload error: ${err.message}` 
+                    : err instanceof Error 
+                        ? err.message 
+                        : 'Unknown upload error',
                 progress: 0
             });
             return res.end();
@@ -176,6 +184,7 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
 
         const file = (req as Request & { file?: MulterFile }).file;
         if (!file) {
+            console.error('No file in request');
             sendProgress({
                 status: "error",
                 message: "No file uploaded",
@@ -184,12 +193,25 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
             return res.end();
         }
 
+        console.log('File received:', {
+            name: file.originalname,
+            size: file.size,
+            type: file.mimetype,
+            path: file.path
+        });
+
         let words = Number(req.query.words);
         if (isNaN(words)) words = 400;
 
         try {
-            // Create appropriate stream based on file size
+            // Create file stream for processing
             const fileStream = await createFileStream(file);
+
+            sendProgress({ 
+                status: 'processing',
+                message: 'Starting file processing...',
+                progress: 0
+            });
 
             const summary = await processUploadedFile({
                 file: fileStream,
@@ -203,9 +225,9 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
                 },
                 updateProgress: (progress: ProgressUpdate) => {
                     sendProgress({
-                        status: 'pending',
-                        message: progress.message || '',
-                        progress: progress.progress || 0
+                        status: progress.status,
+                        message: progress.message || 'Processing...',
+                        progress: progress.progress
                     });
                 },
             });
@@ -217,17 +239,22 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
                 progress: 100
             });
         } catch (error) {
+            console.error('Processing error:', error);
             sendProgress({
                 status: "error",
-                message: error instanceof Error ? error.message : 'Unknown error',
+                message: error instanceof Error 
+                    ? `Processing error: ${error.message}` 
+                    : 'Unknown processing error',
                 progress: 0
             });
         } finally {
             // Clean up temporary file
-            if (file.path) {
-                fs.unlink(file.path, (err) => {
-                    if (err) console.error('Error cleaning up temporary file:', err);
-                });
+            if (file?.path) {
+                try {
+                    await fs.unlink(file.path);
+                } catch (cleanupError) {
+                    console.error('Error cleaning up temporary file:', cleanupError);
+                }
             }
             res.end();
         }

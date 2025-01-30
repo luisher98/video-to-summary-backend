@@ -5,20 +5,17 @@ import { ProgressUpdate } from '../../types/global.types.js';
 import { InternalServerError } from '../../utils/errorHandling.js';
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
-import fs from 'fs';
-import { promises as fsPromises } from 'fs';
+import { promises as fs } from 'fs';
+import fs_sync from 'fs';
 import ffmpeg from 'fluent-ffmpeg';
-import { getFfmpegPath, VIDEO_DOWNLOAD_PATH } from '../../utils/utils.js';
+import { getFfmpegPath, TEMP_DIRS, validateVideoFile } from '../../utils/utils.js';
+import { spawn } from 'child_process';
+import ffmpegPath from 'ffmpeg-static';
 
 // Initialize ffmpeg with proper path
 const ffmpegBinaryPath = getFfmpegPath();
 console.log('Using ffmpeg from:', ffmpegBinaryPath);
 ffmpeg.setFfmpegPath(ffmpegBinaryPath);
-
-// Ensure required directories exist
-if (!fs.existsSync(VIDEO_DOWNLOAD_PATH)) {
-    fs.mkdirSync(VIDEO_DOWNLOAD_PATH, { recursive: true });
-}
 
 interface FileUploadSummaryOptions {
     /** The uploaded file stream */
@@ -43,6 +40,28 @@ interface FileUploadSummaryOptions {
 }
 
 /**
+ * Clean up temporary files and blob storage
+ */
+async function cleanupFiles(fileId: string, originalFilename: string, useAzure: boolean): Promise<void> {
+    try {
+        // Clean up local audio file
+        await fs.unlink(`${TEMP_DIRS.audios}/${fileId}.mp3`).catch(error => {
+            console.error('Error cleaning up audio file:', error);
+        });
+
+        // Clean up Azure blob if used
+        if (useAzure) {
+            const blobName = `${fileId}-${originalFilename}`;
+            await azureStorage.deleteFile(blobName).catch(error => {
+                console.error('Error cleaning up Azure blob:', error);
+            });
+        }
+    } catch (error) {
+        console.error('Error during cleanup:', error);
+    }
+}
+
+/**
  * Process an uploaded video file to generate a summary or transcript
  */
 export async function processUploadedFile({
@@ -55,152 +74,123 @@ export async function processUploadedFile({
     returnTranscriptOnly = false,
     requestInfo,
 }: FileUploadSummaryOptions): Promise<string> {
+    if (!ffmpegPath) {
+        throw new Error('FFmpeg not found');
+    }
+
     const sessionId = uuidv4();
-    const tempDir = path.join(process.env.TEMP_DIR || './tmp', sessionId);
+    const sessionDir = path.join(TEMP_DIRS.sessions, sessionId);
     const fileId = uuidv4();
-    const audioFilePath = `${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`;
+    const audioFilePath = path.join(TEMP_DIRS.audios, `${fileId}.mp3`);
     let useAzure = false;
 
     try {
         // Create temporary directories
-        await fsPromises.mkdir(tempDir, { recursive: true });
-        await fsPromises.mkdir(VIDEO_DOWNLOAD_PATH, { recursive: true });
+        await fs.mkdir(sessionDir, { recursive: true });
+        await fs.mkdir(TEMP_DIRS.audios, { recursive: true });
 
         // 1. Handle file storage based on size
         updateProgress({ 
-            status: 'pending', 
+            status: 'processing', 
             message: 'Starting file processing...',
             progress: 0
         });
         
         useAzure = AzureStorageService.shouldUseAzureStorage(fileSize);
+        
+        // Save stream to temporary file for validation
+        const tempVideoPath = path.join(sessionDir, `${fileId}-original${path.extname(originalFilename)}`);
+        const writeStream = fs_sync.createWriteStream(tempVideoPath);
+        await new Promise((resolve, reject) => {
+            file.pipe(writeStream)
+                .on('finish', resolve)
+                .on('error', reject);
+        });
+
+        // Validate video file
+        const isValid = await validateVideoFile(tempVideoPath);
+        if (!isValid) {
+            throw new Error('Invalid or unsupported video file format');
+        }
+
         if (useAzure) {
-            // Upload to Azure using stream
+            // Upload to Azure using the saved file
             const blobName = `${fileId}-${originalFilename}`;
             console.log('Starting Azure upload:', { fileSize, blobName });
             
             updateProgress({ 
-                status: 'pending', 
+                status: 'uploading', 
                 message: 'Uploading to cloud storage...',
                 progress: 10 
             });
             
-            // Upload to Azure (uploadFile method supports streams)
             try {
-                console.log('Initiating file upload to Azure');
-                await azureStorage.uploadFile(file, blobName, fileSize, (progress: number) => {
+                const fileStream = fs_sync.createReadStream(tempVideoPath);
+                await azureStorage.uploadFile(fileStream, blobName, fileSize, (progress: number) => {
                     console.log('Upload progress:', progress);
                     updateProgress({
-                        status: 'pending',
+                        status: 'uploading',
                         message: `Uploading to cloud storage: ${Math.round(progress)}%`,
-                        progress: 10 + (progress * 0.2) // Scale to 10-30% range
+                        progress: 10 + (progress * 0.2)
                     });
                 });
                 console.log('File upload to Azure completed');
-            } catch (error) {
-                console.error('Error during Azure upload:', error);
-                throw error;
+            } catch (uploadError: unknown) {
+                const errorMessage = uploadError instanceof Error ? uploadError.message : 'Unknown error';
+                throw new Error(`Azure upload failed: ${errorMessage}`);
             }
-            
-            updateProgress({ 
-                status: 'pending', 
-                message: 'Converting video to audio...',
-                progress: 30 
-            });
-
-            // Download and convert to MP3
-            const videoStream = await azureStorage.downloadFile(blobName);
-            await new Promise<void>((resolve, reject) => {
-                let progress = 0;
-                ffmpeg()
-                    .input(videoStream)
-                    .toFormat('mp3')
-                    .on('progress', (info) => {
-                        if (info.percent) {
-                            progress = Math.min(info.percent, 100);
-                            updateProgress({ 
-                                status: 'pending', 
-                                message: `Converting video: ${progress.toFixed(1)}%`,
-                                progress: 30 + (progress * 0.3) // Scale to 30-60% range
-                            });
-                        }
-                    })
-                    .on('end', () => {
-                        updateProgress({ 
-                            status: 'pending', 
-                            message: 'Audio conversion complete',
-                            progress: 60 
-                        });
-                        resolve();
-                    })
-                    .on('error', (err) => {
-                        console.error('FFmpeg error:', err);
-                        reject(new Error(`FFmpeg conversion failed: ${err.message}`));
-                    })
-                    .save(audioFilePath);
-            });
-            
-            // Clean up Azure storage
-            await azureStorage.deleteFile(blobName);
-        } else {
-            // For smaller files, process directly
-            updateProgress({ 
-                status: 'pending', 
-                message: 'Processing video locally...',
-                progress: 10 
-            });
-
-            // Convert directly to MP3 using ffmpeg
-            await new Promise<void>((resolve, reject) => {
-                let progress = 0;
-                ffmpeg()
-                    .input(file)
-                    .toFormat('mp3')
-                    .on('progress', (info) => {
-                        if (info.percent) {
-                            progress = Math.min(info.percent, 100);
-                            updateProgress({ 
-                                status: 'pending', 
-                                message: `Converting video: ${progress.toFixed(1)}%`,
-                                progress: 30 + (progress * 0.3) // Scale to 30-60% range
-                            });
-                        }
-                    })
-                    .on('end', () => {
-                        updateProgress({ 
-                            status: 'pending', 
-                            message: 'Audio conversion complete',
-                            progress: 60 
-                        });
-                        resolve();
-                    })
-                    .on('error', (err) => {
-                        console.error('FFmpeg error:', err);
-                        reject(new Error(`FFmpeg conversion failed: ${err.message}`));
-                    })
-                    .save(audioFilePath);
-            });
         }
+
+        // Convert to audio with improved error handling
+        updateProgress({ 
+            status: 'processing', 
+            message: 'Extracting audio...',
+            progress: 30 
+        });
+
+        await new Promise<void>((resolve, reject) => {
+            ffmpeg(tempVideoPath)
+                .toFormat('mp3')
+                .on('start', (commandLine) => {
+                    console.log('FFmpeg conversion started:', commandLine);
+                })
+                .on('progress', (progress) => {
+                    console.log('FFmpeg progress:', progress);
+                })
+                .on('error', (err, stdout, stderr) => {
+                    console.error('FFmpeg error:', err.message);
+                    console.error('FFmpeg stderr:', stderr);
+                    reject(new Error(`FFmpeg conversion failed: ${err.message}\n${stderr}`));
+                })
+                .on('end', () => {
+                    console.log('FFmpeg conversion completed');
+                    resolve();
+                })
+                .save(audioFilePath);
+        });
+
+        // Clean up temporary video file
+        await fs.unlink(tempVideoPath);
 
         // 2. Generate transcript
         updateProgress({ 
-            status: 'pending', 
+            status: 'processing', 
             message: 'Generating transcript...',
-            progress: 70 
+            progress: 50 
         });
         
         const transcript = await generateTranscript(fileId);
 
         if (returnTranscriptOnly) {
-            await cleanupFiles(fileId);
+            await cleanupFiles(fileId, originalFilename, useAzure);
             return transcript;
         }
 
         // 3. Generate summary
         updateProgress({ 
-            status: 'pending', 
+            status: 'processing', 
             message: 'Generating summary...',
-            progress: 90 
+            progress: 80 
         });
         
         const summary = await generateSummary(transcript, words, additionalPrompt);
@@ -216,35 +206,17 @@ export async function processUploadedFile({
         });
 
         updateProgress({ 
-            status: 'pending', 
-            message: 'Finalizing...',
-            progress: 100 
+            status: 'processing', 
+            message: 'Finalizing summary...',
+            progress: 90 
         });
 
         return summary;
-    } catch (error) {
-        console.error('Error processing uploaded file:', error);
-        throw new InternalServerError(
-            `Failed to process uploaded file: ${error instanceof Error ? error.message : 'Unknown error'}`
-        );
+    } catch (error: unknown) {
+        console.error('Error processing file:', error);
+        throw error;
     } finally {
-        // Cleanup
-        await Promise.all([
-            fsPromises.rm(tempDir, { recursive: true, force: true }),
-            cleanupFiles(fileId)
-        ]).catch(err => {
-            console.error('Error during cleanup:', err);
-        });
-    }
-}
-
-/**
- * Clean up temporary files
- */
-async function cleanupFiles(fileId: string): Promise<void> {
-    try {
-        await fsPromises.unlink(`${VIDEO_DOWNLOAD_PATH}/${fileId}.mp3`);
-    } catch (error) {
-        console.error('Error cleaning up files:', error);
+        // Clean up all temporary files and blobs
+        await cleanupFiles(fileId, originalFilename, useAzure);
     }
 } 

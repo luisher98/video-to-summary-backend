@@ -1,8 +1,7 @@
-import fs from 'fs';
+import { promises as fs } from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
-
-const localDirectory = path.resolve(process.cwd(), 'tmp/savedTranscriptsAndSummaries');
+import { TEMP_DIRS } from '../../utils/utils.js';
 
 /**
  * Gets the absolute path for saving files in the local directory.
@@ -12,18 +11,15 @@ const localDirectory = path.resolve(process.cwd(), 'tmp/savedTranscriptsAndSumma
  * @returns {string} Absolute path to the file
  * @throws {Error} If directory creation fails
  */
-export function getLocalDirectoryPath(fileName: string): string {
-  try {
-    console.log('Resolved local directory path:', localDirectory); // Debug log
-    if (!fs.existsSync(localDirectory)) {
-      console.log('Directory does not exist. Creating...');
-      fs.mkdirSync(localDirectory, { recursive: true });
+export async function getLocalDirectoryPath(fileName: string): Promise<string> {
+    try {
+        console.log('Using transcripts directory:', TEMP_DIRS.transcripts);
+        await fs.mkdir(TEMP_DIRS.transcripts, { recursive: true });
+        return path.join(TEMP_DIRS.transcripts, fileName);
+    } catch (error) {
+        console.error('Error resolving local directory path:', error);
+        throw error;
     }
-    return path.join(localDirectory, fileName);
-  } catch (error) {
-    console.error('Error resolving local directory path:', error);
-    throw error;
-  }
 }
 
 /**
@@ -33,15 +29,15 @@ export function getLocalDirectoryPath(fileName: string): string {
  * @param {string} result - Content to write to the file
  * @throws {Error} If file write operation fails
  */
-export function saveResultToFile(filePath: string, result: string) {
-  try {
-    console.log(`Attempting to save file at: ${filePath}`);
-    fs.writeFileSync(filePath, result);
-    console.log(`Result successfully saved to ${filePath}`);
-  } catch (error) {
-    console.error('Error saving result to file:', error);
-    throw error;
-  }
+export async function saveResultToFile(filePath: string, result: string): Promise<void> {
+    try {
+        console.log(`Attempting to save file at: ${filePath}`);
+        await fs.writeFile(filePath, result);
+        console.log(`Result successfully saved to ${filePath}`);
+    } catch (error) {
+        console.error('Error saving result to file:', error);
+        throw error;
+    }
 }
 
 /**
@@ -50,19 +46,19 @@ export function saveResultToFile(filePath: string, result: string) {
  * @returns {Promise<'terminal' | 'file'>} Selected output option
  */
 export async function promptOutputOption(): Promise<'terminal' | 'file'> {
-  const { outputOption } = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'outputOption',
-      message: 'How would you like to output the result?',
-      choices: [
-        { name: 'Display in terminal', value: 'terminal' },
-        { name: 'Save to file', value: 'file' },
-      ],
-      default: 'terminal',
-    },
-  ]);
-  return outputOption;
+    const { outputOption } = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'outputOption',
+            message: 'How would you like to output the result?',
+            choices: [
+                { name: 'Display in terminal', value: 'terminal' },
+                { name: 'Save to file', value: 'file' },
+            ],
+            default: 'terminal',
+        },
+    ]);
+    return outputOption;
 }
 
 /**
@@ -77,28 +73,28 @@ export async function promptOutputOption(): Promise<'terminal' | 'file'> {
  * // Returns: { url: 'https://youtube.com/...', words: 300 }
  */
 export function parseArgs(args: string[]) {
-  const parsed: { url?: string; words?: number; fileName?: string } = { words: 400 };
+    const parsed: { url?: string; words?: number; fileName?: string } = { words: 400 };
 
-  for (const arg of args) {
-    if (arg.startsWith('--words=')) {
-      const words = parseInt(arg.split('=')[1], 10);
-      if (!isNaN(words) && words > 0) {
-        parsed.words = words;
-      } else {
-        console.warn('Invalid word count specified. Using default value: 400.');
-      }
-    } else if (arg.startsWith('--save=')) {
-      parsed.fileName = arg.split('=')[1];
-    } else {
-      parsed.url = arg;
+    for (const arg of args) {
+        if (arg.startsWith('--words=')) {
+            const words = parseInt(arg.split('=')[1], 10);
+            if (!isNaN(words) && words > 0) {
+                parsed.words = words;
+            } else {
+                console.warn('Invalid word count specified. Using default value: 400.');
+            }
+        } else if (arg.startsWith('--save=')) {
+            parsed.fileName = arg.split('=')[1];
+        } else {
+            parsed.url = arg;
+        }
     }
-  }
 
-  if (!parsed.url) {
-    throw new Error('No URL provided.');
-  }
+    if (!parsed.url) {
+        throw new Error('No URL provided.');
+    }
 
-  return parsed;
+    return parsed;
 }
 
 /**

@@ -3,11 +3,11 @@
  */
 export interface ProgressUpdate {
     /** Current status of the operation */
-    status: 'pending' | 'done' | 'error';
+    status: 'uploading' | 'processing' | 'done' | 'error';
     /** Progress message or result */
-    message: string;
+    message?: string;
     error?: string;
-    progress?: number; // Percentage of completion (0-100)
+    progress: number; // Percentage of completion (0-100)
 }
 
 /**
