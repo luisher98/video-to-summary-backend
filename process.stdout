@@ -656,3 +656,425 @@ Successfully generated summary: {
   userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
   timestamp: [32m'2025-01-29T01:41:47.873Z'[39m
 }
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+
+yt-dlp stderr: [debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.f3d47b5a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig Z3zcWVa_J5c92v3Pq => sUEXC_yc_Kd4TQ
+
+yt-dlp stderr: [debug] Loading youtube-nsig.f3d47b5a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig Tbq9b9bGslHDOC-jz => JqTRcVbPuukDDg
+
+yt-dlp stderr: [debug] [youtube] N-ZNfuCdkUo: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1738302085&ei=JQ6cZ4_GK4-VsfIP5eCiqQI&ip=142.231.7.27&id=o-AIkvu-nYQVaIr_WeU9boZ3r6Gyn9fAiGuBKiIOPXMVsY&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738280485%2C&mh=3v&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx57ynlk&ms=au%2Crdu&mv=m&mvi=2&pl=24&rms=au%2Cau&initcwndbps=4146250&bui=AY2Et-PKvY53eKicjtsQRqjMjOC7H_JjFpq3LzRZyh7xyiVt1-LMMUTQEtinqhR3C9zytuESdHfMOQAe&spc=9kzgDcxzukBaYqtestBSSg4wD7SHB_PQNwb7IFXbzo8PHyNHoxvvo9MuYw&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=HFLwbPZKgRnh95EHSLhMiVQQ&rqh=1&gir=yes&clen=4428354&dur=321.341&lmt=1738050124995873&mt=1738279734&fvip=3&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=JqTRcVbPuukDDg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAMzrsjdcKi8Ox8kijWSobp1n6_19ByRcchfqSSbTrJtWAiB-xfoiYrtu1yAabiTQNwsHXSft2CWuI6G02WRpZDwzNw%3D%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIgdqjDEdTpn5NeoH4n0T8_9c-7Zrp2dwF49YnoZ_ECcaYCIQC1YEoFJSBWbbIMWsSC9kJDpS9glDD7adoS6xKyNVSgog%3D%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/n_znfucdkuo.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-01-30T23:41:52.210Z'[39m
+}
+File received: {
+  name: [32m'joji.mp4'[39m,
+  size: [33m433598627[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads/video-1738280524693-966538720.mp4'[39m
+}
+Starting Azure upload: {
+  fileSize: [33m433598627[39m,
+  blobName: [32m'80558c81-2961-452a-81f4-f8df9b6b9082-joji.mp4'[39m
+}
+Starting file upload: {
+  fileName: [32m'80558c81-2961-452a-81f4-f8df9b6b9082-joji.mp4'[39m,
+  fileSize: [33m433598627[39m,
+  isBuffer: [33mfalse[39m
+}
+Processing stream upload
+Starting large file upload:
+            - File size: 413.51 MB
+            - Block size: 8.00 MB
+            - Number of blocks: 52
+
+Uploading blocks concurrently...
+
+All blocks uploaded, committing block list
+
+Upload complete:
+            - Total size: 413.51 MB
+            - Total time: 2006ms
+            - Average speed: 206.14 MB/s
+            - Read time: 0ms (0.0% of total)
+Upload completed successfully
+File upload to Azure completed
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions/0557a2af-7cd5-4ccd-a290-156393b7c520/80558c81-2961-452a-81f4-f8df9b6b9082-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/80558c81-2961-452a-81f4-f8df9b6b9082.mp3
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:00:34.87'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:01:08.10'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:01:42.66'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:02:17.30'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:02:53.11'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:03:27.98'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:04:02.99'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:04:39.04'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:04:57.61'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:05:25.66'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:06:00.28'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:06:34.78'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:07:09.74'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:07:46.83'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:08:23.74'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:08:59.29'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:09:35.53'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:10:10.40'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:10:44.78'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:11:18.97'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:11:58.31'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:12:38.72'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:13:19.68'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:13:58.40'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:14:37.79'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:15:12.53'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:15:47.54'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:16:28.26'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:17:03.42'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:17:36.57'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:18:09.54'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:18:42.63'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:19:20.17'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:19:46.03'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:20:23.86'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:21:02.65'[39m
+}
+FFmpeg progress: {
+  frames: [33m0[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'00:21:39.09'[39m
+}
+FFmpeg progress: {
+  frames: [33m1[39m,
+  currentFps: [33m0[39m,
+  currentKbps: [33m141.3[39m,
+  targetSize: [33m22852[39m,
+  timemark: [32m'00:22:04.90'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'joji.mp4'[39m,
+  fileSize: [33m433598627[39m,
+  useAzure: [33mtrue[39m,
+  ip: [32m'::ffff:127.0.0.1'[39m,
+  userAgent: [32m'curl/8.1.2'[39m,
+  timestamp: [32m'2025-01-30T23:43:20.746Z'[39m
+}

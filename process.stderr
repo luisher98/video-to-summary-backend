@@ -649,3 +649,93 @@ SyntaxError: The requested module '../../utils/errorHandling.js' does not provid
     at ModuleJob._instantiate (node:internal/modules/esm/module_job:146:21)
     at async ModuleJob.run (node:internal/modules/esm/module_job:229:5)
     at async ModuleLoader.import (node:internal/modules/esm/loader:473:24)
+Error: bind EADDRINUSE null:5050
+    at listenOnPrimaryHandle (node:net:1985:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:531:35)
+    at emit (node:internal/child_process:951:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Error: bind EADDRINUSE null:5050
+    at listenOnPrimaryHandle (node:net:1985:18)
+    at rr (node:internal/cluster/child:163:12)
+    at Worker.<anonymous> (node:internal/cluster/child:113:7)
+    at process.onInternalMessage (node:internal/cluster/utils:49:5)
+    at process.emit (node:events:531:35)
+    at emit (node:internal/child_process:951:14)
+    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)
+Uncaught Exception: Error: bind EADDRINUSE null:5050
+[90m    at listenOnPrimaryHandle (node:net:1985:18)[39m
+[90m    at rr (node:internal/cluster/child:163:12)[39m
+[90m    at Worker.<anonymous> (node:internal/cluster/child:113:7)[39m
+[90m    at process.onInternalMessage (node:internal/cluster/utils:49:5)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at emit (node:internal/child_process:951:14)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)[39m {
+  errno: [33m-48[39m,
+  code: [32m'EADDRINUSE'[39m,
+  syscall: [32m'bind'[39m,
+  address: [1mnull[22m,
+  port: [33m5050[39m
+}
+Uncaught exception: Error: bind EADDRINUSE null:5050
+[90m    at listenOnPrimaryHandle (node:net:1985:18)[39m
+[90m    at rr (node:internal/cluster/child:163:12)[39m
+[90m    at Worker.<anonymous> (node:internal/cluster/child:113:7)[39m
+[90m    at process.onInternalMessage (node:internal/cluster/utils:49:5)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at emit (node:internal/child_process:951:14)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)[39m {
+  errno: [33m-48[39m,
+  code: [32m'EADDRINUSE'[39m,
+  syscall: [32m'bind'[39m,
+  address: [1mnull[22m,
+  port: [33m5050[39m
+}
+Uncaught Exception: Error: bind EADDRINUSE null:5050
+[90m    at listenOnPrimaryHandle (node:net:1985:18)[39m
+[90m    at rr (node:internal/cluster/child:163:12)[39m
+[90m    at Worker.<anonymous> (node:internal/cluster/child:113:7)[39m
+[90m    at process.onInternalMessage (node:internal/cluster/utils:49:5)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at emit (node:internal/child_process:951:14)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)[39m {
+  errno: [33m-48[39m,
+  code: [32m'EADDRINUSE'[39m,
+  syscall: [32m'bind'[39m,
+  address: [1mnull[22m,
+  port: [33m5050[39m
+}
+Uncaught exception: Error: bind EADDRINUSE null:5050
+[90m    at listenOnPrimaryHandle (node:net:1985:18)[39m
+[90m    at rr (node:internal/cluster/child:163:12)[39m
+[90m    at Worker.<anonymous> (node:internal/cluster/child:113:7)[39m
+[90m    at process.onInternalMessage (node:internal/cluster/utils:49:5)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at emit (node:internal/child_process:951:14)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:83:21)[39m {
+  errno: [33m-48[39m,
+  code: [32m'EADDRINUSE'[39m,
+  syscall: [32m'bind'[39m,
+  address: [1mnull[22m,
+  port: [33m5050[39m
+}
+Error during cleanup: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+[90m    at Server.close (node:net:2280:12)[39m
+[90m    at Object.onceWrapper (node:events:633:28)[39m
+[90m    at Server.emit (node:events:519:28)[39m
+    at Server.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4m@pm2[24m/io/build/main/metrics/httpMetrics.js:153:37[90m)[39m
+[90m    at emitCloseNT (node:net:2340:8)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)[39m {
+  code: [32m'ERR_SERVER_NOT_RUNNING'[39m
+}
+Error during cleanup: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
+[90m    at Server.close (node:net:2280:12)[39m
+[90m    at Object.onceWrapper (node:events:633:28)[39m
+[90m    at Server.emit (node:events:519:28)[39m
+    at Server.<anonymous> [90m(/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/[39mnode_modules/[4m@pm2[24m/io/build/main/metrics/httpMetrics.js:153:37[90m)[39m
+[90m    at emitCloseNT (node:net:2340:8)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)[39m {
+  code: [32m'ERR_SERVER_NOT_RUNNING'[39m
+}

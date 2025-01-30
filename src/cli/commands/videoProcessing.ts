@@ -43,8 +43,10 @@ export async function handleCommand(commandType: 'summary' | 'transcript', args:
 
     console.log(`Processing YouTube video for ${commandType}...`);
 
-    const outputOption = await promptOutputOption();
-    const info = await videoInfo(url);
+    const [outputOption, info] = await Promise.all([
+      promptOutputOption(),
+      videoInfo(url)
+    ]);
     
     if (!info) {
       throw new Error('Failed to fetch video information. Please check the URL and try again.');
@@ -63,8 +65,8 @@ export async function handleCommand(commandType: 'summary' | 'transcript', args:
 
     if (outputOption === 'file') {
       const outputFileName = fileName || `${commandType}_${info.title}_${getCurrentDateTime()}.txt`;
-      const filePath = getLocalDirectoryPath(outputFileName);
-      saveResultToFile(filePath, result);
+      const filePath = await getLocalDirectoryPath(outputFileName);
+      await saveResultToFile(filePath, result);
     } else {
       console.log(`\nGenerated ${commandType === 'transcript' ? 'Transcript' : 'Summary'}:`);
       console.log(result);

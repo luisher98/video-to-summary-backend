@@ -67,13 +67,18 @@ export async function outputSummary({
         let fileId: string | undefined;
         try {
             // 1. Download video from YouTube
-            updateProgress({ status: 'pending', message: 'Downloading video...' });
+            updateProgress({ 
+                status: 'processing', 
+                message: 'Downloading video...',
+                progress: 10
+            });
             fileId = await downloadVideo(url);
 
             // 2. Generate transcript
             updateProgress({
-                status: 'pending',
+                status: 'processing',
                 message: 'Generating transcript...',
+                progress: 40
             });
             const transcript = await generateTranscript(fileId);
 
@@ -83,7 +88,11 @@ export async function outputSummary({
             }
 
             // 3. Generate summary and delete video in parallel
-            updateProgress({ status: 'pending', message: 'Generating summary...' });
+            updateProgress({ 
+                status: 'processing', 
+                message: 'Generating summary...',
+                progress: 70
+            });
             const [, summary] = await Promise.all([
                 deleteVideo(fileId).then(() => fileId = undefined), 
                 generateSummary(transcript, words, additionalPrompt),
