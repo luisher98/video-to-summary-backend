@@ -10,7 +10,7 @@ import { CookieHandler } from '../../utils/cookieHandler.js';
 ffmpeg.setFfmpegPath(getFfmpegPath());
 
 // Define types for youtube-dl-exec options
-interface DownloadOptions {
+interface DownloadOptions extends Record<string, unknown> {
     extractAudio?: boolean;
     audioFormat?: string;
     output?: string;
@@ -24,12 +24,12 @@ interface DownloadOptions {
 /**
  * Converts camelCase object keys to kebab-case for yt-dlp
  */
-function toYtDlpOptions(options: Record<string, any>): Record<string, any> {
+function toYtDlpOptions(options: Record<string, unknown>): Record<string, unknown> {
     return Object.entries(options).reduce((acc, [key, value]) => {
         const kebabKey = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
         acc[kebabKey] = value;
         return acc;
-    }, {} as Record<string, any>);
+    }, {} as Record<string, unknown>);
 }
 
 /**
@@ -45,11 +45,9 @@ async function downloadWithOptions(videoUrl: string, outputFilePath: string): Pr
         output: outputFilePath,
         preferFreeFormats: true,
         ffmpegLocation: getFfmpegPath(),
-        ...(process.env.NODE_ENV === 'production' 
-            ? { verbose: true, quiet: false }
-            : { verbose: false, quiet: true }
-        ),
-        ...cookieOptions
+        verbose: true, // Enable verbose output for debugging
+        quiet: false,
+        ...(cookieOptions.cookies ? cookieOptions : {}) // Only add cookies if they exist
     };
 
     // Simplified logging
@@ -61,22 +59,47 @@ async function downloadWithOptions(videoUrl: string, outputFilePath: string): Pr
 
     try {
         const ytDlpOptions = toYtDlpOptions(options);
-        await youtubedl.exec(videoUrl, ytDlpOptions);
         
+        // Add debug info
+        console.log('Using yt-dlp options:', ytDlpOptions);
+        
+        // Execute with stderr pipe to capture error details
+        const process = youtubedl.exec(videoUrl, ytDlpOptions);
+        
+        // Log stderr for debugging
+        process.stderr?.on('data', (data: Buffer) => {
+            console.log('yt-dlp stderr:', data.toString());
+        });
+
+        await process;
+        
+        // Verify file exists
         await fs.access(outputFilePath);
         console.log(`Successfully downloaded: ${outputFilePath}`);
     } catch (err) {
         const errorMsg = err instanceof Error ? err.message : String(err);
         
-        // Simplified error logging
-        if (errorMsg.includes('Sign in') || errorMsg.includes('cookie')) {
-            throw new DownloadError('YouTube requires authentication. Please check your cookies configuration.');
+        // Only log error once
+        console.error('Download failed:', {
+            error: errorMsg,
+            videoUrl,
+            outputPath: outputFilePath
+        });
+
+        // Handle specific error cases
+        if (errorMsg.includes('Sign in') || errorMsg.includes('cookie') || errorMsg.includes('Private video')) {
+            if (cookieOptions.cookies) {
+                throw new DownloadError('YouTube requires authentication. Please check your cookies configuration.');
+            } else {
+                throw new DownloadError('This video requires authentication. Please provide YouTube cookies.');
+            }
         }
         
         if (errorMsg.includes('no such option')) {
             throw new DownloadError('Configuration error: Invalid yt-dlp options');
         }
         
+        // Include any stderr output in the error message
         throw new DownloadError(`Download failed: ${errorMsg}`);
     }
 }
@@ -194,7 +217,7 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
     try {
         const cookieOptions = await CookieHandler.processYouTubeCookies();
 
-        const options = {
+        const options: Record<string, unknown> = {
             extractAudio: true,
             audioFormat: 'mp3',
             output: '-',
@@ -208,7 +231,7 @@ export async function downloadAudio(url: string): Promise<PassThrough> {
             const kebabKey = key.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
             acc[kebabKey] = value;
             return acc;
-        }, {} as Record<string, any>);
+        }, {} as Record<string, unknown>);
 
         const subprocess = youtubedl.exec(url, ytDlpOptions);
 

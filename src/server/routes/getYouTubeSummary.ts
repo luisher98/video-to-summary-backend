@@ -21,7 +21,7 @@ import { handleError } from '../../utils/errorHandling.js';
  *   "content": "Summary text..."
  * }
  */
-export default async function getSummary(req: Request, res: Response) {
+export default async function getYouTubeSummary(req: Request, res: Response) {
     const startTime = Date.now();
     const inputUrl = req.query.url as string;
     const words = Number(req.query.words) as number;

@@ -18,7 +18,7 @@ import { ProgressUpdate } from "../../types/global.types.js";
  * data: {"status": "pending", "message": "Generating transcript..."}
  * data: {"status": "done", "message": "Summary text..."}
  */
-export default async function getSummarySSE(req: Request, res: Response) {
+export default async function getYouTubeSummarySSE(req: Request, res: Response) {
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");

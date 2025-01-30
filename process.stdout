@@ -640,3 +640,19 @@ Successfully generated summary: {
   userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
   timestamp: [32m'2025-01-28T21:45:49.275Z'[39m
 }
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Successfully processed YouTube cookies
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'./src/tmp/audios//N_ZNfuCdkUo.mp3'[39m,
+  hasCookies: [33mtrue[39m
+}
+Successfully downloaded: ./src/tmp/audios//N_ZNfuCdkUo.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-01-29T01:41:47.873Z'[39m
+}

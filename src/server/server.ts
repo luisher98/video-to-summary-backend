@@ -1,7 +1,8 @@
 import express, { NextFunction } from 'express';
 import getVideoInfo from './routes/getVideoInfo.js';
-import getSummary from './routes/getSummary.js';
-import getSummarySSE from './routes/getSummarySSE.js';
+import getYouTubeSummary from './routes/getYouTubeSummary.js';
+import getYouTubeSummarySSE from './routes/getYouTubeSummarySSE.js';
+import uploadSummarySSE from './routes/uploadSummarySSE.js';
 import getTranscript from './routes/getTranscript.js';
 import getTestSSE from './routes/getTestSSE.js';
 import { handleUncaughtErrors } from '../utils/errorHandling.js';
@@ -9,6 +10,7 @@ import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
 import cors from 'cors';
 import helmet from 'helmet';
+import { initializeTempDirs, clearAllTempDirs } from '../utils/utils.js';
 
 // Configuration constants
 const CONFIG = {
@@ -23,6 +25,10 @@ const CONFIG = {
     },
     queue: {
         maxConcurrentRequests: 2
+    },
+    tempFiles: {
+        cleanupInterval: 60 * 60 * 1000, // 1 hour
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
     },
     exampleVideoId: 'N-ZNfuCdkUo' 
 } as const;
@@ -61,7 +67,7 @@ app.use(helmet());
 // CORS configuration
 const corsOptions = {
     origin: '*',  // Allow all origins for now
-    methods: ['GET'],
+    methods: ['GET', 'POST'],  // Add POST for file uploads
     optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
@@ -145,16 +151,18 @@ const requestQueueMiddleware = async (
 // API Routes
 const apiRoutes = {
     info: '/api/info',
-    summary: '/api/summary',
-    summarySSE: '/api/summary-sse',
+    youtubeSummary: '/api/youtube-summary',
+    youtubeSummarySSE: '/api/youtube-summary-sse',
+    uploadSummarySSE: '/api/upload-summary-sse',
     transcript: '/api/transcript',
     testSSE: '/api/test-sse'
 } as const;
 
 // Configure routes
 app.get(apiRoutes.info, getVideoInfo);
-app.get(apiRoutes.summary, requestQueueMiddleware as express.RequestHandler, getSummary);
-app.get(apiRoutes.summarySSE, requestQueueMiddleware as express.RequestHandler, getSummarySSE);
+app.get(apiRoutes.youtubeSummary, requestQueueMiddleware as express.RequestHandler, getYouTubeSummary);
+app.get(apiRoutes.youtubeSummarySSE, requestQueueMiddleware as express.RequestHandler, getYouTubeSummarySSE);
+app.post(apiRoutes.uploadSummarySSE, requestQueueMiddleware as express.RequestHandler, uploadSummarySSE);
 app.get(apiRoutes.transcript, requestQueueMiddleware as express.RequestHandler, getTranscript);
 app.get(apiRoutes.testSSE, getTestSSE);
 
@@ -162,11 +170,21 @@ app.get(apiRoutes.testSSE, getTestSSE);
  * Starts the server and configures error handling.
  * Sets up routes, middleware, and request queue.
  */
-export function startServer(): void {
+export async function startServer(): Promise<void> {
     if (serverInstance) {
         console.log('Server is already running');
         return;
     }
+
+    // Initialize temp directories
+    await initializeTempDirs();
+
+    // Set up periodic temp file cleanup
+    const cleanupInterval = setInterval(() => {
+        clearAllTempDirs(CONFIG.tempFiles.maxAge).catch(error => {
+            console.error('Error during temp file cleanup:', error);
+        });
+    }, CONFIG.tempFiles.cleanupInterval);
 
     // Only log once per cluster
     const shouldLog = !process.env.NODE_APP_INSTANCE || process.env.NODE_APP_INSTANCE === '0';
@@ -174,7 +192,7 @@ export function startServer(): void {
     serverInstance = app.listen(CONFIG.port, () => {
         if (shouldLog) {
             console.log(`Server running on ${CONFIG.url}`);
-            console.log(`Example endpoint: ${CONFIG.url}/api/summary-sse/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+            console.log(`Example endpoint: ${CONFIG.url}/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
         }
     });
 
@@ -188,6 +206,12 @@ export function startServer(): void {
     });
 
     handleUncaughtErrors(serverInstance);
+
+    // Clean up on process termination
+    process.on('SIGTERM', () => {
+        clearInterval(cleanupInterval);
+        stopServer().catch(console.error);
+    });
 }
 
 /**
@@ -203,14 +227,22 @@ export function stopServer(): Promise<void> {
             return;
         }
 
-        serverInstance.close((err) => {
+        serverInstance.close(async (err) => {
             if (err) {
                 reject(err);
                 return;
             }
-            serverInstance = null;
-            activeRequests.clear();
-            resolve();
+            
+            try {
+                // Clean up temp files on shutdown
+                await clearAllTempDirs(0); // 0 means delete all files regardless of age
+                serverInstance = null;
+                activeRequests.clear();
+                resolve();
+            } catch (cleanupError) {
+                console.error('Error cleaning up temp files:', cleanupError);
+                reject(cleanupError);
+            }
         });
     });
 }

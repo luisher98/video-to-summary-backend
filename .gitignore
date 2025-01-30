@@ -1,5 +1,18 @@
 # custom
 src/mocks/
+joji.mp4
+
+# Temporary files
+tmp/
+**/tmp/
+tmp/*
+**/tmp/*
+
+# macOS
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
 
 # Logs
 logs

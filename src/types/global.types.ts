@@ -7,6 +7,7 @@ export interface ProgressUpdate {
     /** Progress message or result */
     message: string;
     error?: string;
+    progress?: number; // Percentage of completion (0-100)
 }
 
 /**
