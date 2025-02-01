@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - youtube-summary-api
+name: Build and deploy Node.js app to Azure Web App - video-to-summary-api
 
 on:
   push:
@@ -61,7 +61,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'youtube-summary-api'
+          app-name: 'video-to-summary-api'
           slot-name: 'Production'
           startup-command: |
             mkdir -p ./tmp/audios ./tmp/uploads ./tmp/sessions && 

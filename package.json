@@ -1,11 +1,11 @@
 {
-  "name": "yt-summary-api",
+  "name": "video-to-summary-api",
   "author": {
     "name": "Luis Hernández Martín",
     "email": "luisheratm@gmail.com"
   },
   "version": "1.0.0",
-  "description": "API for the YouTube Summary App",
+  "description": "API for the Video to Summary App",
   "private": true,
   "type": "module",
   "scripts": {
