@@ -89,6 +89,8 @@ I've implemented:
 
 ## API Design
 
+
+
 ### Generate YouTube Summary (SSE)
 ```http
 GET /api/youtube-summary-sse?url=<YouTube-URL>&words=<number>&prompt=<optional-prompt>
@@ -123,6 +125,79 @@ GET /api/info?url=<YouTube-URL>
 ```
 Validates and retrieves video metadata
 
+## CLI Interface
+
+I've also built a command-line interface for easier interaction with the API. The CLI provides real-time progress updates and server monitoring capabilities.
+
+### Available Commands
+
+```bash
+YouTubeSummary > help
+
+Available commands:
+  - summary <url> [--words=<number>] [--prompt=<text>] [--save=<filename>]
+    Generate a summary of a YouTube video
+    
+  - transcript <url> [--save=<filename>]
+    Get the transcript of a YouTube video
+    
+  - monitor
+    Start real-time server monitoring (CPU, Memory, Requests)
+    
+  - status
+    Check server status
+    
+  - stop
+    Stop the server
+    
+  - help
+    Display this help message
+    
+  - quit, q
+    Exit the CLI
+```
+
+### Using the CLI
+
+1. **Generate Summary**
+   ```bash
+   YouTubeSummary > summary https://youtube.com/watch?v=example --words=300
+   ```
+   Options:
+   - `--words`: Number of words in summary (default: 400)
+   - `--prompt`: Custom instructions for the AI
+   - `--save`: Save output to a file
+
+2. **Get Transcript**
+   ```bash
+   YouTubeSummary > transcript https://youtube.com/watch?v=example --save=output.txt
+   ```
+
+3. **Monitor Server**
+   ```bash
+   YouTubeSummary > monitor
+   ```
+   Shows real-time:
+   - CPU usage
+   - Memory consumption
+   - Active requests
+   - Queue status
+
+### CLI Structure
+```
+src/cli/
+├── commands/           # Command implementations
+│   ├── help.ts        # Help command
+│   ├── monitor.ts     # Server monitoring
+│   ├── status.ts      # Server status
+│   ├── stop.ts        # Server control
+│   └── videoProcessing.ts  # Video commands
+├── style/             # CLI styling
+├── utils/             # CLI utilities
+├── cli.ts            # Main CLI setup
+└── parser.ts         # Command parsing
+```
+
 ## Implementation
 
 ### Project Structure
@@ -153,47 +228,10 @@ src/
     └── environment.ts                # Environment configuration
 ```
 
-### Key Components
-
-1. **Server Configuration**
-```typescript
-const CONFIG = {
-    port: process.env.PORT || 5050,
-    rateLimit: {
-        windowMs: 1 * 60 * 1000,  // 1 minute
-        maxRequests: 10
-    },
-    queue: {
-        maxConcurrentRequests: 2
-    },
-    tempFiles: {
-        cleanupInterval: 60 * 60 * 1000,  // 1 hour
-        maxAge: 24 * 60 * 1000  // 24 hours
-    }
-}
-```
-
-2. **Progress Updates**
-```typescript
-interface ProgressUpdate {
-    status: 'uploading' | 'processing' | 'done' | 'error';
-    message?: string;
-    error?: string;
-    progress: number;  // 0-100
-}
-```
-
-3. **File Processing**
-```typescript
-const MEMORY_LIMIT = 200 * 1024 * 1024;  // 200MB
-const MAX_FILE_SIZE = 500 * 1024 * 1024;  // 500MB
-const CHUNK_SIZE = 50 * 1024 * 1024;      // 50MB chunks
-```
-
 <details>
-<summary>## Security & Implementation</summary>
+<summary>Security & Implementation</summary>
 
-### Security Overview
+## Security Overview
 I've implemented comprehensive security measures throughout the application, following industry best practices and OWASP guidelines.
 
 ### Security Measures Implementation
@@ -247,8 +285,8 @@ Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org
 - [x] **Implement Brute Force Protection**: Using rate limiting
 - [x] **Use Secure Headers**: Set via `helmet`
 - [x] **Implement Proper Session Handling**: Using SSE for real-time updates
-- [ ] **Use Strong Password Policy**: Not applicable (no user authentication)
-- [ ] **Implement MFA**: Not applicable (no user authentication)
+- [-] **Use Strong Password Policy**: Not applicable (no user authentication)
+- [-] **Implement MFA**: Not applicable (no user authentication)
 
 #### 3. Input Validation
 - [x] **Validate All Inputs**: Implemented for URLs and file uploads
@@ -304,35 +342,6 @@ Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org
 - [x] **Implement Cleanup**: Automatic temp file removal
 - [x] **Use Proper Permissions**: Secure file operations
 - [x] **Handle Storage Securely**: Azure Blob Storage integration
-
-### Error Recovery System
-
-I implemented a comprehensive error handling system:
-
-1. **Error Categories**
-   - Download failures
-   - Processing errors
-   - Storage issues
-   - API timeouts
-   - Rate limit errors
-
-2. **Recovery Strategies**
-   - Automatic retries for transient failures
-   - Fallback download methods
-   - Cleanup on failure
-   - Detailed error reporting
-
-3. **Error Response Format**
-   ```typescript
-   interface ErrorResponse {
-     error: {
-       message: string;
-       details?: string;
-       code?: string;
-     };
-     requestId?: string;
-   }
-   ```
 
 </details>
 
