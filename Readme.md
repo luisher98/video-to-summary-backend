@@ -89,7 +89,8 @@ I've implemented:
 
 ## API Design
 
-![image](https://github.com/user-attachments/assets/3ba6548e-0504-4b5e-8360-463231539bab)
+![youtube summary](https://github.com/user-attachments/assets/056fcf55-6111-4835-a5f4-38d367dba713)
+
 
 
 ### Generate YouTube Summary (SSE)
