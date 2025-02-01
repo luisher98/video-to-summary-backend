@@ -1,26 +1,80 @@
-# YouTube Summary API
+# Video to Summary API
 
-AI-powered API that generates concise summaries and transcripts from YouTube videos and uploaded video files using OpenAI's GPT and Whisper models.
+## Project Overview
 
-## Architecture Overview
+I built this API to solve a common problem: getting quick, accurate summaries of video content. Whether it's a YouTube video or an uploaded file, this service can transcribe it and generate an AI-powered summary. What makes it special is the real-time progress tracking and flexible storage options I implemented.
 
-### Core Services
-I've structured the application around these key services:
-- **Summary Service**: Orchestrates video processing, transcription, and AI summarization
-- **Video Service**: Handles YouTube video downloads, file uploads, and audio extraction
-- **OpenAI Service**: Manages interactions with GPT and Whisper APIs
-- **Info Service**: Retrieves and validates YouTube video metadata
-- **Storage Service**: Manages file storage (local and Azure Blob Storage with managed identity support)
+## Why I Built This
 
-### Technical Stack
-I've chosen these technologies:
-- **Backend**: Node.js with TypeScript
-- **Framework**: Express.js with middleware architecture
-- **AI Integration**: OpenAI GPT-4 and Whisper APIs
-- **Cloud Storage**: Azure Blob Storage with managed identity
-- **Process Management**: PM2 for production reliability
-- **Testing**: Jest with separate development/production configs
-- **Security**: Rate limiting, CORS, and Helmet implementation
+During my learning journey with AI and cloud services, I noticed that while there were many transcription services and summarization tools, few combined both with real-time progress updates and robust error handling. I wanted to create something that could:
+- Handle both YouTube videos and direct file uploads
+- Show real-time progress instead of making users wait blindly
+- Scale well with cloud storage when needed
+- Maintain high security standards
+- Provide accurate, useful summaries
+
+## Core Architecture
+
+I structured the application around several key services, each handling a specific part of the video processing pipeline:
+
+### 1. Summary Service (`src/services/summary/`)
+This is the brain of the operation. It:
+- Coordinates the entire video processing workflow
+- Manages the transcription and summarization pipeline
+- Handles real-time progress updates via Server-Sent Events (SSE)
+
+Key files:
+- `outputSummary.ts`: Orchestrates the summary generation process
+- `videoTools.ts`: Handles video download and processing
+- `fileUploadSummary.ts`: Manages file upload processing
+
+### 2. Storage Service (`src/services/storage/`)
+I implemented a hybrid storage approach:
+- Small files (≤100MB) are processed locally for speed
+- Larger files are automatically routed to Azure Blob Storage
+- Uses Azure managed identity in production for better security
+
+The main logic is in `azureStorage.ts`, which handles:
+- Secure file uploads to Azure
+- Automatic cleanup of processed files
+- Stream-based file handling for better memory usage
+
+### 3. API Layer (`src/server/`)
+I built the API with Express.js, focusing on:
+- Clean route organization
+- Comprehensive error handling
+- Real-time progress updates using SSE
+- Rate limiting and security middleware
+
+Key endpoints:
+```http
+GET  /api/youtube-summary-sse   # YouTube video summaries with progress updates
+POST /api/upload-summary-sse    # File upload summaries with progress updates
+GET  /api/transcript            # Raw video transcription
+GET  /api/info                  # Video metadata retrieval
+```
+
+## Technical Stack & Why I Chose It
+
+1. **TypeScript & Node.js**
+   - Type safety helped me catch errors early
+   - Great ecosystem for video processing
+   - Excellent async/await support for complex operations
+
+2. **Express.js**
+   - Familiar and battle-tested
+   - Great middleware ecosystem
+   - Easy to implement SSE
+
+3. **Azure Blob Storage**
+   - Reliable for large file handling
+   - Managed identity support for better security
+   - Cost-effective for my needs
+
+4. **OpenAI's GPT-4 & Whisper**
+   - Whisper provides accurate transcriptions
+   - GPT-4 generates high-quality summaries
+   - Easy to extend with custom prompts
 
 ## Features
 
@@ -37,7 +91,7 @@ I've implemented:
 
 ### Generate YouTube Summary (SSE)
 ```http
-GET /api/youtube-summary-sse?url=<YouTube-URL>&words=<number>
+GET /api/youtube-summary-sse?url=<YouTube-URL>&words=<number>&prompt=<optional-prompt>
 ```
 Streams real-time progress updates during:
 1. Video download and processing
@@ -74,145 +128,220 @@ Validates and retrieves video metadata
 ### Project Structure
 ```
 src/
-├── services/         # Core business logic
-│   ├── summary/      # Video processing and AI integration
-│   ├── info/         # YouTube metadata handling
-│   ├── storage/      # File storage management
-│   └── openai/       # AI service integration
-├── middleware/       # Express middleware
-├── utils/            # Shared utilities
-├── types/            # TypeScript definitions
-└── config/           # Configuration management
+├── server/
+│   ├── routes/
+│   │   ├── getYouTubeSummarySSE.ts   # SSE endpoint for YouTube videos
+│   │   ├── uploadSummarySSE.ts       # SSE endpoint for file uploads
+│   │   ├── getTranscript.ts          # Transcript generation
+│   │   ├── getVideoInfo.ts           # Video metadata
+│   │   └── getTestSSE.ts             # Test endpoint
+│   └── server.ts                     # Main server setup
+├── services/
+│   ├── summary/
+│   │   ├── outputSummary.ts          # Summary generation logic
+│   │   ├── videoTools.ts             # Video processing utilities
+│   │   └── fileUploadSummary.ts      # File upload handling
+│   └── storage/
+│       └── azureStorage.ts           # Azure storage integration
+├── utils/
+│   ├── errorHandling.ts              # Error management
+│   ├── logger.ts                     # Logging utilities
+│   └── utils.ts                      # Common utilities
+├── types/
+│   └── global.types.ts               # TypeScript definitions
+└── config/
+    └── environment.ts                # Environment configuration
 ```
 
-### Development Workflow
+### Key Components
 
-1. **Setup**
-```bash
-git clone https://github.com/luisher98/youtube-summary-api.git
-cd youtube-summary-api
-npm install
+1. **Server Configuration**
+```typescript
+const CONFIG = {
+    port: process.env.PORT || 5050,
+    rateLimit: {
+        windowMs: 1 * 60 * 1000,  // 1 minute
+        maxRequests: 10
+    },
+    queue: {
+        maxConcurrentRequests: 2
+    },
+    tempFiles: {
+        cleanupInterval: 60 * 60 * 1000,  // 1 hour
+        maxAge: 24 * 60 * 1000  // 24 hours
+    }
+}
 ```
 
-2. **Configuration**
-Create a `.env` file:
-```env
-# OpenAI API Key
-OPENAI_API_KEY=your_openai_api_key_here
-
-# Azure Storage Configuration
-AZURE_STORAGE_ACCOUNT_NAME=your_storage_account_name_here
-AZURE_STORAGE_CONTAINER_NAME=video-uploads
-
-# Azure Identity Configuration (Optional - for local development)
-AZURE_TENANT_ID=your_tenant_id_here
-AZURE_CLIENT_ID=your_client_id_here
-AZURE_CLIENT_SECRET=your_client_secret_here
-
-# File Size Configuration
-MAX_LOCAL_FILESIZE_MB=100
-
-# Server Configuration
-PORT=5050
-NODE_ENV=development
-TEMP_DIR=./tmp
-
-# Optional: YouTube Cookie Configuration
-YOUTUBE_COOKIE_FILE=cookies.txt
+2. **Progress Updates**
+```typescript
+interface ProgressUpdate {
+    status: 'uploading' | 'processing' | 'done' | 'error';
+    message?: string;
+    error?: string;
+    progress: number;  // 0-100
+}
 ```
 
-3. **Development**
-```bash
-npm run dev      # Start development server
-npm test        # Run test suite
-npm run build   # Build for production
-npm start       # Run production server
+3. **File Processing**
+```typescript
+const MEMORY_LIMIT = 200 * 1024 * 1024;  // 200MB
+const MAX_FILE_SIZE = 500 * 1024 * 1024;  // 500MB
+const CHUNK_SIZE = 50 * 1024 * 1024;      // 50MB chunks
 ```
 
-## File Upload Features
+<details>
+<summary>## Security & Implementation</summary>
 
-### Storage Strategy
-- Files ≤ 100MB: Stored locally for processing
-- Files > 100MB: Uploaded to Azure Blob Storage
-- Configurable threshold via `MAX_LOCAL_FILESIZE_MB`
+### Security Overview
+I've implemented comprehensive security measures throughout the application, following industry best practices and OWASP guidelines.
 
-### Azure Storage Authentication
-The service supports two authentication methods:
-1. **Managed Identity** (Recommended for production)
-   - Uses Azure AD managed identity when deployed to Azure
-   - No credentials needed in configuration
-   - Automatic credential management
+### Security Measures Implementation
 
-2. **Service Principal** (For development/testing)
-   - Uses Azure AD service principal credentials
-   - Requires `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, and `AZURE_CLIENT_SECRET`
-   - Only needed for local development
+1. **API Security**
+   - Rate limiting per IP (10 requests/minute)
+   - Request validation and sanitization
+   - Security headers via Helmet
+   - CORS configuration
+   - Input sanitization
 
-### Supported Formats
-- All common video formats (MP4, MOV, AVI, etc.)
-- Maximum file size: 500MB
-- Files are automatically converted to MP3 for processing
+2. **File Security**
+   - Type validation
+   - Size limits (500MB max)
+   - Virus scanning
+   - Secure file naming
+   - Automatic cleanup
+   - Stream-based processing
 
-### Security Measures
-- File type validation
-- Size limits
-- Automatic cleanup
-- Secure cloud storage with managed identity
-- No storage account keys in configuration
+3. **Cloud Security**
+   - Azure managed identity in production
+   - Temporary access tokens
+   - Minimal permission scope
+   - Secure URL generation
+   ```typescript
+   // Example of secure URL generation
+   const blobClient = containerClient.getBlobClient(blobName);
+   const sasUrl = await blobClient.generateSasUrl({
+     permissions: BlobSASPermissions.from({ read: true }),
+     expiresOn: new Date(new Date().valueOf() + 3600 * 1000),
+   });
+   ```
 
-## Error Handling
+4. **Environment Security**
+   - Separate configs per environment
+   - Secret rotation
+   - Access logging
+   - Error monitoring
 
-The API implements a comprehensive error handling system:
-- Custom error classes for specific scenarios
-- Consistent error response format
-- Detailed logging for debugging
-- Graceful fallbacks for service failures
+### Security Checklist
+Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html), here's what I've implemented:
 
-## Security Measures
+#### 1. HTTP Security
+- [x] **Set Security HTTP Headers**: Implemented using `helmet` middleware
+- [x] **Implement Rate Limiting**: Using `express-rate-limit` with 10 requests per minute
+- [x] **Use TLS**: HTTPS enforced in production
+- [x] **Use CORS**: Implemented with `cors` middleware
+- [ ] **Use CSP**: Content Security Policy needs to be configured
 
-- Rate limiting per IP
-- Request validation
-- Security headers via Helmet
-- CORS configuration
-- Environment variable protection
-- Cookie-based authentication
-- File upload restrictions
-- Azure managed identity for secure storage access
+#### 2. Authentication & Session Management
+- [x] **Implement Brute Force Protection**: Using rate limiting
+- [x] **Use Secure Headers**: Set via `helmet`
+- [x] **Implement Proper Session Handling**: Using SSE for real-time updates
+- [ ] **Use Strong Password Policy**: Not applicable (no user authentication)
+- [ ] **Implement MFA**: Not applicable (no user authentication)
+
+#### 3. Input Validation
+- [x] **Validate All Inputs**: Implemented for URLs and file uploads
+- [x] **Sanitize User Input**: Using input validation middleware
+- [x] **Implement File Upload Validation**: 
+  - File size limits
+  - Type checking
+  - Secure file naming
+  - Automatic cleanup
+- [x] **Use Parameterized Queries**: Not applicable (no database)
+
+#### 4. Data Security
+- [x] **Secure File Uploads**: 
+  - Size limits enforced
+  - Type validation
+  - Streaming for large files
+- [x] **Implement Access Controls**: Using Azure managed identity
+- [x] **Secure Temporary Files**: 
+  - Automatic cleanup
+  - Secure naming
+  - Proper permissions
+- [x] **Handle Secrets Securely**: Using environment variables
+
+#### 5. Error Handling
+- [x] **Implement Global Error Handler**: Using custom error handling middleware
+- [x] **Use Custom Error Classes**: Implemented in `errorHandling.ts`
+- [x] **Hide Error Details**: Sanitized error messages in production
+- [x] **Log Errors Properly**: Using structured logging
+
+#### 6. Security Misconfiguration
+- [x] **Use Security Middleware**: Helmet configured
+- [x] **Set Proper CORS**: Configured for API endpoints
+- [x] **Remove Unnecessary Routes**: Only essential endpoints exposed
+- [x] **Update Dependencies**: Regular security audits with `npm audit`
+
+#### 7. Logging & Monitoring
+- [x] **Implement Request Logging**: Using logging middleware
+- [x] **Monitor File Operations**: Tracking file processing
+- [x] **Track API Usage**: Rate limit monitoring
+- [ ] **Set Up Alerts**: Needs implementation
+
+#### 8. Dependencies
+- [x] **Regular Security Updates**: Using `npm audit`
+- [x] **Minimize Dependencies**: Only essential packages used
+- [x] **Use Exact Versions**: Package versions locked
+- [ ] **Implement SCA**: Need to add automated scanning
+
+#### 9. File System Operations
+- [x] **Secure File Handling**:
+  - Path validation
+  - Type checking
+  - Size limits
+- [x] **Implement Cleanup**: Automatic temp file removal
+- [x] **Use Proper Permissions**: Secure file operations
+- [x] **Handle Storage Securely**: Azure Blob Storage integration
+
+### Error Recovery System
+
+I implemented a comprehensive error handling system:
+
+1. **Error Categories**
+   - Download failures
+   - Processing errors
+   - Storage issues
+   - API timeouts
+   - Rate limit errors
+
+2. **Recovery Strategies**
+   - Automatic retries for transient failures
+   - Fallback download methods
+   - Cleanup on failure
+   - Detailed error reporting
+
+3. **Error Response Format**
+   ```typescript
+   interface ErrorResponse {
+     error: {
+       message: string;
+       details?: string;
+       code?: string;
+     };
+     requestId?: string;
+   }
+   ```
+
+</details>
 
 ## Author
 
-Luis Hernández Martín  
-luisheratm@gmail.com
+Luis Hernández Martín
+- GitHub: [@luisher98](https://github.com/luisher98)
+- Email: luisheratm@gmail.com
 
 ## License
 
 MIT
-
-## Important Notes
-
-I recently encountered an issue where `@distube/ytdl-core` stopped working on server deployments (Azure, AWS, etc.). This likely happened because Google's bot detection started flagging data center IP addresses more aggressively.
-
-### My Solution
-I've implemented `youtube-dl-exec` ([npm package](https://www.npmjs.com/package/youtube-dl-exec)) as a workaround. This library:
-- Uses `yt-dlp` under the hood, which better handles YouTube's restrictions
-- Provides better handling of rate limits and IP blocks
-- Requires Python 3.7+ on the system
-- Offers more configuration options for bypassing restrictions
-
-### Implementation Details
-I've maintained both implementations in the codebase:
-- Kept the original `@distube/ytdl-core` code for when YouTube possibly relaxes their restrictions
-- Added new `youtube-dl-exec` implementation for current production use
-- May implement an automatic fallback mechanism in future versions
-
-### Requirements
-To use my current version, you'll need:
-- Python 3.7 or higher installed
-- Node.js 16 or higher
-- Proper environment variables set (see Configuration section)
-
-### Known Issues
-In my testing, I've found:
-- Some cloud providers need extra configuration for Python
-- First-time downloads are slower due to yt-dlp binary installation
-- Rate limiting still happens but less frequently than with ytdl-core
