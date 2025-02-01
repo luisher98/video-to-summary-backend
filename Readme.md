@@ -4,6 +4,8 @@
 
 I built this API to solve a common problem: getting quick, accurate summaries of video content. Whether it's a YouTube video or an uploaded file, this service can transcribe it and generate an AI-powered summary. What makes it special is the real-time progress tracking and flexible storage options I implemented.
 
+I'm also building a [front end for this project](https://github.com/luisher98/video-to-summary-app).
+
 ## Why I Built This
 
 During my learning journey with AI and cloud services, I noticed that while there were many transcription services and summarization tools, few combined both with real-time progress updates and robust error handling. I wanted to create something that could:
@@ -274,8 +276,40 @@ I've implemented comprehensive security measures throughout the application, fol
    - Access logging
    - Error monitoring
 
+## TODO Checklist
+
+### High Priority
+- [ ] **Fix YouTube Download in Production**
+  - [ ] Implement IP rotation system
+  - [ ] Add proxy support for server deployments
+  - [x] Create fallback mechanism between different download methods
+  - [ ] Add retry mechanism with exponential backoff
+
+### Core Features
+- [ ] **Platform Support**
+  - [ ] Vimeo integration
+  - [ ] Dailymotion support
+  - [ ] Add support for playlists
+
+- [ ] **Enhanced Summary Generation**
+  - [ ] Support for longer videos (>2 hours)
+
+### Security
+- [ ] **Critical Security Updates**
+  - [ ] Implement Content Security Policy (CSP)
+  - [ ] Add API key authentication
+  - [ ] Set up automated security scanning
+
+### Testing
+- [ ] **Essential Testing**
+  - [ ] Add end-to-end tests
+  - [ ] Add TypeScript strict mode
+
+</details>
+
+
 ### Security Checklist
-Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html), here's what I've implemented:
+Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html), here's what I've implemented and what is pending:
 
 #### 1. HTTP Security
 - [x] **Set Security HTTP Headers**: Implemented using `helmet` middleware
@@ -357,3 +391,4 @@ Luis Hernández Martín
 ## License
 
 MIT
+
