@@ -206,32 +206,93 @@ src/cli/
 ## Implementation
 
 ### Project Structure
+The project follows a modular architecture with clear separation of concerns:
+
 ```
 src/
-├── server/
-│   ├── routes/
-│   │   ├── getYouTubeSummarySSE.ts   # SSE endpoint for YouTube videos
-│   │   ├── uploadSummarySSE.ts       # SSE endpoint for file uploads
-│   │   ├── getTranscript.ts          # Transcript generation
-│   │   ├── getVideoInfo.ts           # Video metadata
-│   │   └── getTestSSE.ts             # Test endpoint
-│   └── server.ts                     # Main server setup
-├── services/
-│   ├── summary/
-│   │   ├── outputSummary.ts          # Summary generation logic
-│   │   ├── videoTools.ts             # Video processing utilities
-│   │   └── fileUploadSummary.ts      # File upload handling
-│   └── storage/
-│       └── azureStorage.ts           # Azure storage integration
-├── utils/
-│   ├── errorHandling.ts              # Error management
-│   ├── logger.ts                     # Logging utilities
-│   └── utils.ts                      # Common utilities
-├── types/
-│   └── global.types.ts               # TypeScript definitions
-└── config/
-    └── environment.ts                # Environment configuration
+├── server/                          # API Server Implementation
+│   ├── routes/                      # API Route Handlers
+│   │   ├── getYouTubeSummarySSE.ts  # YouTube video summary endpoint with SSE
+│   │   ├── uploadSummarySSE.ts      # File upload summary endpoint with SSE
+│   │   ├── getTranscript.ts         # Video transcription endpoint
+│   │   ├── getVideoInfo.ts          # Video metadata retrieval
+│   │   └── getTestSSE.ts            # SSE testing endpoint
+│   └── server.ts                    # Express server setup & middleware config
+│
+├── services/                        # Core Business Logic
+│   ├── summary/                     # Video Processing & Summarization
+│   │   ├── outputSummary.ts         # Main summary generation orchestrator
+│   │   ├── videoTools.ts            # Video download & processing utilities
+│   │   └── fileUploadSummary.ts     # File upload processing logic
+│   └── storage/                     # Storage Management
+│       └── azureStorage.ts          # Azure Blob Storage integration
+│
+├── utils/                          # Shared Utilities
+│   ├── errorHandling.ts            # Custom error classes & handlers
+│   ├── logger.ts                   # Structured logging configuration
+│   └── utils.ts                    # General utility functions
+│
+├── types/                         # TypeScript Type Definitions
+│   └── global.types.ts            # Shared type definitions & interfaces
+│
+├── config/                        # Configuration Management
+│   └── environment.ts             # Environment variables & app config
+│
+├── cli/                          # Command Line Interface
+│   ├── commands/                 # CLI Command Implementations
+│   │   ├── help.ts              # Help command & documentation
+│   │   ├── monitor.ts           # Server monitoring utilities
+│   │   ├── status.ts            # Server status checks
+│   │   ├── stop.ts             # Server control functions
+│   │   └── videoProcessing.ts   # Video processing commands
+│   ├── style/                   # CLI Styling & UI Components
+│   ├── utils/                   # CLI-specific utilities
+│   ├── cli.ts                   # Main CLI application setup
+│   └── parser.ts                # Command parsing & validation
 ```
+
+#### Key Directories
+
+1. **`server/`**: Express.js server implementation
+   - Routes are organized by functionality
+   - Each route handler is isolated for maintainability
+   - Implements SSE for real-time progress updates
+
+2. **`services/`**: Core business logic
+   - `summary/`: Video processing pipeline
+     - Handles video download, transcription, and summarization
+     - Manages progress tracking and error handling
+   - `storage/`: File storage management
+     - Implements hybrid storage strategy (local/cloud)
+     - Handles secure file operations
+
+3. **`utils/`**: Shared utilities
+   - Error handling with custom error classes
+   - Structured logging with correlation IDs
+   - Common helper functions
+
+4. **`types/`**: TypeScript definitions
+   - Shared interfaces and types
+   - Ensures type safety across the application
+
+5. **`config/`**: Configuration management
+   - Environment-specific settings
+   - API keys and secrets management
+   - Feature flags and app constants
+
+6. **`cli/`**: Command-line interface
+   - Modular command implementation
+   - Real-time monitoring capabilities
+   - User-friendly interface with styled output
+
+#### Design Principles
+
+The project structure follows these key principles:
+- **Modularity**: Each component has a single responsibility
+- **Scalability**: Easy to add new features or modify existing ones
+- **Maintainability**: Clear separation of concerns
+- **Type Safety**: Comprehensive TypeScript types
+- **Testing**: Structure supports unit and integration tests
 
 <details>
 <summary>Security & Implementation</summary>
@@ -382,6 +443,34 @@ Based on [OWASP Node.js Security Cheat Sheet](https://cheatsheetseries.owasp.org
 
 </details>
 
+
+
+## Documentation
+
+For detailed API documentation and integration guides, check out our [API Documentation](docs/API.md).
+
+### Quick Links
+
+- [API Endpoints](docs/API.md#api-endpoints)
+- [Authentication](docs/API.md#authentication)
+- [Error Handling](docs/API.md#error-handling)
+- [Code Examples](docs/API.md#examples)
+- [Best Practices](docs/API.md#best-practices)
+
+### Getting Help
+
+If you encounter any issues or need help:
+1. Check the [Error Handling](docs/API.md#error-handling) section for common problems
+2. Review the [Best Practices](docs/API.md#best-practices) section
+3. Open an issue in the GitHub repository
+
+### Contributing
+
+We welcome contributions to improve the documentation. Please feel free to:
+1. Open issues for unclear or missing documentation
+2. Submit pull requests with improvements
+3. Suggest new examples or use cases
+
 ## Author
 
 Luis Hernández Martín
@@ -391,4 +480,3 @@ Luis Hernández Martín
 ## License
 
 MIT
-
