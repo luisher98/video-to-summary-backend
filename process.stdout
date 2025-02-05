@@ -4084,3 +4084,436 @@ Permission denied deleting /Users/Luis/dev/youtube_summary/YouTube-Video-Summary
 Permission denied deleting /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/f286a575-0ec5-4287-b9c6-d37eb42b281b - will be handled by OS cleanup
 Permission denied deleting /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads - will be handled by OS cleanup
 Permission denied deleting /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions - will be handled by OS cleanup
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+{"timestamp":"2025-02-04T23:55:22.962Z","event":"video_info_error","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":152,"error":"An error occurred fetching video info (TypeError: Cannot read properties of undefined (reading '0'))","environment":"production"}
+{"timestamp":"2025-02-04T23:56:53.870Z","event":"video_info_error","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":93,"error":"An error occurred fetching video info (TypeError: Cannot read properties of undefined (reading '0'))","environment":"production"}
+{"timestamp":"2025-02-04T23:58:10.551Z","event":"video_info_error","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":83,"error":"An error occurred fetching video info (TypeError: Cannot read properties of undefined (reading '0'))","environment":"production"}
+{"timestamp":"2025-02-04T23:58:27.765Z","event":"video_info_error","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":77,"error":"An error occurred fetching video info (TypeError: Cannot read properties of undefined (reading '0'))","environment":"production"}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:02:18.197Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":217,"videoId":"to2CjIKVfVI","environment":"production"}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:02:18.261Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":55,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig AP6Fv1M8WKcPSR1sR => jQgJynr7iIFTIw
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig yTzxeCqMMGYy_FPul => nPFYaLLA4qBUCw
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1738738940&ei=nLiiZ__6IZL3sfIPuMiwQA&ip=142.231.7.29&id=o-ACgbduDkJpF2ncuCtRN1u028y64BKXX5o6qCcpL06JSh&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738717340%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx57ynse&ms=au%2Crdu&mv=m&mvi=2&pcm2cms=yes&pl=24&rms=au%2Cau&pcm2=no&initcwndbps=3120000&bui=AY2Et-PkdpytfQVG1DO2pCapMAr-saP_mpS0o-TGtu57_64bkiyuDwr6nyNYSc70t9VhqnchQoMKlYN8&spc=9kzgDZ_QR0xxg_o2busMOdE1OAeGbKSH6VNhJfNLxCtwtP1F6VIPF3WY_g&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=sBQLk7vq-splIigNuSv1BDkQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1738717006&fvip=5&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=nPFYaLLA4qBUCw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cpcm2%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIhAOltzSOImDKHz7ydrsjnJsZrHSbBO7ocnWyYvs37zJA0AiAjglgRdCNZ1Kbzo7CG4dJ1PQyiN0Xnh_yfe3k1TNZkuA%3D%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRAIgGDSwrirXgmylGR3OsN1ukLEEr9QDXP6ty7spr2SJNK4CIG6fdf0neXmwfKKk8Gp28SwNf2u9lTVqv3PEyWlFzAHY"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-05T01:02:49.480Z'[39m
+}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:18:11.601Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":140,"videoId":"to2CjIKVfVI","environment":"production"}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:18:11.729Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":122,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+
+yt-dlp stderr: [debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig _Y4o2re9bJeGE1lHB => U_gWQp69xjLvXg
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig Hsu2D0pZHR0MzisQ1 => PYj7bHFMVVFyhg
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1738739894&ei=VryiZ7iuFfCXsfIP_o3twAg&ip=142.231.7.29&id=o-AJM1Qe4cVTzFxXZUopJcY75eXV14ul6jv_gjVxpe9323&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738718294%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx5s7n7s&ms=au%2Crdu&mv=m&mvi=2&pcm2cms=yes&pl=24&rms=au%2Cau&initcwndbps=3308750&bui=AY2Et-N3Fvusl6NVBvqkto5IgJEKDTFcNVACOeZV6iZjqxGZraIHLz1BpKFGGW2wFH2T0Gzthvm2zKTy&spc=9kzgDawrnApbhezrSA8MHWd8LE_KFXj__20va2PP_POnFhJ8G9tk3ffoB7RnuoQ&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=QJ6y3bdYkFc98t4SPbeg6RUQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1738717973&fvip=2&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=PYj7bHFMVVFyhg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgZU3qXvXz_jYka_W69HANqi4NDxtmeCM6nqnq7DJbhecCIC_gtE14lMySHRtwQvcheMslEaYTX9n9PZud0NloUYof&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIgPBdXHrhrrf3ZGXBEy6KBS0XzpvzkrK92v--0KhG8kF8CIQDJgRkCwKgr26wGn-aZbE0fsYfLmY69KyDDd2Mfbez3rA%3D%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-05T01:18:44.784Z'[39m
+}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:25:59.781Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":93,"videoId":"to2CjIKVfVI","environment":"production"}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:25:59.825Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":36,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+
+yt-dlp stderr: [debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Saving youtube-nsig.9c6dfc4a to cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig AGn451_fSHEzEqrs => J3zhhpfnlMwUvQ
+
+yt-dlp stderr: [debug] Loading youtube-nsig.9c6dfc4a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig d2ZGPQNdhkXs594i => K0jm-fICxqFS8w
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1738740362&ei=Kr6iZ5f2CqXIsfIPuMnSuQI&ip=142.231.7.26&id=o-AApj-pkPE5qej4J_-bzxXpkNYXWOl_TKmcRpf9d_Oz8_&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738718762%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx5s7n7s&ms=au%2Crdu&mv=m&mvi=2&pl=24&rms=au%2Cau&initcwndbps=3513750&bui=AY2Et-O2Wek29QDZItQRmn3blDainGUjpxFY7c1kbOVpw9jJhLsBQ_GTfmUyZoHiy6DDkVNcZJ09A9cJ&spc=9kzgDbwILt0N04kd_x4jkbHSwyhQPbuzgBp8urWq2ghMAHUWF5qRnRym0EFPJzA&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=XgrOM-e27mZFFFfK-ve8ez4Q&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1738718452&fvip=2&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=K0jm-fICxqFS8w&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIga6s2hqPHJav5AGyxQTFt2VJGdySk_IpbudoAQFv64A4CIHJJuoJdulhrhz36POMtYEWUfnFaoQZ8dkSJi2cZhhM0&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIhAPfL5VxD-oJMpJm6CmM3SFM546MMfll1xx7baKOS3NMEAiApqz97mPI697AM4Uc67VpNOtQH0sw7JXkxDiaXK2TxWw%3D%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-05T01:26:28.894Z'[39m
+}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:40:33.317Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":97,"videoId":"to2CjIKVfVI","environment":"production"}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'X9P7cAcASPsRYHal_3CZap4hQWo'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'9JJ4Msv2NKoMDQALpQ-_aY61cjE'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-05T01:40:33.363Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36","duration":40,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+
+yt-dlp stderr: [debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig On_0aEWGgYqdKQ7E- => 2b93g-WTcdfvEw
+
+yt-dlp stderr: [debug] Loading youtube-nsig.19d2ae9d from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig Hh4HSAyf1N71nuuSE => -LRftVSvvWIwIw
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1738741235&ei=k8GiZ_WHKZb4sfIPybWmiA0&ip=142.231.7.26&id=o-ALypUKfIiY5GXUzXk6Io3oZuaHvvo31-XciDe5LhqZES&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1738719635%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx5s7n7s&ms=au%2Crdu&mv=m&mvi=2&pl=24&rms=au%2Cau&initcwndbps=2705000&bui=AY2Et-ORXWY36Fzge2-1-8lCABTawoY0Q37Ari510J4Amx1an-Sh6PnzWn9wQ1mvUzZIzafC2UxOIfau&spc=9kzgDbEqy-C1ZxjNVEwqFObo3LQuPlVoPWOpp6l8_xlO2adaF06eXndRmg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=NA59Tng6NiNXLsxAlmcqvuYQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1738719168&fvip=2&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=-LRftVSvvWIwIw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgAlMItfJQg7xZQww_kbVLQwh1aLpya1H5xMZLPFIUMo8CIBbXO9SQjAUa_5foP8HZXlI2KvJoKgtoH2jfE-E02azu&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIhAOfvVvblRCGmJ2_0yILw9Cj8BbfB0sC-H9U7g9IYhqkNAiBMqAYkyVIlQfNg_Qq_ecfywSjNLphV4u4OJnwLnlvMSg%3D%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/YouTube-Video-Summary-API/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-05T01:41:07.748Z'[39m
+}
