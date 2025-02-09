@@ -2,6 +2,7 @@
 
 ## Table of Contents
 - [Overview](#overview)
+- [Architecture](#architecture)
 - [Getting Started](#getting-started)
 - [Authentication](#authentication)
 - [Rate Limiting](#rate-limiting)
@@ -11,6 +12,7 @@
   - [Transcript](#transcript)
   - [Video Information](#video-information)
   - [Health Check](#health-check)
+- [Technical Implementation](#technical-implementation)
 - [Error Handling](#error-handling)
 - [Examples](#examples)
 - [Best Practices](#best-practices)
@@ -18,14 +20,35 @@
 
 ## Overview
 
-The Video Summary API provides powerful video processing capabilities, allowing you to:
-- Generate AI-powered summaries of YouTube videos
-- Process uploaded video files
-- Extract video transcripts
-- Get video metadata
-- Monitor processing progress in real-time
+The Video Summary API is a powerful service that combines video processing, AI-powered transcription, and summarization capabilities. It provides:
+- AI-powered summaries of YouTube videos using GPT-4
+- Processing and summarization of uploaded video files
+- Real-time progress tracking via Server-Sent Events (SSE)
+- Transcript extraction using OpenAI's Whisper
+- Video metadata retrieval
+- Hybrid storage solution for efficient file handling
 
-All endpoints that involve video processing provide real-time updates through Server-Sent Events (SSE).
+## Architecture
+
+### Core Components
+
+1. **Summary Service**
+   - Manages video processing workflow
+   - Handles transcription and summarization
+   - Provides real-time progress updates
+
+2. **Storage Service**
+   - Hybrid storage approach:
+     - Local storage for files ≤200MB
+     - Azure Blob Storage for larger files
+   - Automatic cleanup of processed files
+   - Stream-based file handling
+
+3. **Processing Pipeline**
+   - Video download/upload handling
+   - Audio extraction using FFmpeg
+   - Transcription via OpenAI Whisper
+   - Summarization using GPT-4
 
 ## Getting Started
 
@@ -35,29 +58,34 @@ https://your-api-domain.com/api
 ```
 
 ### Prerequisites
-- Valid YouTube URLs or video files (for upload)
-- HTTP client capable of handling Server-Sent Events (for real-time progress)
+- Valid YouTube URLs or video files
+- HTTP client with SSE support
 - Files under 500MB for uploads
+- FFmpeg for video processing
+
+### Environment Setup
+Required environment variables:
+- `OPENAI_API_KEY`: For AI services
+- `AZURE_STORAGE_CONNECTION_STRING`: For cloud storage
+- `YOUTUBE_API_KEY`: For video metadata
 
 ## Authentication
 
-Currently, the API uses IP-based rate limiting without requiring authentication. Future versions may introduce API key authentication.
+Currently uses IP-based rate limiting. Future versions will introduce API key authentication.
 
 ## Rate Limiting
 
-- **Limit**: 10 requests per minute per IP address
+- **Limit**: 10 requests per minute per IP
 - **Headers**:
-  - `X-RateLimit-Limit`: Maximum requests per window
+  - `X-RateLimit-Limit`: Maximum requests
   - `X-RateLimit-Remaining`: Remaining requests
   - `X-RateLimit-Reset`: Time until reset (seconds)
-
-When rate limit is exceeded, the API returns a 429 status code.
 
 ## API Endpoints
 
 ### YouTube Summary
 
-Get an AI-generated summary of a YouTube video with real-time progress updates.
+Generate AI-powered summaries with real-time updates.
 
 ```http
 GET /youtube-summary-sse
@@ -70,47 +98,58 @@ GET /youtube-summary-sse
 | words     | number | No       | Summary length in words        | 400     |
 | prompt    | string | No       | Custom instructions for AI     | -       |
 
-#### Example Request
-```bash
-curl -N "https://your-api-domain.com/api/youtube-summary-sse?url=https://youtube.com/watch?v=example&words=300"
-```
+#### Technical Details
+- Uses youtube-dl for video download
+- FFmpeg for audio extraction
+- OpenAI Whisper for transcription
+- GPT-4 for summarization
+- Temporary file cleanup after processing
 
 #### SSE Events
 ```javascript
-// Progress update
-event: progress
-data: {
-  "status": "downloading",
-  "progress": 25
+// Progress Events
+{
+  status: "downloading" | "processing" | "transcribing" | "summarizing",
+  progress: number, // 0-100
+  message: string
 }
 
-// Final summary
-event: summary
-data: {
-  "summary": "Video summary content..."
+// Final Summary
+{
+  status: "done",
+  summary: string
 }
 
-// Error event
-event: error
-data: {
-  "error": "Error message"
+// Error Event
+{
+  status: "error",
+  error: string
 }
 ```
 
 ### File Upload Summary
 
-Upload a video file and receive an AI-generated summary with real-time progress updates.
+Process uploaded videos with real-time progress tracking.
 
 ```http
 POST /upload-summary-sse
 ```
+
+#### Technical Implementation
+- Chunked upload processing (50MB chunks)
+- Memory optimization:
+  - In-memory processing ≤200MB
+  - Azure Blob Storage >200MB
+- Automatic file type validation
+- FFmpeg integration
+- Temporary file management
 
 #### Query Parameters
 | Parameter | Type   | Required | Description             | Default |
 |-----------|--------|----------|-------------------------|---------|
 | words     | number | No       | Summary length in words | 400     |
 
-#### Request Headers
+#### Headers
 ```
 Content-Type: multipart/form-data
 ```
@@ -120,130 +159,104 @@ Content-Type: multipart/form-data
 |-------|------|----------|--------------------------------|
 | video | file | Yes      | Video file (max size: 500MB)   |
 
-#### Example Request
-```bash
-curl -N -X POST \
-  -F "video=@video.mp4" \
-  "https://your-api-domain.com/api/upload-summary-sse?words=300"
-```
-
-#### SSE Events
-```javascript
-// Upload progress
-event: progress
-data: {
-  "status": "uploading",
-  "progress": 30
-}
-
-// Processing progress
-event: progress
-data: {
-  "status": "processing",
-  "progress": 60
-}
-
-// Final summary
-event: summary
-data: {
-  "summary": "Video summary content..."
-}
-```
+#### Processing Stages
+1. File Upload (chunked if >50MB)
+2. Storage Selection (local/Azure)
+3. Audio Extraction (FFmpeg)
+4. Transcription (Whisper)
+5. Summary Generation (GPT-4)
+6. Cleanup
 
 ### Transcript
 
-Get the raw transcript of a YouTube video.
+Extract raw video transcripts.
 
 ```http
 GET /transcript
 ```
 
+#### Implementation Details
+- Uses OpenAI Whisper
+- Supports multiple languages
+- Temporary audio file handling
+- Stream processing for large files
+
 #### Query Parameters
 | Parameter | Type   | Required | Description   |
 |-----------|--------|----------|---------------|
 | url       | string | Yes      | YouTube URL   |
 
-#### Example Request
-```bash
-curl "https://your-api-domain.com/api/transcript?url=https://youtube.com/watch?v=example"
-```
-
-#### Response
-```json
-{
-  "transcript": "Full video transcript...",
-  "duration": 360
-}
-```
-
 ### Video Information
 
-Retrieve metadata about a YouTube video.
+Retrieve video metadata.
 
 ```http
 GET /info
 ```
 
+#### Implementation
+- YouTube Data API integration
+- Cached responses
+- Error handling for unavailable videos
+
 #### Query Parameters
 | Parameter | Type   | Required | Description   |
 |-----------|--------|----------|---------------|
 | url       | string | Yes      | YouTube URL   |
 
-#### Example Request
-```bash
-curl "https://your-api-domain.com/api/info?url=https://youtube.com/watch?v=example"
-```
+## Technical Implementation
 
-#### Response
-```json
-{
-  "title": "Video Title",
-  "duration": 360,
-  "author": "Channel Name",
-  "description": "Video description..."
-}
-```
+### File Processing
+- Chunked uploads (50MB chunks)
+- Memory limits:
+  - 200MB for in-memory processing
+  - Azure Blob Storage for larger files
+- FFmpeg integration for audio extraction
+- Temporary file management
+- Cleanup procedures
 
-### Health Check
+### Storage Strategy
+1. **Local Storage** (≤200MB)
+   - Faster processing
+   - Automatic cleanup
+   - Stream-based handling
 
-Check API health status.
+2. **Azure Blob Storage** (>200MB)
+   - Managed identity support
+   - SAS URL generation
+   - Automatic expiration
+   - Secure access
 
-```http
-GET /health
-```
+### Security Measures
+- File type validation
+- Size restrictions
+- Secure headers
+- Azure managed identity
+- Request logging
+- Rate limiting
 
-#### Example Request
-```bash
-curl "https://your-api-domain.com/api/health"
-```
-
-#### Response
-```json
-{
-  "status": "healthy",
-  "uptime": 3600,
-  "memory": {
-    "used": 512,
-    "total": 1024
-  },
-  "cpu": 45.2
-}
-```
+### Performance Optimization
+- Chunked file processing
+- Debounced progress updates
+- Parallel processing
+- Stream-based operations
+- Memory management
 
 ## Error Handling
 
-The API uses standard HTTP status codes and returns detailed error messages:
+Structured error responses:
 
 ```json
 {
   "error": {
     "code": "ERROR_CODE",
-    "message": "Human readable error message"
+    "message": "Human readable message",
+    "details": {} // Optional technical details
   }
 }
 ```
 
-### Common Status Codes
+### Status Codes
 | Code | Description           | Common Causes                          |
 |------|--------------------- |---------------------------------------|
 | 400  | Bad Request          | Invalid parameters or URL              |
@@ -251,20 +264,20 @@ The API uses standard HTTP status codes and returns detailed error messages:
 | 413  | Payload Too Large    | File size exceeds 500MB               |
 | 415  | Unsupported Media    | Invalid file format                   |
 | 429  | Too Many Requests    | Rate limit exceeded                   |
-| 500  | Internal Server Error| Server-side processing error          |
+| 500  | Internal Server Error| Processing failure                    |
+| 503  | Service Unavailable  | Azure Storage/OpenAI API issues       |
 
 ## Examples
 
-### JavaScript Example (Browser)
+### JavaScript SSE Client
 ```javascript
-// YouTube Summary with SSE
 const eventSource = new EventSource(
-  'https://your-api-domain.com/api/youtube-summary-sse?url=https://youtube.com/watch?v=example'
+  'https://api.domain.com/youtube-summary-sse?url=youtube.com/watch?v=example'
 );
 
 eventSource.addEventListener('progress', (event) => {
   const data = JSON.parse(event.data);
-  console.log(`Progress: ${data.status} - ${data.progress}%`);
+  console.log(`${data.status}: ${data.progress}%`);
 });
 
 eventSource.addEventListener('summary', (event) => {
@@ -273,76 +286,113 @@ eventSource.addEventListener('summary', (event) => {
   eventSource.close();
 });
 
-eventSource.addEventListener('error', (event) => {
-  console.error('Error:', event);
+eventSource.onerror = (error) => {
+  console.error('SSE Error:', error);
   eventSource.close();
-});
+};
 ```
 
-### Node.js Example (File Upload)
+### File Upload with Progress
 ```javascript
-const FormData = require('form-data');
-const fs = require('fs');
-const fetch = require('node-fetch');
+const form = new FormData();
+form.append('video', file);
 
-async function uploadVideo(filePath) {
-  const form = new FormData();
-  form.append('video', fs.createReadStream(filePath));
+const response = await fetch('/api/upload-summary-sse', {
+  method: 'POST',
+  body: form
+});
 
-  const response = await fetch(
-    'https://your-api-domain.com/api/upload-summary-sse',
-    {
-      method: 'POST',
-      body: form
-    }
-  );
+const reader = response.body.getReader();
+const decoder = new TextDecoder();
 
-  // Handle SSE response
-  for await (const chunk of response.body) {
-    const data = JSON.parse(chunk);
-    console.log(data);
+while (true) {
+  const {value, done} = await reader.read();
+  if (done) break;
+  
+  const events = decoder.decode(value).split('\n\n');
+  for (const event of events) {
+    if (!event.trim()) continue;
+    const data = JSON.parse(event.replace('data: ', ''));
+    console.log(`${data.status}: ${data.progress}%`);
   }
 }
 ```
 
 ## Best Practices
 
+### Client Implementation
 1. **Error Handling**
-   - Always implement error event listeners for SSE connections
-   - Handle network timeouts and implement reconnection logic
-   - Validate input parameters before making API calls
+   - Implement SSE error listeners
+   - Handle network timeouts
+   - Implement reconnection logic
+   - Validate input before API calls
 
 2. **Resource Management**
-   - Close SSE connections when done (`eventSource.close()`)
-   - Keep uploaded files under 500MB
-   - Implement retry logic for failed requests
+   - Close SSE connections when done
+   - Respect file size limits
+   - Implement retry logic
+   - Monitor rate limits
 
-3. **Progress Monitoring**
-   - Display progress updates to users
-   - Handle all possible status types in progress events
-   - Implement proper error handling for failed operations
+3. **Progress Tracking**
+   - Display all progress stages
+   - Handle all SSE event types
+   - Implement error recovery
+   - Show meaningful progress UI
 
-4. **Rate Limiting**
-   - Monitor rate limit headers
-   - Implement backoff strategy when approaching limits
-   - Queue requests if necessary
+4. **Performance**
+   - Use appropriate chunk sizes
+   - Implement request queuing
+   - Monitor memory usage
+   - Cache responses when appropriate
+
+### Server Considerations
+1. **File Handling**
+   - Validate file types
+   - Use stream processing
+   - Implement cleanup procedures
+   - Monitor storage usage
+
+2. **Error Management**
+   - Log all errors
+   - Provide meaningful messages
+   - Implement fallbacks
+   - Monitor API health
+
+3. **Resource Usage**
+   - Monitor memory usage
+   - Track API quotas
+   - Implement caching
+   - Optimize storage use
 
 ## WebSocket Events
 
 ### Progress Event Types
 | Status      | Description                              |
 |-------------|------------------------------------------|
-| downloading | Video is being downloaded                |
-| processing  | Video is being processed                 |
-| transcribing| Audio is being transcribed              |
-| summarizing | AI is generating summary                 |
-| complete    | Processing complete                      |
+| downloading | Video download in progress               |
+| uploading   | File upload in progress                 |
+| processing  | Video/audio processing                  |
+| transcribing| Generating transcript                   |
+| summarizing | Creating AI summary                     |
+| done        | Process complete                        |
+| error       | Error occurred                          |
 
 ### Event Format
-```javascript
-{
-  status: string,    // Current operation status
-  progress: number,  // Progress percentage (0-100)
-  message?: string   // Optional status message
+```typescript
+interface ProgressEvent {
+  status: string;
+  progress: number;
+  message?: string;
+}
+
+interface SummaryEvent {
+  status: 'done';
+  summary: string;
+}
+
+interface ErrorEvent {
+  status: 'error';
+  error: string;
+  details?: any;
 }
 ``` 

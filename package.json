@@ -5,12 +5,13 @@
     "email": "luisheratm@gmail.com"
   },
   "version": "1.0.0",
-  "description": "API for the Video to Summary App",
+  "description": "API for generating summaries from video content",
   "private": true,
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "prettify": "prettier -l --write \"**/*.ts\"",
-    "dev": "tsx src/index.ts",
+    "dev": "nodemon",
     "cli": "tsx src/index.ts --cli",
     "view": "node dist/src/index.js",
     "test": "jest",
@@ -18,7 +19,7 @@
     "test:prod": "cross-env TEST_ENV=production jest --config jest.config.prod.js --testMatch '**/tests/production/**/*.production.test.ts'",
     "test:all": "jest --testMatch '**/*.test.ts'",
     "lint": "eslint . --ext .ts",
-    "start": "pm2 start ecosystem.config.cjs --no-daemon",
+    "start": "node dist/index.js",
     "build": "tsc"
   },
   "keywords": [
@@ -50,7 +51,7 @@
     "uuid": "^11.0.5",
     "webpack-node-externals": "^3.0.0",
     "youtube-dl-exec": "^3.0.13",
-    "zod": "^3.24.1"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.24.8",

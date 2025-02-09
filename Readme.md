@@ -471,6 +471,138 @@ We welcome contributions to improve the documentation. Please feel free to:
 2. Submit pull requests with improvements
 3. Suggest new examples or use cases
 
+
+
+## Installation & Setup
+
+### Prerequisites
+- Node.js >= 18.0.0
+- FFmpeg installed on your system
+- Azure account (for cloud storage features)
+- OpenAI API key
+- YouTube Data API key
+
+### Quick Start
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/video-to-summary-api.git
+   cd video-to-summary-api
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Create environment file:
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Configure environment variables in `.env`:
+   ```env
+   # API Keys
+   OPENAI_API_KEY=your_openai_key
+   YOUTUBE_API_KEY=your_youtube_key
+   
+   # Azure Storage (optional for files >200MB)
+   AZURE_STORAGE_CONNECTION_STRING=your_connection_string
+   
+   # Server Configuration
+   PORT=5050
+   NODE_ENV=development
+   
+   # File Processing
+   MAX_FILE_SIZE=500000000  # 500MB
+   MEMORY_LIMIT=200000000   # 200MB
+   ```
+
+5. Start development server:
+   ```bash
+   npm run dev
+   ```
+
+### Development Workflow
+
+1. **Code Style**
+   - Format code:
+     ```bash
+     npm run prettify
+     ```
+   - Lint code:
+     ```bash
+     npm run lint
+     ```
+
+2. **Testing**
+   - Run all tests:
+     ```bash
+     npm run test:all
+     ```
+   - Development tests:
+     ```bash
+     npm run test:watch
+     ```
+   - Production tests:
+     ```bash
+     npm run test:prod
+     ```
+
+3. **Building**
+   ```bash
+   npm run build
+   ```
+
+4. **Production Start**
+   ```bash
+   npm start
+   ```
+
+### Deployment
+
+1. **Prerequisites**
+   - Node.js production environment
+   - FFmpeg installed
+   - Configured environment variables
+   - Azure account (for cloud storage)
+
+2. **Production Setup**
+   ```bash
+   # Install dependencies
+   npm ci
+   
+   # Build project
+   npm run build
+   
+   # Start with PM2
+   npm start
+   ```
+
+3. **Monitoring**
+   ```bash
+   # View logs
+   pm2 logs
+   
+   # Monitor processes
+   pm2 monit
+   ```
+
+### Contributing
+
+1. Fork the repository
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m 'Add amazing feature'
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. Open a Pull Request
 ## Author
 
 Luis Hernández Martín

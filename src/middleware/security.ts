@@ -9,9 +9,11 @@ import rateLimit from 'express-rate-limit';
  * Restricts number of requests from a single IP.
  */
 export const rateLimiter = rateLimit({
-    windowMs: config.rateLimit.windowMs,
-    max: config.rateLimit.maxRequests,
-    message: 'Too many requests from this IP, please try again later'
+    windowMs: 60 * 1000, // 1 minute
+    max: config.rateLimit, // Limit each IP to N requests per window
+    message: 'Too many requests from this IP, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false,
 });
 
 /**
@@ -19,31 +21,11 @@ export const rateLimiter = rateLimit({
  * Controls which origins can access the API.
  */
 export const corsMiddleware = cors({
-    origin: config.security.corsOrigins,
+    origin: '*', // In production, this should be restricted to specific domains
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', config.security.apiKeyHeader],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 });
-
-/**
- * API key authentication middleware.
- * Validates requests against configured API keys.
- * 
- * @param {Request} req - Express request object
- * @param {Response} res - Express response object
- * @param {NextFunction} next - Express next function
- */
-export const apiKeyAuth = (req: Request, res: Response, next: NextFunction) => {
-    if (config.isProduction) {
-        const apiKey = req.header(config.security.apiKeyHeader);
-        
-        if (!apiKey || !config.security.apiKeys.includes(apiKey)) {
-            return res.status(401).json({
-                error: 'Invalid or missing API key'
-            });
-        }
-    }
-    next();
-};
 
 /**
  * Request timeout middleware.
@@ -53,10 +35,14 @@ export const apiKeyAuth = (req: Request, res: Response, next: NextFunction) => {
  * @param {Response} res - Express response object
  * @param {NextFunction} next - Express next function
  */
-export const requestTimeout = (req: Request, res: Response, next: NextFunction) => {
-    res.setTimeout(config.queue.requestTimeoutMs, () => {
+export const timeoutMiddleware = (req: Request, res: Response, next: NextFunction) => {
+    // Set timeout to 30 seconds
+    res.setTimeout(30000, () => {
         res.status(408).json({
-            error: 'Request timeout'
+            error: {
+                message: 'Request timeout',
+                code: 'REQUEST_TIMEOUT'
+            }
         });
     });
     next();
@@ -67,14 +53,14 @@ export const requestTimeout = (req: Request, res: Response, next: NextFunction) 
  * Configures various HTTP headers for security.
  */
 export const securityHeaders = helmet({
-    contentSecurityPolicy: config.isProduction,
-    crossOriginEmbedderPolicy: config.isProduction,
-    crossOriginOpenerPolicy: config.isProduction,
-    crossOriginResourcePolicy: config.isProduction,
+    contentSecurityPolicy: config.nodeEnv === 'production',
+    crossOriginEmbedderPolicy: config.nodeEnv === 'production',
+    crossOriginOpenerPolicy: config.nodeEnv === 'production',
+    crossOriginResourcePolicy: config.nodeEnv === 'production',
     dnsPrefetchControl: true,
     frameguard: true,
     hidePoweredBy: true,
-    hsts: config.isProduction,
+    hsts: config.nodeEnv === 'production',
     ieNoOpen: true,
     noSniff: true,
     referrerPolicy: true,

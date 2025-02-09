@@ -3,6 +3,7 @@ import { DefaultAzureCredential, EnvironmentCredential } from '@azure/identity';
 import { Readable, PassThrough } from 'stream';
 import { InternalServerError } from '../../utils/errorHandling.js';
 import crypto from 'crypto';
+import { config } from '../../config/environment.js';
 
 // Configuration constants
 const CONFIG = {
@@ -20,12 +21,67 @@ export interface AzureStorageProgress {
     (progress: number): void;
 }
 
+let containerClient: ContainerClient | null = null;
+
+/**
+ * Initializes the Azure Blob Storage container client
+ */
+async function initializeStorage(): Promise<ContainerClient> {
+  if (!containerClient) {
+    const blobServiceClient = BlobServiceClient.fromConnectionString(
+      config.azure.connectionString
+    );
+    containerClient = blobServiceClient.getContainerClient(
+      config.azure.containerName
+    );
+
+    // Create container if it doesn't exist
+    await containerClient.createIfNotExists({
+      access: 'blob'
+    });
+  }
+  return containerClient;
+}
+
+/**
+ * Gets a blob client for the specified blob name
+ * 
+ * @param {string} blobName - Name of the blob
+ * @returns {Promise<BlockBlobClient>} Blob client for the specified blob
+ */
+export async function getBlobClient(blobName: string): Promise<BlockBlobClient> {
+  const container = await initializeStorage();
+  return container.getBlockBlobClient(blobName);
+}
+
+/**
+ * Deletes a blob if it exists
+ * 
+ * @param {string} blobName - Name of the blob to delete
+ * @returns {Promise<boolean>} True if blob was deleted, false if it didn't exist
+ */
+export async function deleteBlob(blobName: string): Promise<boolean> {
+  try {
+    const container = await initializeStorage();
+    const blobClient = container.getBlockBlobClient(blobName);
+    const exists = await blobClient.exists();
+    
+    if (exists) {
+      await blobClient.delete();
+      return true;
+    }
+    return false;
+  } catch (error) {
+    console.error('Failed to delete blob:', error);
+    throw new InternalServerError('Failed to delete blob from storage');
+  }
+}
+
 /**
  * Azure Blob Storage service for handling large file uploads
  */
 export class AzureStorageService {
     private blobServiceClient: BlobServiceClient;
-    private containerClient: ContainerClient;
     private static instance: AzureStorageService;
 
     private constructor() {
@@ -40,8 +96,6 @@ export class AzureStorageService {
             // In development, it will use environment credentials
             const credential = new DefaultAzureCredential();
             this.blobServiceClient = new BlobServiceClient(blobServiceUrl, credential);
-            this.containerClient = this.blobServiceClient.getContainerClient(CONFIG.containerName);
-            console.log('Using DefaultAzureCredential for Azure Storage');
         } catch (error) {
             console.error('Failed to initialize Azure Storage:', error);
             throw new InternalServerError('Failed to initialize storage service');
@@ -63,7 +117,7 @@ export class AzureStorageService {
      */
     async initialize(): Promise<void> {
         try {
-            await this.containerClient.createIfNotExists();
+            await containerClient.createIfNotExists();
         } catch (error) {
             console.error('Failed to initialize Azure storage:', error);
             throw new InternalServerError('Failed to initialize storage');
@@ -211,7 +265,7 @@ export class AzureStorageService {
     async uploadFile(fileBuffer: Buffer | Readable, fileName: string, fileSize?: number, onProgress?: (progress: number) => void): Promise<string> {
         try {
             console.log('Starting file upload:', { fileName, fileSize, isBuffer: Buffer.isBuffer(fileBuffer) });
-            const blockBlobClient = this.containerClient.getBlockBlobClient(fileName);
+            const blockBlobClient = this.blobServiceClient.getContainerClient(CONFIG.containerName).getBlockBlobClient(fileName);
             
             if (Buffer.isBuffer(fileBuffer)) {
                 console.log('Converting buffer to stream');
@@ -241,7 +295,7 @@ export class AzureStorageService {
      */
     async downloadFile(blobName: string): Promise<Readable> {
         try {
-            const blockBlobClient = this.containerClient.getBlockBlobClient(blobName);
+            const blockBlobClient = this.blobServiceClient.getContainerClient(CONFIG.containerName).getBlockBlobClient(blobName);
             const downloadResponse = await blockBlobClient.download(0);
             
             if (!downloadResponse.readableStreamBody) {
@@ -265,41 +319,18 @@ export class AzureStorageService {
     }
 
     /**
-     * Delete a file from Azure Blob Storage
-     * @param blobName - The name of the blob to delete
-     */
-    async deleteFile(blobName: string): Promise<void> {
-        try {
-            const blockBlobClient = this.containerClient.getBlockBlobClient(blobName);
-            await blockBlobClient.delete();
-        } catch (error) {
-            console.error('Failed to delete file from Azure:', error);
-            throw new InternalServerError('Failed to delete file');
-        }
-    }
-
-    /**
      * Check if a file exists in Azure Blob Storage
      * @param blobName - The name of the blob to check
      * @returns Whether the blob exists
      */
     async fileExists(blobName: string): Promise<boolean> {
         try {
-            const blockBlobClient = this.containerClient.getBlockBlobClient(blobName);
+            const blockBlobClient = this.blobServiceClient.getContainerClient(CONFIG.containerName).getBlockBlobClient(blobName);
             return await blockBlobClient.exists();
         } catch (error) {
             console.error('Failed to check file existence in Azure:', error);
             throw new InternalServerError('Failed to check file existence');
         }
-    }
-
-    /**
-     * Get a block blob client for a specific blob
-     * @param blobName - The name of the blob
-     * @returns A BlockBlobClient instance
-     */
-    getBlockBlobClient(blobName: string): BlockBlobClient {
-        return this.containerClient.getBlockBlobClient(blobName);
     }
 
     /**

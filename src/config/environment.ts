@@ -1,91 +1,52 @@
 import { z } from 'zod';
 import dotenv from 'dotenv';
 
-// Load environment variables
+// Load environment variables from .env file
 dotenv.config();
 
-/**
- * Environment configuration schema with validation using Zod.
- * Ensures all required environment variables are present and correctly typed.
- */
+// Environment variable schema
 const envSchema = z.object({
-    // API Keys
-    OPENAI_API_KEY: z.string().min(1, 'OpenAI API key is required'),
-    YOUTUBE_API_KEY: z.string().min(1, 'YouTube API key is required'),
-    
-    // Server Configuration
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-    PORT: z.string().transform(Number).default('5050'),
-    URL: z.string().url().default('http://localhost'),
-    
-    // Rate Limiting
-    RATE_LIMIT_WINDOW_MS: z.string().transform(Number).default('60000'),
-    RATE_LIMIT_MAX_REQUESTS: z.string().transform(Number).default('10'),
-    
-    // Security
-    CORS_ORIGINS: z.string().default('*'),
-    API_KEY_HEADER: z.string().default('x-api-key'),
-    API_KEYS: z.string().transform((keys: string) => keys.split(',')).default(''),
-    
-    // Request Queue
-    MAX_CONCURRENT_REQUESTS: z.string().transform(Number).default('2'),
-    REQUEST_TIMEOUT_MS: z.string().transform(Number).default('30000'),
+  // Server configuration
+  PORT: z.string().default('5050'),
+  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+
+  // Azure Storage configuration
+  AZURE_STORAGE_CONNECTION_STRING: z.string(),
+  AZURE_STORAGE_CONTAINER_NAME: z.string(),
+
+  // OpenAI configuration
+  OPENAI_API_KEY: z.string(),
+  OPENAI_MODEL: z.string().default('gpt-4'),
+
+  // YouTube API configuration
+  YOUTUBE_API_KEY: z.string(),
+
+  // Optional configurations
+  MAX_FILE_SIZE: z.string().default('500'), // in MB
+  RATE_LIMIT: z.string().default('10'), // requests per minute
 });
 
-// Validate environment
-const env = envSchema.safeParse(process.env);
+// Parse and validate environment variables
+const env = envSchema.parse(process.env);
 
-if (!env.success) {
-    console.error('❌ Invalid environment variables:', JSON.stringify(env.error.format(), null, 4));
-    process.exit(1);
-}
-
-/**
- * Validated and typed configuration object.
- * Contains all application settings derived from environment variables.
- * 
- * @example
- * // Access configuration values
- * config.server.port; // Server port number
- * config.apis.openai.apiKey; // OpenAI API key
- * 
- * // Check environment
- * if (config.isProduction) {
- *   // Apply production-specific logic
- * }
- */
+// Export typed environment variables
 export const config = {
-    isProduction: env.data.NODE_ENV === 'production',
-    isDevelopment: env.data.NODE_ENV === 'development',
-    isTest: env.data.NODE_ENV === 'test',
-    
-    server: {
-        port: env.data.PORT,
-        url: env.data.URL,
-    },
-    
-    security: {
-        corsOrigins: env.data.CORS_ORIGINS.split(','),
-        apiKeyHeader: env.data.API_KEY_HEADER,
-        apiKeys: env.data.API_KEYS,
-    },
-    
-    rateLimit: {
-        windowMs: env.data.RATE_LIMIT_WINDOW_MS,
-        maxRequests: env.data.RATE_LIMIT_MAX_REQUESTS,
-    },
-    
-    queue: {
-        maxConcurrentRequests: env.data.MAX_CONCURRENT_REQUESTS,
-        requestTimeoutMs: env.data.REQUEST_TIMEOUT_MS,
-    },
-    
-    apis: {
-        openai: {
-            apiKey: env.data.OPENAI_API_KEY,
-        },
-        youtube: {
-            apiKey: env.data.YOUTUBE_API_KEY,
-        },
-    },
-} as const; 
+  port: parseInt(env.PORT, 10),
+  nodeEnv: env.NODE_ENV,
+  azure: {
+    connectionString: env.AZURE_STORAGE_CONNECTION_STRING,
+    containerName: env.AZURE_STORAGE_CONTAINER_NAME,
+  },
+  openai: {
+    apiKey: env.OPENAI_API_KEY,
+    model: env.OPENAI_MODEL,
+  },
+  youtube: {
+    apiKey: env.YOUTUBE_API_KEY,
+  },
+  maxFileSize: parseInt(env.MAX_FILE_SIZE, 10) * 1024 * 1024, // Convert MB to bytes
+  rateLimit: parseInt(env.RATE_LIMIT, 10),
+} as const;
+
+// Type for the config object
+export type Config = typeof config; 
