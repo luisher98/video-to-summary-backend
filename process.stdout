@@ -5253,3 +5253,1646 @@ Successfully generated summary: {
   userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
   timestamp: [32m'2025-02-10T01:20:15.048Z'[39m
 }
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739150958865-496342199.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/802c400a-9b2e-4696-8ac5-e814e1eccfb8/4b7f81d0-f541-42da-ba31-d591e2956c41-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/4b7f81d0-f541-42da-ba31-d591e2956c41.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m116.7[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.95'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m116.7[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:11.87'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.2[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:44.70'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.7[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:17.80'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.5[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:53.98'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.5[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:28.85'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.2[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:04:04.27'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.8[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:41.19'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.7[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:16.92'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.7[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:53.05'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.7[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:20.66'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:06:55.74'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.2[39m,
+  targetSize: [33m6912[39m,
+  timemark: [32m'00:07:32.31'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.6[39m,
+  targetSize: [33m7424[39m,
+  timemark: [32m'00:08:08.23'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.1[39m,
+  targetSize: [33m7936[39m,
+  timemark: [32m'00:08:43.97'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.5[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:19.44'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:09:54.24'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.6[39m,
+  targetSize: [33m9728[39m,
+  timemark: [32m'00:10:29.71'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126[39m,
+  targetSize: [33m10240[39m,
+  timemark: [32m'00:11:05.68'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m10752[39m,
+  timemark: [32m'00:11:42.07'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:17.39'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.6[39m,
+  targetSize: [33m12032[39m,
+  timemark: [32m'00:12:52.39'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:30:04.871Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739151264512-875564280.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/96a96ce9-e154-4db2-953c-8dc6feff8add/5577310c-0d93-4261-bebe-c7c930dd9701-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/5577310c-0d93-4261-bebe-c7c930dd9701.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.3[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.16'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.1[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:09.83'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m122.7[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:42.59'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.7[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:17.88'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.4[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:54.11'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.6[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:28.70'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.3[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:04:04.04'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.6[39m,
+  targetSize: [33m4096[39m,
+  timemark: [32m'00:04:31.36'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123[39m,
+  targetSize: [33m4608[39m,
+  timemark: [32m'00:05:06.81'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m122.3[39m,
+  targetSize: [33m5120[39m,
+  timemark: [32m'00:05:42.89'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.4[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:18.49'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.8[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:06:53.52'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.9[39m,
+  targetSize: [33m6912[39m,
+  timemark: [32m'00:07:29.78'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125[39m,
+  targetSize: [33m7424[39m,
+  timemark: [32m'00:08:06.61'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.4[39m,
+  targetSize: [33m7936[39m,
+  timemark: [32m'00:08:42.56'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.8[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:17.95'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.4[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:09:52.72'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.9[39m,
+  targetSize: [33m9728[39m,
+  timemark: [32m'00:10:28.22'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.4[39m,
+  targetSize: [33m10240[39m,
+  timemark: [32m'00:11:03.83'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.8[39m,
+  targetSize: [33m10752[39m,
+  timemark: [32m'00:11:40.29'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m11264[39m,
+  timemark: [32m'00:12:15.38'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12032[39m,
+  timemark: [32m'00:12:50.30'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:35:22.969Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739151471697-338250827.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/658e6dea-9e98-4c82-8b88-de308e8a20de/be1dce67-8b68-46b5-992c-193e19d790b3-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/be1dce67-8b68-46b5-992c-193e19d790b3.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m118.3[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.45'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m117.7[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:11.27'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.5[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:44.39'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.9[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:19.92'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m118.9[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:56.33'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.4[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:30.84'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.7[39m,
+  targetSize: [33m3840[39m,
+  timemark: [32m'00:04:06.26'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.9[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:43.12'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.9[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:18.98'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.2[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:54.72'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.8[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:29.72'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.2[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:07:05.64'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127[39m,
+  targetSize: [33m7168[39m,
+  timemark: [32m'00:07:42.37'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m7680[39m,
+  timemark: [32m'00:08:18.86'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.6[39m,
+  targetSize: [33m8192[39m,
+  timemark: [32m'00:08:54.44'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.1[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:30.10'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.9[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:10:04.37'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.7[39m,
+  targetSize: [33m9984[39m,
+  timemark: [32m'00:10:40.47'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.1[39m,
+  targetSize: [33m10496[39m,
+  timemark: [32m'00:11:16.37'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.6[39m,
+  targetSize: [33m11008[39m,
+  timemark: [32m'00:11:52.31'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.3[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:27.29'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:38:48.506Z'[39m
+}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'5arbwSkaMXjbvDtr5Tpp_1KUs9U'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'6HvZZ3GfPOtv34o3gnxf3Ou_L10'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-10T01:42:27.533Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":118,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.9c6dfc4a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig -pBbzk1YWlj8Y9KG => N1W0fDUdEfeFOw
+
+yt-dlp stderr: [debug] Loading youtube-nsig.9c6dfc4a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig ibjy3Ev1stmFU29a => xNI7DXVe_nlBBg
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1739173350&ei=hlmpZ_zSGMf2sfIPiqPXoAY&ip=142.231.7.26&id=o-AJ-PAYCWaxMc6r08nnMP-9DOKuWrPLUJjBjyM61oW9tK&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1739151750%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx57ynse&ms=au%2Crdu&mv=m&mvi=2&pl=24&rms=au%2Cau&initcwndbps=2170000&bui=AUWDL3w6uVdRjTeCQGFpiGzbWRe0QSIkod-iHJx4z2JOt457y21CgVP_Fn79u4yQVqyepKIKUN5VFzPk&spc=RjZbSWkMM4zdsVR2BV8X7zyA42RYiMaAiE1bLRIRv0IIQKKa_dX2UlXLoU-OpmI&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=fbXhKGX18n3OE4nb9ITgtyAQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1739151424&fvip=5&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=xNI7DXVe_nlBBg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhAPy35wM39BIR47sBt1RSst1yoCj8FfiZxnhzRy09GDWwAiEA1X5ZWS5hVCywwxAgZUje3dMNC6ZRJMkzNlfjarlO3P8%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIhAL20-mK3EpAk9D-r4MWbIRJa5RRR2CZLT-_v68QreuDEAiAnHYZtvElkC-Z31hhWBU2P7DX86wyNUxFyIIRVtP5ufg%3D%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-10T01:43:01.210Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739151799822-397757686.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/cf260d44-8718-488d-b1ba-4ded693a28a3/341c2a72-9242-4c54-a332-bc4e7f96cd32-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/341c2a72-9242-4c54-a332-bc4e7f96cd32.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m118.1[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.50'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m118.4[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:10.85'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.8[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:43.34'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.4[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:11.66'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.8[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:48.05'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.1[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:22.79'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.5[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:03:57.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m122[39m,
+  targetSize: [33m4096[39m,
+  timemark: [32m'00:04:35.05'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.6[39m,
+  targetSize: [33m4608[39m,
+  timemark: [32m'00:05:10.52'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.1[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:46.44'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.3[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:22.04'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.7[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:06:57.13'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.8[39m,
+  targetSize: [33m6912[39m,
+  timemark: [32m'00:07:33.88'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.9[39m,
+  targetSize: [33m7424[39m,
+  timemark: [32m'00:08:10.79'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.6[39m,
+  targetSize: [33m8192[39m,
+  timemark: [32m'00:08:45.85'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:21.51'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.6[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:09:56.30'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m9728[39m,
+  timemark: [32m'00:10:31.85'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.6[39m,
+  targetSize: [33m10240[39m,
+  timemark: [32m'00:11:07.93'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.1[39m,
+  targetSize: [33m10752[39m,
+  timemark: [32m'00:11:44.26'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.6[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:19.50'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.3[39m,
+  targetSize: [33m12032[39m,
+  timemark: [32m'00:12:54.48'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:44:06.051Z'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739151976536-22013703.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/4fca4d22-2ce0-45c1-8092-5bb84381ed4f/a2a5967d-61ad-4814-9e0c-73d1122edccc-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/a2a5967d-61ad-4814-9e0c-73d1122edccc.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.7[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:33.91'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.5[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:10.17'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.5[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:43.58'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.8[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:18.84'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.5[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:55.42'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.8[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:30.13'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.5[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:04:05.71'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:42.73'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:18.78'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.1[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:54.75'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.7[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:29.99'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.1[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:07:05.85'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127[39m,
+  targetSize: [33m7168[39m,
+  timemark: [32m'00:07:42.45'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m7680[39m,
+  timemark: [32m'00:08:18.86'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m8192[39m,
+  timemark: [32m'00:08:54.68'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:30.39'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.8[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:10:05.00'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.5[39m,
+  targetSize: [33m9984[39m,
+  timemark: [32m'00:10:41.36'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.9[39m,
+  targetSize: [33m10496[39m,
+  timemark: [32m'00:11:17.36'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.3[39m,
+  targetSize: [33m11008[39m,
+  timemark: [32m'00:11:53.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:28.67'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:47:16.569Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739152168196-957167926.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/55274d8e-43dc-4924-895b-f46e661a8b2e/804931d2-f122-4346-8681-ef48441def37-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/804931d2-f122-4346-8681-ef48441def37.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m117.9[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.58'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m117.7[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:11.27'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.6[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:44.36'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.8[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:20.02'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:56.28'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.4[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:30.79'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.8[39m,
+  targetSize: [33m3840[39m,
+  timemark: [32m'00:04:06.23'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.2[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:42.39'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:17.42'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.7[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:53.26'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.2[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:28.44'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.7[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:07:03.89'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.6[39m,
+  targetSize: [33m6912[39m,
+  timemark: [32m'00:07:38.30'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.5[39m,
+  targetSize: [33m7680[39m,
+  timemark: [32m'00:08:13.48'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.9[39m,
+  targetSize: [33m8192[39m,
+  timemark: [32m'00:08:48.70'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.4[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:24.14'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.3[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:09:57.63'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.1[39m,
+  targetSize: [33m9728[39m,
+  timemark: [32m'00:10:31.98'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.9[39m,
+  targetSize: [33m10240[39m,
+  timemark: [32m'00:11:06.54'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.3[39m,
+  targetSize: [33m10752[39m,
+  timemark: [32m'00:11:42.91'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.9[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:17.96'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.5[39m,
+  targetSize: [33m12032[39m,
+  timemark: [32m'00:12:52.91'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:50:14.296Z'[39m
+}
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'5arbwSkaMXjbvDtr5Tpp_1KUs9U'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'6HvZZ3GfPOtv34o3gnxf3Ou_L10'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-10T01:52:59.703Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":107,"videoId":"to2CjIKVfVI","environment":"production"}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3'[39m,
+  hasCookies: [33mfalse[39m
+}
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3', '--prefer-free-formats', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg', '--verbose', '--no-quiet']
+
+yt-dlp stderr: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+
+yt-dlp stderr: [debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+
+yt-dlp stderr: [debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.0 22 Oct 2024)
+
+yt-dlp stderr: [debug] exe versions: ffmpeg 6.0 (setts)
+
+yt-dlp stderr: [debug] Optional libraries: sqlite3-3.48.0
+
+yt-dlp stderr: [debug] Proxy map: {}
+
+yt-dlp stderr: [debug] Request Handlers: urllib
+
+yt-dlp stderr: [debug] Loaded 1839 extractors
+
+yt-dlp stderr: [debug] Loading youtube-nsig.9c6dfc4a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig 6tmjPFpljPkEzdBy => evaYbvH1sP6qFg
+
+yt-dlp stderr: [debug] Loading youtube-nsig.9c6dfc4a from cache
+
+yt-dlp stderr: [debug] [youtube] Decrypted nsig aTc1x6l2kb1sfnKk => nLAq7hYHHl2_OQ
+
+yt-dlp stderr: [debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+
+yt-dlp stderr: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+
+yt-dlp stderr: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+
+yt-dlp stderr: [debug] Invoking http downloader on "https://rr2---sn-j5o5gpx-t8ge.googlevideo.com/videoplayback?expire=1739173982&ei=_lupZ-_sAcHzsfIP1abG8A8&ip=142.231.7.28&id=o-AK9gSmBTZnvlwCMTLKZaV5wi9XUfII6HdlyzP3vvjDVk&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1739152382%2C&mh=QI&mm=31%2C29&mn=sn-j5o5gpx-t8ge%2Csn-nx57ynse&ms=au%2Crdu&mv=m&mvi=2&pcm2cms=yes&pl=24&rms=au%2Cau&initcwndbps=2666250&bui=AUWDL3x_tXGAUYy8H67UKR5dyCSFTJ-5262vr6Lu7aeemOBaNgWWx8ufxeRxfhfotDXiGX8Cc5cqCgJd&spc=RjZbSWKuaQyk3xmKgal6FBI3X4ggE1faVpOUY0ATTuef9Hz0UwpmAh27OXDfSFY&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=nilb_kNOOIf62njkOx5F0yAQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1739151914&fvip=5&keepalive=yes&lmw=1&fexp=51326932%2C51371294&c=TVHTML5&sefc=1&txp=5532534&n=nLAq7hYHHl2_OQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhANLm4GQ7EFsTigmPK0JpiEZiCJ2YLv5aqspJqOrinJggAiEAnVysixl59oz3FmWmXz9cpO8Wq4ZE9v5iCEeq5eGvJKs%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRgIhAP-vKDIyY4q4XhnwIDj5c3V8UDw8v2_zC6n86HjqsNyaAiEAiAta5nqQlNXvSAuYR6lg7Y6ZKr0pJjnm7khPYFh6gV8%3D"
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.webm
+
+yt-dlp stderr: [debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3
+
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/to2cjikvfvi.mp3
+Generating transcript...
+Successfully generated summary: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+  timestamp: [32m'2025-02-10T01:53:30.708Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739152464726-982664416.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/80b9464d-4b83-4517-a77a-f4f73656c2da/06000035-5979-4810-af50-de42a40198d0-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/06000035-5979-4810-af50-de42a40198d0.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.5[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.09'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.8[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:10.01'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.9[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:43.21'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m121.2[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:18.40'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.3[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:54.27'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.5[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:28.83'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.3[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:04:04.07'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.9[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:40.90'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:16.35'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:52.21'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.6[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:27.24'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.1[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:07:02.46'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.8[39m,
+  targetSize: [33m7168[39m,
+  timemark: [32m'00:07:39.29'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.2[39m,
+  targetSize: [33m7680[39m,
+  timemark: [32m'00:08:14.45'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126[39m,
+  targetSize: [33m7936[39m,
+  timemark: [32m'00:08:35.84'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.6[39m,
+  targetSize: [33m8448[39m,
+  timemark: [32m'00:09:11.08'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.3[39m,
+  targetSize: [33m8960[39m,
+  timemark: [32m'00:09:45.96'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125[39m,
+  targetSize: [33m9472[39m,
+  timemark: [32m'00:10:20.88'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.8[39m,
+  targetSize: [33m10240[39m,
+  timemark: [32m'00:10:56.43'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.2[39m,
+  targetSize: [33m10752[39m,
+  timemark: [32m'00:11:32.67'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.7[39m,
+  targetSize: [33m11264[39m,
+  timemark: [32m'00:12:08.09'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.5[39m,
+  targetSize: [33m11776[39m,
+  timemark: [32m'00:12:42.65'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:55:12.794Z'[39m
+}
+File received: {
+  name: [32m'How Has Argentina Been Going.mp4'[39m,
+  size: [33m83043872[39m,
+  type: [32m'video/mp4'[39m,
+  path: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads/video-1739152687799-371650211.mp4'[39m
+}
+FFmpeg conversion started: ffmpeg -i /Users/Luis/dev/youtube_summary/webapi/tmp/sessions/5efc0b58-476e-4cda-b051-3340b2aa7a88/fffc2677-fc05-423e-beb4-78eaef8a3a5b-original.mp4 -y -f mp3 /Users/Luis/dev/youtube_summary/webapi/tmp/audios/fffc2677-fc05-423e-beb4-78eaef8a3a5b.mp3
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m-0[39m,
+  targetSize: [33m0[39m,
+  timemark: [32m'-577014:32:22.77'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m118.2[39m,
+  targetSize: [33m512[39m,
+  timemark: [32m'00:00:35.48'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m117.6[39m,
+  targetSize: [33m1024[39m,
+  timemark: [32m'00:01:11.34'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m120.6[39m,
+  targetSize: [33m1536[39m,
+  timemark: [32m'00:01:44.36'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.9[39m,
+  targetSize: [33m2048[39m,
+  timemark: [32m'00:02:19.92'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.1[39m,
+  targetSize: [33m2560[39m,
+  timemark: [32m'00:02:56.15'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.7[39m,
+  targetSize: [33m3072[39m,
+  timemark: [32m'00:03:30.21'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m119.9[39m,
+  targetSize: [33m3584[39m,
+  timemark: [32m'00:04:04.90'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.5[39m,
+  targetSize: [33m4352[39m,
+  timemark: [32m'00:04:41.81'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m4864[39m,
+  timemark: [32m'00:05:17.55'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.6[39m,
+  targetSize: [33m5376[39m,
+  timemark: [32m'00:05:53.52'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m124.1[39m,
+  targetSize: [33m5888[39m,
+  timemark: [32m'00:06:28.68'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m123.7[39m,
+  targetSize: [33m6400[39m,
+  timemark: [32m'00:07:03.68'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.5[39m,
+  targetSize: [33m7168[39m,
+  timemark: [32m'00:07:40.54'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.6[39m,
+  targetSize: [33m7680[39m,
+  timemark: [32m'00:08:17.11'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126[39m,
+  targetSize: [33m8192[39m,
+  timemark: [32m'00:08:52.59'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.5[39m,
+  targetSize: [33m8704[39m,
+  timemark: [32m'00:09:28.30'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.6[39m,
+  targetSize: [33m9216[39m,
+  timemark: [32m'00:10:01.26'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m125.1[39m,
+  targetSize: [33m9728[39m,
+  timemark: [32m'00:10:37.21'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.8[39m,
+  targetSize: [33m10496[39m,
+  timemark: [32m'00:11:13.02'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m127.2[39m,
+  targetSize: [33m11008[39m,
+  timemark: [32m'00:11:49.04'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.8[39m,
+  targetSize: [33m11520[39m,
+  timemark: [32m'00:12:24.08'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m126.4[39m,
+  targetSize: [33m12032[39m,
+  timemark: [32m'00:12:59.58'[39m
+}
+FFmpeg progress: {
+  frames: [33mNaN[39m,
+  currentFps: [33mNaN[39m,
+  currentKbps: [33m128[39m,
+  targetSize: [33m12189[39m,
+  timemark: [32m'00:13:00.02'[39m
+}
+FFmpeg conversion completed
+Generating transcript...
+Successfully generated summary: {
+  filename: [32m'How Has Argentina Been Going.mp4'[39m,
+  fileSize: [33m83043872[39m,
+  useAzure: [33mfalse[39m,
+  ip: [32m'::1'[39m,
+  userAgent: [32m'Next.js Middleware'[39m,
+  timestamp: [32m'2025-02-10T01:59:05.796Z'[39m
+}
