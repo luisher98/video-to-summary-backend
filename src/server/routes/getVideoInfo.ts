@@ -18,9 +18,10 @@ import { handleError } from '../../utils/errorHandling.js';
  * {
  *   "id": "video_id",
  *   "title": "Video Title",
- *   "description": "Truncated description...",
- *   "thumbnail": { url, width, height },
- *   "channel": "Channel Name"
+ *   "description": "Video description...",
+ *   "thumbnailUrl": "https://...",
+ *   "channel": "Channel Name",
+ *   "duration": 120
  * }
  */
 export default async function getVideoInfo(req: Request, res: Response) {
@@ -28,8 +29,7 @@ export default async function getVideoInfo(req: Request, res: Response) {
     const inputUrl = req.query.url as string;
   
     try {
-      const { id, title, mediumThumbnail, trimmedDescription, channelTitle } =
-        await videoInfo(inputUrl);
+      const info = await videoInfo(inputUrl);
         
       logRequest({
         event: 'video_info_retrieved',
@@ -37,25 +37,14 @@ export default async function getVideoInfo(req: Request, res: Response) {
         ip: req.ip || req.socket.remoteAddress || 'unknown',
         userAgent: req.get('user-agent'),
         duration: Date.now() - startTime,
-        videoId: id
+        videoId: info.id
       });
 
       res.json({
-        id: id,
-        title: title,
-        description: trimmedDescription,
-        thumbnail: mediumThumbnail,
-        channel: channelTitle,
+        success: true,
+        data: info
       });
     } catch (error) {
-      logRequest({
-        event: 'video_info_error',
-        url: inputUrl,
-        ip: req.ip || req.socket.remoteAddress || 'unknown',
-        userAgent: req.get('user-agent'),
-        duration: Date.now() - startTime,
-        error: error instanceof Error ? error.message : 'Unknown error'
-      });
       handleError(error, res);
     }
-  }
+}

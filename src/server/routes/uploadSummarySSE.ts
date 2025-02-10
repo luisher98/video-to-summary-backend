@@ -49,16 +49,18 @@ const storage = multer.diskStorage({
     }
 });
 
+const ALLOWED_MIME_TYPES = ['video/mp4', 'video/webm', 'video/quicktime'];
+
 const upload = multer({
     storage,
     limits: {
         fileSize: FILE_SIZE.MAX_FILE_SIZE,
     },
     fileFilter: (req: Request, file: MulterFile, cb: multer.FileFilterCallback) => {
-        if (file.mimetype.startsWith('video/')) {
+        if (ALLOWED_MIME_TYPES.includes(file.mimetype)) {
             cb(null, true);
         } else {
-            cb(new BadRequestError('Only video files are allowed'));
+            cb(new BadRequestError('Invalid file type. Supported types: MP4, WebM, QuickTime'));
         }
     }
 });

@@ -739,3 +739,59 @@ Error during cleanup: Error [ERR_SERVER_NOT_RUNNING]: Server is not running.
 [90m    at process.processTicksAndRejections (node:internal/process/task_queues:81:21)[39m {
   code: [32m'ERR_SERVER_NOT_RUNNING'[39m
 }
+Upload error: BadRequestError: Only video files are allowed
+    at fileFilter [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadSummarySSE.js:40:16[90m)[39m
+    at wrappedFileFilter [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/index.js:44:7[90m)[39m
+    at Multipart.<anonymous> [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/lib/make-middleware.js:107:7[90m)[39m
+[90m    at Multipart.emit (node:events:519:28)[39m
+    at HeaderParser.cb [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:358:14[90m)[39m
+    at HeaderParser.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:162:20[90m)[39m
+    at SBMH.ssCb [as _cb] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:394:37[90m)[39m
+    at feed [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:248:10[90m)[39m
+    at SBMH.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:104:16[90m)[39m
+    at Multipart._write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:567:19[90m)[39m {
+  statusCode: [33m400[39m,
+  storageErrors: []
+}
+Upload error: BadRequestError: Invalid file type. Supported types: MP4, WebM, QuickTime
+    at fileFilter [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadSummarySSE.js:41:16[90m)[39m
+    at wrappedFileFilter [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/index.js:44:7[90m)[39m
+    at Multipart.<anonymous> [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/lib/make-middleware.js:107:7[90m)[39m
+[90m    at Multipart.emit (node:events:519:28)[39m
+    at HeaderParser.cb [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:358:14[90m)[39m
+    at HeaderParser.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:162:20[90m)[39m
+    at SBMH.ssCb [as _cb] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:394:37[90m)[39m
+    at feed [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:248:10[90m)[39m
+    at SBMH.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:104:16[90m)[39m
+    at Multipart._write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:567:19[90m)[39m {
+  statusCode: [33m400[39m,
+  storageErrors: []
+}
+Upload error: BadRequestError: Invalid file type. Supported types: MP4, WebM, QuickTime
+    at fileFilter [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadSummarySSE.js:41:16[90m)[39m
+    at wrappedFileFilter [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/index.js:44:7[90m)[39m
+    at Multipart.<anonymous> [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/lib/make-middleware.js:107:7[90m)[39m
+[90m    at Multipart.emit (node:events:519:28)[39m
+    at HeaderParser.cb [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:358:14[90m)[39m
+    at HeaderParser.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:162:20[90m)[39m
+    at SBMH.ssCb [as _cb] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:394:37[90m)[39m
+    at feed [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:248:10[90m)[39m
+    at SBMH.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:104:16[90m)[39m
+    at Multipart._write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:567:19[90m)[39m {
+  statusCode: [33m400[39m,
+  storageErrors: []
+}
+Upload error: BadRequestError: Invalid file type. Supported types: MP4, WebM, QuickTime
+    at fileFilter [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadSummarySSE.js:41:16[90m)[39m
+    at wrappedFileFilter [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/index.js:44:7[90m)[39m
+    at Multipart.<anonymous> [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mmulter[24m/lib/make-middleware.js:107:7[90m)[39m
+[90m    at Multipart.emit (node:events:519:28)[39m
+    at HeaderParser.cb [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:358:14[90m)[39m
+    at HeaderParser.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:162:20[90m)[39m
+    at SBMH.ssCb [as _cb] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:394:37[90m)[39m
+    at feed [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:248:10[90m)[39m
+    at SBMH.push [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mstreamsearch[24m/lib/sbmh.js:104:16[90m)[39m
+    at Multipart._write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mbusboy[24m/lib/types/multipart.js:567:19[90m)[39m {
+  statusCode: [33m400[39m,
+  storageErrors: []
+}

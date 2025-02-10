@@ -6,19 +6,14 @@ export type VideoInfo = {
   id: string;
   /** Video title */
   title: string;
-  /** Truncated video description */
-  trimmedDescription: string;
-  /** Medium quality thumbnail */
-  mediumThumbnail: {
-    /** Thumbnail URL */
-    url: string;
-    /** Thumbnail width in pixels */
-    width: number;
-    /** Thumbnail height in pixels */
-    height: number;
-  };
+  /** Video description */
+  description: string;
+  /** Thumbnail URL */
+  thumbnailUrl: string;
   /** Channel name */
-  channelTitle: string;
+  channel: string;
+  /** Video duration in seconds */
+  duration: number;
 };
 
 /**
@@ -26,8 +21,8 @@ export type VideoInfo = {
  * @internal
  */
 export type YouTubeApiResponse = {
-    items: YouTubeVideo[];
-  }
+  items: YouTubeVideo[];
+}
 
 /**
  * Thumbnail metadata from YouTube API
@@ -53,11 +48,20 @@ type Snippet = {
 }
 
 /**
- * Video data from YouTube API
+ * Video content details from YouTube API
+ * @internal
+ */
+type ContentDetails = {
+  duration: string;  // ISO 8601 duration format (e.g., PT1H2M10S)
+}
+
+/**
+ * Video resource from YouTube API
  * @internal
  */
 type YouTubeVideo = {
   snippet: Snippet;
+  contentDetails: ContentDetails;
 }
 
 
