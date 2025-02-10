@@ -5,10 +5,11 @@ import { promises as fsPromises } from "fs";
 import { processUploadedFile } from "../../services/summary/fileUploadSummary.js";
 import { ProgressUpdate } from "../../types/global.types.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
-import { Readable } from "stream";
+import { Readable, PassThrough } from "stream";
 import { FILE_SIZE, TEMP_DIRS } from "../../utils/utils.js";
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
+import { getBlobClient } from "../../services/azure/blobStorage.js";
 
 // Constants for file size limits and chunking
 const MEMORY_LIMIT = 200 * 1024 * 1024; // 200MB
@@ -119,15 +120,46 @@ async function createFileStream(file: MulterFile): Promise<Readable> {
 }
 
 /**
- * Server-Sent Events endpoint for generating summaries from uploaded video files with real-time progress updates.
+ * Converts a Web ReadableStream to a Node.js Readable stream
+ */
+function webReadableToNodeReadable(webReadable: ReadableStream<Uint8Array>): Readable {
+    const passThrough = new PassThrough();
+    
+    const reader = webReadable.getReader();
+    
+    function push() {
+        reader.read().then(({done, value}) => {
+            if (done) {
+                passThrough.end();
+                return;
+            }
+            passThrough.write(value);
+            push();
+        }).catch(error => {
+            passThrough.emit('error', error);
+        });
+    }
+    
+    push();
+    
+    return passThrough;
+}
+
+/**
+ * Server-Sent Events endpoint for generating summaries from video files with real-time progress updates.
+ * Supports both direct file uploads and processing files from Azure Blob Storage.
  * 
  * @param {Request} req - Express request object with query parameters:
  *   - words: (optional) Maximum words in summary, defaults to 400
+ *   - fileId: (optional) ID of the file in Azure Blob Storage
+ *   - blobName: (optional) Name of the blob in Azure Storage
  * @param {Response} res - Express response object for SSE stream
  * 
  * @example
- * POST /api/upload-summary-sse?words=300
+ * POST /api/upload-summary-sse - For direct file uploads
  * Content-Type: multipart/form-data
+ * 
+ * GET /api/upload-summary-sse?fileId=xxx&blobName=xxx - For processing files from Azure Storage
  * 
  * // SSE Response Events:
  * data: {"status": "pending", "message": "Processing uploaded file..."}
@@ -142,9 +174,6 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("X-Accel-Buffering", "no"); // Prevents Azure from buffering
 
-    let uploadedBytes = 0;
-    const contentLength = parseInt(req.headers['content-length'] || '0', 10);
-
     // Create debounced progress sender
     const sendProgress = debounce((data: ProgressMessage) => {
         try {
@@ -154,6 +183,31 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
             console.error('Error sending progress update:', error);
         }
     }, 500);
+
+    // Check if we're processing a file from Azure Blob Storage
+    const fileId = req.query.fileId as string;
+    const blobName = req.query.blobName as string;
+
+    if (fileId && blobName) {
+        // Process file from Azure Blob Storage
+        handleAzureBlob(req, res, sendProgress);
+        return;
+    }
+
+    // Only handle file uploads for POST requests
+    if (req.method !== 'POST') {
+        sendProgress({
+            status: "error",
+            message: "Direct file uploads must use POST method",
+            progress: 0
+        });
+        res.end();
+        return;
+    }
+
+    // Handle direct file upload (existing code)
+    let uploadedBytes = 0;
+    const contentLength = parseInt(req.headers['content-length'] || '0', 10);
 
     // Track upload progress
     req.on('data', (chunk: Buffer) => {
@@ -261,5 +315,90 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
             res.end();
         }
     });
+}
+
+/**
+ * Handles processing a file from Azure Blob Storage
+ */
+async function handleAzureBlob(
+    req: Request, 
+    res: Response, 
+    sendProgress: (data: ProgressMessage) => void
+): Promise<void> {
+    try {
+        const fileId = req.query.fileId as string;
+        const blobName = req.query.blobName as string;
+        let words = Number(req.query.words);
+        if (isNaN(words)) words = 400;
+
+        sendProgress({ 
+            status: 'processing',
+            message: 'Starting file processing from Azure Blob Storage...',
+            progress: 0
+        });
+
+        // Get blob client
+        const blobClient = getBlobClient(blobName);
+        const properties = await blobClient.getProperties();
+        const fileSize = properties.contentLength || 0;
+
+        // Download and process the file
+        const downloadResponse = await blobClient.download();
+        if (!downloadResponse.readableStreamBody) {
+            throw new Error('Could not get readable stream from blob');
+        }
+
+        // Create a PassThrough stream that we'll pipe the data through
+        const passThrough = new PassThrough();
+        
+        // Start reading from the Azure stream and writing to our PassThrough stream
+        (async () => {
+            try {
+                for await (const chunk of downloadResponse.readableStreamBody as any) {
+                    passThrough.write(chunk);
+                }
+                passThrough.end();
+            } catch (error) {
+                passThrough.destroy(error as Error);
+            }
+        })();
+
+        const summary = await processUploadedFile({
+            file: passThrough,
+            originalFilename: blobName,
+            fileSize: fileSize,
+            words: words,
+            additionalPrompt: req.query.prompt as string,
+            requestInfo: {
+                ip: req.ip || req.socket.remoteAddress || 'unknown',
+                userAgent: req.get('user-agent')
+            },
+            updateProgress: (progress: ProgressUpdate) => {
+                sendProgress({
+                    status: progress.status,
+                    message: progress.message || 'Processing...',
+                    progress: progress.progress
+                });
+            },
+        });
+
+        // Send final summary
+        sendProgress({ 
+            status: "done", 
+            message: summary,
+            progress: 100
+        });
+    } catch (error) {
+        console.error('Azure blob processing error:', error);
+        sendProgress({
+            status: "error",
+            message: error instanceof Error 
+                ? `Azure processing error: ${error.message}` 
+                : 'Unknown processing error',
+            progress: 0
+        });
+    } finally {
+        res.end();
+    }
 } 
 

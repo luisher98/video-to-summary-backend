@@ -5,6 +5,7 @@ import getYouTubeSummarySSE from './routes/getYouTubeSummarySSE.js';
 import uploadSummarySSE from './routes/uploadSummarySSE.js';
 import getTranscript from './routes/getTranscript.js';
 import getTestSSE from './routes/getTestSSE.js';
+import uploadUrlRouter from './routes/uploadUrl.js';
 import { handleUncaughtErrors } from '../utils/errorHandling.js';
 import rateLimit from 'express-rate-limit';
 import { v4 as uuidv4 } from 'uuid';
@@ -67,8 +68,12 @@ app.use(helmet());
 // CORS configuration
 const corsOptions = {
     origin: '*',  // Allow all origins for now
-    methods: ['GET', 'POST'],  // Add POST for file uploads
-    optionsSuccessStatus: 200
+    methods: ['GET', 'POST', 'PUT', 'OPTIONS'],  // Include PUT for Azure uploads
+    allowedHeaders: ['Content-Type', 'x-ms-blob-type', 'x-ms-version'],
+    exposedHeaders: ['ETag'],
+    maxAge: 86400,  // 24 hours
+    optionsSuccessStatus: 200,
+    credentials: false
 };
 app.use(cors(corsOptions));
 
@@ -154,15 +159,21 @@ const apiRoutes = {
     youtubeSummary: '/api/youtube-summary',
     youtubeSummarySSE: '/api/youtube-summary-sse',
     uploadSummarySSE: '/api/upload-summary-sse',
+    uploadUrl: '/api/upload-url',
     transcript: '/api/transcript',
     testSSE: '/api/test-sse'
 } as const;
 
 // Configure routes
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get(apiRoutes.info, getVideoInfo);
 app.get(apiRoutes.youtubeSummary, requestQueueMiddleware as express.RequestHandler, getYouTubeSummary);
 app.get(apiRoutes.youtubeSummarySSE, requestQueueMiddleware as express.RequestHandler, getYouTubeSummarySSE);
+app.use(apiRoutes.uploadUrl, uploadUrlRouter);
 app.post(apiRoutes.uploadSummarySSE, requestQueueMiddleware as express.RequestHandler, uploadSummarySSE);
+app.get(apiRoutes.uploadSummarySSE, requestQueueMiddleware as express.RequestHandler, uploadSummarySSE);
 app.get(apiRoutes.transcript, requestQueueMiddleware as express.RequestHandler, getTranscript);
 app.get(apiRoutes.testSSE, getTestSSE);
 

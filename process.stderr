@@ -795,3 +795,2944 @@ Upload error: BadRequestError: Invalid file type. Supported types: MP4, WebM, Qu
   statusCode: [33m400[39m,
   storageErrors: []
 }
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:172:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:172:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:172:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:151:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:151:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:151:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:172:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:172:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:172:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:151:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:151:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:151:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Failed to generate SAS URL: Error: Azure Storage account key not configured
+    at AzureStorageService.generateUploadUrl [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/services/storage/azureStorage.js:276:23[90m)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadUrl.js:34:40
+    at Layer.handle [as handle_request] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/layer.js:95:5[90m)[39m
+    at next [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/route.js:149:13[90m)[39m
+    at Route.dispatch [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/route.js:119:3[90m)[39m
+    at Layer.handle [as handle_request] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/layer.js:95:5[90m)[39m
+    at [90m/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:284:15
+    at Function.process_params [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:346:12[90m)[39m
+    at next [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:280:10[90m)[39m
+    at Function.handle [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:175:3[90m)[39m
+Error generating upload URL: InternalServerError: Failed to generate upload URL
+    at AzureStorageService.generateUploadUrl [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/services/storage/azureStorage.js:296:19[90m)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/routes/uploadUrl.js:34:40
+    at Layer.handle [as handle_request] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/layer.js:95:5[90m)[39m
+    at next [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/route.js:149:13[90m)[39m
+    at Route.dispatch [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/route.js:119:3[90m)[39m
+    at Layer.handle [as handle_request] [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/layer.js:95:5[90m)[39m
+    at [90m/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:284:15
+    at Function.process_params [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:346:12[90m)[39m
+    at next [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:280:10[90m)[39m
+    at Function.handle [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mexpress[24m/lib/router/index.js:175:3[90m)[39m {
+  statusCode: [33m500[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at IPCTransport.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/@pm2/io/build/main/transports/IPCTransport.js:84:21)
+    at IPCTransport.setMetrics (/Users/Luis/dev/youtube_summary/webapi/node_modules/@pm2/io/build/main/transports/IPCTransport.js:61:14)
+    at Timeout._onTimeout (/Users/Luis/dev/youtube_summary/webapi/node_modules/@pm2/io/build/main/services/metrics.js:75:28)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at IPCTransport.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/transports/IPCTransport.js:84:21[90m)[39m
+    at IPCTransport.setMetrics [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/transports/IPCTransport.js:61:14[90m)[39m
+    at Timeout._onTimeout [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/services/metrics.js:75:28[90m)[39m
+[90m    at listOnTimeout (node:internal/timers:581:17)[39m
+[90m    at process.processTimers (node:internal/timers:519:7)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at IPCTransport.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/transports/IPCTransport.js:84:21[90m)[39m
+    at IPCTransport.setMetrics [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/transports/IPCTransport.js:61:14[90m)[39m
+    at Timeout._onTimeout [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4m@pm2[24m/io/build/main/services/metrics.js:75:28[90m)[39m
+[90m    at listOnTimeout (node:internal/timers:581:17)[39m
+[90m    at process.processTimers (node:internal/timers:519:7)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:154:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:154:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error configuring Azure Storage CORS: RestError: This request is not authorized to perform this operation using this permission.
+RequestId:6e3529fa-001e-005e-1f6b-7b1ed4000000
+Time:2025-02-10T03:24:12.8054202Z 
+ {
+  "name": "RestError",
+  "code": "AuthorizationPermissionMismatch",
+  "statusCode": 403,
+  "details": {
+    "errorCode": "AuthorizationPermissionMismatch",
+    "content-length": "279",
+    "content-type": "application/xml",
+    "server": "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0",
+    "x-ms-request-id": "6e3529fa-001e-005e-1f6b-7b1ed4000000",
+    "x-ms-client-request-id": "8793a72a-c321-4516-8f53-8881b6e4755f",
+    "x-ms-version": "2025-01-05",
+    "date": "Mon, 10 Feb 2025 03:24:11 GMT",
+    "message": "This request is not authorized to perform this operation using this permission.\nRequestId:6e3529fa-001e-005e-1f6b-7b1ed4000000\nTime:2025-02-10T03:24:12.8054202Z",
+    "code": "AuthorizationPermissionMismatch"
+  },
+  "request": {
+    "url": "https://summarystorage.blob.core.windows.net/?restype=REDACTED&comp=REDACTED",
+    "headers": {
+      "content-type": "application/xml",
+      "accept": "application/xml",
+      "x-ms-version": "REDACTED",
+      "user-agent": "azsdk-js-azure-storage-blob/12.26.0 core-rest-pipeline/1.18.2 Node/20.17.0 OS/(arm64-Darwin-22.6.0)",
+      "x-ms-client-request-id": "8793a72a-c321-4516-8f53-8881b6e4755f",
+      "content-length": "951",
+      "authorization": "REDACTED"
+    },
+    "method": "PUT",
+    "timeout": 0,
+    "disableKeepAlive": false,
+    "streamResponseStatusCodes": {},
+    "withCredentials": false,
+    "tracingOptions": {
+      "tracingContext": {
+        "_contextMap": {}
+      }
+    },
+    "requestId": "8793a72a-c321-4516-8f53-8881b6e4755f",
+    "allowInsecureConnection": true,
+    "enableBrowserStreams": false
+  }
+}
+Error configuring Azure Storage CORS: RestError: This request is not authorized to perform this operation using this permission.
+RequestId:e7fec363-e01e-0056-316b-7b04db000000
+Time:2025-02-10T03:24:12.8182732Z 
+ {
+  "name": "RestError",
+  "code": "AuthorizationPermissionMismatch",
+  "statusCode": 403,
+  "details": {
+    "errorCode": "AuthorizationPermissionMismatch",
+    "content-length": "279",
+    "content-type": "application/xml",
+    "server": "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0",
+    "x-ms-request-id": "e7fec363-e01e-0056-316b-7b04db000000",
+    "x-ms-client-request-id": "61851f69-4764-4843-ac90-fb4f39168473",
+    "x-ms-version": "2025-01-05",
+    "date": "Mon, 10 Feb 2025 03:24:12 GMT",
+    "message": "This request is not authorized to perform this operation using this permission.\nRequestId:e7fec363-e01e-0056-316b-7b04db000000\nTime:2025-02-10T03:24:12.8182732Z",
+    "code": "AuthorizationPermissionMismatch"
+  },
+  "request": {
+    "url": "https://summarystorage.blob.core.windows.net/?restype=REDACTED&comp=REDACTED",
+    "headers": {
+      "content-type": "application/xml",
+      "accept": "application/xml",
+      "x-ms-version": "REDACTED",
+      "user-agent": "azsdk-js-azure-storage-blob/12.26.0 core-rest-pipeline/1.18.2 Node/20.17.0 OS/(arm64-Darwin-22.6.0)",
+      "x-ms-client-request-id": "61851f69-4764-4843-ac90-fb4f39168473",
+      "content-length": "951",
+      "authorization": "REDACTED"
+    },
+    "method": "PUT",
+    "timeout": 0,
+    "disableKeepAlive": false,
+    "streamResponseStatusCodes": {},
+    "withCredentials": false,
+    "tracingOptions": {
+      "tracingContext": {
+        "_contextMap": {}
+      }
+    },
+    "requestId": "61851f69-4764-4843-ac90-fb4f39168473",
+    "allowInsecureConnection": true,
+    "enableBrowserStreams": false
+  }
+}
+Error configuring Azure Storage CORS: RestError: This request is not authorized to perform this operation using this permission.
+RequestId:2639e682-801e-0022-7a71-7b302b000000
+Time:2025-02-10T04:05:46.5849672Z 
+ {
+  "name": "RestError",
+  "code": "AuthorizationPermissionMismatch",
+  "statusCode": 403,
+  "details": {
+    "errorCode": "AuthorizationPermissionMismatch",
+    "content-length": "279",
+    "content-type": "application/xml",
+    "server": "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0",
+    "x-ms-request-id": "2639e682-801e-0022-7a71-7b302b000000",
+    "x-ms-client-request-id": "dc5af640-4571-44a5-ace5-7536ae0c6823",
+    "x-ms-version": "2025-01-05",
+    "date": "Mon, 10 Feb 2025 04:05:46 GMT",
+    "message": "This request is not authorized to perform this operation using this permission.\nRequestId:2639e682-801e-0022-7a71-7b302b000000\nTime:2025-02-10T04:05:46.5849672Z",
+    "code": "AuthorizationPermissionMismatch"
+  },
+  "request": {
+    "url": "https://summarystorage.blob.core.windows.net/?restype=REDACTED&comp=REDACTED",
+    "headers": {
+      "x-ms-version": "REDACTED",
+      "accept": "application/xml",
+      "user-agent": "azsdk-js-azure-storage-blob/12.26.0 core-rest-pipeline/1.18.2 Node/20.17.0 OS/(arm64-Darwin-22.6.0)",
+      "x-ms-client-request-id": "dc5af640-4571-44a5-ace5-7536ae0c6823",
+      "authorization": "REDACTED"
+    },
+    "method": "GET",
+    "timeout": 0,
+    "disableKeepAlive": false,
+    "streamResponseStatusCodes": {},
+    "withCredentials": false,
+    "tracingOptions": {
+      "tracingContext": {
+        "_contextMap": {}
+      }
+    },
+    "requestId": "dc5af640-4571-44a5-ace5-7536ae0c6823",
+    "allowInsecureConnection": true,
+    "enableBrowserStreams": false
+  }
+}
+Error configuring Azure Storage CORS: RestError: This request is not authorized to perform this operation using this permission.
+RequestId:2088cd55-f01e-0038-3771-7b51f4000000
+Time:2025-02-10T04:05:46.5719346Z 
+ {
+  "name": "RestError",
+  "code": "AuthorizationPermissionMismatch",
+  "statusCode": 403,
+  "details": {
+    "errorCode": "AuthorizationPermissionMismatch",
+    "content-length": "279",
+    "content-type": "application/xml",
+    "server": "Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0",
+    "x-ms-request-id": "2088cd55-f01e-0038-3771-7b51f4000000",
+    "x-ms-client-request-id": "f6844971-5a14-4cce-840f-ef1e2e7b41fe",
+    "x-ms-version": "2025-01-05",
+    "date": "Mon, 10 Feb 2025 04:05:45 GMT",
+    "message": "This request is not authorized to perform this operation using this permission.\nRequestId:2088cd55-f01e-0038-3771-7b51f4000000\nTime:2025-02-10T04:05:46.5719346Z",
+    "code": "AuthorizationPermissionMismatch"
+  },
+  "request": {
+    "url": "https://summarystorage.blob.core.windows.net/?restype=REDACTED&comp=REDACTED",
+    "headers": {
+      "x-ms-version": "REDACTED",
+      "accept": "application/xml",
+      "user-agent": "azsdk-js-azure-storage-blob/12.26.0 core-rest-pipeline/1.18.2 Node/20.17.0 OS/(arm64-Darwin-22.6.0)",
+      "x-ms-client-request-id": "f6844971-5a14-4cce-840f-ef1e2e7b41fe",
+      "authorization": "REDACTED"
+    },
+    "method": "GET",
+    "timeout": 0,
+    "disableKeepAlive": false,
+    "streamResponseStatusCodes": {},
+    "withCredentials": false,
+    "tracingOptions": {
+      "tracingContext": {
+        "_contextMap": {}
+      }
+    },
+    "requestId": "f6844971-5a14-4cce-840f-ef1e2e7b41fe",
+    "allowInsecureConnection": true,
+    "enableBrowserStreams": false
+  }
+}
+[33mWarning: Insufficient permissions to configure CORS. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000, https://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT,DELETE[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,content-length,content-type,accept,origin[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to configure CORS. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000, https://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT,DELETE[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,content-length,content-type,accept,origin[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to configure CORS. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000, https://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT,DELETE[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,content-length,content-type,accept,origin[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to configure CORS. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000, https://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT,DELETE[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,content-length,content-type,accept,origin[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:179:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:179:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:179:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:158:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:158:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:158:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:179:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:179:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:179:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:158:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:158:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:158:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[31mNo file in request[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:237:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.log (node:internal/console/constructor:386:26)
+    at handleShutdown (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:30:13)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/index.js:46:28)
+    at process.emit (node:events:519:28)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:182:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:182:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:182:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:161:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:161:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:161:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:237:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.log (node:internal/console/constructor:386:26)[39m
+    at handleShutdown [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:30:13[90m)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/index.js:46:28[90m)[39m
+[90m    at process.emit (node:events:519:28)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at sendHelper (node:internal/cluster/utils:28:15)
+    at send (node:internal/cluster/child:250:10)
+    at Object.close (node:internal/cluster/child:202:5)
+    at Server.close (node:net:2288:18)
+    at Server.close (node:_http_server:566:3)
+    at file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:182:24
+    at new Promise (<anonymous>)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:182:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+[90m    at sendHelper (node:internal/cluster/utils:28:15)[39m
+[90m    at send (node:internal/cluster/child:250:10)[39m
+[90m    at Object.close (node:internal/cluster/child:202:5)[39m
+[90m    at Server.close (node:net:2288:18)[39m
+[90m    at Server.close (node:_http_server:566:3)[39m
+    at [90mfile:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:182:24
+    at new Promise (<anonymous>) {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:271:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:271:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at process.uncaughtListener (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:276:19)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at process.uncaughtListener [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:276:19[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/server/server.js:161:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:161:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/server/server.js:161:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Error: write EPIPE
+    at target._send (node:internal/child_process:879:20)
+    at target.send (node:internal/child_process:752:19)
+    at process.send (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:52:21)
+    at WriteStream.write (/Users/Luis/dev/youtube_summary/webapi/node_modules/pm2/lib/ProcessContainer.js:198:17)
+    at console.value (node:internal/console/constructor:311:16)
+    at console.error (node:internal/console/constructor:395:26)
+    at process.<anonymous> (file:///Users/Luis/dev/youtube_summary/webapi/dist/utils/errorHandling.js:93:17)
+    at process.emit (node:events:531:35)
+    at process._fatalException (node:internal/process/execution:188:25)
+Uncaught Exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+Uncaught exception: Error: write EPIPE
+[90m    at target._send (node:internal/child_process:879:20)[39m
+[90m    at target.send (node:internal/child_process:752:19)[39m
+    at process.send [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:52:21[90m)[39m
+    at WriteStream.write [90m(/Users/Luis/dev/youtube_summary/webapi/[39mnode_modules/[4mpm2[24m/lib/ProcessContainer.js:198:17[90m)[39m
+[90m    at console.value (node:internal/console/constructor:311:16)[39m
+[90m    at console.error (node:internal/console/constructor:395:26)[39m
+    at process.<anonymous> [90m(file:///Users/Luis/dev/youtube_summary/webapi/[39mdist/utils/errorHandling.js:93:17[90m)[39m
+[90m    at process.emit (node:events:531:35)[39m
+[90m    at process._fatalException (node:internal/process/execution:188:25)[39m {
+  errno: [33m-32[39m,
+  code: [32m'EPIPE'[39m,
+  syscall: [32m'write'[39m
+}
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:[39m
+[33m- Allowed origins: http://localhost:3000[39m
+[33m- Allowed methods: OPTIONS,GET,HEAD,POST,PUT[39m
+[33m- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization[39m
+[33m- Exposed headers: *[39m
+[33m- Max age: 86400[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m
+[33mWarning: Insufficient permissions to check CORS configuration[39m

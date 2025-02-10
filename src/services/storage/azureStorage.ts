@@ -1,4 +1,4 @@
-import { BlobServiceClient, ContainerClient, BlockBlobClient } from '@azure/storage-blob';
+import { BlobServiceClient, ContainerClient, BlockBlobClient, BlobSASPermissions, generateBlobSASQueryParameters, SASProtocol } from '@azure/storage-blob';
 import { DefaultAzureCredential, EnvironmentCredential } from '@azure/identity';
 import { Readable, PassThrough } from 'stream';
 import { InternalServerError } from '../../utils/errorHandling.js';
@@ -42,6 +42,11 @@ export class AzureStorageService {
             this.blobServiceClient = new BlobServiceClient(blobServiceUrl, credential);
             this.containerClient = this.blobServiceClient.getContainerClient(CONFIG.containerName);
             console.log('Using DefaultAzureCredential for Azure Storage');
+            
+            // Check current CORS configuration
+            void this.checkCorsConfiguration();
+            // Set up CORS rules
+            void this.setupCors();
         } catch (error) {
             console.error('Failed to initialize Azure Storage:', error);
             throw new InternalServerError('Failed to initialize storage service');
@@ -309,6 +314,122 @@ export class AzureStorageService {
      */
     static shouldUseAzureStorage(sizeInBytes: number): boolean {
         return sizeInBytes > CONFIG.maxLocalFileSizeMB * 1024 * 1024;
+    }
+
+    /**
+     * Set up CORS rules for the storage account
+     */
+    public async setupCors(): Promise<void> {
+        try {
+            // First try to get existing properties to check if CORS is already configured
+            const serviceProperties = await this.blobServiceClient.getProperties();
+
+            // Define allowed origins for development
+            const allowedOrigins = [
+                'http://localhost:3000'  // Frontend application URL
+            ];
+
+            // Define specific headers that need to be allowed
+            const allowedHeaders = [
+                'x-ms-blob-type',
+                'x-ms-blob-content-type',
+                'x-ms-version',
+                'x-ms-date',
+                'content-length',
+                'content-type',
+                'accept',
+                'origin',
+                'authorization'
+            ];
+
+            // If not configured or needs update, try to set properties
+            console.log('Configuring Azure Storage CORS...');
+            await this.blobServiceClient.setProperties({
+                ...serviceProperties,
+                cors: [{
+                    allowedHeaders: allowedHeaders.join(','),
+                    allowedMethods: 'OPTIONS,GET,HEAD,POST,PUT',
+                    allowedOrigins: allowedOrigins.join(','),
+                    exposedHeaders: '*',
+                    maxAgeInSeconds: 86400,
+                }]
+            });
+            console.log('Azure Storage CORS configured successfully');
+        } catch (error) {
+            // If error is permission related, log a warning but don't fail
+            if (error && typeof error === 'object' && 'code' in error && error.code === 'AuthorizationPermissionMismatch') {
+                console.warn('Warning: Service principal needs "Storage Blob Data Owner" role. Please configure CORS manually in the Azure Portal with these settings:');
+                console.warn('- Allowed origins: http://localhost:3000');
+                console.warn('- Allowed methods: OPTIONS,GET,HEAD,POST,PUT');
+                console.warn('- Allowed headers: x-ms-blob-type,x-ms-blob-content-type,x-ms-version,x-ms-date,content-length,content-type,accept,origin,authorization');
+                console.warn('- Exposed headers: *');
+                console.warn('- Max age: 86400');
+                return;
+            }
+            
+            console.error('Error configuring Azure Storage CORS:', error);
+            // Don't throw, just log the error as this is not critical
+        }
+    }
+
+    /**
+     * Generate a SAS URL for uploading a blob
+     * @param blobName - The name of the blob to upload
+     * @param expiryMinutes - Number of minutes until the SAS token expires (default: 30)
+     * @returns The SAS URL for uploading
+     */
+    async generateUploadUrl(blobName: string, expiryMinutes = 30): Promise<string> {
+        try {
+            if (!CONFIG.accountName) {
+                throw new Error('Azure Storage account name not configured');
+            }
+
+            // Get user delegation key
+            const startsOn = new Date();
+            const expiresOn = new Date(startsOn);
+            expiresOn.setMinutes(startsOn.getMinutes() + expiryMinutes);
+
+            const userDelegationKey = await this.blobServiceClient.getUserDelegationKey(startsOn, expiresOn);
+
+            // Generate SAS token
+            const blockBlobClient = this.containerClient.getBlockBlobClient(blobName);
+            const sasOptions = {
+                containerName: CONFIG.containerName,
+                blobName: blobName,
+                permissions: BlobSASPermissions.parse("racw"), // Read, Add, Create, Write
+                startsOn: startsOn,
+                expiresOn: expiresOn,
+                protocol: SASProtocol.Https
+            };
+
+            const sasToken = generateBlobSASQueryParameters(
+                sasOptions,
+                userDelegationKey,
+                CONFIG.accountName
+            ).toString();
+
+            return `${blockBlobClient.url}?${sasToken}`;
+        } catch (error) {
+            console.error('Error generating upload URL:', error);
+            if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string' && error.message.includes('AuthorizationPermissionMismatch')) {
+                console.warn('Warning: Service principal may need "Storage Blob Data Owner" role');
+            }
+            throw new InternalServerError('Failed to generate upload URL');
+        }
+    }
+
+    private async checkCorsConfiguration(): Promise<void> {
+        try {
+            console.log('Checking current CORS configuration...');
+            const properties = await this.blobServiceClient.getProperties();
+            console.log('Current CORS configuration:', JSON.stringify(properties.cors, null, 2));
+        } catch (error) {
+            if (error && typeof error === 'object' && 'code' in error && error.code === 'AuthorizationPermissionMismatch') {
+                console.warn('Warning: Insufficient permissions to check CORS configuration');
+                return;
+            }
+            console.error('Error checking CORS configuration:', error);
+        }
     }
 }
 
