@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { BadRequestError } from '../../utils/errorHandling.js';
-import { AzureStorageService } from '../../services/storage/azureStorage.js';
+import { azureStorage } from '../../services/storage/azure/azureStorageService.js';
 
 const router = Router();
 
@@ -53,7 +53,6 @@ router.post('/', async (req: Request, res: Response) => {
         });
 
         // Get SAS URL for upload
-        const azureStorage = AzureStorageService.getInstance();
         const url = await azureStorage.generateUploadUrl(blobName);
 
         console.log('Generated SAS URL:', {

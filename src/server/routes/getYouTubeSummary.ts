@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/outputSummary.js";
+import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
 import { logRequest } from '../../utils/logger.js';
 import { handleError } from '../../utils/errorHandling.js';
@@ -31,7 +31,8 @@ export default async function getYouTubeSummary(req: Request, res: Response) {
     }
   
     try {
-      const summary = await outputSummary({
+      const processor = new YouTubeVideoSummary();
+      const summary = await processor.process({
         url: inputUrl,
         words: Number(req.query.words) || 400,
         additionalPrompt: req.query.prompt as string,

@@ -1,6 +1,7 @@
 import ffmpegPath from 'ffmpeg-static';
 import path from 'path';
 import fs from 'fs/promises';
+import fsSync from 'fs';
 import glob from 'glob';
 import os from 'os';
 
@@ -135,14 +136,66 @@ export async function createTempFile(
     return filepath;
 }
 
-export function getFfmpegPath(): string {
-    // Handle both string and module type
-    const path = (ffmpegPath as unknown) as string;
-    if (!path) {
-        // Fallback to system ffmpeg if available
-        return process.env.FFMPEG_PATH || 'ffmpeg';
+export async function checkExecutable(filePath: string): Promise<boolean> {
+    try {
+        await fs.access(filePath, fs.constants.X_OK);
+        return true;
+    } catch {
+        return false;
     }
-    return path;
+}
+
+export function getFfmpegPath(): string {
+    try {
+        // First try: Use ffmpeg-static module
+        const staticFfmpegPath = (ffmpegPath as unknown) as string;
+        if (staticFfmpegPath) {
+            console.log('Using ffmpeg-static module');
+            return staticFfmpegPath;
+        }
+
+        // Second try: Use our local FFmpeg binary
+        const localFfmpegPath = path.join(process.cwd(), 'src', 'lib', 'FFmpeg', 'ffmpeg', 'ffmpeg');
+        try {
+            // Synchronously check if file exists and is executable
+            fsSync.accessSync(localFfmpegPath, fsSync.constants.X_OK);
+            console.log('Using local FFmpeg binary:', localFfmpegPath);
+            return localFfmpegPath;
+        } catch (error: any) {
+            console.log('Local FFmpeg not accessible:', error?.message);
+            // Try to fix permissions
+            try {
+                require('child_process').execSync(`chmod +x "${localFfmpegPath}"`, { stdio: 'ignore' });
+                fsSync.accessSync(localFfmpegPath, fsSync.constants.X_OK);
+                console.log('Fixed permissions for local FFmpeg binary');
+                return localFfmpegPath;
+            } catch {
+                console.log('Could not fix FFmpeg permissions');
+            }
+        }
+
+        // Third try: Use system FFmpeg
+        try {
+            require('child_process').execSync('ffmpeg -version', { stdio: 'ignore' });
+            console.log('Using system FFmpeg');
+            return 'ffmpeg';
+        } catch {
+            console.log('System FFmpeg not available');
+        }
+
+        // Last resort: Use FFMPEG_PATH environment variable
+        const envPath = process.env.FFMPEG_PATH;
+        if (envPath) {
+            console.log('Using FFmpeg from environment variable');
+            return envPath;
+        }
+
+        console.log('Falling back to system FFmpeg');
+        return 'ffmpeg';
+    } catch (error) {
+        console.warn('Error finding FFmpeg:', error);
+        return 'ffmpeg'; // Default to system as last resort
+    }
 }
 
 export function getEnvVar(name: string): string {

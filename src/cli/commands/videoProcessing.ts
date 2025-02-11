@@ -1,6 +1,6 @@
 import videoInfo from '../../services/info/videoInfo.js';
 import { getCurrentDateTime } from '../../utils/utils.js';
-import { outputSummary } from '../../services/summary/outputSummary.js';
+import { outputSummary } from '../../services/summary/base/summaryProcessor.js';
 import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
 import { warning } from '../style/colors.js';
 

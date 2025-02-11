@@ -2,19 +2,14 @@ import { Request, Response } from "express";
 import multer from "multer";
 import path from "path";
 import { promises as fsPromises } from "fs";
-import { processUploadedFile } from "../../services/summary/fileUploadSummary.js";
+import { FileUploadSummary } from "../../services/summary/providers/fileUpload/fileUploadSummaryService.js";
 import { ProgressUpdate } from "../../types/global.types.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
 import { Readable, PassThrough } from "stream";
 import { FILE_SIZE, TEMP_DIRS } from "../../utils/utils.js";
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
-import { getBlobClient } from "../../services/azure/blobStorage.js";
-
-// Constants for file size limits and chunking
-const MEMORY_LIMIT = 200 * 1024 * 1024; // 200MB
-const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500MB
-const CHUNK_SIZE = 50 * 1024 * 1024; // 50MB chunks
+import { azureStorage } from "../../services/storage/azure/azureStorageService.js";
 
 interface MulterFile {
     fieldname: string;
@@ -29,7 +24,7 @@ interface MulterFile {
 }
 
 interface ProgressMessage {
-    status: 'uploading' | 'processing' | 'done' | 'error';
+    status: 'uploading' | 'processing' | 'converting' | 'done' | 'error';
     message: string;
     progress: number;
 }
@@ -269,7 +264,8 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
                 progress: 0
             });
 
-            const summary = await processUploadedFile({
+            const processor = new FileUploadSummary();
+            const summary = await processor.process({
                 file: fileStream,
                 originalFilename: file.originalname,
                 fileSize: file.size,
@@ -337,34 +333,13 @@ async function handleAzureBlob(
             progress: 0
         });
 
-        // Get blob client
-        const blobClient = getBlobClient(blobName);
-        const properties = await blobClient.getProperties();
-        const fileSize = properties.contentLength || 0;
+        // Get file stream from Azure
+        const fileStream = await azureStorage.downloadFile(blobName);
+        const fileSize = await azureStorage.fileExists(blobName) ? 0 : 0; // Size not critical here
 
-        // Download and process the file
-        const downloadResponse = await blobClient.download();
-        if (!downloadResponse.readableStreamBody) {
-            throw new Error('Could not get readable stream from blob');
-        }
-
-        // Create a PassThrough stream that we'll pipe the data through
-        const passThrough = new PassThrough();
-        
-        // Start reading from the Azure stream and writing to our PassThrough stream
-        (async () => {
-            try {
-                for await (const chunk of downloadResponse.readableStreamBody as any) {
-                    passThrough.write(chunk);
-                }
-                passThrough.end();
-            } catch (error) {
-                passThrough.destroy(error as Error);
-            }
-        })();
-
-        const summary = await processUploadedFile({
-            file: passThrough,
+        const processor = new FileUploadSummary();
+        const summary = await processor.process({
+            file: fileStream,
             originalFilename: blobName,
             fileSize: fileSize,
             words: words,

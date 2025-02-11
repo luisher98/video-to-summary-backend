@@ -24,22 +24,48 @@ This is the brain of the operation. It:
 - Coordinates the entire video processing workflow
 - Manages the transcription and summarization pipeline
 - Handles real-time progress updates via Server-Sent Events (SSE)
+- Provides clean, single-line FFmpeg progress updates
 
 Key files:
 - `outputSummary.ts`: Orchestrates the summary generation process
 - `videoTools.ts`: Handles video download and processing
-- `fileUploadSummary.ts`: Manages file upload processing
+- `fileUploadSummary.ts`: Manages file upload processing with improved progress tracking
 
 ### 2. Storage Service (`src/services/storage/`)
-I implemented a hybrid storage approach:
+I implemented a hybrid storage approach with improved handling:
 - Small files (≤100MB) are processed locally for speed
-- Larger files are automatically routed to Azure Blob Storage
-- Uses Azure managed identity in production for better security
+- Larger files use optimized Azure Blob Storage upload
+- Uses Azure managed identity in production
+- Efficient chunked uploads with concurrent processing
 
 The main logic is in `azureStorage.ts`, which handles:
-- Secure file uploads to Azure
+- Secure file uploads with optimized block sizes
 - Automatic cleanup of processed files
 - Stream-based file handling for better memory usage
+- Simplified CORS setup with minimal logging
+
+### Progress Tracking
+The system now provides more detailed progress updates:
+- 'uploading': During file upload (0-30%)
+- 'converting': During FFmpeg processing (30-50%)
+- 'processing': During transcription and summary (50-90%)
+- Final status updates at completion
+
+### Real-time Updates
+Progress updates are now more informative:
+```typescript
+interface ProgressUpdate {
+    status: 'uploading' | 'processing' | 'converting' | 'done' | 'error';
+    message: string;
+    progress: number;
+}
+```
+
+Example progress flow:
+1. "Uploading: 45%" (with accurate progress)
+2. "Converting video: 67%" (single-line FFmpeg updates)
+3. "Generating transcript..." (processing stage)
+4. "Creating AI summary..." (final stage)
 
 ### 3. API Layer (`src/server/`)
 I built the API with Express.js, focusing on:
@@ -480,3 +506,66 @@ Luis Hernández Martín
 ## License
 
 MIT
+
+### Azure Blob Storage Implementation
+
+The Azure storage implementation includes several optimizations and improvements:
+
+#### Block Upload Strategy
+```typescript
+// Optimized block upload configuration
+const CONFIG = {
+    maxBlockSize: 8 * 1024 * 1024,  // 8MB per block (optimal for most networks)
+    maxBlocks: 50000,               // Maximum number of blocks allowed by Azure
+    maxConcurrentUploads: 4,        // Concurrent block uploads
+    containerName: 'video-uploads'
+};
+```
+
+#### Key Features
+1. **Optimized Large File Handling**
+   - Concurrent block uploads (4 blocks at a time)
+   - 8MB block size for optimal network performance
+   - Progress tracking per block
+   - Automatic retries with 3 attempts per block
+
+2. **Progress Tracking**
+   ```typescript
+   // Example of block upload progress
+   await this.uploadBlocksConcurrently(blocks, blockBlobClient, fileSize, (progress) => {
+       console.log(`Upload progress: ${Math.round(progress)}%`);
+   });
+   ```
+
+3. **Error Handling**
+   - Silent CORS setup in development
+   - Graceful error recovery
+   - Clean error messages without exposing internals
+   - Automatic cleanup of failed uploads
+
+4. **Performance Monitoring**
+   - Upload speed tracking per block
+   - Batch upload statistics
+   - Memory-efficient streaming
+   ```typescript
+   const speed = (block.buffer.length / 1024 / 1024) / (uploadTime / 1000); // MB/s
+   console.log(`Block ${blockNum}/${blocks.length} upload stats:
+       - Upload time: ${uploadTime}ms
+       - Speed: ${speed.toFixed(2)} MB/s
+       - Size: ${(block.buffer.length / 1024 / 1024).toFixed(2)} MB`);
+   ```
+
+5. **Security**
+   - Azure managed identity in production
+   - Secure SAS URL generation
+   - Temporary access tokens
+   - Automatic file cleanup
+
+#### Upload Process
+1. File size check to determine storage strategy
+2. Generate unique block IDs
+3. Split file into optimal-sized blocks
+4. Concurrent upload of blocks
+5. Progress tracking and speed monitoring
+6. Commit block list on completion
+7. Automatic cleanup

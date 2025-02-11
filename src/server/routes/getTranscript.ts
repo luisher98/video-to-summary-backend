@@ -1,5 +1,5 @@
+import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/outputSummary.js";
 import { BadRequestError } from "../../utils/errorHandling.js";
 
 /**
@@ -24,29 +24,29 @@ import { BadRequestError } from "../../utils/errorHandling.js";
  *   "code": "TRANSCRIPT_GENERATION_ERROR"
  * }
  */
-export default async function getTranscript(req: Request, res: Response) {
-    const inputUrl = req.query.url as string;
-
-    if (!inputUrl || !inputUrl.includes("?v=")) {
-      return new BadRequestError("Invalid YouTube URL");
-    }
-  
+export default async function getTranscript(req: Request, res: Response): Promise<void> {
     try {
-      const summary = await outputSummary({
-        url: inputUrl,
-        returnTranscriptOnly: true,
-        requestInfo: {
-          ip: req.ip || req.socket.remoteAddress || 'unknown',
-          userAgent: req.get('user-agent')
+        const url = req.query.url as string;
+        
+        if (!url) {
+            throw new BadRequestError('URL is required');
         }
-      });
-      res.json({ transcript: summary });
-      console.log("Transcript generated successfully.");
+
+        const processor = new YouTubeVideoSummary();
+        const summary = await processor.process({
+            url,
+            returnTranscriptOnly: true,
+            requestInfo: {
+                ip: req.ip || req.socket.remoteAddress || 'unknown',
+                userAgent: req.get('user-agent')
+            }
+        });
+
+        res.json({ summary });
     } catch (error) {
-      console.error('Transcript generation error:', error);
-      res.status(500).json({ 
-          error: error instanceof Error ? error.message : 'Unknown error occurred',
-          code: 'TRANSCRIPT_GENERATION_ERROR'
-      });
+        console.error('Error getting transcript:', error);
+        res.status(error instanceof BadRequestError ? 400 : 500).json({
+            error: error instanceof Error ? error.message : 'Unknown error occurred'
+        });
     }
-  }
+}

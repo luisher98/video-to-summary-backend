@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/outputSummary.js";
+import { outputSummary } from "../../services/summary/base/summaryProcessor.js";
 import { ProgressUpdate } from "../../types/global.types.js";
 
 /**
