@@ -2,6 +2,7 @@ import { Router } from 'express';
 import fs from 'fs/promises';
 import { getFfmpegPath, VIDEO_DOWNLOAD_PATH } from '../../utils/utils.js';
 import youtubedl from 'youtube-dl-exec';
+import { checkOpenAIConnection } from '../../lib/openAI.js';
 
 const router = Router();
 
@@ -11,15 +12,18 @@ interface HealthDetails {
     youtubeDlVersion?: string;
     youtubeDlError?: string;
     writeAccessError?: string;
+    openAIError?: string;
 }
 
 interface HealthCheck {
     status: 'ok' | 'error';
     timestamp: string;
+    uptime: number;
     checks: {
         ffmpeg: boolean;
         youtubeDl: boolean;
         writeAccess: boolean;
+        openai: boolean;
     };
     details: HealthDetails;
 }
@@ -29,10 +33,12 @@ router.get('/health', async (req, res) => {
         const health: HealthCheck = {
             status: 'ok',
             timestamp: new Date().toISOString(),
+            uptime: process.uptime(),
             checks: {
                 ffmpeg: false,
                 youtubeDl: false,
-                writeAccess: false
+                writeAccess: false,
+                openai: false
             },
             details: {}
         };
@@ -67,11 +73,24 @@ router.get('/health', async (req, res) => {
             health.details.writeAccessError = err instanceof Error ? err.message : 'Unknown error';
         }
 
+        // Check OpenAI connection
+        try {
+            health.checks.openai = await checkOpenAIConnection();
+            if (!health.checks.openai) {
+                health.details.openAIError = 'Failed to connect to OpenAI API';
+            }
+        } catch (err) {
+            health.details.openAIError = err instanceof Error ? err.message : 'Unknown error';
+        }
+
         const statusCode = Object.values(health.checks).every(check => check) ? 200 : 500;
+        health.status = statusCode === 200 ? 'ok' : 'error';
+        
         res.status(statusCode).json(health);
     } catch (error) {
         res.status(500).json({
             status: 'error',
+            timestamp: new Date().toISOString(),
             error: error instanceof Error ? error.message : 'Unknown error'
         });
     }
