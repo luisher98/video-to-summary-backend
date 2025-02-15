@@ -31,6 +31,10 @@
     - [Health Check](#health-check)
       - [Example Request](#example-request-4)
       - [Response](#response-2)
+    - [Azure Blob Summary](#azure-blob-summary)
+      - [Query Parameters](#query-parameters-4)
+      - [Example Request](#example-request-5)
+      - [SSE Events](#sse-events-2)
   - [Error Handling](#error-handling)
     - [Common Status Codes](#common-status-codes)
   - [Examples](#examples)
@@ -124,10 +128,10 @@ data: {
 
 ### File Upload Summary
 
-Upload a video file and receive an AI-generated summary with real-time progress updates.
+Get a summary from an uploaded video file with real-time progress updates.
 
 ```http
-POST /upload-summary-sse
+POST /api/get-upload-summary-sse
 ```
 
 #### Query Parameters
@@ -143,35 +147,84 @@ Content-Type: multipart/form-data
 #### Form Data
 | Field | Type | Required | Description                    |
 |-------|------|----------|--------------------------------|
-| video | file | Yes      | Video file (max size: 500MB)   |
+| file  | file | Yes      | Video file (max size: 500MB)   |
 
 #### Example Request
 ```bash
-curl -N -X POST \
-  -F "video=@video.mp4" \
-  "https://your-api-domain.com/api/upload-summary-sse?words=300"
+curl -N -F "file=@video.mp4" "https://your-api-domain.com/api/get-upload-summary-sse?words=300"
 ```
 
 #### SSE Events
 ```javascript
-// Upload progress
-event: progress
-data: {
-  "status": "uploading",
-  "progress": 30
-}
-
-// Processing progress
+// Progress update
 event: progress
 data: {
   "status": "processing",
-  "progress": 60
+  "progress": 25,
+  "message": "Processing video..."
 }
 
 // Final summary
 event: summary
 data: {
-  "summary": "Video summary content..."
+  "status": "done",
+  "progress": 100,
+  "message": "Summary content..."
+}
+
+// Error event
+event: error
+data: {
+  "status": "error",
+  "progress": 0,
+  "message": "Error message"
+}
+```
+
+### Azure Blob Summary
+
+Get a summary from a video file stored in Azure Blob Storage.
+
+```http
+GET /api/get-azure-summary-sse
+```
+
+#### Query Parameters
+| Parameter | Type   | Required | Description                    | Default |
+|-----------|--------|----------|--------------------------------|---------|
+| fileId    | string | Yes      | ID of the file                | -       |
+| blobName  | string | Yes      | Name of the blob in storage   | -       |
+| words     | number | No       | Summary length in words       | 400     |
+
+#### Example Request
+```bash
+curl -N "https://your-api-domain.com/api/get-azure-summary-sse?fileId=xxx&blobName=xxx&words=300"
+```
+
+#### SSE Events
+```javascript
+// Progress update
+event: progress
+data: {
+  "status": "processing",
+  "progress": 25,
+  "message": "Processing video..."
+}
+
+// Final summary
+event: summary
+data: {
+  "status": "done",
+  "progress": 100,
+  "message": "Summary content..."
+}
+
+// Error event
+event: error
+data: {
+  "status": "error",
+  "progress": 0,
+  "message": "Error message"
 }
 ```
 

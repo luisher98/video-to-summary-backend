@@ -3,14 +3,14 @@ import cors from 'cors';
 import { Server } from 'http';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import getVideoInfoRouter from './routes/getVideoInfo.js';
-import getYouTubeSummaryRouter from './routes/getYouTubeSummary.js';
-import getYouTubeSummarySSE from './routes/getYouTubeSummarySSE.js';
-import uploadSummarySSE from './routes/uploadSummarySSE.js';
-import getTranscript from './routes/getTranscript.js';
-import getTestSSE from './routes/getTestSSE.js';
-import uploadUrlRouter from './routes/uploadUrl.js';
-import healthCheck from './routes/healthCheck.js';
+import getVideoMetadata from './routes/getVideoMetadata.js';
+import summarizeYouTube from './routes/summarizeYouTube.js';
+import summarizeYouTubeStream from './routes/summarizeYouTubeStream.js';
+import summarizeUploadStream from './routes/summarizeUploadStream.js';
+import getVideoTranscript from './routes/getVideoTranscript.js';
+import testStream from './routes/testStream.js';
+import getAzureUploadUrl from './routes/getAzureUploadUrl.js';
+import checkHealth from './routes/checkHealth.js';
 import { handleUncaughtErrors } from '../utils/errors/errorHandling.js';
 import { initializeTempDirs, clearAllTempDirs } from '../utils/file/tempDirs.js';
 import { 
@@ -22,6 +22,7 @@ import {
     apiKeyAuth,
     activeRequests
 } from './middleware/security.js';
+import summarizeAzureStream from './routes/summarizeAzureStream.js';
 
 // Configuration constants
 const CONFIG = {
@@ -68,18 +69,24 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check route (no queue middleware)
-app.use('/health', healthCheck);
+app.use('/health', checkHealth);
 
 // Routes with queue middleware
-app.get('/api/info', getVideoInfoRouter);
-app.get('/api/youtube-summary', requestQueueMiddleware, getYouTubeSummaryRouter);
-app.get('/api/youtube-summary-sse', requestQueueMiddleware, getYouTubeSummarySSE);
-app.use('/api/upload-url', uploadUrlRouter);
-app.route('/api/upload-summary-sse')
-    .get(requestQueueMiddleware, uploadSummarySSE)
-    .post(requestQueueMiddleware, uploadSummarySSE);
-app.get('/api/transcript', requestQueueMiddleware, getTranscript);
-app.get('/api/test-sse', getTestSSE);
+app.get('/api/video/metadata', getVideoMetadata);
+app.get('/api/youtube/summary', requestQueueMiddleware, summarizeYouTube);
+app.get('/api/youtube/summary/stream', requestQueueMiddleware, summarizeYouTubeStream);
+app.use('/api/azure/upload/url', getAzureUploadUrl);
+
+// File upload summary endpoints
+app.route('/api/upload/summary/stream')
+  .get(requestQueueMiddleware, summarizeUploadStream)
+  .post(requestQueueMiddleware, summarizeUploadStream);
+
+// Azure blob summary endpoint
+app.get('/api/azure/summary/stream', requestQueueMiddleware, summarizeAzureStream);
+
+app.get('/api/video/transcript', requestQueueMiddleware, getVideoTranscript);
+app.get('/api/test/stream', testStream);
 
 /**
  * Gets current server status including uptime and active requests.
@@ -119,7 +126,7 @@ export async function startServer(): Promise<void> {
     serverInstance = app.listen(CONFIG.port, () => {
         if (shouldLog) {
             console.log(`Server running on ${CONFIG.url}`);
-            console.log(`Example endpoint: ${CONFIG.url}/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+            console.log(`Example endpoint: ${CONFIG.url}/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
         }
     });
 

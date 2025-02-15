@@ -1,4 +1,4 @@
-import { ProgressUpdate } from '../../../types/global.types.js';
+import { ProgressUpdate } from '../../../../types/global.types.js';
 
 /**
  * Request information for tracking and logging
@@ -40,4 +40,10 @@ export interface SummaryService {
      * Clean up any resources used during processing
      */
     cleanup(): Promise<void>;
+}
+
+export interface ServiceConfig {
+  maxWords?: number;
+  additionalPrompt?: string;
+  updateProgress?: (progress: ProgressUpdate) => void;
 } 

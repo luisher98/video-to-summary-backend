@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
 import { BadRequestError } from "../../utils/errors/errorHandling.js";
+import { SummaryServiceFactory } from "../../services/summary/factories/SummaryServiceFactory.js";
+import { MediaSource } from "../../services/summary/core/interfaces/IMediaProcessor.js";
 import { logRequest } from '../../utils/logging/logger.js';
 import { handleError } from '../../utils/errors/errorHandling.js';
 
@@ -23,40 +24,40 @@ import { handleError } from '../../utils/errors/errorHandling.js';
  */
 export default async function getYouTubeSummary(req: Request, res: Response) {
     const startTime = Date.now();
-    const inputUrl = req.query.url as string;
-    const words = Number(req.query.words) as number;
+    const url = req.query.url as string;
 
-    if (!inputUrl || !inputUrl.includes("?v=")) {
+    if (!url || !url.includes("?v=")) {
       throw new BadRequestError("Invalid YouTube URL");
     }
   
+    const summaryService = SummaryServiceFactory.createYouTubeService();
+
     try {
-      const processor = new YouTubeVideoSummary();
-      const summary = await processor.process({
-        url: inputUrl,
-        words: Number(req.query.words) || 400,
-        additionalPrompt: req.query.prompt as string,
-        requestInfo: {
-          ip: req.ip || req.socket.remoteAddress || 'unknown',
-          userAgent: req.get('user-agent')
-        }
+      const source: MediaSource = {
+        type: 'youtube',
+        data: { url }
+      };
+
+      const summary = await summaryService.process(source, {
+        maxWords: Number(req.query.words) || 400,
+        additionalPrompt: req.query.prompt as string
       });
 
       logRequest({
         event: 'summary_generated',
-        url: inputUrl,
+        url: url,
         ip: req.ip || req.socket.remoteAddress || 'unknown',
         userAgent: req.get('user-agent'),
         duration: Date.now() - startTime,
         words: Number(req.query.words) || 400
       });
 
-      res.json({ summary });
+      res.json({ summary: summary.content });
       console.log("Summary generated successfully.");
     } catch (error) {
       logRequest({
         event: 'summary_error',
-        url: inputUrl,
+        url: url,
         ip: req.ip || req.socket.remoteAddress || 'unknown',
         userAgent: req.get('user-agent'),
         duration: Date.now() - startTime,

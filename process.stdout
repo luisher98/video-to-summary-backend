@@ -13080,3 +13080,1615 @@ Successfully generated summary: {
 }
 Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
 Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Progress update: { status: [32m'processing'[39m, message: [32m'Initializing... 100%'[39m, progress: [33m10[39m }
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Processing media... 0%'[39m,
+  progress: [33m10[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig c2tAoOGbeAjiL1VsA => HtgKENndSRhr-Q
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig rbszdfIsZfndt2G5- => WTbnt6BhcS5Gbw
+[debug] [youtube] N-ZNfuCdkUo: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Processing media... 100%'[39m,
+  progress: [33m30[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 0%'[39m,
+  progress: [33m50[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 100%'[39m,
+  progress: [33m80[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 0%'[39m,
+  progress: [33m80[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 100%'[39m,
+  progress: [33m99[39m
+}
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"The transcript discusses significant developments at the Department of Justice under the new Trump administration. The administration has fired over a dozen federal prosecutors who were involved in criminal cases investigating President Trump and the January 6th Capitol riots. The acting Attorney General sent a memo stating that these officials played a significant role in prosecuting President Trump and could not be trusted to assist in implementing the president's agenda faithfully. Additionally, a special project has been launched to investigate charges related to obstruction of justice in the January 6th cases.\n"[39m +
+    [32m'\n'[39m +
+    [32m"There are concerns about the Trump Justice Department's actions, especially regarding the handling of criminal investigations over the past four years. The administration has pardoned most individuals convicted in these cases, raising questions about the credibility and legitimacy of the prosecutions. President Trump's campaign promise to fire officials involved in investigations related to him has now been fulfilled, reflecting his desire to reshape the Justice Department in his own vision.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The decision to remove career officials who are supposed to be impartial and follow the facts without retaliation has raised alarm. The language used in the memo, suggesting that these officials cannot be trusted to implement the president's agenda, highlights the administration's view of the Department of Justice as aligned with the president's interests. This move is seen as part of a broader effort to assert control over the Justice Department and ensure loyalty to the president.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The transcript also mentions the president's dissatisfaction with past decisions regarding the Justice Department, particularly the appointment of Jeff Sessions as attorney general. President Trump has been focused on reshaping the department since Sessions recused himself from the Russia investigation. The timing of these firings, just before the confirmation of Pam Bondi as attorney general, indicates a strategic move to solidify control over the department.\n"[39m +
+    [32m'\n'[39m +
+    [32m"Overall, the developments at the Department of Justice under the new Trump administration reflect a significant shift in priorities and a clear effort to align the department with the president's agenda. The actions taken, including the firing of prosecutors and the launch of a special project, have raised concerns about the independence and integrity of the Justice Department's operations."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'75425d89-11ef-41b1-a0e8-ea01c86e4457'[39m,
+  blobName: [32m'75425d89-11ef-41b1-a0e8-ea01c86e4457-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/75425d89-11ef-41b1-a0e8-ea01c86e4457-argentina....'[39m,
+  fileId: [32m'75425d89-11ef-41b1-a0e8-ea01c86e4457'[39m,
+  blobName: [32m'75425d89-11ef-41b1-a0e8-ea01c86e4457-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/cookies - will be handled by OS cleanup
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/cookies - will be handled by OS cleanup
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/transcripts - will be handled by OS cleanup
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/uploads - will be handled by OS cleanup
+Deleted old temp file: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Deleted old temp file: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/transcripts - will be handled by OS cleanup
+Permission denied deleting /Users/Luis/dev/youtube_summary/webapi/tmp/uploads - will be handled by OS cleanup
+Deleted old temp file: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T02:53:04.563Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":159,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media... 0%'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig sRFQKF-NX1mAqny4_ => oUym-3h7ubOoGw
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig nHvMpzKfi4fj3plk5 => C-hCFkaeadnp1A
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] Invoking http downloader on "https://rr2---sn-ni5f-t8gs.googlevideo.com/videoplayback?expire=1739609587&ei=kwGwZ4D4CY7FsfIPivK1QQ&ip=2604%3A3d08%3A5384%3A4b00%3A7426%3Ad0f2%3A2f92%3A761b&id=o-AKNId3FTY2XswPDNf3bdYE_yA9qzPIuDxKgZ00F9TPBp&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1739587987%2C&mh=FL&mm=31%2C26&mn=sn-ni5f-t8gs%2Csn-vgqsknz7&ms=au%2Conr&mv=m&mvi=2&pcm2cms=yes&pl=41&rms=au%2Cau&initcwndbps=4770000&bui=AUWDL3ztW_HG3L8IL8nN6v27GJC7tHMQE7xiuLSyNo4Hw7EQZSg_CnPOpMVeAwNYnFgey9CHhpPGsYu_&spc=RjZbSY9IPXgEwSIzHC2iXBzhkIc0W9reGEEDnu7uwfnMUfrI9ZKN6klqJ56z0nLWIg&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=o5IAQ_t0c331H0bFq6m_XqwQ&rqh=1&gir=yes&clen=7631427&dur=469.621&lmt=1738542863696734&mt=1739587497&fvip=5&keepalive=yes&lmw=1&fexp=51326932&c=TVHTML5&sefc=1&txp=4532534&n=C-hCFkaeadnp1A&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhALeVA8mM8Whs5HMuz-WRGIO-65QEOpoCX5nfbpDzMqucAiEA4ThHR5OUrScaqG98AnzJNs3IGVPUnDg5Z6MBpBsyM6U%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpcm2cms%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRQIgW_pF09SKgvZCm_0z0V2wk6ASA-RzP2QRIKCS7q_2dGoCIQDcJVEnFEOlNh84_8WkW8VIFhGvkclta36m2G43ZP_Rnw%3D%3D"
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.webm
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media... 100%'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 0%'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 100%'[39m,
+  progress: [33m75[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 0%'[39m,
+  progress: [33m75[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 100%'[39m,
+  progress: [33m100[39m
+}
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"The transcript features an interview with Alexander Wang, the founder and CEO of Scale.ai, a company that provides accurately labeled data for training AI tools. Wang discusses the AI race between the US and China, highlighting the recent advancements made by Chinese AI lab DeepSeek. He mentions the release of Humanity's Last Exam, an evaluation benchmark for AI models, where DeepSeek's model performed exceptionally well. Wang addresses the misconception that the US is significantly ahead of China in AI development, noting that Chinese labs have access to high-powered Nvidia chips despite export controls.\n"[39m +
+    [32m'\n'[39m +
+    [32m'The conversation delves into the competitiveness of large language models and the future of AI development. Wang emphasizes that different models excel in various capabilities, making it challenging to rank them definitively. He discusses the trend of businesses exploring different AI models and leveraging open-source alternatives to stay competitive. The dialogue touches on the need for increased computational capacity and infrastructure to support the AI boom, with Wang stressing the importance of US investment in these areas.\n'[39m +
+    [32m'\n'[39m +
+    [32m'The interview also touches on the debate surrounding the valuation of AI companies like Stargate and the potential consolidation of AI companies by tech giants. Wang expresses optimism about the growth potential of the AI industry, projecting a significant increase in revenue as the market moves towards superintelligence or AGI (Artificial General Intelligence). He envisions the AI market expanding from billions to trillions of dollars over the next few years, with AGI potentially being achieved within the next two to four years.\n'[39m +
+    [32m'\n'[39m +
+    [32m"In conclusion, the interview with Alexander Wang provides insights into the current state of the AI industry, the competition between the US and China in AI development, the capabilities of different AI models, and the future outlook for AI technology. Wang's perspective on the growth potential of the AI market and the path towards achieving AGI offers a glimpse into the evolving landscape of artificial intelligence."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'da146d0b-b957-4e17-88e7-e9776a09d577'[39m,
+  blobName: [32m'da146d0b-b957-4e17-88e7-e9776a09d577-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/da146d0b-b957-4e17-88e7-e9776a09d577-argentina....'[39m,
+  fileId: [32m'da146d0b-b957-4e17-88e7-e9776a09d577'[39m,
+  blobName: [32m'da146d0b-b957-4e17-88e7-e9776a09d577-argentina.mp4'[39m
+}
+
+Received SIGTERM. Cleaning up...
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'bc3976b3-eab6-4915-bf37-4de3ad2d6e3c'[39m,
+  blobName: [32m'bc3976b3-eab6-4915-bf37-4de3ad2d6e3c-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/bc3976b3-eab6-4915-bf37-4de3ad2d6e3c-argentina....'[39m,
+  fileId: [32m'bc3976b3-eab6-4915-bf37-4de3ad2d6e3c'[39m,
+  blobName: [32m'bc3976b3-eab6-4915-bf37-4de3ad2d6e3c-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube-summary-sse/?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media... 0%'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig FG3mmR9WX7SKfyFbE => gxItCqjnVmgyzg
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig 3BvCH8O8SNJJ1MO2j => OcHkXGvQiAXFkw
+[debug] [youtube] N-ZNfuCdkUo: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] Invoking http downloader on "https://rr2---sn-ni5f-t8g6.googlevideo.com/videoplayback?expire=1739611488&ei=AAmwZ477CKv5sfIPtZS52A4&ip=2604%3A3d08%3A5384%3A4b00%3A7426%3Ad0f2%3A2f92%3A761b&id=o-AIrHslyRLlaIg922wyVX7gbyO_pmoVjgFJ17T6rca0rW&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1739589888%2C&mh=3v&mm=31%2C26&mn=sn-ni5f-t8g6%2Csn-vgqskns7&ms=au%2Conr&mv=m&mvi=2&pl=41&rms=au%2Cau&initcwndbps=4527500&bui=AUWDL3wOowiKY7NxQqVwq45B7GrKwoeYxxoXzI29PIjRsEG9nxt3I7JSTBQK3VvQ7flGQcjW_TBgQJOR&spc=RjZbSQ_G85A0x6PXVeeA3Sk1vzEHkekpIVU2TVsNeLwt_9b7MTENRQHwrjE4XsmZLw&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=EH4pkR-KfWdoC1RadgrlGxAQ&rqh=1&gir=yes&clen=4428354&dur=321.341&lmt=1738050124995873&mt=1739589417&fvip=1&keepalive=yes&lmw=1&fexp=51326932&c=TVHTML5&sefc=1&txp=5532534&n=OcHkXGvQiAXFkw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRAIgZS9RwXfdXy6rt4QMaaWF007B-_MuuWt72u3anMUf2QoCIEdx_pxFQidlUMtdKYJ9XeW8iCYOfVZmLZ6sSzyMSffT&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRAIgeeU8zbAdjRmcc-VvnHvMc60khom6Z038wQEqwlrPFSECIEXzv4hRAtM20fO-uFxztsPUIS6F-6LW3WPWmgo_9-nU"
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.webm
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media... 100%'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 0%'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript... 100%'[39m,
+  progress: [33m75[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 0%'[39m,
+  progress: [33m75[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating summary... 100%'[39m,
+  progress: [33m100[39m
+}
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m'The new Trump administration has fired federal prosecutors at the Department of Justice who were involved in criminal cases investigating President Trump and his role in the January 6th Capitol riots. Over a dozen officials were removed from their positions due to their involvement in prosecuting President Trump. Additionally, a special project has been launched to investigate certain charges related to the January 6th investigation. The interim U.S. attorney, Ed Martin, aims to review cases where charges of obstruction of justice were used, following concerns about the legitimacy of these charges in that context.\n'[39m +
+    [32m'\n'[39m +
+    [32m"The move to fire prosecutors and investigate January 6th cases has raised significant concerns about the Trump Justice Department's handling of criminal investigations. The administration's actions are seen as an attempt to undermine the credibility and legitimacy of the cases, especially considering President Trump's pardons and commutations for individuals involved in the Capitol riots. The decision to remove career officials who were supposed to be impartial and conduct investigations without retaliation has sparked criticism and questions about the department's independence.\n"[39m +
+    [32m'\n'[39m +
+    [32m"President Trump's campaign promise to overhaul the Justice Department aligns with these recent developments. The administration's focus on loyalty to the president and implementing his agenda is evident in the decision to remove officials involved in prosecuting Trump and reviewing January 6th cases. The language used in the memo notifying the officials of their removal reflects the administration's belief that these career officials cannot be trusted to carry out the president's agenda.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The timing of these actions, just before the confirmation of Pam Bondi as the attorney general, suggests a strategic move to reshape the Justice Department according to President Trump's vision. The president's dissatisfaction with past appointments, such as Jeff Sessions, and his desire for loyalty within the department have been driving forces behind these recent changes. While these actions may not come as a surprise given Trump's campaign promises, they mark a significant moment in the history of the Justice Department as career officials are ousted in favor of those aligned with the president's views."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+File upload request: {
+  fieldname: [32m'file'[39m,
+  originalname: [32m'argentina.mp4'[39m,
+  mimetype: [32m'video/mp4'[39m,
+  allowedTypes: [ [32m'video/mp4'[39m, [32m'video/webm'[39m, [32m'video/quicktime'[39m ]
+}
+Uploaded file: {
+  fieldname: [32m'file'[39m,
+  originalname: [32m'argentina.mp4'[39m,
+  mimetype: [32m'video/mp4'[39m,
+  size: [33m83043872[39m,
+  buffer: [32m'Buffer of 83043872 bytes'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig tDp4IBmoPdH_vJB0W => LPZiY0YsOxDFYA
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig tlRv1urKLhODwg52N => xGBkh5pgb4g5ug
+[debug] [youtube] N-ZNfuCdkUo: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"The new Trump administration has fired federal prosecutors at the Department of Justice who were involved in criminal cases investigating President Trump and his role in the January 6th Capitol riots. The move to fire over a dozen officials who worked on these investigations was announced by the acting Attorney General, citing their significant role in prosecuting the president. Additionally, a special project has been launched to investigate charges related to the January 6th riots, specifically focusing on obstruction of justice cases. This decision has raised concerns about the Trump Justice Department's handling of criminal investigations over the past four years.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The firing of these career officials was not a surprise, as President Trump had previously indicated his intention to remove individuals associated with the special counsel's office. However, the move to review the January 6th cases and the broader implications of the pardons issued by the president have sparked further scrutiny. The administration's focus on loyalty to the president and the desire to reshape the Justice Department in his own vision has been evident in these recent actions.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The decision to dismiss these officials comes at a critical time, just before the confirmation of Pam Bondi as the new attorney general. This move is seen as an effort to address business matters before her confirmation, indicating a strategic approach to restructuring the department. President Trump's dissatisfaction with past appointments, such as Jeff Sessions, and his belief that loyalty to him is paramount have influenced these recent developments.\n"[39m +
+    [32m'\n'[39m +
+    [32m"Overall, the actions taken by the Trump administration at the Department of Justice reflect a deliberate effort to assert control and reshape the department's priorities. The dismissal of officials involved in investigating the president, coupled with the review of January 6th cases, highlights the administration's focus on loyalty and its willingness to challenge established norms within the Justice Department. These decisions are likely to have lasting implications on the department's operations and raise questions about the independence of its prosecutors."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using DefaultAzureCredential for Azure Storage
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGTERM. Cleaning up...
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGTERM. Cleaning up...
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGTERM. Cleaning up...
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGTERM. Cleaning up...
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T04:13:22.340Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":175,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig AUnoYwakmQfiegxcC => 3vgucTw7W410dg
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig hDYmT_M-AW30HAjQF => Yy-672V-goB60w
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m'Alexander Wang, founder and CEO of Scale.ai, discusses the AI race between the US and China, highlighting the recent advancements made by Chinese AI lab DeepSeek. Wang emphasizes the competitive nature of the AI space and the need for continued innovation to push boundaries. He also touches on the importance of computational capacity and infrastructure in the US to stay ahead in AI development. Wang believes the AI industry has the potential to become one of the greatest markets ever, with revenue projected to reach trillions of dollars as advancements lead towards superintelligence or AGI.'[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T04:18:31.851Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":217,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig RT-WXXYnp4r2tK3gk => gd0ybcj-oyHEpA
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig buxDpiSSkxBvf7bLl => Yet1F6g4CXo2Og
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'491cbc68-b846-4fe2-88bd-11addeb448df'[39m,
+  blobName: [32m'491cbc68-b846-4fe2-88bd-11addeb448df-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/491cbc68-b846-4fe2-88bd-11addeb448df-argentina....'[39m,
+  fileId: [32m'491cbc68-b846-4fe2-88bd-11addeb448df'[39m,
+  blobName: [32m'491cbc68-b846-4fe2-88bd-11addeb448df-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...

@@ -1,8 +1,9 @@
 import { Router, Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { BadRequestError } from '../../utils/utils.js';
+import { BadRequestError } from '../../utils/errors/errorHandling.js';
 import { azureStorage } from '../../services/storage/azure/azureStorageService.js';
-import { FileUploadSummary } from '../../services/summary/providers/fileUpload/fileUploadSummaryService.js';
+import { SummaryServiceFactory } from '../../services/summary/factories/SummaryServiceFactory.js';
+import { MediaSource } from '../../services/summary/core/interfaces/IMediaProcessor.js';
 
 const router = Router();
 
@@ -12,18 +13,21 @@ interface UploadUrlRequest {
 }
 
 /**
- * POST /api/upload-url
+ * Get a pre-signed URL for uploading files to Azure Blob Storage.
  * 
- * Generates a SAS URL for direct upload to Azure Blob Storage
+ * @param {Request} req - Express request object with body:
+ *   - fileName: Name of the file to upload
+ *   - fileSize: Size of the file in bytes
+ * @param {Response} res - Express response object
  * 
- * @param req.body
- * - fileName: Name of the file to upload
- * - fileSize: Size of the file in bytes
+ * @example
+ * POST /api/azure/upload/url
+ * Content-Type: application/json
  * 
- * @returns
- * - url: SAS URL for uploading
- * - fileId: Unique ID for the file
- * - blobName: Name of the blob in Azure storage
+ * {
+ *   "fileName": "video.mp4",
+ *   "fileSize": 1024
+ * }
  */
 router.post('/', async (req: Request, res: Response) => {
     try {

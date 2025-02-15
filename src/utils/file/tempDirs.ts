@@ -4,16 +4,40 @@ import path from 'path';
 import { TEMP_DIRS } from '../constants/paths.js';
 
 /**
+ * Ensures a directory exists, creating it if necessary
+ */
+export async function ensureDir(directory: string): Promise<void> {
+    try {
+        await fs.access(directory, fs.constants.F_OK);
+    } catch (error) {
+        // Directory doesn't exist, create it
+        await fs.mkdir(directory, { recursive: true });
+        console.log(`Created directory: ${directory}`);
+    }
+}
+
+/**
  * Initialize all temporary directories
  */
 export async function initializeTempDirs(): Promise<void> {
     try {
-        await Promise.all(
-            Object.values(TEMP_DIRS)
-                .filter(dir => typeof dir === 'string')
-                .map(dir => fs.mkdir(dir, { recursive: true }))
-        );
-        console.log('Temporary directories initialized:', Object.values(TEMP_DIRS));
+        // First ensure base temp directory exists
+        await ensureDir(TEMP_DIRS.base);
+
+        // Then create all subdirectories
+        const directories = [
+            TEMP_DIRS.uploads,
+            TEMP_DIRS.audios,
+            TEMP_DIRS.transcripts,
+            TEMP_DIRS.cookies,
+            TEMP_DIRS.sessions
+        ];
+
+        await Promise.all(directories.map(async (dir) => {
+            await ensureDir(dir);
+        }));
+
+        console.log('Temporary directories initialized:', directories);
     } catch (error) {
         console.error('Failed to initialize temporary directories:', error);
         throw error;

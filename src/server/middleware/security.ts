@@ -107,11 +107,26 @@ export const apiKeyAuth = (req: Request, res: Response, next: NextFunction) => {
  * Request timeout middleware.
  */
 export const requestTimeout = (req: Request, res: Response, next: NextFunction) => {
-    res.setTimeout(config.queue.requestTimeoutMs, () => {
-        res.status(408).json({
-            error: 'Request timeout'
-        });
+    // For SSE endpoints, don't set a timeout
+    if (req.headers.accept === 'text/event-stream') {
+        return next();
+    }
+
+    // For regular endpoints, set timeout
+    const timeoutId = setTimeout(() => {
+        // Only send timeout response if headers haven't been sent
+        if (!res.headersSent) {
+            res.status(408).json({
+                error: 'Request timeout'
+            });
+        }
+    }, config.queue.requestTimeoutMs);
+
+    // Clear timeout when request finishes
+    res.on('finish', () => {
+        clearTimeout(timeoutId);
     });
+
     next();
 };
 
