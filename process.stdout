@@ -17144,3 +17144,241 @@ Using ffmpeg-static module
 [34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
 [32m✓[39m Cleanup [████████████████████]
 Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup[90m | directories ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Conversion[90m | 3.21MB[39m
+Generating transcript...
+[34m→[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordLimit: 400[39m
+[32m✓[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordCount: 362[39m
+
+⏱️  Process Timings:
+Total Time: [36m28.06s[39m
+
+[1mYouTube Summary                                [22m [██████████████████████████████] 100.0% │ [36m28.06s[39m
+[1mMedia Processing                               [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.9% │ [36m7.56s[39m
+[1mDownload                                       [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.9% │ [36m7.56s[39m
+[1mSummarize youtube content (watch_v_N_ZNfuCdkUo)[22m [████░░░░░░░░░░░░░░░░░░░░░░░░░░] 12.2% │ [36m3.42s[39m
+[1mSetup                                          [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m2.04ms[39m
+[1mConversion                                     [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.48ms[39m
+
+📊 Resource Usage:
+Memory    26.62MB/29.06MB [90m(91.6%)[39m
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m Content Processing[90m | source: youtube[39m
+[34m→[39m Media Extraction[90m | source: YouTube[39m
+[32m✓[39m Resource Setup[90m | environment ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Audio Conversion[90m | 3.21MB[39m
+[34m→[39m Speech Recognition
+Generating transcript...
+[32m✓[39m Speech Recognition[90m | wordCount: 970[39m
+[34m→[39m OpenAI Summary Generation[90m | targetLength: 400[39m
+[32m✓[39m OpenAI Summary Generation[90m | wordCount: 358[39m
+
+⏱️  Process Timings:
+Total Time: [36m26.04s[39m
+
+[1mContent Processing       [22m [██████████████████████████████] 100.0% │ [36m26.04s[39m
+[1mMedia Extraction         [22m [█████████░░░░░░░░░░░░░░░░░░░░░] 31.3% │ [36m8.16s[39m
+[1mDownload                 [22m [█████████░░░░░░░░░░░░░░░░░░░░░] 31.3% │ [36m8.16s[39m
+[1mOpenAI Summary Generation[22m [█████░░░░░░░░░░░░░░░░░░░░░░░░░] 15.1% │ [36m3.94s[39m
+[1mAudio Conversion         [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.47ms[39m
+[1mResource Setup           [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.46ms[39m
+
+📊 Resource Usage:
+Memory    27.01MB/28.56MB [90m(94.6%)[39m
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m Content Processing[90m | source: youtube[39m
+[34m→[39m Media Extraction[90m | source: YouTube[39m
+[32m✓[39m Resource Setup[90m | environment ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Audio Conversion[90m | 3.21MB[39m
+[34m→[39m Speech Recognition
+[34m→[39m Speech Recognition[90m | model: Whisper[39m
+[32m✓[39m Speech Recognition[90m | wordCount: 970[39m
+[32m✓[39m Speech Recognition [90m17.62s[39m[90m | wordCount: 970[39m
+[34m→[39m OpenAI Summary Generation[90m | targetLength: 400[39m
+[32m✓[39m OpenAI Summary Generation[90m | wordCount: 351[39m
+
+⏱️  Process Timings:
+Total Time: [36m28.36s[39m
+
+[1mContent Processing       [22m [██████████████████████████████] 100.0% │ [36m28.36s[39m
+[1mSpeech Recognition       [22m [███████████████████░░░░░░░░░░░] 62.1% │ [36m17.62s[39m
+[1mMedia Extraction         [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.5% │ [36m7.50s[39m
+[1mDownload                 [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.4% │ [36m7.50s[39m
+[1mOpenAI Summary Generation[22m [███░░░░░░░░░░░░░░░░░░░░░░░░░░░] 11.4% │ [36m3.24s[39m
+[1mResource Setup           [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m2.09ms[39m
+[1mAudio Conversion         [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.28ms[39m
+
+📊 Resource Usage:
+Memory    27.07MB/28.81MB [90m(94.0%)[39m
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m Content Processing[90m | source: youtube[39m
+[34m→[39m Media Extraction[90m | source: YouTube[39m
+[32m✓[39m Resource Setup[90m | environment ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Audio Conversion[90m | 3.21MB[39m
+[34m→[39m Speech Recognition
+[34m→[39m Speech Recognition[90m | model: Whisper[39m
+[32m✓[39m Speech Recognition[90m | wordCount: 970[39m
+[32m✓[39m Speech Recognition [90m18.58s[39m[90m | wordCount: 970[39m
+[34m→[39m OpenAI Summary Generation[90m | targetLength: 400[39m
+[32m✓[39m OpenAI Summary Generation[90m | wordCount: 326[39m
+
+⏱️  Process Timings:
+Total Time: [36m29.70s[39m
+
+[1mContent Processing       [22m [██████████████████████████████] 100.0% │ [36m29.70s[39m
+[1mSpeech Recognition       [22m [███████████████████░░░░░░░░░░░] 62.6% │ [36m18.58s[39m
+[1mMedia Extraction         [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.4% │ [36m7.85s[39m
+[1mDownload                 [22m [████████░░░░░░░░░░░░░░░░░░░░░░] 26.4% │ [36m7.85s[39m
+[1mOpenAI Summary Generation[22m [███░░░░░░░░░░░░░░░░░░░░░░░░░░░] 11.0% │ [36m3.27s[39m
+[1mResource Setup           [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.79ms[39m
+[1mAudio Conversion         [22m [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  0.0% │ [36m0.43ms[39m
+
+📊 Resource Usage:
+Memory    26.50MB/28.56MB [90m(92.8%)[39m
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo

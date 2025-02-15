@@ -64,7 +64,6 @@ checkOpenAIConnection().catch(console.error);
  * @throws {Error} If transcription fails
  */
 export async function generateTranscript(id: string): Promise<string> {
-    console.log('Generating transcript...');
     try {
         const transcription = await openai.audio.transcriptions.create({
             file: fs.createReadStream(`${TEMP_DIRS.audios}/${id}.mp3`),

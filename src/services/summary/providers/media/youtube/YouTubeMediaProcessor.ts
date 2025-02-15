@@ -25,16 +25,16 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
 
     const youtubeSource = source as YouTubeSource;
     const { url } = youtubeSource.data;
-    const processName = 'Media Processing';
+    const processName = 'Media Extraction';
     processTimer.startProcess(processName);
-    logProcessStep(processName, 'start', { url });
+    logProcessStep(processName, 'start', { source: 'YouTube' });
 
     try {
       // Ensure audio directory exists
-      processTimer.startProcess('Setup');
+      processTimer.startProcess('Resource Setup');
       await ensureDir(TEMP_DIRS.audios);
-      logProcessStep('Setup', 'complete', 'directories ready');
-      processTimer.endProcess('Setup');
+      logProcessStep('Resource Setup', 'complete', 'environment ready');
+      processTimer.endProcess('Resource Setup');
 
       // Download and process the video
       processTimer.startProcess('Download');
@@ -43,10 +43,10 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
       processTimer.endProcess('Download');
       
       // Get audio file stats
-      processTimer.startProcess('Conversion');
+      processTimer.startProcess('Audio Conversion');
       const stats = await fs.stat(audioPath);
-      logProcessStep('Conversion', 'complete', { size: stats.size });
-      processTimer.endProcess('Conversion');
+      logProcessStep('Audio Conversion', 'complete', { size: stats.size, format: 'mp3' });
+      processTimer.endProcess('Audio Conversion');
 
       processTimer.endProcess(processName);
       return {

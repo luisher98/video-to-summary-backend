@@ -10,6 +10,7 @@ export interface ProcessTiming {
     duration?: number;
     subProcesses?: ProcessTiming[];
     status: 'running' | 'completed' | 'error';
+    metadata?: { rate?: string };
 }
 
 /**
@@ -146,30 +147,35 @@ export function logProcessStep(step: string, status: 'start' | 'complete' | 'err
  * Logs the final process summary with timing information
  */
 export function logProcessSummary(processTimings: ProcessTiming[]): void {
-    console.log('\n⏱️  Performance Metrics:');
-    console.log(`    Total Time: ${chalk.cyan(formatDuration(processTimings[0]?.duration || 0))}`);
+    console.log('\n⏱️  Process Timings:');
     
     // Calculate total duration for percentage calculations
     const totalDuration = processTimings[0]?.duration || 0;
+    console.log(`Total Time: ${chalk.cyan(formatDuration(totalDuration))}\n`);
     
-    processTimings.forEach(timing => {
+    // Find the longest process name for padding
+    const maxNameLength = Math.max(...processTimings.map(t => t.processName.length));
+    
+    // Sort timings by duration in descending order
+    const sortedTimings = [...processTimings].sort((a, b) => (b.duration || 0) - (a.duration || 0));
+    
+    sortedTimings.forEach(timing => {
         if (timing.duration) {
             const percentage = timing.duration / totalDuration;
-            const bar = generateProgressBar(percentage);
+            const bar = generateProgressBar(percentage, 30);  // Made bar longer for better visualization
             const duration = formatDuration(timing.duration);
-            const percentStr = `${(percentage * 100).toFixed(0)}%`.padStart(3);
-            console.log(`    ${chalk.bold(timing.processName.padEnd(12))} ${bar} ${percentStr} │ ${chalk.cyan(duration)}`);
+            const percentStr = `${(percentage * 100).toFixed(1)}%`.padStart(5);
+            const rate = timing.metadata?.rate ? ` │ ${chalk.gray(timing.metadata.rate)}` : '';
+            console.log(`${chalk.bold(timing.processName.padEnd(maxNameLength))} ${bar} ${percentStr} │ ${chalk.cyan(duration)}${rate}`);
         }
     });
     
-    if (processTimings.length > 0) {
-        const mainTiming = processTimings[0];
-        if (mainTiming.subProcesses?.length) {
-            console.log('\n📊 Resource Usage:');
-            // Add resource usage metrics here
-            const memoryUsage = process.memoryUsage();
-            console.log(`    Memory    ${generateProgressBar(memoryUsage.heapUsed / memoryUsage.heapTotal)} ${formatSize(memoryUsage.heapUsed)}/${formatSize(memoryUsage.heapTotal)}`);
-        }
+    // Only show resource usage if we have data
+    if (processTimings.length > 0 && processTimings[0].subProcesses?.length) {
+        console.log('\n📊 Resource Usage:');
+        const memoryUsage = process.memoryUsage();
+        const heapPercentage = memoryUsage.heapUsed / memoryUsage.heapTotal;
+        console.log(`Memory    ${formatSize(memoryUsage.heapUsed)}/${formatSize(memoryUsage.heapTotal)} ${chalk.gray(`(${(heapPercentage * 100).toFixed(1)}%)`)}`);
     }
     
     console.log('');

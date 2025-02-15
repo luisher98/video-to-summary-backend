@@ -10,9 +10,9 @@ export class OpenAISummarizationService implements ISummarizationService {
     sourceType: 'youtube' | 'file',
     sourceId: string
   ): Promise<Summary> {
-    const processName = `Summarize ${sourceType} content (${sourceId})`;
+    const processName = `OpenAI Summary Generation`;
     processTimer.startProcess(processName);
-    logProcessStep(processName, 'start', { wordLimit: options.maxWords || 400 });
+    logProcessStep(processName, 'start', { targetLength: options.maxWords || 400 });
 
     try {
       const content = await generateSummary(
@@ -22,7 +22,7 @@ export class OpenAISummarizationService implements ISummarizationService {
       );
 
       const wordCount = content.split(/\s+/).length;
-      logProcessStep(processName, 'complete', { wordCount });
+      logProcessStep(processName, 'complete', { wordCount, compressionRatio: `${((wordCount / transcript.text.split(/\s+/).length) * 100).toFixed(1)}%` });
       processTimer.endProcess(processName);
 
       return {

@@ -22,10 +22,10 @@ export class SummaryOrchestrator {
     source: MediaSource,
     options: SummaryOptions
   ): Promise<Summary> {
-    const processName = 'YouTube Summary';
+    const processName = 'Content Processing';
     let processedMedia;
     processTimer.startProcess(processName);
-    logProcessStep(processName, 'start');
+    logProcessStep(processName, 'start', { source: source.type });
 
     try {
       this.progressTracker.updateProgress('initialization', 100);
@@ -37,7 +37,10 @@ export class SummaryOrchestrator {
 
       // Generate transcript
       this.progressTracker.updateProgress('transcription', 0);
+      logProcessStep('Speech Recognition', 'start');
       const transcript = await this.transcriptionService.transcribe(processedMedia);
+      const wordCount = transcript.text.split(/\s+/).length;
+      logProcessStep('Speech Recognition', 'complete', { wordCount, duration: processedMedia.metadata.duration });
       this.progressTracker.updateProgress('transcription', 100);
 
       if (options.returnTranscriptOnly) {
