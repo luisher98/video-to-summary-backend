@@ -16,7 +16,13 @@ module.exports = {
     max_restarts: 5,
     max_memory_restart: '1G',
     env: {
+      NODE_ENV: process.env.NODE_ENV || 'development'
+    },
+    env_production: {
       NODE_ENV: 'production'
+    },
+    env_development: {
+      NODE_ENV: 'development'
     },
     output: 'process.stdout',
     error: 'process.stderr',

@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
-import { TEMP_DIRS } from '../../utils/utils.js';
+import { TEMP_DIRS } from '../../utils/constants/paths.js';
 
 /**
  * Gets the absolute path for saving files in the local directory.
@@ -23,45 +23,6 @@ export async function getLocalDirectoryPath(fileName: string): Promise<string> {
 }
 
 /**
- * Saves content to a file in the local directory.
- * 
- * @param {string} filePath - Path where the file should be saved
- * @param {string} result - Content to write to the file
- * @throws {Error} If file write operation fails
- */
-export async function saveResultToFile(filePath: string, result: string): Promise<void> {
-    try {
-        console.log(`Attempting to save file at: ${filePath}`);
-        await fs.writeFile(filePath, result);
-        console.log(`Result successfully saved to ${filePath}`);
-    } catch (error) {
-        console.error('Error saving result to file:', error);
-        throw error;
-    }
-}
-
-/**
- * Prompts user to choose output method (terminal or file).
- * 
- * @returns {Promise<'terminal' | 'file'>} Selected output option
- */
-export async function promptOutputOption(): Promise<'terminal' | 'file'> {
-    const { outputOption } = await inquirer.prompt([
-        {
-            type: 'list',
-            name: 'outputOption',
-            message: 'How would you like to output the result?',
-            choices: [
-                { name: 'Display in terminal', value: 'terminal' },
-                { name: 'Save to file', value: 'file' },
-            ],
-            default: 'terminal',
-        },
-    ]);
-    return outputOption;
-}
-
-/**
  * Parses command line arguments into structured format.
  * 
  * @param {string[]} args - Raw command line arguments
@@ -72,7 +33,7 @@ export async function promptOutputOption(): Promise<'terminal' | 'file'> {
  * parseArgs(['https://youtube.com/...', '--words=300']);
  * // Returns: { url: 'https://youtube.com/...', words: 300 }
  */
-export function parseArgs(args: string[]) {
+export function parseArgs(args: string[]): { url?: string; words?: number; fileName?: string } {
     const parsed: { url?: string; words?: number; fileName?: string } = { words: 400 };
 
     for (const arg of args) {
@@ -98,46 +59,33 @@ export function parseArgs(args: string[]) {
 }
 
 /**
- * Formats bytes into human-readable string.
+ * Saves content to a file in the local directory.
  * 
- * @param {number} bytes - Number of bytes
- * @returns {string} Formatted string (e.g., "1.5 MB")
+ * @param {string} filePath - Path where the file should be saved
+ * @param {string} result - Content to write to the file
+ * @throws {Error} If file write operation fails
  */
-export function formatBytes(bytes: number): string {
-    const units = ['B', 'KB', 'MB', 'GB', 'TB'];
-    let size = bytes;
-    let unitIndex = 0;
-    
-    while (size >= 1024 && unitIndex < units.length - 1) {
-        size /= 1024;
-        unitIndex++;
-    }
-    
-    return `${size.toFixed(1)} ${units[unitIndex]}`;
+export async function saveResultToFile(filePath: string, result: string): Promise<void> {
+        await fs.writeFile(filePath, result);
 }
 
 /**
- * Formats duration in seconds into human-readable string.
+ * Prompts user to choose output method (terminal or file).
  * 
- * @param {number} seconds - Duration in seconds
- * @returns {string} Formatted string (e.g., "2h 30m 15s")
+ * @returns {Promise<'terminal' | 'file'>} Selected output option
  */
-export function formatDuration(seconds: number): string {
-    const days = Math.floor(seconds / (24 * 60 * 60));
-    seconds %= 24 * 60 * 60;
-    
-    const hours = Math.floor(seconds / (60 * 60));
-    seconds %= 60 * 60;
-    
-    const minutes = Math.floor(seconds / 60);
-    seconds = Math.floor(seconds % 60);
-    
-    const parts = [];
-    
-    if (days > 0) parts.push(`${days}d`);
-    if (hours > 0) parts.push(`${hours}h`);
-    if (minutes > 0) parts.push(`${minutes}m`);
-    if (seconds > 0 || parts.length === 0) parts.push(`${seconds}s`);
-    
-    return parts.join(' ');
+export async function promptOutputOption(): Promise<'terminal' | 'file'> {
+    const { outputOption } = await inquirer.prompt([
+        {
+            type: 'list',
+            name: 'outputOption',
+            message: 'How would you like to output the result?',
+            choices: [
+                { name: 'Display in terminal', value: 'terminal' },
+                { name: 'Save to file', value: 'file' },
+            ],
+            default: 'terminal',
+        },
+    ]);
+    return outputOption;
 }

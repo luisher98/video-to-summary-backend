@@ -1,6 +1,8 @@
-# custom
-src/mocks/
-joji.mp4
+# video files
+*.mp4
+*.webm
+*.mov
+*.quicktime
 
 # Temporary files
 tmp/

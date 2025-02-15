@@ -1,96 +1,113 @@
-import videoInfo from '../../services/info/videoInfo.js';
-import { getCurrentDateTime } from '../../utils/utils.js';
-import { outputSummary } from '../../services/summary/outputSummary.js';
-import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
+import { Command } from 'commander';
+import { SummaryServiceFactory } from '../../services/summary/factories/SummaryServiceFactory.js';
+import { MediaSource } from '../../services/summary/core/interfaces/IMediaProcessor.js';
+import { getCurrentDateTime } from '../../utils/formatters/dateTime.js';
+import { getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
 import { warning } from '../style/colors.js';
 
-/**
- * Command arguments for video processing
- */
-interface CommandArgs {
-  /** YouTube video URL */
-  url?: string;
-  /** Number of words for summary */
-  words?: number;
-  /** Additional instructions for AI */
-  additionalPrompt?: string;
-  /** Output file name */
-  fileName?: string;
+interface CommandOptions {
+  url: string;
+  words?: string;
+  prompt?: string;
+  output?: string;
 }
 
-/**
- * Handles CLI commands for generating video summaries and transcripts.
- * 
- * @param {('summary'|'transcript')} commandType - Type of output to generate
- * @param {string[]} args - Command line arguments
- * @returns {Promise<void>}
- * 
- * @example
- * // Generate summary
- * handleCommand('summary', ['https://youtube.com/watch?v=...', '--words=300']);
- * 
- * // Generate transcript
- * handleCommand('transcript', ['https://youtube.com/watch?v=...']);
- */
-export async function handleCommand(commandType: 'summary' | 'transcript', args: string[]) {
-  try {
-    const { url, words, additionalPrompt, fileName } = parseArgs(args) as CommandArgs;
+export const videoProcessing = new Command('video')
+  .description('Video processing commands');
 
-    if (!url) {
-      displayUsage(commandType);
-      return;
+videoProcessing
+  .command('summarize')
+  .description('Generate a summary from a YouTube video')
+  .requiredOption('-u, --url <url>', 'YouTube video URL')
+  .option('-w, --words <number>', 'Maximum words in summary', '400')
+  .option('-p, --prompt <string>', 'Additional instructions for the AI')
+  .option('-o, --output <filename>', 'Output file name')
+  .action(async (options: CommandOptions) => {
+    try {
+      const summaryService = SummaryServiceFactory.createYouTubeService();
+      
+      // Set up progress tracking
+      summaryService.onProgress((progress) => {
+        console.log(`${progress.message} (${progress.progress}%)`);
+      });
+
+      // Process video
+      const source: MediaSource = {
+        type: 'youtube',
+        data: { url: options.url }
+      };
+
+      const summary = await summaryService.process(source, {
+        maxWords: Number(options.words),
+        additionalPrompt: options.prompt
+      });
+
+      // Handle output
+      if (options.output) {
+        const outputPath = await getLocalDirectoryPath(options.output);
+        await saveResultToFile(summary.content, outputPath);
+        console.log(`\nSaved summary to: ${outputPath}`);
+      } else {
+        const shouldSave = await promptOutputOption();
+        if (shouldSave) {
+          const defaultFileName = `summary_${getCurrentDateTime()}.txt`;
+          const outputPath = await getLocalDirectoryPath(defaultFileName);
+          await saveResultToFile(summary.content, outputPath);
+          console.log(`\nSaved summary to: ${outputPath}`);
+        } else {
+          console.log('\nSummary:');
+          console.log(summary.content);
+        }
+      }
+    } catch (error) {
+      console.error(warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));
+      process.exit(1);
     }
+  });
 
-    console.log(`Processing YouTube video for ${commandType}...`);
+videoProcessing
+  .command('transcript')
+  .description('Generate a transcript from a YouTube video')
+  .requiredOption('-u, --url <url>', 'YouTube video URL')
+  .option('-o, --output <filename>', 'Output file name')
+  .action(async (options: CommandOptions) => {
+    try {
+      const summaryService = SummaryServiceFactory.createYouTubeService();
+      
+      // Set up progress tracking
+      summaryService.onProgress((progress) => {
+        console.log(`${progress.message} (${progress.progress}%)`);
+      });
 
-    const [outputOption, info] = await Promise.all([
-      promptOutputOption(),
-      videoInfo(url)
-    ]);
-    
-    if (!info) {
-      throw new Error('Failed to fetch video information. Please check the URL and try again.');
+      // Process video
+      const source: MediaSource = {
+        type: 'youtube',
+        data: { url: options.url }
+      };
+
+      const result = await summaryService.process(source, {
+        returnTranscriptOnly: true
+      });
+
+      // Handle output
+      if (options.output) {
+        const outputPath = await getLocalDirectoryPath(options.output);
+        await saveResultToFile(result.content, outputPath);
+        console.log(`\nSaved transcript to: ${outputPath}`);
+      } else {
+        const shouldSave = await promptOutputOption();
+        if (shouldSave) {
+          const defaultFileName = `transcript_${getCurrentDateTime()}.txt`;
+          const outputPath = await getLocalDirectoryPath(defaultFileName);
+          await saveResultToFile(result.content, outputPath);
+          console.log(`\nSaved transcript to: ${outputPath}`);
+        } else {
+          console.log('\nTranscript:');
+          console.log(result.content);
+        }
+      }
+    } catch (error) {
+      console.error(warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));
+      process.exit(1);
     }
-
-    const result = await outputSummary({
-      url,
-      words,
-      returnTranscriptOnly: commandType === 'transcript',
-      additionalPrompt,
-    });
-
-    if (!result) {
-      throw new Error('Failed to generate result. The video might be too long or unavailable.');
-    }
-
-    if (outputOption === 'file') {
-      const outputFileName = fileName || `${commandType}_${info.title}_${getCurrentDateTime()}.txt`;
-      const filePath = await getLocalDirectoryPath(outputFileName);
-      await saveResultToFile(filePath, result);
-    } else {
-      console.log(`\nGenerated ${commandType === 'transcript' ? 'Transcript' : 'Summary'}:`);
-      console.log(result);
-    }
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    console.error(warning(`\nError: ${errorMessage}`));
-    if (error instanceof Error && error.stack) {
-      console.error(warning(`Stack trace: ${error.stack}`));
-    }
-  }
-}
-
-/**
- * Displays command usage information.
- * 
- * @param {('summary'|'transcript')} commandType - Type of command
- * @private
- */
-function displayUsage(commandType: 'summary' | 'transcript') {
-  const baseUsage = `${commandType} <url>`;
-  const options = commandType === 'summary' 
-    ? '[--words=<number>] [--prompt=<text>] [--save=<filename>]'
-    : '[--save=<filename>]';
-  
-  console.error(warning(`\nUsage: ${baseUsage} ${options}`));
-}
+  });

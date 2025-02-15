@@ -1,7 +1,7 @@
 import readline from 'readline';
 import { blue, orange, warning } from './style/colors.js';
 import { handleHelpCommand } from './commands/help.js';
-import { handleCommand } from './commands/videoProcessing.js';
+import { videoProcessing } from './commands/videoProcessing.js';
 import { handleStatusCommand } from './commands/status.js';
 import { handleStopCommand } from './commands/stop.js';
 import { handleMonitorCommand } from './commands/monitor.js';
@@ -17,12 +17,12 @@ type CommandFunction = (args: string[]) => void | Promise<void>;
  */
 const commands: { [key: string]: CommandFunction } = {
   help: handleHelpCommand,
-  summary: (args: string[]) => handleCommand('summary', args),
-  transcript: (args: string[]) => handleCommand('transcript', args),
   status: handleStatusCommand,
   stop: handleStopCommand,
   monitor: handleMonitorCommand,
-  youtube: (args: string[]) => handleCommand('summary', args),
+  video: async (args: string[]) => {
+    await videoProcessing.parseAsync(['node', 'script.js', ...args]);
+  },
   q: () => process.exit(0),
   quit: () => process.exit(0),
 };

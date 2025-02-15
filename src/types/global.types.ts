@@ -3,7 +3,7 @@
  */
 export interface ProgressUpdate {
     /** Current status of the operation */
-    status: 'uploading' | 'processing' | 'done' | 'error';
+    status: 'uploading' | 'processing' | 'converting' | 'done' | 'error';
     /** Progress message or result */
     message?: string;
     error?: string;
