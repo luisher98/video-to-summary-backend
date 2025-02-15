@@ -6,6 +6,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import { TEMP_DIRS } from '../../../../../utils/constants/paths.js';
 import { ensureDir } from '../../../../../utils/file/tempDirs.js';
+import { processTimer, logProcessStep } from '../../../../../utils/logging/logger.js';
 
 interface YouTubeSource extends MediaSource {
   type: 'youtube';
@@ -24,45 +25,77 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
 
     const youtubeSource = source as YouTubeSource;
     const { url } = youtubeSource.data;
+    const processName = 'Media Processing';
+    processTimer.startProcess(processName);
+    logProcessStep(processName, 'start', { url });
 
     try {
       // Ensure audio directory exists
+      processTimer.startProcess('Setup');
       await ensureDir(TEMP_DIRS.audios);
+      logProcessStep('Setup', 'complete', 'directories ready');
+      processTimer.endProcess('Setup');
 
       // Download and process the video
+      processTimer.startProcess('Download');
       const videoId = await YouTubeDownloader.downloadVideo(url);
       const audioPath = path.join(TEMP_DIRS.audios, `${videoId}.mp3`);
-
+      processTimer.endProcess('Download');
+      
       // Get audio file stats
+      processTimer.startProcess('Conversion');
       const stats = await fs.stat(audioPath);
+      logProcessStep('Conversion', 'complete', { size: stats.size });
+      processTimer.endProcess('Conversion');
 
+      processTimer.endProcess(processName);
       return {
         id: videoId,
         audioPath,
         metadata: {
-          duration: 0, // Duration not available from yt-dlp directly
+          duration: 0,
           format: 'mp3',
           size: stats.size
         }
       };
     } catch (error) {
+      const err = error instanceof Error ? error : new Error(String(error));
+      logProcessStep(processName, 'error', { error: err.message });
+      processTimer.endProcess(processName, err);
+
       // Clean up any partial downloads
       try {
-        const audioPath = path.join(TEMP_DIRS.audios, 'youtube.mp3');
+        const videoId = path.basename(url).replace(/[^a-z0-9]/gi, '_');
+        const audioPath = path.join(TEMP_DIRS.audios, `${videoId}.mp3`);
         await fs.unlink(audioPath);
+        logProcessStep('Cleanup', 'complete', 'partial download removed');
       } catch {
         // Ignore cleanup errors
       }
-      throw error;
+      throw err;
     }
   }
 
   async cleanup(mediaId: string): Promise<void> {
+    const processName = 'Cleanup';
+    processTimer.startProcess(processName);
+    logProcessStep(processName, 'start', { mediaId });
+
     try {
       const audioPath = path.join(TEMP_DIRS.audios, `${mediaId}.mp3`);
+      await fs.access(audioPath);
       await fs.unlink(audioPath);
+      logProcessStep(processName, 'complete', 'resources freed');
+      processTimer.endProcess(processName);
     } catch (error) {
-      console.error(`Failed to clean up media ${mediaId}:`, error);
+      if (error instanceof Error && !error.message.includes('ENOENT')) {
+        const err = error;
+        logProcessStep(processName, 'error', { error: err.message });
+        processTimer.endProcess(processName, err);
+        throw err;
+      }
+      logProcessStep(processName, 'complete', 'nothing to clean');
+      processTimer.endProcess(processName);
     }
   }
 } 

@@ -20,11 +20,6 @@ import { MediaSource } from "../../services/summary/core/interfaces/IMediaProces
  * data: {"status": "done", "message": "Summary text..."}
  */
 export default async function getYouTubeSummarySSE(req: Request, res: Response) {
-    console.log('Received SSE request:', {
-        url: req.query.url,
-        words: req.query.words,
-        prompt: req.query.prompt
-    });
 
     const url = req.query.url as string;
     
@@ -49,12 +44,10 @@ export default async function getYouTubeSummarySSE(req: Request, res: Response) 
 
     const summaryService = SummaryServiceFactory.createYouTubeService();
     summaryService.onProgress((progress) => {
-        console.log('Progress update:', progress);
         res.write(`data: ${JSON.stringify(progress)}\n\n`);
     });
 
     try {
-        console.log('Starting video processing for:', url);
         const source: MediaSource = {
             type: 'youtube',
             data: { url }

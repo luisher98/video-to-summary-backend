@@ -5,6 +5,7 @@ import { TEMP_DIRS } from '../../../../../utils/constants/paths.js';
 import { getFfmpegPath } from '../../../../../utils/media/ffmpeg.js';
 import { CookieHandler } from '../../../../../services/auth/cookieHandler.js';
 import { DeletionError, DownloadError } from '../../../../../utils/errors/errorHandling.js';
+import { logProcessStep } from '../../../../../utils/logging/logger.js';
 
 interface YtDlpOptions {
     'extract-audio': boolean;
@@ -28,20 +29,12 @@ export class YouTubeDownloader {
         const fileId = path.basename(url).replace(/[^a-z0-9]/gi, '_');
         const outputPath = path.join(TEMP_DIRS.audios, `${fileId}.%(ext)s`);
         
-        console.log('Starting download:', {
-            url,
-            output: outputPath.replace('%(ext)s', 'mp3')
-        });
+        logProcessStep('YouTube Download', 'start', { url });
 
         try {
-            // Always try to get cookies first
             const cookieOptions = await CookieHandler.processYouTubeCookies();
-
-            // Get ffmpeg path from utils
             const ffmpegPath = getFfmpegPath();
-            console.log('Using ffmpeg from:', ffmpegPath);
 
-            // Use the exact format yt-dlp expects
             const ytDlpOptions: YtDlpOptions = {
                 'extract-audio': true,
                 'audio-format': 'mp3',
@@ -51,42 +44,27 @@ export class YouTubeDownloader {
                 'quiet': false
             };
 
-            // Add ffmpeg location if available
             if (ffmpegPath) {
                 ytDlpOptions['ffmpeg-location'] = ffmpegPath;
-                console.log('Added ffmpeg location:', ffmpegPath);
             }
 
-            // Add cookies if available
             if (cookieOptions.cookies) {
                 ytDlpOptions['cookies'] = cookieOptions.cookies;
             }
 
-            console.log('Using yt-dlp options:', {
-                ...ytDlpOptions,
-                cookies: ytDlpOptions['cookies'] ? 'present' : undefined
-            });
-
-            // Execute youtube-dl with raw options
-            const result = await youtubedl.exec(url, ytDlpOptions);
+            await youtubedl.exec(url, ytDlpOptions);
             
-            if (result.stderr) {
-                console.log('yt-dlp stderr:', result.stderr);
-            }
-
-            // Verify file exists
             const downloadedPath = path.join(TEMP_DIRS.audios, `${fileId}.mp3`);
             await fs.access(downloadedPath);
-            console.log('Successfully downloaded:', downloadedPath);
+            logProcessStep('YouTube Download', 'complete', { fileId });
             
             return fileId;
         } catch (error) {
             const errorMsg = error instanceof Error ? error.message : String(error);
             
-            console.error('Download failed:', {
+            logProcessStep('YouTube Download', 'error', {
                 error: errorMsg,
-                videoUrl: url,
-                outputPath: outputPath.replace('%(ext)s', 'mp3')
+                videoUrl: url
             });
 
             if (errorMsg.includes('Sign in') || errorMsg.includes('cookie') || errorMsg.includes('Private video')) {
@@ -104,9 +82,10 @@ export class YouTubeDownloader {
         try {
             const filePath = path.join(TEMP_DIRS.audios, `${fileId}.mp3`);
             await fs.unlink(filePath);
+            logProcessStep('Delete Video', 'complete', { fileId });
         } catch (error) {
             if (error instanceof Error) {
-                console.error('Error deleting video:', error.message);
+                logProcessStep('Delete Video', 'error', { error: error.message });
                 throw new DeletionError(error.message);
             }
             throw new Error('An unknown error occurred during deletion');

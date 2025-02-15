@@ -31,11 +31,6 @@ interface UploadUrlRequest {
  */
 router.post('/', async (req: Request, res: Response) => {
     try {
-        console.log('Received upload URL request:', {
-            body: req.body,
-            headers: req.headers,
-            method: req.method
-        });
 
         const { fileName, fileSize } = req.body as UploadUrlRequest;
 
@@ -51,20 +46,10 @@ router.post('/', async (req: Request, res: Response) => {
         const fileId = uuidv4();
         const blobName = `${fileId}-${fileName}`;
 
-        console.log('Generating SAS URL for blob:', {
-            fileId,
-            blobName,
-            fileSize
-        });
+
 
         // Get SAS URL for upload
         const url = await azureStorage.generateUploadUrl(blobName);
-
-        console.log('Generated SAS URL:', {
-            url: url.substring(0, 100) + '...', // Log only the beginning for security
-            fileId,
-            blobName
-        });
 
         res.json({
             data: {

@@ -14692,3 +14692,2455 @@ Generated SAS URL: {
 Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
 Skipping API key check in development/test mode
 Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T04:33:03.429Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":148,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'300'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig aY2s8IpI3qtxqPc1r => 5kvjoLzz9Dd99g
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig UXdpBNE7VQPtkKf39 => -2rlRTmO4y4rlA
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"Alexander Wang, the founder and CEO of Scale.ai, joined the show to discuss the AI race between the US and China. He highlighted the importance of this competition and shared insights on the advancements made by Chinese AI labs, particularly DeepSeek. Wang emphasized the competitive nature of the AI space, with different models excelling in various capabilities. He discussed the need for advanced capabilities to drive new use cases and the importance of generating new data to push the boundaries of AI. Additionally, Wang addressed the debate surrounding computational capacity and infrastructure in the US, stressing the need for significant investment in these areas to maintain a competitive edge in AI development. He expressed optimism about the future growth of the AI industry, predicting a potential trillion-dollar market as the technology progresses towards superintelligence or AGI. Wang's perspective on the evolving landscape of AI models and the increasing competition among companies reflects a dynamic and rapidly evolving industry poised for significant growth in the coming years."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'c313c5fc-a835-44c2-bb73-1fc4f5c3a6c1'[39m,
+  blobName: [32m'c313c5fc-a835-44c2-bb73-1fc4f5c3a6c1-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/c313c5fc-a835-44c2-bb73-1fc4f5c3a6c1-argentina....'[39m,
+  fileId: [32m'c313c5fc-a835-44c2-bb73-1fc4f5c3a6c1'[39m,
+  blobName: [32m'c313c5fc-a835-44c2-bb73-1fc4f5c3a6c1-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'c1001b69-8071-42ca-b31c-a494a41d4393'[39m,
+  blobName: [32m'c1001b69-8071-42ca-b31c-a494a41d4393-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/c1001b69-8071-42ca-b31c-a494a41d4393-argentina....'[39m,
+  fileId: [32m'c1001b69-8071-42ca-b31c-a494a41d4393'[39m,
+  blobName: [32m'c1001b69-8071-42ca-b31c-a494a41d4393-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'b4724bf2-8037-4a5c-b167-216c328f8178'[39m,
+  blobName: [32m'b4724bf2-8037-4a5c-b167-216c328f8178-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/b4724bf2-8037-4a5c-b167-216c328f8178-argentina....'[39m,
+  fileId: [32m'b4724bf2-8037-4a5c-b167-216c328f8178'[39m,
+  blobName: [32m'b4724bf2-8037-4a5c-b167-216c328f8178-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'4fe570ea-f23a-4bac-9a36-b074f30a4817'[39m,
+  blobName: [32m'4fe570ea-f23a-4bac-9a36-b074f30a4817-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/4fe570ea-f23a-4bac-9a36-b074f30a4817-argentina....'[39m,
+  fileId: [32m'4fe570ea-f23a-4bac-9a36-b074f30a4817'[39m,
+  blobName: [32m'4fe570ea-f23a-4bac-9a36-b074f30a4817-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'6e58ac46-fd23-484d-bf87-4e2404b3f6f3'[39m,
+  blobName: [32m'6e58ac46-fd23-484d-bf87-4e2404b3f6f3-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/6e58ac46-fd23-484d-bf87-4e2404b3f6f3-argentina....'[39m,
+  fileId: [32m'6e58ac46-fd23-484d-bf87-4e2404b3f6f3'[39m,
+  blobName: [32m'6e58ac46-fd23-484d-bf87-4e2404b3f6f3-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'56cede1a-afc3-4321-b11e-f6765c9df953'[39m,
+  blobName: [32m'56cede1a-afc3-4321-b11e-f6765c9df953-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/56cede1a-afc3-4321-b11e-f6765c9df953-argentina....'[39m,
+  fileId: [32m'56cede1a-afc3-4321-b11e-f6765c9df953'[39m,
+  blobName: [32m'56cede1a-afc3-4321-b11e-f6765c9df953-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'5e50bae1-d6ad-4e7f-8a70-6633609f9536'[39m,
+  blobName: [32m'5e50bae1-d6ad-4e7f-8a70-6633609f9536-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/5e50bae1-d6ad-4e7f-8a70-6633609f9536-argentina....'[39m,
+  fileId: [32m'5e50bae1-d6ad-4e7f-8a70-6633609f9536'[39m,
+  blobName: [32m'5e50bae1-d6ad-4e7f-8a70-6633609f9536-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'45b56c1f-98b3-44ff-8508-27d7faa120a2'[39m,
+  blobName: [32m'45b56c1f-98b3-44ff-8508-27d7faa120a2-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/45b56c1f-98b3-44ff-8508-27d7faa120a2-argentina....'[39m,
+  fileId: [32m'45b56c1f-98b3-44ff-8508-27d7faa120a2'[39m,
+  blobName: [32m'45b56c1f-98b3-44ff-8508-27d7faa120a2-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'1ff0b770-0178-44e6-a4c2-4717cfdf390e'[39m,
+  blobName: [32m'1ff0b770-0178-44e6-a4c2-4717cfdf390e-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/1ff0b770-0178-44e6-a4c2-4717cfdf390e-argentina....'[39m,
+  fileId: [32m'1ff0b770-0178-44e6-a4c2-4717cfdf390e'[39m,
+  blobName: [32m'1ff0b770-0178-44e6-a4c2-4717cfdf390e-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'a28398f8-6ba0-4096-bb7b-b0e6f8525012'[39m,
+  blobName: [32m'a28398f8-6ba0-4096-bb7b-b0e6f8525012-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/a28398f8-6ba0-4096-bb7b-b0e6f8525012-argentina....'[39m,
+  fileId: [32m'a28398f8-6ba0-4096-bb7b-b0e6f8525012'[39m,
+  blobName: [32m'a28398f8-6ba0-4096-bb7b-b0e6f8525012-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'c563a841-ebc8-44af-bb26-f744f3ae67ed'[39m,
+  blobName: [32m'c563a841-ebc8-44af-bb26-f744f3ae67ed-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/c563a841-ebc8-44af-bb26-f744f3ae67ed-argentina....'[39m,
+  fileId: [32m'c563a841-ebc8-44af-bb26-f744f3ae67ed'[39m,
+  blobName: [32m'c563a841-ebc8-44af-bb26-f744f3ae67ed-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T05:18:00.209Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":151,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig Eh_JYxvgdoqCyOfcv => eoAucR2rfCsvRg
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig xC0pnTD8teqdHsmMr => Pkb2D9hRngtCjg
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m'Alexander Wang, founder and CEO of Scale.ai, discusses the AI race between the US and China, highlighting the recent advancements made by Chinese AI lab DeepSeek. Wang emphasizes the competitiveness in the AI space and the need for advanced capabilities to drive future use cases. He also touches on the importance of computational capacity and infrastructure in the US to stay ahead in the AI industry. The conversation delves into the potential trillion-dollar market for AI revenue and the path towards achieving artificial general intelligence (AGI). Wang envisions a future with powerful AI systems capable of complex tasks akin to human capabilities.'[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'1686b0dd-9040-437f-8ea9-21d4f9b8ad9c'[39m,
+  blobName: [32m'1686b0dd-9040-437f-8ea9-21d4f9b8ad9c-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/1686b0dd-9040-437f-8ea9-21d4f9b8ad9c-argentina....'[39m,
+  fileId: [32m'1686b0dd-9040-437f-8ea9-21d4f9b8ad9c'[39m,
+  blobName: [32m'1686b0dd-9040-437f-8ea9-21d4f9b8ad9c-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'015f7fb1-1292-442e-8268-a45b8a0536c3'[39m,
+  blobName: [32m'015f7fb1-1292-442e-8268-a45b8a0536c3-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/015f7fb1-1292-442e-8268-a45b8a0536c3-argentina....'[39m,
+  fileId: [32m'015f7fb1-1292-442e-8268-a45b8a0536c3'[39m,
+  blobName: [32m'015f7fb1-1292-442e-8268-a45b8a0536c3-argentina.mp4'[39m
+}
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T05:27:35.458Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":216,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig xizu_aQUnofjbSGEI => 0BhWfOTiAGwjCg
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig t89x-T38p7vnLZzs_ => hUlKexIQPNDbkg
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'cd17c5e4-ca23-4f20-b144-4956bc593ccd'[39m,
+  blobName: [32m'cd17c5e4-ca23-4f20-b144-4956bc593ccd-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/cd17c5e4-ca23-4f20-b144-4956bc593ccd-argentina....'[39m,
+  fileId: [32m'cd17c5e4-ca23-4f20-b144-4956bc593ccd'[39m,
+  blobName: [32m'cd17c5e4-ca23-4f20-b144-4956bc593ccd-argentina.mp4'[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m'Alexander Wang, founder and CEO of Scale.ai, discusses the AI race between the US and China, highlighting the recent advancements made by Chinese AI lab DeepSeek. Wang emphasizes the competitive nature of the AI space and the need for advanced capabilities to drive future use cases. He also touches on the importance of computational capacity and infrastructure in the US to stay ahead in AI development. Wang predicts a trillion-dollar revenue potential for the AI industry, leading to the eventual development of Artificial General Intelligence (AGI). The conversation delves into the significance of competition among companies in building frontier AI models and the potential for a transformative market in the coming years.'[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'4e4546f3-9814-4fef-ac4b-9a14ba12bb55'[39m,
+  blobName: [32m'4e4546f3-9814-4fef-ac4b-9a14ba12bb55-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/4e4546f3-9814-4fef-ac4b-9a14ba12bb55-argentina....'[39m,
+  fileId: [32m'4e4546f3-9814-4fef-ac4b-9a14ba12bb55'[39m,
+  blobName: [32m'4e4546f3-9814-4fef-ac4b-9a14ba12bb55-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'ed2622ca-9b39-4053-8ee6-50fb1af8549a'[39m,
+  blobName: [32m'ed2622ca-9b39-4053-8ee6-50fb1af8549a-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/ed2622ca-9b39-4053-8ee6-50fb1af8549a-argentina....'[39m,
+  fileId: [32m'ed2622ca-9b39-4053-8ee6-50fb1af8549a'[39m,
+  blobName: [32m'ed2622ca-9b39-4053-8ee6-50fb1af8549a-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'da1dbd8f-c9ae-420c-956b-23d0e440afc5'[39m,
+  blobName: [32m'da1dbd8f-c9ae-420c-956b-23d0e440afc5-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/da1dbd8f-c9ae-420c-956b-23d0e440afc5-argentina....'[39m,
+  fileId: [32m'da1dbd8f-c9ae-420c-956b-23d0e440afc5'[39m,
+  blobName: [32m'da1dbd8f-c9ae-420c-956b-23d0e440afc5-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'797c0a8a-e4b1-4b94-9244-f64537ceacf1'[39m,
+  blobName: [32m'797c0a8a-e4b1-4b94-9244-f64537ceacf1-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/797c0a8a-e4b1-4b94-9244-f64537ceacf1-argentina....'[39m,
+  fileId: [32m'797c0a8a-e4b1-4b94-9244-f64537ceacf1'[39m,
+  blobName: [32m'797c0a8a-e4b1-4b94-9244-f64537ceacf1-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T06:02:09.575Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":163,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=x9Ekl9Izd38'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=x9Ekl9Izd38', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig ddmcffKfkhWlzVvso => rhjKv3w3uJaLcg
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig 7mjVQYLrmS9AVuz8z => 5syq4WRNvis7Gg
+[debug] [youtube] x9Ekl9Izd38: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_x9Ekl9Izd38.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'774565fb-d4a9-4a67-ae6e-7acdde42f70e'[39m,
+  blobName: [32m'774565fb-d4a9-4a67-ae6e-7acdde42f70e-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/774565fb-d4a9-4a67-ae6e-7acdde42f70e-argentina....'[39m,
+  fileId: [32m'774565fb-d4a9-4a67-ae6e-7acdde42f70e'[39m,
+  blobName: [32m'774565fb-d4a9-4a67-ae6e-7acdde42f70e-argentina.mp4'[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m'Alexander Wang, the founder and CEO of Scale.ai, discusses the AI race between the US and China, highlighting the recent advancements made by Chinese AI labs. Wang emphasizes the competitive nature of the AI industry, with different models excelling in various capabilities. He predicts a trillion-dollar revenue potential for the AI market, leading towards achieving Artificial General Intelligence (AGI) within the next two to four years. Wang stresses the importance of computational capacity and infrastructure to ensure the US remains at the forefront of AI development. The conversation also touches on the need for continued innovation and collaboration among leading AI labs.'[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=x9Ekl9Izd38
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'e516041f-2d09-440b-a126-6b9c35eae75e'[39m,
+  blobName: [32m'e516041f-2d09-440b-a126-6b9c35eae75e-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/e516041f-2d09-440b-a126-6b9c35eae75e-argentina....'[39m,
+  fileId: [32m'e516041f-2d09-440b-a126-6b9c35eae75e'[39m,
+  blobName: [32m'e516041f-2d09-440b-a126-6b9c35eae75e-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'6a9695e5-4e67-4a50-8382-cecc1b8d88a5'[39m,
+  blobName: [32m'6a9695e5-4e67-4a50-8382-cecc1b8d88a5-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/6a9695e5-4e67-4a50-8382-cecc1b8d88a5-argentina....'[39m,
+  fileId: [32m'6a9695e5-4e67-4a50-8382-cecc1b8d88a5'[39m,
+  blobName: [32m'6a9695e5-4e67-4a50-8382-cecc1b8d88a5-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'b6034615-35f0-471a-ae6e-e8088d939ac3'[39m,
+  blobName: [32m'b6034615-35f0-471a-ae6e-e8088d939ac3-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/b6034615-35f0-471a-ae6e-e8088d939ac3-argentina....'[39m,
+  fileId: [32m'b6034615-35f0-471a-ae6e-e8088d939ac3'[39m,
+  blobName: [32m'b6034615-35f0-471a-ae6e-e8088d939ac3-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'45741fa4-7414-4e33-8f8f-42efb1d9b799'[39m,
+  blobName: [32m'45741fa4-7414-4e33-8f8f-42efb1d9b799-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/45741fa4-7414-4e33-8f8f-42efb1d9b799-argentina....'[39m,
+  fileId: [32m'45741fa4-7414-4e33-8f8f-42efb1d9b799'[39m,
+  blobName: [32m'45741fa4-7414-4e33-8f8f-42efb1d9b799-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: to2CjIKVfVI
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'5arbwSkaMXjbvDtr5Tpp_1KUs9U'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'6HvZZ3GfPOtv34o3gnxf3Ou_L10'[39m,
+      id: [32m'to2CjIKVfVI'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T06:14:21.821Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=to2CjIKVfVI","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":183,"videoId":"to2CjIKVfVI","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  words: [32m'100'[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=to2CjIKVfVI
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=to2CjIKVfVI'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=to2CjIKVfVI', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig B0Nql0M7bE9lefvUs => AljaBSyug3auFw
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig 0m3e8RbBjeP7_bLhb => r45zof1-H_7QDw
+[debug] [youtube] to2CjIKVfVI: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] Invoking http downloader on "https://rr1---sn-ni5f-t8gz.googlevideo.com/videoplayback?expire=1739621664&ei=wDCwZ7bZEZKosfIPyvqu2Ag&ip=2604%3A3d08%3A5384%3A4b00%3A7426%3Ad0f2%3A2f92%3A761b&id=o-AI1XPJ1SjJeyv4gVwHMHDXEv8LE7lt_6wZ0N78xpqoOW&itag=251&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1739600064%2C&mh=QI&mm=31%2C26&mn=sn-ni5f-t8gz%2Csn-vgqsknz6&ms=au%2Conr&mv=m&mvi=1&pl=41&rms=au%2Cau&initcwndbps=4563750&bui=AUWDL3yxe7SdspDF6HPhHLBiv85PGs31cPLv6nTymLd93cWedmy_Z1oVcx8-N9m0xyut53b33mNYaOpb&spc=RjZbSZZqd3vRajKT72zGfjGRMAkb0fbmP45qTGymFMvSkFwQtCNTymmjTUA7m5bOFQ&vprv=1&svpuc=1&mime=audio%2Fwebm&ns=uMjP9yXhqLVgQ8R1uePMfXAQ&rqh=1&gir=yes&clen=6402663&dur=408.521&lmt=1738715518211705&mt=1739599744&fvip=2&keepalive=yes&lmw=1&fexp=51326932%2C51358317&c=TVHTML5&sefc=1&txp=5532534&n=r45zof1-H_7QDw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRgIhANP9R6nLk1V6wcxJz4lw9PupnM1Jb5retMyoYRX-H3WVAiEAlDSzTnoTFzXchUf9oi27Uzt0Sny6-6njBTIzkTKvivU%3D&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=AGluJ3MwRgIhAKusXW9RuUoYRwuxLEoJUMOnEhKEnZ6bN4w4qXryGZNeAiEAklboa2P-3vytABHpmfL3NQku6Y7GvIZAka6iCOZQ3z8%3D"
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.webm
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -y -loglevel repeat+info -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.webm -vn -acodec libmp3lame -q:a 5.0 -movflags +faststart file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_to2CjIKVfVI.mp3
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"The transcript discusses the speaker's experience of being scammed by a company called Enron, which launched a meme coin despite assurances to the contrary. The speaker criticizes the company's actions, highlighting the irony of scamming people under the guise of humor. The Enron team is portrayed as disingenuous, with a focus on their misleading statements and questionable decisions regarding the coin launch. The speaker questions the legitimacy of Enron's intentions and expresses disappointment in the company's behavior. Overall, the transcript emphasizes the deceptive practices and lack of transparency exhibited by Enron in their coin launch."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=to2CjIKVfVI
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'ee88cd05-3bc5-4ccb-af17-2180cbadff5d'[39m,
+  blobName: [32m'ee88cd05-3bc5-4ccb-af17-2180cbadff5d-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/ee88cd05-3bc5-4ccb-af17-2180cbadff5d-argentina....'[39m,
+  fileId: [32m'ee88cd05-3bc5-4ccb-af17-2180cbadff5d'[39m,
+  blobName: [32m'ee88cd05-3bc5-4ccb-af17-2180cbadff5d-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Generating transcript...
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'880a33d6-a68a-4a7e-8e22-d09be2e65120'[39m,
+  blobName: [32m'880a33d6-a68a-4a7e-8e22-d09be2e65120-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/880a33d6-a68a-4a7e-8e22-d09be2e65120-argentina....'[39m,
+  fileId: [32m'880a33d6-a68a-4a7e-8e22-d09be2e65120'[39m,
+  blobName: [32m'880a33d6-a68a-4a7e-8e22-d09be2e65120-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'2fbd124c-070b-4eaf-a9e4-21b9dafa13e4'[39m,
+  blobName: [32m'2fbd124c-070b-4eaf-a9e4-21b9dafa13e4-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/2fbd124c-070b-4eaf-a9e4-21b9dafa13e4-argentina....'[39m,
+  fileId: [32m'2fbd124c-070b-4eaf-a9e4-21b9dafa13e4'[39m,
+  blobName: [32m'2fbd124c-070b-4eaf-a9e4-21b9dafa13e4-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received upload URL request: {
+  body: { fileName: [32m'argentina.mp4'[39m, fileSize: [33m83043872[39m },
+  headers: {
+    host: [32m'localhost:5050'[39m,
+    connection: [32m'keep-alive'[39m,
+    [32m'content-length'[39m: [32m'48'[39m,
+    [32m'sec-ch-ua-platform'[39m: [32m'"macOS"'[39m,
+    [32m'user-agent'[39m: [32m'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'[39m,
+    [32m'sec-ch-ua'[39m: [32m'"Not(A:Brand";v="99", "Google Chrome";v="133", "Chromium";v="133"'[39m,
+    dnt: [32m'1'[39m,
+    [32m'content-type'[39m: [32m'application/json'[39m,
+    [32m'sec-ch-ua-mobile'[39m: [32m'?0'[39m,
+    accept: [32m'*/*'[39m,
+    origin: [32m'http://localhost:3000'[39m,
+    [32m'sec-fetch-site'[39m: [32m'same-site'[39m,
+    [32m'sec-fetch-mode'[39m: [32m'cors'[39m,
+    [32m'sec-fetch-dest'[39m: [32m'empty'[39m,
+    referer: [32m'http://localhost:3000/'[39m,
+    [32m'accept-encoding'[39m: [32m'gzip, deflate, br, zstd'[39m,
+    [32m'accept-language'[39m: [32m'es,en;q=0.9'[39m
+  },
+  method: [32m'POST'[39m
+}
+Generating SAS URL for blob: {
+  fileId: [32m'ae485e8a-d3de-4293-a2e2-ebfacbf45851'[39m,
+  blobName: [32m'ae485e8a-d3de-4293-a2e2-ebfacbf45851-argentina.mp4'[39m,
+  fileSize: [33m83043872[39m
+}
+Generated SAS URL: {
+  url: [32m'https://summarystorage.blob.core.windows.net/summary/ae485e8a-d3de-4293-a2e2-ebfacbf45851-argentina....'[39m,
+  fileId: [32m'ae485e8a-d3de-4293-a2e2-ebfacbf45851'[39m,
+  blobName: [32m'ae485e8a-d3de-4293-a2e2-ebfacbf45851-argentina.mp4'[39m
+}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Fetching video info for ID: x9Ekl9Izd38
+YouTube API response: {
+  kind: [32m'youtube#videoListResponse'[39m,
+  etag: [32m'JpgU-54FLMMxp2O0xLcfHpiGUs4'[39m,
+  items: [
+    {
+      kind: [32m'youtube#video'[39m,
+      etag: [32m'Qfypw7RVPxWgfocEAXBpWJZnqaY'[39m,
+      id: [32m'x9Ekl9Izd38'[39m,
+      snippet: [36m[Object][39m,
+      contentDetails: [36m[Object][39m
+    }
+  ],
+  pageInfo: { totalResults: [33m1[39m, resultsPerPage: [33m1[39m }
+}
+{"timestamp":"2025-02-15T06:22:48.534Z","event":"video_info_retrieved","url":"https://www.youtube.com/watch?v=x9Ekl9Izd38","ip":"::1","userAgent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36","duration":201,"videoId":"x9Ekl9Izd38","environment":"development"}
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+[34m▶ Starting: YouTube Media Processing[39m
+[34m  ▶ Starting: Video Download[39m
+[34m▶ Starting: YouTube Download Setup[39m
+Using ffmpeg-static module
+[32m✓ Completed: YouTube Download Setup (1ms)[39m
+[34m▶ Starting: YouTube Download Execution[39m
+Progress update: {
+  status: [32m'error'[39m,
+  message: [32m'An error occurred while processing your request. Please try again.'[39m,
+  progress: [33m5[39m,
+  error: [32m'An error occurred while processing your request. Please try again.'[39m
+}
+[34m▶ Starting: YouTube Cleanup[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+Received SSE request: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  words: [90mundefined[39m,
+  prompt: [90mundefined[39m
+}
+Starting video processing for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Initializing connection...'[39m,
+  progress: [33m5[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m5[39m
+}
+Starting download: {
+  url: [32m'https://www.youtube.com/watch?v=N-ZNfuCdkUo'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3'[39m
+}
+Using ffmpeg-static module
+Using ffmpeg from: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Added ffmpeg location: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg
+Using yt-dlp options: {
+  [32m'extract-audio'[39m: [33mtrue[39m,
+  [32m'audio-format'[39m: [32m'mp3'[39m,
+  output: [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s'[39m,
+  [32m'prefer-free-formats'[39m: [33mtrue[39m,
+  verbose: [33mtrue[39m,
+  quiet: [33mfalse[39m,
+  [32m'ffmpeg-location'[39m: [32m'/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg'[39m,
+  cookies: [90mundefined[39m
+}
+yt-dlp stderr: [debug] Command-line config: ['https://www.youtube.com/watch?v=N-ZNfuCdkUo', '--extract-audio', '--audio-format', 'mp3', '--output', '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s', '--prefer-free-formats', '--verbose', '--no-quiet', '--ffmpeg-location', '/Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg']
+[debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+[debug] yt-dlp version stable@2025.01.26 from yt-dlp/yt-dlp [3b4531934] (zip)
+[debug] Python 3.13.1 (CPython arm64 64bit) - macOS-13.6.3-arm64-arm-64bit-Mach-O (OpenSSL 3.4.1 11 Feb 2025)
+[debug] exe versions: ffmpeg 6.0 (setts)
+[debug] Optional libraries: sqlite3-3.48.0
+[debug] Proxy map: {}
+[debug] Request Handlers: urllib
+[debug] Loaded 1839 extractors
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig X7q-u4wqdfH79iw0q => Zj5iKWRlI6df5Q
+[debug] Loading youtube-nsig.e7567ecf from cache
+[debug] [youtube] Decrypted nsig VDBv2MgSnJkPNMstL => 2ENLiLlQMAUr2w
+[debug] [youtube] N-ZNfuCdkUo: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+[debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+[debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+[debug] ffmpeg command line: /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg -i file:/Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+Successfully downloaded: /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.mp3
+[34m[INFO][39m 2025-02-15T06:40:29.760Z Media processing completed
+{
+  "url": "https://www.youtube.com/watch?v=N-ZNfuCdkUo",
+  "fileId": "watch_v_N_ZNfuCdkUo"
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Downloading and processing media'[39m,
+  progress: [33m35[39m
+}
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m45[39m
+}
+Generating transcript...
+Progress update: {
+  status: [32m'processing'[39m,
+  message: [32m'Generating transcript'[39m,
+  progress: [33m75[39m
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m75[39m }
+[34m[INFO][39m 2025-02-15T06:40:46.491Z Starting summarization
+{
+  "sourceType": "youtube",
+  "sourceId": "watch_v_N_ZNfuCdkUo",
+  "textLength": 5738,
+  "maxWords": 400
+}
+[34m[INFO][39m 2025-02-15T06:40:50.390Z Summarization completed
+{
+  "sourceId": "watch_v_N_ZNfuCdkUo",
+  "wordCount": 384
+}
+Progress update: { status: [32m'processing'[39m, message: [32m'Generating summary'[39m, progress: [33m100[39m }
+Progress update: {
+  status: [32m'done'[39m,
+  message: [32m"The new Trump administration has fired federal prosecutors at the Department of Justice who were involved in criminal cases investigating President Trump and his role in the January 6th Capitol riots. The administration has also launched a special project to investigate charges related to the January 6th investigation. The move to fire over a dozen officials who worked on criminal investigations related to President Trump was justified by the acting Attorney General citing lack of trust in their ability to implement the president's agenda faithfully. Additionally, the review of cases involving obstruction of justice charges in the January 6th investigation has raised concerns about the Trump Justice Department's handling of criminal investigations over the past four years.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The decision to fire career officials and review specific cases has not come as a surprise, as President Trump had previously indicated his intentions to do so. The move reflects the president's desire to remake the Justice Department in his own vision and appoint individuals loyal to him. The language used in the memo justifying the firings suggests a lack of trust in these officials to carry out the president's agenda. This action is seen as part of an effort to undermine the credibility and legitimacy of certain cases, especially in light of the president's controversial pardons and commutations related to the January 6th events.\n"[39m +
+    [32m'\n'[39m +
+    [32m"The timing of these actions, just before the likely confirmation of Pam Bondi as the attorney general, indicates a strategic move to clear house and ensure loyalty within the department. President Trump's dissatisfaction with past decisions, such as appointing Jeff Sessions as attorney general, has fueled his determination to reshape the Justice Department according to his preferences. The dismissal of career officials who are expected to be impartial in their investigations has raised concerns about the independence and integrity of the department.\n"[39m +
+    [32m'\n'[39m +
+    [32m"Overall, the developments at the Trump Justice Department highlight a significant shift in how criminal investigations and prosecutions are being handled. The administration's actions have sparked debates about the politicization of the Justice Department and the potential implications for ongoing and future cases. The decision to remove officials involved in cases related to the president and the Capitol riots, as well as the review of specific charges, signal a new direction in the administration's approach to law enforcement and justice."[39m,
+  progress: [33m100[39m
+}
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m▶️ [2025-02-15T06:52:54.226Z] Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[32m✅ [2025-02-15T06:52:54.227Z] Ensure audio directory[39m
+[34m▶️ [2025-02-15T06:52:54.228Z] YouTube Download[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+Using ffmpeg-static module
+[31m❌ [2025-02-15T06:52:55.423Z] YouTube Download[39m[90m - {"error":"The command spawned as:\n\n  `/Users/Luis/dev/youtube_summary/webapi/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s --prefer-free-formats --no-verbose --quiet --ffmpeg-location /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg`\n\nexited with:\n\n  `{ signal: 'null', code: 2 }` \n\nwith the following trace:\n","videoUrl":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[31m❌ [2025-02-15T06:52:55.423Z] Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"error":"Failed to download video: The command spawned as:\n\n  `/Users/Luis/dev/youtube_summary/webapi/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s --prefer-free-formats --no-verbose --quiet --ffmpeg-location /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg`\n\nexited with:\n\n  `{ signal: 'null', code: 2 }` \n\nwith the following trace:\n"}[39m
+[34m▶️ [2025-02-15T06:52:55.426Z] Cleanup media (youtube)[39m[90m - {"mediaId":"youtube"}[39m
+[31m❌ [2025-02-15T06:52:55.426Z] Cleanup media (youtube)[39m[90m - {"error":"ENOENT: no such file or directory, unlink '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/youtube.mp3'"}[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m▶️ [2025-02-15T06:53:06.291Z] Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[32m✅ [2025-02-15T06:53:06.291Z] Ensure audio directory[39m
+[34m▶️ [2025-02-15T06:53:06.291Z] YouTube Download[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+Using ffmpeg-static module
+[31m❌ [2025-02-15T06:53:06.996Z] YouTube Download[39m[90m - {"error":"The command spawned as:\n\n  `/Users/Luis/dev/youtube_summary/webapi/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s --prefer-free-formats --no-verbose --quiet --ffmpeg-location /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg`\n\nexited with:\n\n  `{ signal: 'null', code: 2 }` \n\nwith the following trace:\n","videoUrl":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[31m❌ [2025-02-15T06:53:06.997Z] Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"error":"Failed to download video: The command spawned as:\n\n  `/Users/Luis/dev/youtube_summary/webapi/node_modules/youtube-dl-exec/bin/yt-dlp https://www.youtube.com/watch?v=N-ZNfuCdkUo --extract-audio --audio-format mp3 --output /Users/Luis/dev/youtube_summary/webapi/tmp/audios/watch_v_N_ZNfuCdkUo.%(ext)s --prefer-free-formats --no-verbose --quiet --ffmpeg-location /Users/Luis/dev/youtube_summary/webapi/node_modules/ffmpeg-static/ffmpeg`\n\nexited with:\n\n  `{ signal: 'null', code: 2 }` \n\nwith the following trace:\n"}[39m
+[34m▶️ [2025-02-15T06:53:06.997Z] Cleanup media (youtube)[39m[90m - {"mediaId":"youtube"}[39m
+[31m❌ [2025-02-15T06:53:06.997Z] Cleanup media (youtube)[39m[90m - {"error":"ENOENT: no such file or directory, unlink '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/youtube.mp3'"}[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m▶️ [2025-02-15T06:54:07.453Z] Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[32m✅ [2025-02-15T06:54:07.454Z] Ensure audio directory[39m
+[34m▶️ [2025-02-15T06:54:07.454Z] YouTube Download[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+Using ffmpeg-static module
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+[32m✅ [2025-02-15T06:54:11.678Z] YouTube Download[39m[90m - {"fileId":"watch_v_N_ZNfuCdkUo"}[39m
+[32m✅ [2025-02-15T06:54:11.679Z] Download video[39m[90m - {"videoId":"watch_v_N_ZNfuCdkUo"}[39m
+[32m✅ [2025-02-15T06:54:11.679Z] Get audio stats[39m[90m - {"size":3360788}[39m
+Generating transcript...
+[34m▶️ [2025-02-15T06:54:29.132Z] Summarize youtube content (watch_v_N_ZNfuCdkUo)[39m[90m - {"wordLimit":400}[39m
+[32m✅ [2025-02-15T06:54:32.331Z] Summarize youtube content (watch_v_N_ZNfuCdkUo)[39m[90m - {"wordCount":330}[39m
+[34m▶️ [2025-02-15T06:54:32.333Z] Cleanup media (youtube)[39m[90m - {"mediaId":"youtube"}[39m
+[31m❌ [2025-02-15T06:54:32.333Z] Cleanup media (youtube)[39m[90m - {"error":"ENOENT: no such file or directory, unlink '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/youtube.mp3'"}[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m▶️ Process YouTube media (https://www.youtube.com/watch?v=N-ZNfuCdkUo)[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+[32m✅ Ensure audio directory[39m
+[34m▶️ YouTube Download[39m[90m - {"url":"https://www.youtube.com/watch?v=N-ZNfuCdkUo"}[39m
+Using ffmpeg-static module
+[32m✅ YouTube Download[39m[90m - {"fileId":"watch_v_N_ZNfuCdkUo"}[39m
+[32m✅ Download video[39m[90m - {"videoId":"watch_v_N_ZNfuCdkUo"}[39m
+[32m✅ Get audio stats[39m[90m - {"size":3360788}[39m
+Generating transcript...
+[34m▶️ Summarize youtube content (watch_v_N_ZNfuCdkUo)[39m[90m - {"wordLimit":400}[39m
+[32m✅ Summarize youtube content (watch_v_N_ZNfuCdkUo)[39m[90m - {"wordCount":362}[39m
+[34m▶️ Cleanup media (youtube)[39m[90m - {"mediaId":"youtube"}[39m
+[31m❌ Cleanup media (youtube)[39m[90m - {"error":"ENOENT: no such file or directory, unlink '/Users/Luis/dev/youtube_summary/webapi/tmp/audios/youtube.mp3'"}[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m Process YouTube media[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup[90m | audio directory ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Media Processing[90m | size: 3.21MB[39m
+Generating transcript...
+[34m→[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordLimit: 400[39m
+[32m✓[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordCount: 363[39m
+[34m→[39m Cleanup[90m | mediaId: youtube[39m
+[32m✓[39m Cleanup[90m | nothing to clean[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Process YouTube media[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup[90m | audio directory ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Media Processing[90m | size: 3.21MB[39m
+Generating transcript...
+[34m→[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordLimit: 400[39m
+[32m✓[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordCount: 353[39m
+
+⏱️  Process Timings:
+[32m✓[39m [1mYouTube Summary[22m [36m22.74s[39m
+  [32m✓[39m [1mProcess YouTube media[22m [36m4.23s[39m
+[32m✓[39m [1mProcess YouTube media[22m [36m4.23s[39m
+[32m✓[39m [1mSummarize youtube content (watch_v_N_ZNfuCdkUo)[22m [36m3.39s[39m
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | media file removed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup[90m | directories ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Conversion[90m | 3.21MB[39m
+Generating transcript...
+[34m→[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordLimit: 400[39m
+[32m✓[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordCount: 378[39m
+
+⏱️  Performance Metrics:
+    Total Time: [36m27.47s[39m
+    [1mYouTube Summary[22m [████████████████████] 100% │ [36m27.47s[39m
+    [1mMedia Processing[22m [███████░░░░░░░░░░░░░] 33% │ [36m9.17s[39m
+    [1mSetup       [22m [░░░░░░░░░░░░░░░░░░░░]  0% │ [36m15.55ms[39m
+    [1mDownload    [22m [███████░░░░░░░░░░░░░] 33% │ [36m9.15s[39m
+    [1mConversion  [22m [░░░░░░░░░░░░░░░░░░░░]  0% │ [36m0.29ms[39m
+    [1mSummarize youtube content (watch_v_N_ZNfuCdkUo)[22m [███░░░░░░░░░░░░░░░░░] 13% │ [36m3.47s[39m
+
+📊 Resource Usage:
+    Memory    [███████████████████░] 26.87MB/28.56MB
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup [████████████████████]
+
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Download [████████████████████] 3.21MB | 423.73KB/s
+
+[32m✓[39m Conversion [████████████████████] 3.21MB | 273.17GB/s
+
+[32m✓[39m Media Processing [████████████████████] 3.21MB
+[34m→[39m OpenAI Transcription[90m | audioPath: watch_v_N_ZNfuCdkUo[39m
+[31m✗[39m OpenAI Transcription[90m | error: ENOENT: no such file or directory, open 'watch_v_N_ZNfuCdkUo'[39m
+
+⏱️  Performance Analysis
+    ┌────────────────────┬──────────────┬───────────┬──────────────┐
+    │Stage               │Duration      │Share      │Rate          │
+    ├────────────────────┼──────────────┼───────────┼──────────────┤
+    │YouTube Summary     │7.75s         │100%       │-             │
+    │Media Processing    │7.75s         │100%       │423.66KB/s    │
+    │Setup               │0.85ms        │0%         │-             │
+    │Download            │7.75s         │100%       │-             │
+    │Conversion          │0.10ms        │0%         │-             │
+    │OpenAI Transcription│3.25ms        │0%         │-             │
+    └────────────────────┴──────────────┴───────────┴──────────────┘
+
+📊 System Metrics
+    Memory Usage    [███████████████████░] 26.26MB/28.06MB
+    API Calls       5 requests
+    Network I/O     ↓ 26.26MB ↑ 1.31MB
+    Cache Status    Miss (No cached version)
+
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup [████████████████████]
+
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup [████████████████████]
+
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Download [████████████████████] 3.21MB | 436.53KB/s
+
+[32m✓[39m Conversion [████████████████████] 3.21MB | 170.34GB/s
+
+[32m✓[39m Media Processing [████████████████████] 3.21MB
+[34m→[39m OpenAI Transcription[90m | audioPath: watch_v_N_ZNfuCdkUo[39m
+[31m✗[39m OpenAI Transcription[90m | error: File not accessible: watch_v_N_ZNfuCdkUo[39m
+
+⏱️  Performance Analysis
+    ┌────────────────────┬──────────────┬───────────┬──────────────┐
+    │Stage               │Duration      │Share      │Rate          │
+    ├────────────────────┼──────────────┼───────────┼──────────────┤
+    │YouTube Summary     │7.52s         │100%       │-             │
+    │Media Processing    │7.52s         │100%       │436.42KB/s    │
+    │Setup               │0.90ms        │0%         │-             │
+    │Download            │7.52s         │100%       │-             │
+    │Conversion          │0.13ms        │0%         │-             │
+    │OpenAI Transcription│0.46ms        │0%         │-             │
+    └────────────────────┴──────────────┴───────────┴──────────────┘
+
+📊 System Metrics
+    Memory Usage    [████████░░░░░░░░░░░░] 26.38MB/62.81MB
+    API Calls       5 requests
+    Network I/O     ↓ 26.38MB ↑ 1.32MB
+    Cache Status    Miss (No cached version)
+
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup [████████████████████]
+
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup [████████████████████]
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Download [████████████████████] 3.21MB | 445.38KB/s
+[32m✓[39m Conversion [████████████████████] 3.21MB | 217.74GB/s
+[32m✓[39m Media Processing [████████████████████] 3.21MB
+[34m→[39m OpenAI Transcription[90m | audioPath: watch_v_N_ZNfuCdkUo[39m
+[31m✗[39m OpenAI Transcription[90m | error: ENOENT: no such file or directory, open 'watch_v_N_ZNfuCdkUo'[39m
+
+⏱️  Performance Analysis
+    ┌─────────────┬──────────────┬───────────┬───────────┐
+    │ Total Processing Time: [36m7.37s[39m                               │
+    ├─────────────┼──────────────┼───────────┼───────────┤
+    │Stage        │Duration      │Share      │Rate       │
+    ├─────────────┼──────────────┼───────────┼───────────┤
+    │YouTube Summary│7.37s         │100%       │128w/s     │
+    │Media Processing│7.37s         │100%       │2.1MB/s    │
+    │Setup        │0.54ms        │0%         │-          │
+    │Download     │7.37s         │100%       │-          │
+    │Conversion   │0.10ms        │0%         │-          │
+    │OpenAI Transcription│1.97ms        │0%         │80w/s      │
+    └─────────────┴──────────────┴───────────┴───────────┘
+
+📊 System Metrics
+    Memory Usage    [██████████████████░░] 26.14MB/28.81MB
+    API Calls       5 requests
+    Network I/O     ↓ 26.14MB ↑ 1.31MB
+    Cache Status    Miss (No cached version)
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup [████████████████████]
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup[90m | directories ready[39m
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Conversion[90m | 3.21MB[39m
+Generating transcript...
+[34m→[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordLimit: 400[39m
+[32m✓[39m Summarize youtube content (watch_v_N_ZNfuCdkUo)[90m | wordCount: 342[39m
+
+⏱️  Performance Metrics:
+    Total Time: [36m26.19s[39m
+    [1mYouTube Summary[22m [████████████████████] 100% │ [36m26.19s[39m
+    [1mMedia Processing[22m [██████░░░░░░░░░░░░░░] 29% │ [36m7.69s[39m
+    [1mSetup       [22m [░░░░░░░░░░░░░░░░░░░░]  0% │ [36m0.61ms[39m
+    [1mDownload    [22m [██████░░░░░░░░░░░░░░] 29% │ [36m7.68s[39m
+    [1mConversion  [22m [░░░░░░░░░░░░░░░░░░░░]  0% │ [36m0.59ms[39m
+    [1mSummarize youtube content (watch_v_N_ZNfuCdkUo)[22m [███░░░░░░░░░░░░░░░░░] 14% │ [36m3.59s[39m
+
+📊 Resource Usage:
+    Memory    [███████████████████░] 26.89MB/28.56MB
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup[90m | resources freed[39m
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo
+
+Received SIGINT. Cleaning up...
+
+Received SIGINT. Cleaning up...
+Using ffmpeg-static module
+Using ffmpeg-static module
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Using ffprobe-static module
+Using DefaultAzureCredential for Azure Storage
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Temporary directories initialized: [
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/uploads'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/audios'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/transcripts'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/cookies'[39m,
+  [32m'/Users/Luis/dev/youtube_summary/webapi/tmp/sessions'[39m
+]
+Server running on http://localhost:5050
+Example endpoint: http://localhost:5050/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=N-ZNfuCdkUo
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Note: CORS setup skipped - requires Storage Blob Data Owner role
+Current environment: { NODE_ENV: [32m'development'[39m, isProduction: [33mfalse[39m, isDevelopment: [33mtrue[39m }
+Skipping API key check in development/test mode
+[34m→[39m YouTube Summary
+[34m→[39m Media Processing[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+[32m✓[39m Setup [████████████████████]
+[34m→[39m YouTube Download[90m | url: https://www.youtube.com/watch?v=N-ZNfuCdkUo[39m
+Using ffmpeg-static module
+[32m✓[39m YouTube Download[90m | fileId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Download [████████████████████] 3.21MB | 445.04KB/s
+[32m✓[39m Conversion [████████████████████] 3.21MB | 188.75GB/s
+[32m✓[39m Media Processing [████████████████████] 3.21MB
+[34m→[39m OpenAI Transcription[90m | audioPath: watch_v_N_ZNfuCdkUo[39m
+[31m✗[39m OpenAI Transcription[90m | error: ENOENT: no such file or directory, open 'watch_v_N_ZNfuCdkUo'[39m
+
+⏱️  Performance Analysis
+    ┌─────────────┬──────────────┬───────────┬───────────┐
+    │ Total Processing Time: [36m7.38s[39m                               │
+    ├─────────────┼──────────────┼───────────┼───────────┤
+    │Stage        │Duration      │Share      │Rate       │
+    ├─────────────┼──────────────┼───────────┼───────────┤
+    │YouTube Summary│7.38s         │100%       │128w/s     │
+    │Media Processing│7.38s         │100%       │2.1MB/s    │
+    │Setup        │0.49ms        │0%         │-          │
+    │Download     │7.37s         │100%       │-          │
+    │Conversion   │0.22ms        │0%         │-          │
+    │OpenAI Transcription│1.49ms        │0%         │80w/s      │
+    └─────────────┴──────────────┴───────────┴───────────┘
+
+📊 System Metrics
+    Memory Usage    [██████████████████░░] 26.12MB/28.81MB
+    API Calls       5 requests
+    Network I/O     ↓ 26.12MB ↑ 1.31MB
+    Cache Status    Miss (No cached version)
+
+[34m→[39m Cleanup[90m | mediaId: watch_v_N_ZNfuCdkUo[39m
+[32m✓[39m Cleanup [████████████████████]
+Ending SSE connection for: https://www.youtube.com/watch?v=N-ZNfuCdkUo

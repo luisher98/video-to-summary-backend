@@ -66,14 +66,7 @@ export function parseArgs(args: string[]): { url?: string; words?: number; fileN
  * @throws {Error} If file write operation fails
  */
 export async function saveResultToFile(filePath: string, result: string): Promise<void> {
-    try {
-        console.log(`Attempting to save file at: ${filePath}`);
         await fs.writeFile(filePath, result);
-        console.log(`Result successfully saved to ${filePath}`);
-    } catch (error) {
-        console.error('Error saving result to file:', error);
-        throw error;
-    }
 }
 
 /**

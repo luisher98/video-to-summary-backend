@@ -4,6 +4,7 @@ import { ISummarizationService } from '../core/interfaces/ISummarizationService.
 import { Summary, SummaryOptions } from '../core/types/summary.types.js';
 import { Progress } from '../core/types/progress.types.js';
 import { ProgressTracker } from './ProgressTracker.js';
+import { processTimer, logProcessStep, logProcessSummary } from '../../../utils/logging/logger.js';
 
 export class SummaryOrchestrator {
   constructor(
@@ -21,12 +22,17 @@ export class SummaryOrchestrator {
     source: MediaSource,
     options: SummaryOptions
   ): Promise<Summary> {
+    const processName = 'YouTube Summary';
+    let processedMedia;
+    processTimer.startProcess(processName);
+    logProcessStep(processName, 'start');
+
     try {
       this.progressTracker.updateProgress('initialization', 100);
 
       // Process media
       this.progressTracker.updateProgress('media', 0);
-      const processedMedia = await this.mediaProcessor.processMedia(source);
+      processedMedia = await this.mediaProcessor.processMedia(source);
       this.progressTracker.updateProgress('media', 100);
 
       // Generate transcript
@@ -45,6 +51,8 @@ export class SummaryOrchestrator {
           }
         };
         this.progressTracker.complete(summary.content);
+        processTimer.endProcess(processName);
+        logProcessSummary(processTimer.getTimings());
         return summary;
       }
 
@@ -60,14 +68,18 @@ export class SummaryOrchestrator {
 
       // Mark as complete with the final summary
       this.progressTracker.complete(summary.content);
+      processTimer.endProcess(processName);
+      logProcessSummary(processTimer.getTimings());
       
       return summary;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
       this.progressTracker.error(errorMessage);
+      processTimer.endProcess(processName, error instanceof Error ? error : new Error(errorMessage));
+      logProcessSummary(processTimer.getTimings());
       throw error;
     } finally {
-      await this.mediaProcessor.cleanup(source.type);
+      await this.mediaProcessor.cleanup(processedMedia?.id || 'youtube');
     }
   }
 } 
