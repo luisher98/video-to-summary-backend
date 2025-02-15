@@ -1,6 +1,6 @@
 import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
 import { Request, Response } from "express";
-import { BadRequestError } from "../../utils/errorHandling.js";
+import { BadRequestError } from "../../utils/utils.js";
 
 /**
  * Endpoint to generate a transcript from a YouTube video.

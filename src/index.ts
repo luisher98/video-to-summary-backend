@@ -13,7 +13,7 @@
 import { startServer, stopServer } from './server/server.js';
 import { startCLI } from './cli/cli.js';
 import express from 'express';
-import { clearAllTempDirs } from './utils/utils.js';
+import { clearAllTempDirs } from './utils/file/tempDirs.js';
 
 const mode = process.argv.includes('--cli') ? 'cli' : 'server';
 

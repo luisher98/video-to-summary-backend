@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import videoInfo from "../../services/info/videoInfo.js";
-import { logRequest } from '../../utils/logger.js';
-import { handleError } from '../../utils/errorHandling.js';
+import { logRequest } from '../../utils/logging/logger.js';
+import { handleError } from '../../utils/errors/errorHandling.js';
 
 /**
  * Endpoint to fetch metadata about a YouTube video.

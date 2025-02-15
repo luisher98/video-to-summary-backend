@@ -4,12 +4,14 @@ import path from "path";
 import { promises as fsPromises } from "fs";
 import { FileUploadSummary } from "../../services/summary/providers/fileUpload/fileUploadSummaryService.js";
 import { ProgressUpdate } from "../../types/global.types.js";
-import { BadRequestError } from "../../utils/errorHandling.js";
+import { BadRequestError } from "../../utils/errors/errorHandling.js";
 import { Readable, PassThrough } from "stream";
-import { FILE_SIZE, TEMP_DIRS } from "../../utils/utils.js";
+import { FILE_SIZE } from "../../utils/constants/fileSize.js";
+import { TEMP_DIRS } from "../../utils/constants/paths.js";
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
 import { azureStorage } from "../../services/storage/azure/azureStorageService.js";
+import { SSEResponse } from "../../types/sse.types.js";
 
 interface MulterFile {
     fieldname: string;
@@ -170,14 +172,14 @@ export default function uploadSummarySSE(req: Request, res: Response): void {
     res.setHeader("X-Accel-Buffering", "no"); // Prevents Azure from buffering
 
     // Create debounced progress sender
-    const sendProgress = debounce((data: ProgressMessage) => {
+    const sendProgress = /*debounce(*/(data: ProgressMessage) => {
         try {
             const message = formatProgressMessage(data);
             res.write(message);
         } catch (error) {
             console.error('Error sending progress update:', error);
         }
-    }, 500);
+    }/*, 500)*/;
 
     // Check if we're processing a file from Azure Blob Storage
     const fileId = req.query.fileId as string;

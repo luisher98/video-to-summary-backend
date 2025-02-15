@@ -1,6 +1,7 @@
 import { blue, green, red, yellow } from '../style/colors.js';
 import { activeRequests } from '../../server/middleware/security.js';
-import { formatBytes, formatDuration } from '../utils/utils.js';
+import { formatBytes } from '../../utils/formatters/fileSize.js';
+import { formatDuration } from '../../utils/formatters/dateTime.js';
 import os from 'os';
 import { Command } from 'commander';
 

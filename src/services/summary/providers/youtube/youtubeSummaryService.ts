@@ -1,6 +1,8 @@
-import { downloadVideoWithExec as downloadVideo, deleteVideo } from '../../utils/videoTools.js';
-import { BadRequestError, InternalServerError } from '../../../../utils/errorHandling.js';
-import { BaseSummaryProcessor, SummaryOptions } from '../../summaryService.js';
+import { YouTubeDownloader } from './youtubeDownloader.js';
+import { BadRequestError, InternalServerError } from '../../../../utils/utils.js';
+import { BaseSummaryProcessor } from '../../base/BaseSummaryProcessor.js';
+import { SummaryOptions } from '../../types/service.types.js';
+import { ProgressUpdate } from '../../../../types/global.types.js';
 
 interface YouTubeSummaryOptions extends SummaryOptions {
     /** The YouTube video URL */
@@ -15,53 +17,35 @@ export class YouTubeVideoSummary extends BaseSummaryProcessor {
     async process(options: YouTubeSummaryOptions): Promise<string> {
         const {
             url,
-            words = 400,
             updateProgress = () => {},
-            additionalPrompt = '',
-            returnTranscriptOnly = false,
-            requestInfo
         } = options;
 
         try {
+            // Initialize directories
             await this.initializeDirs();
             
             if (typeof url !== 'string' || !url.includes('?v=')) {
                 throw new BadRequestError('Invalid YouTube URL');
             }
 
-            try {
-                // 1. Download video from YouTube
-                updateProgress({ 
-                    status: 'processing', 
-                    message: 'Downloading video...',
-                    progress: 10
-                });
-                this.fileId = await downloadVideo(url);
+            // Download video
+            this.sendProgress(updateProgress, { 
+                status: 'processing', 
+                message: 'Downloading video...',
+                progress: 10
+            });
 
-                // 2. Process transcript and summary
-                const result = await this.processTranscriptAndSummary({
-                    words,
-                    updateProgress,
-                    additionalPrompt,
-                    returnTranscriptOnly,
-                    requestInfo
-                });
+            const fileId = await YouTubeDownloader.downloadVideo(url);
+            this.fileId = fileId;
 
-                // Log success with URL
-                console.log('Successfully processed YouTube video:', {
-                    url,
-                    ...requestInfo
-                });
+            // Process transcript and generate summary using base class functionality
+            return await this.processTranscriptAndSummary(options);
 
-                return result;
-            } catch (error) {
-                console.error('Error during video processing:', error);
-                throw new InternalServerError(
-                    `Something went wrong during video processing: ${error}`,
-                );
-            } finally {
-                await deleteVideo(this.fileId);
-            }
+        } catch (error) {
+            console.error('Error during YouTube video processing:', error);
+            throw new InternalServerError(
+                `Failed to process YouTube video: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            );
         } finally {
             await this.cleanup();
         }

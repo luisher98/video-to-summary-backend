@@ -1,13 +1,15 @@
 import { Readable } from 'stream';
-import { AzureStorageService, azureStorage } from '../../../storage/azure/azureStorageService.js';
+import { azureStorage } from '../../../storage/azure/azureStorageService.js';
 import { ProgressUpdate } from '../../../../types/global.types.js';
-import { InternalServerError } from '../../../../utils/errorHandling.js';
+import { BadRequestError } from '../../../../utils/errors/errorHandling.js';
 import path from 'path';
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
 import ffmpeg from 'fluent-ffmpeg';
-import { getFfmpegPath, validateVideoFile } from '../../../../utils/utils.js';
-import { BaseSummaryProcessor, SummaryOptions } from '../../summaryService.js';
+import { getFfmpegPath } from '../../../../utils/media/ffmpeg.js';
+import { validateVideoFile } from '../../../../utils/file/fileValidation.js';
+import { BaseSummaryProcessor } from '../../base/BaseSummaryProcessor.js';
+import { SummaryOptions } from '../../types/service.types.js';
 
 // Initialize ffmpeg with proper path
 const ffmpegBinaryPath = getFfmpegPath();
@@ -24,8 +26,7 @@ interface FileUploadOptions extends SummaryOptions {
 }
 
 /**
- * Process an uploaded video file to generate a summary or transcript.
- * Implements the base summary service interface for file upload functionality.
+ * Processor for generating summaries from uploaded video files
  */
 export class FileUploadSummary extends BaseSummaryProcessor {
     private async cleanupFiles(originalFilename: string, useAzure: boolean): Promise<void> {
@@ -51,29 +52,15 @@ export class FileUploadSummary extends BaseSummaryProcessor {
         const {
             file,
             originalFilename,
-            fileSize,
-            words = 400,
             updateProgress = () => {},
-            additionalPrompt = '',
-            returnTranscriptOnly = false,
-            requestInfo
         } = options;
 
-        let useAzure = false;
         const tempVideoPath = path.join(this.sessionDir, `${this.fileId}-original${path.extname(originalFilename)}`);
 
         try {
+            // Initialize directories
             await this.initializeDirs();
 
-            // 1. Handle file storage based on size
-            updateProgress({ 
-                status: 'processing', 
-                message: 'Starting file processing...',
-                progress: 0
-            });
-            
-            useAzure = AzureStorageService.shouldUseAzureStorage(fileSize);
-            
             // Save stream to temporary file for validation
             const writeStream = fs_sync.createWriteStream(tempVideoPath);
             await new Promise((resolve, reject) => {
@@ -85,41 +72,25 @@ export class FileUploadSummary extends BaseSummaryProcessor {
             // Validate video file
             const isValid = await validateVideoFile(tempVideoPath);
             if (!isValid) {
-                throw new Error('Invalid or unsupported video file format');
-            }
-
-            if (useAzure) {
-                await this.handleAzureUpload(tempVideoPath, originalFilename, fileSize, updateProgress);
+                throw new BadRequestError('Invalid or unsupported video file format');
             }
 
             // Convert to audio
             await this.convertToAudio(tempVideoPath, updateProgress);
 
-            // Process transcript and summary
-            const result = await this.processTranscriptAndSummary({
-                words,
-                updateProgress,
-                additionalPrompt,
-                returnTranscriptOnly,
-                requestInfo
-            });
+            // Process transcript and generate summary using base class functionality
+            return await this.processTranscriptAndSummary(options);
 
-            // Log success
-            console.log('Successfully processed uploaded file:', {
-                filename: originalFilename,
-                fileSize,
-                useAzure,
-                ...requestInfo
-            });
-
-            return result;
-        } catch (error: unknown) {
-            console.error('Error processing file:', error);
-            throw error;
+        } catch (error) {
+            console.error('Error processing uploaded file:', error);
+            throw new BadRequestError(
+                `Failed to process uploaded file: ${error instanceof Error ? error.message : 'Unknown error'}`
+            );
         } finally {
-            // Clean up temporary files
-            await fs.unlink(tempVideoPath).catch(() => {});
-            await this.cleanupFiles(originalFilename, useAzure);
+            // Clean up temporary file
+            if (fs_sync.existsSync(tempVideoPath)) {
+                await fs.unlink(tempVideoPath).catch(() => {});
+            }
             await this.cleanup();
         }
     }
@@ -176,31 +147,26 @@ export class FileUploadSummary extends BaseSummaryProcessor {
                     const timemark = progress.timemark;
                     const timeInSeconds = this.parseTimemarkToSeconds(timemark);
                     const estimatedProgress = Math.min((timeInSeconds / (60 * 10)) * 100, 100);
-
                     updateProgress({
                         status: 'converting',
-                        message: `Converting video: ${Math.round(estimatedProgress)}%`,
-                        progress: 30 + (estimatedProgress * 0.2)
+                        message: `Converting video to audio... ${Math.round(estimatedProgress)}%`,
+                        progress: 30 + (estimatedProgress * 0.2) // Scale to 30-50% range
                     });
                 })
-                .on('error', (err, stdout, stderr) => {
-                    console.error('FFmpeg error:', err.message);
-                    console.error('FFmpeg stderr:', stderr);
-                    reject(new Error(`FFmpeg conversion failed: ${err.message}\n${stderr}`));
-                })
                 .on('end', () => {
-                    console.log('FFmpeg conversion completed');
+                    console.log('FFmpeg conversion finished');
                     resolve();
+                })
+                .on('error', (err) => {
+                    console.error('FFmpeg conversion error:', err);
+                    reject(new Error('Failed to convert video to audio'));
                 })
                 .save(this.audioFilePath);
         });
     }
 
     private parseTimemarkToSeconds(timemark: string): number {
-        const parts = timemark.split(':').map(Number);
-        if (parts.length === 3) {
-            return parts[0] * 3600 + parts[1] * 60 + parts[2];
-        }
-        return 0;
+        const [hours, minutes, seconds] = timemark.split(':').map(Number);
+        return (hours * 3600) + (minutes * 60) + seconds;
     }
 } 

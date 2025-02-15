@@ -1,14 +1,18 @@
 import express from 'express';
-import getVideoInfo from './routes/getVideoInfo.js';
-import getYouTubeSummary from './routes/getYouTubeSummary.js';
+import cors from 'cors';
+import { Server } from 'http';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import getVideoInfoRouter from './routes/getVideoInfo.js';
+import getYouTubeSummaryRouter from './routes/getYouTubeSummary.js';
 import getYouTubeSummarySSE from './routes/getYouTubeSummarySSE.js';
 import uploadSummarySSE from './routes/uploadSummarySSE.js';
 import getTranscript from './routes/getTranscript.js';
 import getTestSSE from './routes/getTestSSE.js';
 import uploadUrlRouter from './routes/uploadUrl.js';
 import healthCheck from './routes/healthCheck.js';
-import { handleUncaughtErrors } from '../utils/errorHandling.js';
-import { initializeTempDirs, clearAllTempDirs } from '../utils/utils.js';
+import { handleUncaughtErrors } from '../utils/errors/errorHandling.js';
+import { initializeTempDirs, clearAllTempDirs } from '../utils/file/tempDirs.js';
 import { 
     securityHeaders, 
     corsMiddleware, 
@@ -67,8 +71,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/health', healthCheck);
 
 // Routes with queue middleware
-app.get('/api/info', getVideoInfo);
-app.get('/api/youtube-summary', requestQueueMiddleware, getYouTubeSummary);
+app.get('/api/info', getVideoInfoRouter);
+app.get('/api/youtube-summary', requestQueueMiddleware, getYouTubeSummaryRouter);
 app.get('/api/youtube-summary-sse', requestQueueMiddleware, getYouTubeSummarySSE);
 app.use('/api/upload-url', uploadUrlRouter);
 app.route('/api/upload-summary-sse')

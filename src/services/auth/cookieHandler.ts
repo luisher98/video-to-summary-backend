@@ -1,12 +1,11 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { TEMP_DIRS, createTempFile } from './utils.js';
+import { TEMP_DIRS, createTempFile } from '../../utils/utils.js';
 
 /**
  * Interface for YouTube cookie structure
- * @interface Cookie
  */
-interface Cookie {
+export interface Cookie {
     /** Cookie domain (e.g., .youtube.com) */
     domain: string;
     /** Cookie expiration timestamp */
@@ -32,11 +31,6 @@ interface Cookie {
 /**
  * Handles YouTube cookie management and validation.
  * Converts JSON cookies to Netscape format and manages temporary files.
- * 
- * @class CookieHandler
- * @example
- * const cookieOptions = await CookieHandler.processYouTubeCookies();
- * // Use cookieOptions with youtube-dl-exec
  */
 export class CookieHandler {
     private static readonly COOKIE_HEADER = '# Netscape HTTP Cookie File\n';
@@ -45,10 +39,6 @@ export class CookieHandler {
 
     /**
      * Validates cookie format and required fields
-     * 
-     * @param {Cookie} cookie - Cookie object to validate
-     * @returns {boolean} True if cookie is valid
-     * @private
      */
     private static validateCookie(cookie: Cookie): boolean {
         return this.REQUIRED_FIELDS.every(field => 
@@ -59,10 +49,6 @@ export class CookieHandler {
 
     /**
      * Converts JSON cookies to Netscape format
-     * 
-     * @param {Cookie[]} cookies - Array of cookie objects
-     * @returns {string} Cookies in Netscape format
-     * @private
      */
     private static convertToNetscape(cookies: Cookie[]): string {
         const cookieLines = cookies.map(cookie => [
@@ -82,12 +68,8 @@ export class CookieHandler {
      * Processes cookies from environment variable.
      * Validates, converts to Netscape format, and creates temporary file.
      * 
-     * @returns {Promise<Record<string, string>>} Cookie options for youtube-dl-exec
-     * @throws {Error} If cookie format is invalid
-     * 
-     * @example
-     * const options = await CookieHandler.processYouTubeCookies();
-     * // options = { cookies: '/path/to/temp/cookie/file' }
+     * @returns Cookie options for youtube-dl-exec
+     * @throws Error if cookie format is invalid
      */
     public static async processYouTubeCookies(): Promise<Record<string, string>> {
         const cookiesString = process.env.YOUTUBE_COOKIES;

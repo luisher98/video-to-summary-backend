@@ -1,6 +1,6 @@
 import { BlobServiceClient, ContainerClient, BlockBlobClient, BlobSASPermissions, generateBlobSASQueryParameters, SASProtocol } from '@azure/storage-blob';
 import { Readable, PassThrough } from 'stream';
-import { InternalServerError } from '../../../utils/errorHandling.js';
+import { InternalServerError } from '../../../utils/utils.js';
 import { StorageService, StorageProgress } from '../storageService.js';
 import { getAzureClient, AZURE_CONFIG } from '../../../lib/azureClient.js';
 

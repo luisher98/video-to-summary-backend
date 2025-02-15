@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import { outputSummary } from "../../services/summary/base/summaryProcessor.js";
+import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
 import { ProgressUpdate } from "../../types/global.types.js";
+import { BadRequestError } from "../../utils/errors/errorHandling.js";
 
 /**
  * Server-Sent Events endpoint for generating video summaries with real-time progress updates.
@@ -19,50 +20,61 @@ import { ProgressUpdate } from "../../types/global.types.js";
  * data: {"status": "done", "message": "Summary text..."}
  */
 export default async function getYouTubeSummarySSE(req: Request, res: Response) {
-  res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
-  res.setHeader("Connection", "keep-alive");
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("X-Accel-Buffering", "no"); // Prevents Azure from buffering
+    // Set SSE headers
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('X-Accel-Buffering', 'no'); // Prevents nginx buffering
 
-  const inputUrl = req.query.url as string;
-  let words = Number(req.query.words);
-  if (isNaN(words)) words = 400; // Default to 400 words if parsing fails
+    const url = req.query.url as string;
+    if (!url || !url.includes('?v=')) {
+        res.write(`data: ${JSON.stringify({
+            status: 'error',
+            message: 'Invalid YouTube URL'
+        })}\n\n`);
+        res.end();
+        return;
+    }
 
-  /**
-   * Generator function that handles the summary generation process
-   * and yields progress updates.
-   * 
-   * @param {string} inputUrl - YouTube video URL
-   * @param {number} words - Maximum words in summary
-   * @yields {Object} Progress updates and final summary
-   * @private
-   */
-  async function* generateSummary() {
+    const words = Number(req.query.words) || 400;
+
     try {
-      const summary = await outputSummary({
-        url: inputUrl,
-        words,
-        additionalPrompt: req.query.prompt as string,
-        requestInfo: {
-          ip: req.ip || req.socket.remoteAddress || 'unknown',
-          userAgent: req.get('user-agent')
-        },
-        updateProgress: (updateProgress: ProgressUpdate) => {
-          res.write(`data: ${JSON.stringify(updateProgress)}\n\n`);
-        },
-      });
-      yield { status: "done", message: summary };
-    } catch (error) {
-      yield { status: "error", error: (error as Error).message };
-    } finally {
-      res.end();
-    }
-  }
+        // Create processor instance
+        const processor = new YouTubeVideoSummary();
 
-  (async () => {
-    for await (const data of generateSummary()) {
-      res.write(`data: ${JSON.stringify(data)}\n\n`);
+        // Process video
+        const summary = await processor.process({
+            url,
+            words,
+            additionalPrompt: req.query.prompt as string,
+            requestInfo: {
+                ip: req.ip || req.socket.remoteAddress || 'unknown',
+                userAgent: req.get('user-agent')
+            },
+            updateProgress: (progress: ProgressUpdate) => {
+                res.write(`data: ${JSON.stringify({
+                    status: progress.status,
+                    message: progress.message,
+                    progress: Math.round(progress.progress)
+                })}\n\n`);
+            }
+        });
+
+        // Send final summary
+        res.write(`data: ${JSON.stringify({
+            status: 'done',
+            message: summary,
+            progress: 100
+        })}\n\n`);
+
+    } catch (error) {
+        console.error('Error processing YouTube video:', error);
+        res.write(`data: ${JSON.stringify({
+            status: 'error',
+            message: error instanceof Error ? error.message : 'Unknown error'
+        })}\n\n`);
+    } finally {
+        res.end();
     }
-  })();
 }

@@ -1,6 +1,6 @@
 import { getServerStatus } from '../../server/server.js';
 import { blue, green, red } from '../style/colors.js';
-import { formatDuration } from '../utils/utils.js';
+import { formatDuration } from '../../utils/formatters/dateTime.js';
 
 /**
  * Displays current server status including uptime and active requests.

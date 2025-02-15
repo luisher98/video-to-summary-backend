@@ -1,4 +1,4 @@
-import { InternalServerError, BadRequestError } from "../../utils/errorHandling.js";
+import { InternalServerError, BadRequestError } from "../../utils/utils.js";
 import { YouTubeApiResponse } from "./videoInfo.types.js";
 
 /**

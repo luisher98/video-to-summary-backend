@@ -1,6 +1,6 @@
 import videoInfo from '../../services/info/videoInfo.js';
-import { getCurrentDateTime } from '../../utils/utils.js';
-import { outputSummary } from '../../services/summary/base/summaryProcessor.js';
+import { getCurrentDateTime } from '../../utils/formatters/dateTime.js';
+import { YouTubeVideoSummary } from '../../services/summary/providers/youtube/youtubeSummaryService.js';
 import { parseArgs, getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
 import { warning } from '../style/colors.js';
 
@@ -33,50 +33,48 @@ interface CommandArgs {
  * handleCommand('transcript', ['https://youtube.com/watch?v=...']);
  */
 export async function handleCommand(commandType: 'summary' | 'transcript', args: string[]) {
+  const parsedArgs = parseArgs(args) as CommandArgs;
+  
+  if (!parsedArgs.url) {
+    displayUsage(commandType);
+    return;
+  }
+
   try {
-    const { url, words, additionalPrompt, fileName } = parseArgs(args) as CommandArgs;
+    // Get video info
+    const info = await videoInfo(parsedArgs.url);
+    console.log(`Processing video: ${info.title}`);
 
-    if (!url) {
-      displayUsage(commandType);
-      return;
-    }
+    // Create processor instance
+    const processor = new YouTubeVideoSummary();
 
-    console.log(`Processing YouTube video for ${commandType}...`);
-
-    const [outputOption, info] = await Promise.all([
-      promptOutputOption(),
-      videoInfo(url)
-    ]);
-    
-    if (!info) {
-      throw new Error('Failed to fetch video information. Please check the URL and try again.');
-    }
-
-    const result = await outputSummary({
-      url,
-      words,
+    // Process video
+    const result = await processor.process({
+      url: parsedArgs.url,
+      words: parsedArgs.words,
+      additionalPrompt: parsedArgs.additionalPrompt,
       returnTranscriptOnly: commandType === 'transcript',
-      additionalPrompt,
+      updateProgress: (progress) => {
+        console.log(`${progress.message} (${Math.round(progress.progress)}%)`);
+      }
     });
 
-    if (!result) {
-      throw new Error('Failed to generate result. The video might be too long or unavailable.');
+    // Handle output
+    const defaultFileName = `${commandType}_${getCurrentDateTime()}.txt`;
+    const outputFileName = parsedArgs.fileName || defaultFileName;
+    const outputPath = await getLocalDirectoryPath(outputFileName);
+
+    const shouldSave = await promptOutputOption();
+    if (shouldSave) {
+      await saveResultToFile(result, outputPath);
+      console.log(`\nSaved ${commandType} to: ${outputPath}`);
+    } else {
+      console.log(`\n${commandType.toUpperCase()}:\n${result}`);
     }
 
-    if (outputOption === 'file') {
-      const outputFileName = fileName || `${commandType}_${info.title}_${getCurrentDateTime()}.txt`;
-      const filePath = await getLocalDirectoryPath(outputFileName);
-      await saveResultToFile(filePath, result);
-    } else {
-      console.log(`\nGenerated ${commandType === 'transcript' ? 'Transcript' : 'Summary'}:`);
-      console.log(result);
-    }
-  } catch (error: unknown) {
-    const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-    console.error(warning(`\nError: ${errorMessage}`));
-    if (error instanceof Error && error.stack) {
-      console.error(warning(`Stack trace: ${error.stack}`));
-    }
+  } catch (error) {
+    console.error(warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));
+    process.exit(1);
   }
 }
 

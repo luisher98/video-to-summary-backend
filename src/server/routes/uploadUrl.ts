@@ -1,7 +1,8 @@
 import { Router, Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { BadRequestError } from '../../utils/errorHandling.js';
+import { BadRequestError } from '../../utils/utils.js';
 import { azureStorage } from '../../services/storage/azure/azureStorageService.js';
+import { FileUploadSummary } from '../../services/summary/providers/fileUpload/fileUploadSummaryService.js';
 
 const router = Router();
 
@@ -69,13 +70,12 @@ router.post('/', async (req: Request, res: Response) => {
             }
         });
     } catch (error) {
-        console.error('Error in upload URL route:', error);
-        if (error instanceof BadRequestError) {
-            res.status(400).json({ error: { message: error.message } });
-        } else {
-            console.error('Error generating upload URL:', error);
-            res.status(500).json({ error: { message: 'Failed to generate upload URL' } });
-        }
+        console.error('Error processing URL:', error);
+        res.status(400).json({ 
+            error: { 
+                message: error instanceof Error ? error.message : 'Unknown error occurred'
+            } 
+        });
     }
 });
 

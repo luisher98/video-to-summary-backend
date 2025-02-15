@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { YouTubeVideoSummary } from "../../services/summary/providers/youtube/youtubeSummaryService.js";
-import { BadRequestError } from "../../utils/errorHandling.js";
-import { logRequest } from '../../utils/logger.js';
-import { handleError } from '../../utils/errorHandling.js';
+import { BadRequestError } from "../../utils/errors/errorHandling.js";
+import { logRequest } from '../../utils/logging/logger.js';
+import { handleError } from '../../utils/errors/errorHandling.js';
 
 /**
  * Endpoint for generating video summaries.
