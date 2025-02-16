@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import { Server } from 'http';
+import { Paths } from '@/infrastructure/config/paths.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import getVideoMetadata from './routes/getVideoMetadata.js';
@@ -11,8 +12,8 @@ import getVideoTranscript from './routes/getVideoTranscript.js';
 import testStream from './routes/testStream.js';
 import getAzureUploadUrl from './routes/getAzureUploadUrl.js';
 import checkHealth from './routes/checkHealth.js';
-import { handleUncaughtErrors } from '../utils/errors/errorHandling.js';
-import { initializeTempDirs, clearAllTempDirs } from '../utils/file/tempDirs.js';
+import { handleUncaughtErrors } from '@/utils/errors/errorHandling.js';
+import { initializeTempDirs, clearAllTempDirs } from '@/utils/file/tempDirs.js';
 import { 
     securityHeaders, 
     corsMiddleware, 
@@ -27,9 +28,8 @@ import summarizeAzureStream from './routes/summarizeAzureStream.js';
 // Configuration constants
 const CONFIG = {
     port: process.env.PORT || 5050,
-    url: process.env.WEBSITE_HOSTNAME 
-        ? `https://${process.env.WEBSITE_HOSTNAME}`
-        : `http://localhost:${process.env.PORT || 5050}`,
+    url: process.env.WEBSITE_HOSTNAME || `http://localhost:${process.env.PORT || 5050}`,
+    environment: process.env.NODE_ENV || 'development',
     tempFiles: {
         cleanupInterval: 60 * 60 * 1000, // 1 hour
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
@@ -115,7 +115,7 @@ export async function startServer(): Promise<void> {
 
     // Set up periodic temp file cleanup
     const cleanupInterval = setInterval(() => {
-        clearAllTempDirs(CONFIG.tempFiles.maxAge).catch(error => {
+        clearAllTempDirs(CONFIG.tempFiles.maxAge).catch((error: Error) => {
             console.error('Error during temp file cleanup:', error);
         });
     }, CONFIG.tempFiles.cleanupInterval);

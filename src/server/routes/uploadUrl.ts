@@ -1,13 +1,6 @@
 import { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
-import { getBlobClient } from '../../services/storage/azureStorage.js';
-import { config } from '../../config/environment.js';
-import { handleError } from '../../utils/errorHandling.js';
-
-interface UploadUrlRequest {
-  fileName: string;
-  fileSize: number;
-}
+import { azureStorage } from '@/services/storage/azure/azureStorageService.js';
+import { handleError } from '@/utils/errors/errorHandling.js';
 
 /**
  * Generates a pre-signed URL for uploading files directly to Azure Blob Storage.
@@ -20,41 +13,19 @@ interface UploadUrlRequest {
  */
 export default async function getUploadUrl(req: Request, res: Response) {
   try {
-    const { fileName, fileSize } = req.body as UploadUrlRequest;
-
-    if (!fileName || !fileSize) {
+    const { fileName } = req.query;
+    
+    if (!fileName || typeof fileName !== 'string') {
       return res.status(400).json({
-        success: false,
-        message: 'fileName and fileSize are required'
+        error: 'fileName is required and must be a string'
       });
     }
 
-    if (fileSize > config.maxFileSize) {
-      return res.status(400).json({
-        success: false,
-        message: `File size exceeds maximum allowed size of ${config.maxFileSize / (1024 * 1024)}MB`
-      });
-    }
-
-    // Generate unique blob name
-    const fileExtension = fileName.split('.').pop() || '';
-    const blobName = `${uuidv4()}.${fileExtension}`;
-    const fileId = uuidv4();
-
-    // Get blob client and generate SAS URL
-    const blobClient = await getBlobClient(blobName);
-    const sasUrl = await blobClient.generateSasUrl({
-      permissions: { write: true, create: true },
-      expiresOn: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
-    });
-
+    const uploadUrl = await azureStorage.generateUploadUrl(fileName);
+    
     res.json({
-      success: true,
-      data: {
-        url: sasUrl,
-        blobName,
-        fileId,
-      }
+      uploadUrl,
+      fileName
     });
   } catch (error) {
     handleError(error, res);

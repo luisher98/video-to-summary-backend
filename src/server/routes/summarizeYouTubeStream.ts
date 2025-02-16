@@ -20,7 +20,6 @@ import { MediaSource } from "../../services/summary/core/interfaces/IMediaProces
  * data: {"status": "done", "message": "Summary text..."}
  */
 export default async function getYouTubeSummarySSE(req: Request, res: Response) {
-
     const url = req.query.url as string;
     
     if (!url || !url.includes("?v=")) {
@@ -42,9 +41,16 @@ export default async function getYouTubeSummarySSE(req: Request, res: Response) 
         progress: 0
     })}\n\n`);
 
+    let finalMessageSent = false;
     const summaryService = SummaryServiceFactory.createYouTubeService();
     summaryService.onProgress((progress) => {
-        res.write(`data: ${JSON.stringify(progress)}\n\n`);
+        // Only send progress updates if we haven't sent the final message
+        if (!finalMessageSent) {
+            res.write(`data: ${JSON.stringify(progress)}\n\n`);
+            if (progress.status === 'done') {
+                finalMessageSent = true;
+            }
+        }
     });
 
     try {
@@ -58,12 +64,14 @@ export default async function getYouTubeSummarySSE(req: Request, res: Response) 
             additionalPrompt: req.query.prompt as string
         });
 
-        // Send final success message
-        res.write(`data: ${JSON.stringify({
-            status: 'done',
-            message: result.content,
-            progress: 100
-        })}\n\n`);
+        // Only send final success message if it wasn't already sent through progress
+        if (!finalMessageSent) {
+            res.write(`data: ${JSON.stringify({
+                status: 'done',
+                message: result.content,
+                progress: 100
+            })}\n\n`);
+        }
     } catch (error) {
         console.error('Error processing video:', error);
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';

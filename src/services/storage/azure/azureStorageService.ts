@@ -3,6 +3,8 @@ import { Readable, PassThrough } from 'stream';
 import { InternalServerError } from '../../../utils/utils.js';
 import { StorageService, StorageProgress } from '../storageService.js';
 import { getAzureClient, AZURE_CONFIG } from '../../../lib/azureClient.js';
+import { config } from '../../../config/environment.js';
+import { StorageError } from './storageError.js';
 
 // Configuration constants
 const CONFIG = {
@@ -22,6 +24,7 @@ const CONFIG = {
 export class AzureStorageService implements StorageService {
     private blobServiceClient: BlobServiceClient;
     private static instance: AzureStorageService;
+    private containerClient: ContainerClient;
 
     public static shouldUseAzureStorage(fileSize?: number): boolean {
         // If Azure Storage is not configured, don't use it
@@ -41,16 +44,18 @@ export class AzureStorageService implements StorageService {
 
     private constructor() {
         try {
-            const blobServiceClient = getAzureClient();
+            const blobServiceClient = BlobServiceClient.fromConnectionString(
+                config.azure.connectionString
+            );
             this.blobServiceClient = blobServiceClient;
-            this.containerClient = blobServiceClient.getContainerClient(CONFIG.containerName);
+            this.containerClient = blobServiceClient.getContainerClient(config.azure.containerName);
             console.log('Using DefaultAzureCredential for Azure Storage');
             
             // Silently try to set up CORS
             void this.setupCors();
         } catch (error) {
             console.error('Failed to initialize Azure Storage:', error);
-            throw new InternalServerError('Failed to initialize storage service');
+            throw new StorageError('Failed to initialize storage service', error as Error);
         }
     }
 
@@ -109,7 +114,7 @@ export class AzureStorageService implements StorageService {
             return blockBlobClient.url;
         } catch (error) {
             console.error('Failed to upload file to Azure:', error);
-            throw new InternalServerError('Failed to upload file');
+            throw new StorageError('Failed to upload file', error as Error);
         }
     }
 
@@ -136,7 +141,7 @@ export class AzureStorageService implements StorageService {
             return passThrough;
         } catch (error) {
             console.error('Failed to download file from Azure:', error);
-            throw new InternalServerError('Failed to download file');
+            throw new StorageError('Failed to download file', error as Error);
         }
     }
 
@@ -149,7 +154,7 @@ export class AzureStorageService implements StorageService {
             await blockBlobClient.delete();
         } catch (error) {
             console.error('Failed to delete file from Azure:', error);
-            throw new InternalServerError('Failed to delete file');
+            throw new StorageError('Failed to delete file', error as Error);
         }
     }
 
@@ -162,7 +167,7 @@ export class AzureStorageService implements StorageService {
             return await blockBlobClient.exists();
         } catch (error) {
             console.error('Failed to check file existence in Azure:', error);
-            throw new InternalServerError('Failed to check file existence');
+            throw new StorageError('Failed to check file existence', error as Error);
         }
     }
 
@@ -229,7 +234,7 @@ export class AzureStorageService implements StorageService {
             return `${blockBlobClient.url}?${sasToken}`;
         } catch (error) {
             console.error('Error generating upload URL:', error);
-            throw new InternalServerError('Failed to generate upload URL');
+            throw new StorageError('Failed to generate upload URL', error as Error);
         }
     }
 
@@ -317,6 +322,45 @@ export class AzureStorageService implements StorageService {
 
         // Commit all blocks
         await blockBlobClient.commitBlockList(blocks.map(b => b.id));
+    }
+
+    /**
+     * Gets a URL for uploading a file directly to Azure Blob Storage
+     */
+    async getUploadUrl(fileName: string, expiryMinutes: number = 60): Promise<string> {
+        try {
+            const blockBlobClient = this.containerClient.getBlockBlobClient(fileName);
+            const permissions = new BlobSASPermissions();
+            permissions.write = true;
+            permissions.create = true;
+
+            const sasUrl = await blockBlobClient.generateSasUrl({
+                permissions,
+                expiresOn: new Date(Date.now() + expiryMinutes * 60 * 1000)
+            });
+            return sasUrl;
+        } catch (error) {
+            throw new StorageError('Failed to generate upload URL', error as Error);
+        }
+    }
+
+    /**
+     * Gets a URL for downloading a file directly from Azure Blob Storage
+     */
+    async getDownloadUrl(fileName: string, expiryMinutes: number = 60): Promise<string> {
+        try {
+            const blockBlobClient = this.containerClient.getBlockBlobClient(fileName);
+            const permissions = new BlobSASPermissions();
+            permissions.read = true;
+
+            const sasUrl = await blockBlobClient.generateSasUrl({
+                permissions,
+                expiresOn: new Date(Date.now() + expiryMinutes * 60 * 1000)
+            });
+            return sasUrl;
+        } catch (error) {
+            throw new StorageError('Failed to generate download URL', error as Error);
+        }
     }
 }
 

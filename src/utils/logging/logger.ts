@@ -149,20 +149,29 @@ export function logProcessStep(step: string, status: 'start' | 'complete' | 'err
 export function logProcessSummary(processTimings: ProcessTiming[]): void {
     console.log('\n⏱️  Process Timings:');
     
-    // Calculate total duration for percentage calculations
+    // Calculate total duration
     const totalDuration = processTimings[0]?.duration || 0;
     console.log(`Total Time: ${chalk.cyan(formatDuration(totalDuration))}\n`);
     
     // Find the longest process name for padding
     const maxNameLength = Math.max(...processTimings.map(t => t.processName.length));
     
-    // Sort timings by duration in descending order
-    const sortedTimings = [...processTimings].sort((a, b) => (b.duration || 0) - (a.duration || 0));
-    
-    sortedTimings.forEach(timing => {
+    // Filter out redundant steps and sort by start time
+    const uniqueTimings = processTimings
+        .filter(timing => {
+            // Skip the overall Content Processing timing since we show total time
+            if (timing.processName === 'Content Processing') return false;
+            // Skip Media Extraction since it's the same as Download for YouTube
+            if (timing.processName === 'Media Extraction') return false;
+            return true;
+        })
+        .sort((a, b) => a.startTime - b.startTime);
+
+    // Display timings
+    uniqueTimings.forEach(timing => {
         if (timing.duration) {
             const percentage = timing.duration / totalDuration;
-            const bar = generateProgressBar(percentage, 30);  // Made bar longer for better visualization
+            const bar = generateProgressBar(percentage, 30);
             const duration = formatDuration(timing.duration);
             const percentStr = `${(percentage * 100).toFixed(1)}%`.padStart(5);
             const rate = timing.metadata?.rate ? ` │ ${chalk.gray(timing.metadata.rate)}` : '';
@@ -171,7 +180,7 @@ export function logProcessSummary(processTimings: ProcessTiming[]): void {
     });
     
     // Only show resource usage if we have data
-    if (processTimings.length > 0 && processTimings[0].subProcesses?.length) {
+    if (processTimings.length > 0) {
         console.log('\n📊 Resource Usage:');
         const memoryUsage = process.memoryUsage();
         const heapPercentage = memoryUsage.heapUsed / memoryUsage.heapTotal;

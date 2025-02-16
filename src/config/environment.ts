@@ -1,52 +1,59 @@
-import { z } from 'zod';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
+// Load environment variables
 dotenv.config();
 
-// Environment variable schema
-const envSchema = z.object({
-  // Server configuration
-  PORT: z.string().default('5050'),
-  NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
-  // Azure Storage configuration
-  AZURE_STORAGE_CONNECTION_STRING: z.string(),
-  AZURE_STORAGE_CONTAINER_NAME: z.string(),
-
-  // OpenAI configuration
-  OPENAI_API_KEY: z.string(),
-  OPENAI_MODEL: z.string().default('gpt-4'),
-
-  // YouTube API configuration
-  YOUTUBE_API_KEY: z.string(),
-
-  // Optional configurations
-  MAX_FILE_SIZE: z.string().default('500'), // in MB
-  RATE_LIMIT: z.string().default('10'), // requests per minute
-});
-
-// Parse and validate environment variables
-const env = envSchema.parse(process.env);
-
-// Export typed environment variables
 export const config = {
-  port: parseInt(env.PORT, 10),
-  nodeEnv: env.NODE_ENV,
-  azure: {
-    connectionString: env.AZURE_STORAGE_CONNECTION_STRING,
-    containerName: env.AZURE_STORAGE_CONTAINER_NAME,
-  },
-  openai: {
-    apiKey: env.OPENAI_API_KEY,
-    model: env.OPENAI_MODEL,
-  },
-  youtube: {
-    apiKey: env.YOUTUBE_API_KEY,
-  },
-  maxFileSize: parseInt(env.MAX_FILE_SIZE, 10) * 1024 * 1024, // Convert MB to bytes
-  rateLimit: parseInt(env.RATE_LIMIT, 10),
+    port: parseInt(process.env.PORT || '5050', 10),
+    nodeEnv: NODE_ENV as 'development' | 'production' | 'test',
+    
+    // Environment checks
+    isProduction: NODE_ENV === 'production',
+    isDevelopment: NODE_ENV === 'development',
+    isTest: NODE_ENV === 'test',
+
+    // Security settings
+    security: {
+        apiKeyHeader: 'x-api-key',
+        apiKeys: (process.env.API_KEYS || '').split(',').filter(Boolean),
+        corsOrigins: (process.env.CORS_ORIGINS || '').split(',').filter(Boolean)
+    },
+
+    // Rate limiting
+    rateLimit: {
+        windowMs: 15 * 60 * 1000, // 15 minutes
+        maxRequests: parseInt(process.env.RATE_LIMIT_MAX || '100', 10)
+    },
+
+    // Request queue
+    queue: {
+        maxConcurrentRequests: parseInt(process.env.MAX_CONCURRENT_REQUESTS || '2', 10),
+        requestTimeoutMs: parseInt(process.env.REQUEST_TIMEOUT_MS || '30000', 10) // 30 seconds
+    },
+
+    // Azure Storage
+    azure: {
+        connectionString: process.env.AZURE_STORAGE_CONNECTION_STRING || '',
+        containerName: process.env.AZURE_STORAGE_CONTAINER_NAME || 'uploads'
+    },
+
+    // OpenAI
+    openai: {
+        apiKey: process.env.OPENAI_API_KEY || '',
+        model: process.env.OPENAI_MODEL || 'gpt-4'
+    },
+
+    // YouTube
+    youtube: {
+        apiKey: process.env.YOUTUBE_API_KEY || ''
+    },
+
+    // File upload
+    maxFileSize: parseInt(process.env.MAX_FILE_SIZE || '104857600', 10) // 100MB
 } as const;
 
-// Type for the config object
-export type Config = typeof config; 
+export type Config = typeof config;
+
+export default config; 

@@ -1,6 +1,4 @@
-import fs from 'fs/promises';
-import path from 'path';
-import { TEMP_DIRS, createTempFile } from '../../utils/utils.js';
+import { TEMP_DIRS, createTempFile } from '../../../../../../utils/utils.js';
 
 /**
  * Interface for YouTube cookie structure

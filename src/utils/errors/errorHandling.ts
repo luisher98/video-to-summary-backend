@@ -1,5 +1,6 @@
 import { Server } from 'http';
 import { Response } from 'express';
+import { StorageError } from '@/services/storage/azure/storageError.js';
 
 /**
  * HTTP status codes used in the application
@@ -84,22 +85,58 @@ export class CustomError extends InternalServerError {
     }
 }
 
+export class APIError extends Error {
+    constructor(
+        message: string,
+        public statusCode: number = 500,
+        public originalError?: Error
+    ) {
+        super(message);
+        this.name = 'APIError';
+        
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, APIError);
+        }
+
+        if (originalError) {
+            this.message = `${message}: ${originalError.message}`;
+            this.stack = `${this.stack}\nCaused by: ${originalError.stack}`;
+        }
+    }
+}
+
 /**
  * Handles errors in route handlers and sends appropriate response
  */
 export function handleError(error: unknown, res: Response): void {
-    if (error instanceof HttpError) {
+    console.error('Error:', error);
+
+    if (error instanceof APIError) {
         res.status(error.statusCode).json({
-            error: error.message,
-            code: error.name
+            error: error.message
         });
-    } else {
-        const message = error instanceof Error ? error.message : 'An unknown error occurred';
-        res.status(HttpStatusCode.INTERNAL_SERVER_ERROR).json({
-            error: message,
-            code: 'INTERNAL_SERVER_ERROR'
-        });
+        return;
     }
+
+    if (error instanceof StorageError) {
+        res.status(500).json({
+            error: 'Storage operation failed',
+            details: error.message
+        });
+        return;
+    }
+
+    if (error instanceof Error) {
+        res.status(500).json({
+            error: 'Internal server error',
+            details: error.message
+        });
+        return;
+    }
+
+    res.status(500).json({
+        error: 'An unexpected error occurred'
+    });
 }
 
 /**
