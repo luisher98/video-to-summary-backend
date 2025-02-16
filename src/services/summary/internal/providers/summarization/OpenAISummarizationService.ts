@@ -1,7 +1,8 @@
-import { ISummarizationService } from '../../core/interfaces/ISummarizationService.js';
-import { Summary, Transcript, SummaryOptions } from '../../core/types/summary.types.js';
-import { generateSummary } from '../../../../lib/openAI.js';
-import { processTimer, logProcessStep } from '../../../../utils/logging/logger.js';
+import { ISummarizationService } from '../../interfaces/ISummarizationService.js';
+import { Summary, Transcript, SummaryOptions } from '../../types/summary.types.js';
+
+import { generateSummary } from '@/lib/openAI.js';
+import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 
 export class OpenAISummarizationService implements ISummarizationService {
   async summarize(

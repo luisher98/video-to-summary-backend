@@ -1,10 +1,10 @@
-import { IMediaProcessor, MediaSource } from '../core/interfaces/IMediaProcessor.js';
-import { ITranscriptionService } from '../core/interfaces/ITranscriptionService.js';
-import { ISummarizationService } from '../core/interfaces/ISummarizationService.js';
-import { Summary, SummaryOptions } from '../core/types/summary.types.js';
-import { Progress } from '../core/types/progress.types.js';
+import { IMediaProcessor, MediaSource } from '../interfaces/IMediaProcessor.js';
+import { ITranscriptionService } from '../interfaces/ITranscriptionService.js';
+import { ISummarizationService } from '../interfaces/ISummarizationService.js';
+import { Summary, SummaryOptions } from '../types/summary.types.js';
+import { Progress } from '../types/progress.types.js';
 import { ProgressTracker } from './ProgressTracker.js';
-import { processTimer, logProcessStep, logProcessSummary } from '../../../utils/logging/logger.js';
+import { processTimer, logProcessStep, logProcessSummary } from '@/utils/logging/logger.js';
 
 export class SummaryOrchestrator {
   constructor(

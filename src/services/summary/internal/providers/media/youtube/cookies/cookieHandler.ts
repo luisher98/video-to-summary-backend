@@ -1,4 +1,4 @@
-import { TEMP_DIRS, createTempFile } from '../../../../../../utils/utils.js';
+import { TEMP_DIRS, createTempFile } from '@/utils/utils.js';
 
 /**
  * Interface for YouTube cookie structure

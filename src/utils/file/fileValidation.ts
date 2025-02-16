@@ -1,5 +1,5 @@
 import fs from 'fs/promises';
-import { FILE_SIZE } from '../constants/fileSize.js';
+import { FILE_SIZE } from '@/utils/constants/fileSize.js';
 
 /**
  * Check if a file is executable

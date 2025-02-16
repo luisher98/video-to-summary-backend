@@ -1,12 +1,13 @@
-import { IMediaProcessor, MediaSource } from '../../../core/interfaces/IMediaProcessor.js';
-import { ProcessedMedia } from '../../../core/types/summary.types.js';
-import { BadRequestError } from '../../../../../utils/errors/errorHandling.js';
+import { IMediaProcessor, MediaSource } from '../../../interfaces/IMediaProcessor.js';
+import { ProcessedMedia } from '../../../types/summary.types.js';
+
+import { BadRequestError } from '@/utils/errors/errorHandling.js';
 import { YouTubeDownloader } from './youtubeDownloader.js';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { TEMP_DIRS } from '../../../../../utils/constants/paths.js';
-import { ensureDir } from '../../../../../utils/file/tempDirs.js';
-import { processTimer, logProcessStep } from '../../../../../utils/logging/logger.js';
+import { TEMP_DIRS } from '@/utils/constants/paths.js';
+import { ensureDir } from '@/utils/file/tempDirs.js';
+import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 
 interface YouTubeSource extends MediaSource {
   type: 'youtube';

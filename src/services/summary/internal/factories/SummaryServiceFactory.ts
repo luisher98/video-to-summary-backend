@@ -2,8 +2,8 @@ import { YouTubeMediaProcessor } from '../providers/media/youtube/YouTubeMediaPr
 import { FileUploadMediaProcessor } from '../providers/media/fileUpload/FileUploadMediaProcessor.js';
 import { OpenAITranscriptionService } from '../providers/transcription/OpenAITranscriptionService.js';
 import { OpenAISummarizationService } from '../providers/summarization/OpenAISummarizationService.js';
-import { SummaryOrchestrator } from '../services/SummaryOrchestrator.js';
-import { ProgressTracker } from '../services/ProgressTracker.js';
+import { SummaryOrchestrator } from '../orchestration/SummaryOrchestrator.js';
+import { ProgressTracker } from '../orchestration/ProgressTracker.js';
 
 export class SummaryServiceFactory {
   static createYouTubeService(): SummaryOrchestrator {

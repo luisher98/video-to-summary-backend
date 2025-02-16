@@ -1,4 +1,4 @@
-import { ProgressUpdate } from '../../../../types/global.types.js';
+import type { Progress } from '../types/progress.types.js';
 
 /**
  * Request information for tracking and logging
@@ -15,7 +15,7 @@ export interface SummaryOptions {
     /** Number of words for the summary (default: 400) */
     words?: number;
     /** Callback function to report progress updates */
-    updateProgress?: (progress: ProgressUpdate) => void;
+    updateProgress?: (progress: Progress) => void;
     /** Additional instructions for the AI summarizer */
     additionalPrompt?: string;
     /** Whether to return only the transcript without summarizing */
@@ -45,5 +45,5 @@ export interface SummaryService {
 export interface ServiceConfig {
   maxWords?: number;
   additionalPrompt?: string;
-  updateProgress?: (progress: ProgressUpdate) => void;
+  updateProgress?: (progress: Progress) => void;
 } 

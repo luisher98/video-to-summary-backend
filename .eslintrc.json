@@ -1,0 +1,19 @@
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-restricted-imports": ["error", {
+      "patterns": [
+        {
+          "group": ["**/internal/*", "**/internal/**/*"],
+          "message": "Do not import from internal modules directly. Use the service's public API through its internalBoundary.ts instead."
+        }
+      ]
+    }],
+    "no-restricted-syntax": ["error", {
+      "selector": "ExportNamedDeclaration[source.value=/internal\\/(?!internalBoundary)/]",
+      "message": "Internal modules must be exported through internalBoundary.ts"
+    }]
+  }
+} 

@@ -2,8 +2,7 @@ import { Router, Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { BadRequestError } from '../../utils/errors/errorHandling.js';
 import { azureStorage } from '../../services/storage/azure/azureStorageService.js';
-import { SummaryServiceFactory } from '../../services/summary/factories/SummaryServiceFactory.js';
-import { MediaSource } from '../../services/summary/core/interfaces/IMediaProcessor.js';
+import { SummaryServiceFactory, MediaSource } from "../../services/summary/SummaryService.js";
 
 const router = Router();
 

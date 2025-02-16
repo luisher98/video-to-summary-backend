@@ -1,11 +1,11 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import youtubedl from 'youtube-dl-exec';
-import { TEMP_DIRS } from '../../../../../utils/constants/paths.js';
-import { getFfmpegPath } from '../../../../../utils/media/ffmpeg.js';
+import { TEMP_DIRS } from '@/utils/constants/paths.js';
+import { getFfmpegPath } from '@/utils/media/ffmpeg.js';
 import { CookieHandler } from './cookies/cookieHandler.js';
-import { DeletionError, DownloadError } from '../../../../../utils/errors/errorHandling.js';
-import { logProcessStep } from '../../../../../utils/logging/logger.js';
+import { DeletionError, DownloadError } from '@/utils/errors/errorHandling.js';
+import { logProcessStep } from '@/utils/logging/logger.js';
 
 interface YtDlpOptions {
     'extract-audio': boolean;

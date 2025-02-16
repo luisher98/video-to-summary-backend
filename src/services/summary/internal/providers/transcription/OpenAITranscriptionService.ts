@@ -1,7 +1,7 @@
-import { ITranscriptionService } from '../../core/interfaces/ITranscriptionService.js';
-import { ProcessedMedia, Transcript } from '../../core/types/summary.types.js';
-import { generateTranscript } from '../../../../lib/openAI.js';
-import { processTimer, logProcessStep } from '../../../../utils/logging/logger.js';
+import { ITranscriptionService } from '../../interfaces/ITranscriptionService.js';
+import { ProcessedMedia, Transcript } from '../../types/summary.types.js';
+import { generateTranscript } from '@/lib/openAI.js';
+import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 
 export class OpenAITranscriptionService implements ITranscriptionService {
   async transcribe(

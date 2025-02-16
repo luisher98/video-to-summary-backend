@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { BadRequestError } from "../../utils/errors/errorHandling.js";
-import { SummaryServiceFactory } from "../../services/summary/factories/SummaryServiceFactory.js";
-import { MediaSource } from "../../services/summary/core/interfaces/IMediaProcessor.js";
+import { SummaryServiceFactory } from "../../services/summary/SummaryService.js";
+import { MediaSource } from "../../services/summary/SummaryService.js";
 
 /**
  * Server-Sent Events endpoint for generating video summaries with real-time progress updates.

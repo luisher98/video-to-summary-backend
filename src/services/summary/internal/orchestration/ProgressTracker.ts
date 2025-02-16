@@ -1,4 +1,4 @@
-import { Progress, ProcessingStage, PROCESSING_STAGES } from '../core/types/progress.types.js';
+import { Progress, ProcessingStage, PROCESSING_STAGES } from '../types/progress.types.js';
 
 export class ProgressTracker {
   private currentStage: ProcessingStage;

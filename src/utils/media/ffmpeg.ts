@@ -3,7 +3,7 @@ import ffprobePath from 'ffprobe-static';
 import path from 'path';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { checkExecutable } from '../file/fileValidation.js';
+import { checkExecutable } from '@/utils/file/fileValidation.js';
 import fsSync from 'fs';
 
 const execAsync = promisify(exec);

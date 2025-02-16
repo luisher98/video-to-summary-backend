@@ -2,9 +2,7 @@ import { Request, Response } from 'express';
 import multer from 'multer';
 import { Readable } from 'stream';
 import { validateVideoFile } from '../../utils/file/fileValidation.js';
-import { SummaryServiceFactory } from '../../services/summary/factories/SummaryServiceFactory.js';
-import { MediaSource } from '../../services/summary/core/interfaces/IMediaProcessor.js';
-import { ProcessingStatus } from '../../services/summary/core/types/progress.types.js';
+import { SummaryServiceFactory, MediaSource, ProcessingStatus } from '../../services/summary/SummaryService.js';
 import { FILE_SIZE } from '../../utils/constants/fileSize.js';
 
 // Configure multer for memory storage

@@ -1,15 +1,18 @@
-import { IMediaProcessor, MediaSource } from '../../../core/interfaces/IMediaProcessor.js';
-import { ProcessedMedia } from '../../../core/types/summary.types.js';
-import { BadRequestError } from '../../../../../utils/errors/errorHandling.js';
-import { validateVideoFile } from '../../../../../utils/file/fileValidation.js';
+import { IMediaProcessor, MediaSource } from '../../../interfaces/IMediaProcessor.js';
+import { ProcessedMedia } from '../../../types/summary.types.js';
+
+import { BadRequestError } from '@/utils/errors/errorHandling.js';
+import { validateVideoFile } from '@/utils/file/fileValidation.js';
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
 import path from 'path';
-import { TEMP_DIRS } from '../../../../../utils/constants/paths.js';
+import { TEMP_DIRS } from '@/utils/constants/paths.js';
 import { v4 as uuidv4 } from 'uuid';
 import ffmpeg from 'fluent-ffmpeg';
-import { getFfmpegPath, getFfprobePath } from '../../../../../utils/media/ffmpeg.js';
+import { getFfmpegPath, getFfprobePath } from '@/utils/media/ffmpeg.js';
 import { Readable } from 'stream';
+import { ensureDir } from '@/utils/file/tempDirs.js';
+import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 
 // Initialize ffmpeg
 const ffmpegBinaryPath = getFfmpegPath();

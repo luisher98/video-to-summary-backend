@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { BadRequestError } from "../../utils/errors/errorHandling.js";
-import { SummaryServiceFactory } from "../../services/summary/factories/SummaryServiceFactory.js";
-import { MediaSource } from "../../services/summary/core/interfaces/IMediaProcessor.js";
+import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { logRequest } from '../../utils/logging/logger.js';
 import { handleError } from '../../utils/errors/errorHandling.js';
 

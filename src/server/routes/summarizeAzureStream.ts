@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { SummaryServiceFactory } from "../../services/summary/factories/SummaryServiceFactory.js";
-import { MediaSource } from "../../services/summary/core/interfaces/IMediaProcessor.js";
+import { SummaryServiceFactory } from "../../services/summary/SummaryService.js";
+import { MediaSource } from "../../services/summary/SummaryService.js";
 import { BadRequestError } from "../../utils/errors/errorHandling.js";
+import { validateVideoFile } from "../../utils/file/fileValidation.js";
+import { ProcessingStatus } from "../../services/summary/SummaryService.js";
 import { azureStorage } from "../../services/storage/azure/azureStorageService.js";
-import { ProcessingStatus } from "../../services/summary/core/types/progress.types.js";
 
 interface ProgressMessage {
     status: ProcessingStatus;

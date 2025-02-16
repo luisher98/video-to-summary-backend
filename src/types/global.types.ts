@@ -1,14 +1,6 @@
 /**
- * Progress update for long-running operations
+ * Global type definitions
  */
-export interface ProgressUpdate {
-    /** Current status of the operation */
-    status: 'uploading' | 'processing' | 'converting' | 'done' | 'error';
-    /** Progress message or result */
-    message?: string;
-    error?: string;
-    progress: number; // Percentage of completion (0-100)
-}
 
 /**
  * Configuration for video processing operations

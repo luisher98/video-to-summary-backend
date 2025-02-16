@@ -1,6 +1,5 @@
 import { Command } from 'commander';
-import { SummaryServiceFactory } from '../../services/summary/factories/SummaryServiceFactory.js';
-import { MediaSource } from '../../services/summary/core/interfaces/IMediaProcessor.js';
+import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { getCurrentDateTime } from '../../utils/formatters/dateTime.js';
 import { getLocalDirectoryPath, saveResultToFile, promptOutputOption } from '../utils/utils.js';
 import { warning } from '../style/colors.js';
