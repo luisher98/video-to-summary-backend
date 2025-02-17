@@ -1,6 +1,6 @@
 import { Server } from 'http';
 import { Response } from 'express';
-import { StorageError } from '@/services/storage/azure/storageError.js';
+import { StorageError } from '@/services/storage/internal/errors/storage.error.js';
 
 /**
  * HTTP status codes used in the application
@@ -121,6 +121,7 @@ export function handleError(error: unknown, res: Response): void {
     if (error instanceof StorageError) {
         res.status(500).json({
             error: 'Storage operation failed',
+            code: error.code,
             details: error.message
         });
         return;

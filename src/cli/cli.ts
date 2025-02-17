@@ -2,7 +2,7 @@ import readline from 'readline';
 import { blue, orange, warning } from './style/colors.js';
 import { handleHelpCommand } from './commands/help.js';
 import { videoProcessing } from './commands/videoProcessing.js';
-import { handleStatusCommand } from './commands/status.js';
+import { status } from './commands/status.js';
 import { handleStopCommand } from './commands/stop.js';
 import { handleMonitorCommand } from './commands/monitor.js';
 
@@ -17,7 +17,7 @@ type CommandFunction = (args: string[]) => void | Promise<void>;
  */
 const commands: { [key: string]: CommandFunction } = {
   help: handleHelpCommand,
-  status: handleStatusCommand,
+  status: async () => { await status.parseAsync(['node', 'script.js']); },
   stop: handleStopCommand,
   monitor: handleMonitorCommand,
   video: async (args: string[]) => {

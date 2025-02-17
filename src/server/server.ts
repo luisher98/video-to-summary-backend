@@ -1,57 +1,33 @@
 import express from 'express';
-import cors from 'cors';
 import { Server } from 'http';
-import { Paths } from '@/infrastructure/config/paths.js';
-import { fileURLToPath } from 'url';
-import path from 'path';
-import getVideoMetadata from './routes/getVideoMetadata.js';
-import summarizeYouTube from './routes/summarizeYouTube.js';
-import summarizeYouTubeStream from './routes/summarizeYouTubeStream.js';
-import summarizeUploadStream from './routes/summarizeUploadStream.js';
-import getVideoTranscript from './routes/getVideoTranscript.js';
-import testStream from './routes/testStream.js';
-import getAzureUploadUrl from './routes/getAzureUploadUrl.js';
-import checkHealth from './routes/checkHealth.js';
-import { handleUncaughtErrors } from '@/utils/errors/errorHandling.js';
 import { initializeTempDirs, clearAllTempDirs } from '@/utils/file/tempDirs.js';
-import { 
-    securityHeaders, 
-    corsMiddleware, 
-    rateLimiter,
-    requestQueueMiddleware,
-    requestTimeout,
-    apiKeyAuth,
-    activeRequests
-} from './middleware/security.js';
-import summarizeAzureStream from './routes/summarizeAzureStream.js';
-
-// Configuration constants
-const CONFIG = {
-    port: process.env.PORT || 5050,
-    url: process.env.WEBSITE_HOSTNAME || `http://localhost:${process.env.PORT || 5050}`,
-    environment: process.env.NODE_ENV || 'development',
-    tempFiles: {
-        cleanupInterval: 60 * 60 * 1000, // 1 hour
-        maxAge: 24 * 60 * 60 * 1000 // 24 hours
-    },
-    exampleVideoId: 'N-ZNfuCdkUo' 
-} as const;
-
-// Server state
-let serverInstance: ReturnType<typeof app.listen> | null = null;
+import { handleUncaughtErrors } from '@/utils/errors/errorHandling.js';
+import { SERVER_CONFIG } from './config.js';
+import { commonMiddleware, errors } from './middleware/index.js';
+import apiRoutes from './routes/api/index.js';
+import { verifyServices } from '@/utils/system/serviceVerification.js';
 
 // Initialize Express app
 export const app = express();
 
 // Trust only Azure's proxy
-app.set('trust proxy', 'uniquelocal');
+app.set('trust proxy', SERVER_CONFIG.security.trustProxy);
 
-// Apply security middleware
-app.use(securityHeaders);
-app.use(corsMiddleware);
-app.use(rateLimiter);
-app.use(requestTimeout);
-app.use(apiKeyAuth);
+// Apply common middleware
+app.use(commonMiddleware);
+
+// Parse JSON and URL-encoded bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Mount API routes
+app.use('/api', apiRoutes);
+
+// Error handling
+app.use(errors.handler);
+
+// Server state
+let serverInstance: ReturnType<typeof app.listen> | null = null;
 
 // Add stop method type to app
 export interface CustomExpress extends express.Express {
@@ -64,39 +40,14 @@ export interface CustomExpress extends express.Express {
 // Export the typed app
 export const typedApp = app as CustomExpress;
 
-// API Routes
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Health check route (no queue middleware)
-app.use('/health', checkHealth);
-
-// Routes with queue middleware
-app.get('/api/video/metadata', getVideoMetadata);
-app.get('/api/youtube/summary', requestQueueMiddleware, summarizeYouTube);
-app.get('/api/youtube/summary/stream', requestQueueMiddleware, summarizeYouTubeStream);
-app.use('/api/azure/upload/url', getAzureUploadUrl);
-
-// File upload summary endpoints
-app.route('/api/upload/summary/stream')
-  .get(requestQueueMiddleware, summarizeUploadStream)
-  .post(requestQueueMiddleware, summarizeUploadStream);
-
-// Azure blob summary endpoint
-app.get('/api/azure/summary/stream', requestQueueMiddleware, summarizeAzureStream);
-
-app.get('/api/video/transcript', requestQueueMiddleware, getVideoTranscript);
-app.get('/api/test/stream', testStream);
-
 /**
  * Gets current server status including uptime and active requests.
  */
 export function getServerStatus() {
     return {
         running: serverInstance !== null,
-        port: Number(CONFIG.port),
-        url: CONFIG.url,
-        activeRequests: activeRequests.size,
+        port: Number(SERVER_CONFIG.port),
+        url: SERVER_CONFIG.url,
         uptime: process.uptime()
     };
 }
@@ -113,20 +64,23 @@ export async function startServer(): Promise<void> {
     // Initialize temp directories
     await initializeTempDirs();
 
+    // Verify services
+    await verifyServices();
+
     // Set up periodic temp file cleanup
     const cleanupInterval = setInterval(() => {
-        clearAllTempDirs(CONFIG.tempFiles.maxAge).catch((error: Error) => {
+        clearAllTempDirs(SERVER_CONFIG.tempFiles.maxAge).catch((error: Error) => {
             console.error('Error during temp file cleanup:', error);
         });
-    }, CONFIG.tempFiles.cleanupInterval);
+    }, SERVER_CONFIG.tempFiles.cleanupInterval);
 
     // Only log once per cluster
     const shouldLog = !process.env.NODE_APP_INSTANCE || process.env.NODE_APP_INSTANCE === '0';
 
-    serverInstance = app.listen(CONFIG.port, () => {
+    serverInstance = app.listen(SERVER_CONFIG.port, () => {
         if (shouldLog) {
-            console.log(`Server running on ${CONFIG.url}`);
-            console.log(`Example endpoint: ${CONFIG.url}/api/youtube/summary/stream?url=https://www.youtube.com/watch?v=${CONFIG.exampleVideoId}`);
+            console.log(`Server running on ${SERVER_CONFIG.url}`);
+            console.log(`Example endpoint: ${SERVER_CONFIG.url}/api/summary/youtube/stream?url=https://www.youtube.com/watch?v=${SERVER_CONFIG.examples.videoId}`);
         }
     });
 
@@ -152,28 +106,41 @@ export async function startServer(): Promise<void> {
  * Gracefully stops the server and cleans up resources.
  */
 export function stopServer(): Promise<void> {
-    return new Promise((resolve, reject) => {
-        if (!serverInstance) {
+    return new Promise((resolve) => {
+        if (!serverInstance || !serverInstance.listening) {
             console.log('Server is not running');
             resolve();
             return;
         }
 
+        // Set a timeout for forceful shutdown
+        const forceShutdown = setTimeout(() => {
+            console.log('Force closing server after timeout');
+            process.exit(1);
+        }, 10000);
+
         serverInstance.close(async (err) => {
+            clearTimeout(forceShutdown);
+            
             if (err) {
-                reject(err);
-                return;
+                console.error('Error while closing server:', err);
             }
             
             try {
                 await clearAllTempDirs(0); // 0 means delete all files regardless of age
-                serverInstance = null;
-                activeRequests.clear();
-                resolve();
+                console.log('Successfully cleaned up resources');
             } catch (cleanupError) {
                 console.error('Error cleaning up temp files:', cleanupError);
-                reject(cleanupError);
             }
+
+            serverInstance = null;
+            resolve();
         });
+
+        // Close existing connections
+        if (serverInstance.listening) {
+            console.log('Closing all existing connections...');
+            serverInstance.emit('close');
+        }
     });
 }

@@ -1,4 +1,9 @@
 /**
+ * Load environment variables first
+ */
+import '@/config/loadEnv.js';
+
+/**
  * Main application entry point.
  * Starts either the CLI or server based on command line arguments.
  * 

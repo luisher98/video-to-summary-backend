@@ -1,11 +1,13 @@
 import { Readable } from 'stream';
+import { StorageProvider } from './internal/interfaces/storage-provider.interface.js';
+import { StorageProviderFactory } from './internal/providers/storage-provider.js';
+import { StorageFile, UploadUrlResult, AzureStorageConfiguration } from './internal/interfaces/storage-file.interface.js';
+import { StorageError, StorageErrorCode } from './internal/errors/storage.error.js';
 
 /**
  * Progress callback for storage operations
  */
-export interface StorageProgress {
-    (progress: number): void;
-}
+export type StorageProgress = (progress: number) => void;
 
 /**
  * Base interface for storage service implementations.
@@ -59,4 +61,62 @@ export interface StorageService {
 export function shouldUseCloudStorage(sizeInBytes: number): boolean {
     const maxLocalSize = Number(process.env.MAX_LOCAL_FILESIZE_MB || 100) * 1024 * 1024;
     return sizeInBytes > maxLocalSize;
-} 
+}
+
+export class StorageServiceImpl implements StorageProvider {
+    private provider: StorageProvider | null = null;
+
+    constructor(private readonly config: AzureStorageConfiguration) {}
+
+    async initialize(): Promise<void> {
+        this.provider = await StorageProviderFactory.createAzureProvider(this.config);
+        if (!this.provider) {
+            throw new StorageError('Failed to create storage provider', StorageErrorCode.INITIALIZATION_FAILED);
+        }
+        await this.provider.initialize();
+    }
+
+    async generateUploadUrl(fileName: string, options?: { metadata?: Record<string, string> }): Promise<UploadUrlResult> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.generateUploadUrl(fileName, options);
+    }
+
+    async uploadFile(file: Buffer | Readable, fileName: string, fileSize?: number): Promise<string> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.uploadFile(file, fileName, fileSize);
+    }
+
+    async downloadFile(blobName: string): Promise<Readable> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.downloadFile(blobName);
+    }
+
+    async deleteFile(blobName: string): Promise<void> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.deleteFile(blobName);
+    }
+
+    async getFileInfo(blobName: string): Promise<StorageFile> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.getFileInfo(blobName);
+    }
+
+    async fileExists(blobName: string): Promise<boolean> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.fileExists(blobName);
+    }
+
+    async listFiles(prefix?: string): Promise<StorageFile[]> {
+        if (!this.provider) throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
+        return this.provider.listFiles(prefix);
+    }
+}
+
+// Factory function to create storage service
+export function createStorageService(config: AzureStorageConfiguration): StorageProvider {
+    return new StorageServiceImpl(config);
+}
+
+// Export types and errors for external use
+export type { StorageProvider, StorageFile, UploadUrlResult, AzureStorageConfiguration };
+export { StorageError, StorageErrorCode }; 

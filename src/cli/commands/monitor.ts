@@ -1,7 +1,7 @@
-import { blue, green, red, yellow } from '../style/colors.js';
-import { activeRequests } from '../../server/middleware/security.js';
+import { blue, green, red, yellow, warning, success } from '../style/colors.js';
 import { formatBytes } from '../../utils/formatters/fileSize.js';
 import { formatDuration } from '../../utils/formatters/dateTime.js';
+import { getQueueStatus } from '../../server/middleware/security/index.js';
 import os from 'os';
 import { Command } from 'commander';
 
@@ -52,12 +52,13 @@ function getCpuUsage(): number {
  * @private
  */
 function getServerStats(): ServerStats {
+    const { active } = getQueueStatus();
     const totalMemory = os.totalmem();
     const freeMemory = os.freemem();
     
     return {
         uptime: process.uptime(),
-        activeRequests: activeRequests.size,
+        activeRequests: active,
         memory: {
             total: totalMemory,
             used: totalMemory - freeMemory,
@@ -125,4 +126,16 @@ export async function handleMonitorCommand(): Promise<void> {
         console.log(blue('\nMonitoring stopped'));
         process.exit(0);
     });
-} 
+}
+
+export const monitor = new Command('monitor')
+    .description('Monitor server status')
+    .action(async () => {
+        try {
+            const { active, limit } = getQueueStatus();
+            console.log(success(`Active Requests: ${active}/${limit}`));
+        } catch (error) {
+            console.error(warning(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`));
+            process.exit(1);
+        }
+    }); 
