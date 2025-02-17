@@ -74,11 +74,11 @@ export class AzureBlobStorageProvider implements StorageProvider {
         this.validateInitialization();
         
         try {
-            const { blobName, fileId } = this.generateBlobInfo(fileName);
+            const blobName = fileName;
             const blobClient = this.getBlobClient(blobName);
             const { url, expiresAt } = await this.authStrategy.generateUploadUrl(blobClient);
             
-            return this.createUploadResponse(url, fileId, blobName, expiresAt, options);
+            return this.createUploadResponse(url, blobName, blobName, expiresAt, options);
         } catch (error) {
             throw this.handleError(error, 'Failed to generate upload URL');
         }
@@ -88,14 +88,6 @@ export class AzureBlobStorageProvider implements StorageProvider {
         if (!this.containerClient) {
             throw new StorageError('Provider not initialized', StorageErrorCode.NOT_INITIALIZED);
         }
-    }
-
-    private generateBlobInfo(fileName: string): { blobName: string; fileId: string } {
-        const fileId = uuidv4();
-        return {
-            fileId,
-            blobName: `${fileId}-${fileName}`
-        };
     }
 
     private getBlobClient(blobName: string): BlockBlobClient {

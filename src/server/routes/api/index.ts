@@ -3,6 +3,7 @@ import storage from './storage/index.js';
 import summary from './summary/index.js';
 import health from './health/index.js';
 import test from './_testSSE/index.js';
+import videos from './videos/index.js';
 
 const router = Router();
 
@@ -10,6 +11,7 @@ const router = Router();
 router.use('/storage', storage);
 router.use('/summary', summary);
 router.use('/health', health);
-router.use('/test', test);
+router.use('/_test', test);
+router.use('/videos', videos);
 
 export default router; 

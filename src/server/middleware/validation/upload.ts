@@ -3,6 +3,24 @@ import { BadRequestError } from '@/utils/errors/errorHandling.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
 import { FILE_SIZE } from '@/utils/constants/fileSize.js';
 
+export function validateInitiateUpload(req: Request, res: Response, next: NextFunction): void {
+    const { fileName, fileSize } = req.body;
+
+    if (!fileName || !fileSize) {
+        throw new BadRequestError('fileName and fileSize are required');
+    }
+
+    if (typeof fileSize !== 'number' || fileSize <= 0) {
+        throw new BadRequestError('fileSize must be a positive number');
+    }
+
+    if (fileSize > FILE_SIZE.MAX_FILE_SIZE) {
+        throw new BadRequestError(`File size ${fileSize} exceeds maximum allowed size ${FILE_SIZE.MAX_FILE_SIZE}`);
+    }
+
+    next();
+}
+
 export function validateFileUpload(req: Request, res: Response, next: NextFunction): void {
     const { file } = req;
 
