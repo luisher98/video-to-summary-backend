@@ -2,7 +2,7 @@ import { Readable } from 'stream';
 import { StorageProvider } from './internal/interfaces/storage-provider.interface.js';
 import { StorageProviderFactory } from './internal/providers/storage-provider.js';
 import { StorageFile, UploadUrlResult, AzureStorageConfiguration } from './internal/interfaces/storage-file.interface.js';
-import { StorageError, StorageErrorCode } from './internal/errors/storage.error.js';
+import { StorageError, StorageErrorCode } from '@/utils/errors/index.js';
 
 /**
  * Progress callback for storage operations

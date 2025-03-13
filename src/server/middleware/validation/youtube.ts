@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { BadRequestError } from '@/utils/errors/errorHandling.js';
+import { BadRequestError } from '@/utils/errors/index.js';
 
 export function validateUrl(req: Request, res: Response, next: NextFunction): void {
     const url = req.query.url as string;

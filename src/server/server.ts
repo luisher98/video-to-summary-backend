@@ -1,8 +1,8 @@
 import express from 'express';
 import { Server } from 'http';
 import { initializeTempDirs, clearAllTempDirs } from '@/utils/file/tempDirs.js';
-import { handleUncaughtErrors } from '@/utils/errors/errorHandling.js';
-import { SERVER_CONFIG } from './config.js';
+import { handleUncaughtErrors } from '@/utils/errors/index.js';
+import { SERVER_CONFIG } from '../config/server.js';
 import { commonMiddleware, errors } from './middleware/index.js';
 import apiRoutes from './routes/api/index.js';
 import { verifyServices } from '@/utils/system/serviceVerification.js';
@@ -93,7 +93,7 @@ export async function startServer(): Promise<void> {
         console.error('Uncaught Exception:', error);
     });
 
-    handleUncaughtErrors(serverInstance);
+    handleUncaughtErrors();
 
     // Clean up on process termination
     process.on('SIGTERM', () => {

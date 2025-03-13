@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { logRequest } from '@/utils/logging/logger.js';
-import { handleError } from '@/utils/errors/errorHandling.js';
+import { handleError } from '@/utils/errors/index.js';
 
 /**
  * Generate a summary from a YouTube video

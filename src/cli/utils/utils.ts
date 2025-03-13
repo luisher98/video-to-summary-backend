@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
-import { TEMP_DIRS } from '../../utils/constants/paths.js';
+import { TempPaths } from '@/config/paths.js';
 
 /**
  * Gets the absolute path for saving files in the local directory.
@@ -13,9 +13,9 @@ import { TEMP_DIRS } from '../../utils/constants/paths.js';
  */
 export async function getLocalDirectoryPath(fileName: string): Promise<string> {
     try {
-        console.log('Using transcripts directory:', TEMP_DIRS.transcripts);
-        await fs.mkdir(TEMP_DIRS.transcripts, { recursive: true });
-        return path.join(TEMP_DIRS.transcripts, fileName);
+        console.log('Using transcripts directory:', TempPaths.TRANSCRIPTS);
+        await fs.mkdir(TempPaths.TRANSCRIPTS, { recursive: true });
+        return path.join(TempPaths.TRANSCRIPTS, fileName);
     } catch (error) {
         console.error('Error resolving local directory path:', error);
         throw error;

@@ -28,13 +28,16 @@ export const StaticPaths = {
 export const TempPaths = {
     ROOT: process.env.TEMP_DIR ? 
         path.resolve(process.env.TEMP_DIR) : 
-        path.join(process.cwd(), 'tmp'),
+        path.join(rootDir, 'data', 'tmp'),
     get UPLOADS() { return path.join(this.ROOT, 'uploads') },
     get AUDIOS() { return path.join(this.ROOT, 'audios') },
     get TRANSCRIPTS() { return path.join(this.ROOT, 'transcripts') },
     get COOKIES() { return path.join(this.ROOT, 'cookies') },
     get SESSIONS() { return path.join(this.ROOT, 'sessions') }
 } as const;
+
+// For backward compatibility
+export const VIDEO_DOWNLOAD_PATH = TempPaths.AUDIOS;
 
 /**
  * Path resolution functions

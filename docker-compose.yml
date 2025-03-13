@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  youtube-summary-api:
+    build: .
+    ports:
+      - "5050:5050"
+    environment:
+      - NODE_ENV=production
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/usr/src/app/logs
+      - ./tmp:/usr/src/app/tmp
+    restart: unless-stopped 

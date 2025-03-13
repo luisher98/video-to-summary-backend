@@ -6,7 +6,6 @@
 src/
 ├── cli/          # Command-line interface
 ├── config/       # Application configuration
-├── domain/       # Domain models and business logic
 ├── lib/          # External library integrations
 ├── server/       # Web server and API routes
 ├── services/     # Core services (summary, storage, etc.)

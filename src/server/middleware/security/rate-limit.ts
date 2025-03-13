@@ -1,5 +1,5 @@
 import rateLimit from 'express-rate-limit';
-import { SERVER_CONFIG } from '../../config.js';
+import { SERVER_CONFIG } from '../../../config/server.js';
 
 // Basic rate limiting
 export const basic = rateLimit({

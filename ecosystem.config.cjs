@@ -24,8 +24,8 @@ module.exports = {
     env_development: {
       NODE_ENV: 'development'
     },
-    output: 'process.stdout',
-    error: 'process.stderr',
+    output: 'data/logs/process.stdout',
+    error: 'data/logs/process.stderr',
     merge_logs: true
   }]
 }; 

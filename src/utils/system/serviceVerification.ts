@@ -139,6 +139,9 @@ async function verifyAzureStorage(): Promise<ServiceStatus> {
                     case StorageErrorCode.UNAUTHORIZED:
                         errorMessage += 'Unauthorized - verify service principal has proper RBAC permissions';
                         break;
+                    case StorageErrorCode.NOT_FOUND:
+                        errorMessage += 'Container not found';
+                        break;
                     default:
                         errorMessage += storageError.message;
                 }

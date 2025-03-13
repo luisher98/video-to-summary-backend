@@ -19,7 +19,7 @@ import { startServer, stopServer } from '@/server/server.js';
 import { startCLI } from '@/cli/cli.js';
 import express from 'express';
 import { clearAllTempDirs } from '@/utils/file/tempDirs.js';
-import { Paths } from '@/infrastructure/config/paths.js';
+import { Paths } from '@/config/paths.js';
 
 // Initialize paths
 console.log('Application paths initialized:', {

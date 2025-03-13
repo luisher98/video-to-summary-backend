@@ -2,7 +2,7 @@ import { Router } from 'express';
 import storage from './storage/index.js';
 import summary from './summary/index.js';
 import health from './health/index.js';
-import test from './_testSSE/index.js';
+import test from './healthSSE/index.js';
 import videos from './videos/index.js';
 
 const router = Router();

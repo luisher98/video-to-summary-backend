@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { createStorageService, StorageError } from '@/services/storage/StorageService.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { handleError } from '@/utils/errors/errorHandling.js';
+import { handleError } from '@/utils/errors/index.js';
 import { validateFileUpload } from '@/server/middleware/validation/upload.js';
 
 const router = Router();

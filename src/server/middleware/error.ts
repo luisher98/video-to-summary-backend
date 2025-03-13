@@ -1,37 +1,32 @@
 import { Request, Response, NextFunction } from 'express';
-import { StorageError } from '../../services/storage/internal/errors/storage.error.js';
-import { APIError, handleError } from '@/utils/errors/errorHandling.js';
+import { ApplicationError, HttpError } from '@/utils/errors/index.js';
 
-export function errorHandler(
-    error: Error,
-    req: Request,
-    res: Response,
-    next: NextFunction
-): void {
+/**
+ * Error handling middleware for routes
+ */
+export function errorHandler(error: Error, req: Request, res: Response, next: NextFunction): void {
     console.error('Route error:', {
         path: req.path,
         error: error.message,
         stack: error.stack
     });
 
-    if (error instanceof StorageError) {
-        res.status(400).json({
-            error: {
-                code: error.code,
-                message: error.message
-            }
-        });
+    if (error instanceof HttpError) {
+        res.status(error.statusCode).json({ error: error.toJSON() });
         return;
     }
 
-    if (error instanceof APIError) {
-        res.status(error.statusCode).json({
-            error: {
-                message: error.message
-            }
-        });
+    if (error instanceof ApplicationError) {
+        res.status(500).json({ error: error.toJSON() });
         return;
     }
 
-    handleError(error, res);
+    // Default error response
+    res.status(500).json({
+        error: {
+            name: error.name,
+            message: error.message,
+            code: 'INTERNAL_SERVER_ERROR'
+        }
+    });
 } 

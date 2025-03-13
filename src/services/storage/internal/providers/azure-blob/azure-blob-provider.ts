@@ -2,7 +2,7 @@ import { BlobServiceClient, ContainerClient, BlockBlobClient } from '@azure/stor
 import { Readable } from 'stream';
 import { v4 as uuidv4 } from 'uuid';
 import { StorageProvider } from '../../interfaces/storage-provider.interface.js';
-import { StorageError, StorageErrorCode } from '../../errors/storage.error.js';
+import { StorageError, StorageErrorCode } from '@/utils/errors/index.js';
 import { StorageFile, UploadUrlResult, AzureStorageConfiguration, ServicePrincipalCredentials, UploadConfiguration } from '../../interfaces/storage-file.interface.js';
 import { AuthStrategy } from '../../interfaces/auth-strategy.interface.js';
 import { AzureServicePrincipalAuthStrategy } from './auth-strategy/service-principal-auth.js';

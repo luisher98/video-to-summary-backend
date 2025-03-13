@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { createStorageService } from '@/services/storage/StorageService.js';
 import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { handleError } from '@/utils/errors/errorHandling.js';
+import { handleError } from '@/utils/errors/index.js';
 import { v4 as uuidv4 } from 'uuid';
 import { Readable } from 'stream';
 

@@ -1,10 +1,10 @@
 import * as security from './security/index.js';
 import * as validation from './validation/index.js';
-import { errorHandler } from './error.js';
+import { handleError } from '@/utils/errors/index.js';
 
 // Re-export all middleware
 export { security, validation };
-export const errors = { handler: errorHandler };
+export const errors = { handler: handleError };
 
 // Common middleware chains
 export const commonMiddleware = [

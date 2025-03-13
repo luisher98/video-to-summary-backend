@@ -4,7 +4,7 @@
  * 
  * Available utilities by category:
  * 
- * 1. Constants
+ * 1. Configuration
  * - fileSize: File size limits and chunk sizes for processing
  * - paths: Application directory paths and temporary storage locations
  * 
@@ -27,12 +27,12 @@
  * - logger: Structured logging with request tracking
  * 
  * 7. Error Handling
- * - errorHandling: Custom error classes and HTTP error handling
+ * - errors: Centralized error handling with domain-specific errors and HTTP errors
  */
 
-// Constants
-export * from '@/utils/constants/fileSize.js';
-export * from '@/utils/constants/paths.js';
+// Configuration
+export * from '@/config/fileSize.js';
+export * from '@/config/paths.js';
 
 // File utilities
 export * from '@/utils/file/tempDirs.js';
@@ -53,4 +53,4 @@ export * from '@/utils/system/env.js';
 export * from '@/utils/logging/logger.js';
 
 // Error handling
-export * from '@/utils/errors/errorHandling.js'; 
+export * from '@/utils/errors/index.js'; 

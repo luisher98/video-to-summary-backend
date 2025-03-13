@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { Paths } from '@/infrastructure/config/paths.js';
+import { Paths } from '@/config/paths.js';
 
 /**
  * Initializes all temporary directories needed by the application

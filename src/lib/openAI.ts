@@ -1,55 +1,14 @@
 import fs from 'fs';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
-import { TEMP_DIRS } from '../utils/constants/paths.js';
+import { config } from '@/config/environment.js';
+import { TempPaths } from '@/config/paths.js';
 
 dotenv.config();
 
 const apiKey = process.env.OPENAI_API_KEY;
-
-/**
- * Tests connection to OpenAI API by attempting a simple completion.
- * 
- * @returns {Promise<boolean>} True if connection is successful
- */
-export async function checkOpenAIConnection() {
-    if (process.env.NODE_ENV === 'test') return true;
-    
-    try {
-        const headers = new Headers({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${apiKey}`,
-        });
-
-        const payload = {
-            model: 'gpt-3.5-turbo',
-            messages: [
-                {
-                    role: 'system',
-                    content: 'You are a helpful assistant.',
-                },
-                {
-                    role: 'user',
-                    content: 'Write a haiku that explains the concept of recursion.',
-                },
-            ],
-        };
-
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(payload),
-        });
-
-        const data = await response.json();
-        if (data.error) {
-            throw new Error(data.error.message);
-        }
-        return true;
-    } catch (error) {
-        console.error('Failed to connect to OpenAI:', error);
-        return false;
-    }
+if (!apiKey) {
+    throw new Error('OPENAI_API_KEY is not set');
 }
 
 // Initialize OpenAI client
@@ -57,23 +16,31 @@ const openai = new OpenAI({ apiKey });
 checkOpenAIConnection().catch(console.error);
 
 /**
- * Generates a transcript from an audio file using OpenAI's Whisper model.
- * 
- * @param {string} id - File ID of the audio to transcribe
- * @returns {Promise<string>} Generated transcript text
- * @throws {Error} If transcription fails
+ * Checks if OpenAI connection is working
+ */
+export async function checkOpenAIConnection(): Promise<boolean> {
+    try {
+        const models = await openai.models.list();
+        return models.data.length > 0;
+    } catch (error) {
+        console.error('OpenAI connection check failed:', error);
+        return false;
+    }
+}
+
+/**
+ * Generates a transcript from an audio file
  */
 export async function generateTranscript(id: string): Promise<string> {
     try {
         const transcription = await openai.audio.transcriptions.create({
-            file: fs.createReadStream(`${TEMP_DIRS.audios}/${id}.mp3`),
-            model: 'whisper-1',
+            file: fs.createReadStream(`${TempPaths.AUDIOS}/${id}.mp3`),
+            model: 'whisper-1'
         });
-
-        const data = transcription.text;
-        return data;
+        return transcription.text;
     } catch (error) {
-        throw new Error(`there was an issue transcribing the audio (${error})`);
+        console.error('Transcription error:', error);
+        throw error;
     }
 }
 

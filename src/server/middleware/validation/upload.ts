@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { BadRequestError } from '@/utils/errors/errorHandling.js';
+import { BadRequestError } from '@/utils/errors/index.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { FILE_SIZE } from '@/utils/constants/fileSize.js';
+import { FILE_SIZE } from '@/config/fileSize.js';
 
 export function validateInitiateUpload(req: Request, res: Response, next: NextFunction): void {
     const { fileName, fileSize } = req.body;

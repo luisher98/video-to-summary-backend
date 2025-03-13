@@ -1,11 +1,11 @@
 import { IMediaProcessor, MediaSource } from '../../../interfaces/IMediaProcessor.js';
 import { ProcessedMedia } from '../../../types/summary.types.js';
 
-import { BadRequestError } from '@/utils/errors/errorHandling.js';
+import { BadRequestError } from '@/utils/errors/index.js';
 import { YouTubeDownloader } from './youtubeDownloader.js';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { TEMP_DIRS } from '@/utils/constants/paths.js';
+import { TempPaths } from '@/config/paths.js';
 import { ensureDir } from '@/utils/file/tempDirs.js';
 import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 
@@ -33,14 +33,14 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
     try {
       // Ensure audio directory exists
       processTimer.startProcess('Resource Setup');
-      await ensureDir(TEMP_DIRS.audios);
+      await ensureDir(TempPaths.AUDIOS);
       logProcessStep('Resource Setup', 'complete', 'environment ready');
       processTimer.endProcess('Resource Setup');
 
       // Download and process the video
       processTimer.startProcess('Download');
       const videoId = await YouTubeDownloader.downloadVideo(url);
-      const audioPath = path.join(TEMP_DIRS.audios, `${videoId}.mp3`);
+      const audioPath = path.join(TempPaths.AUDIOS, `${videoId}.mp3`);
       processTimer.endProcess('Download');
       
       // Get audio file stats
@@ -67,7 +67,7 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
       // Clean up any partial downloads
       try {
         const videoId = path.basename(url).replace(/[^a-z0-9]/gi, '_');
-        const audioPath = path.join(TEMP_DIRS.audios, `${videoId}.mp3`);
+        const audioPath = path.join(TempPaths.AUDIOS, `${videoId}.mp3`);
         await fs.unlink(audioPath);
         logProcessStep('Cleanup', 'complete', 'partial download removed');
       } catch {
@@ -83,7 +83,7 @@ export class YouTubeMediaProcessor implements IMediaProcessor {
     logProcessStep(processName, 'start', { mediaId });
 
     try {
-      const audioPath = path.join(TEMP_DIRS.audios, `${mediaId}.mp3`);
+      const audioPath = path.join(TempPaths.AUDIOS, `${mediaId}.mp3`);
       await fs.access(audioPath);
       await fs.unlink(audioPath);
       logProcessStep(processName, 'complete', 'resources freed');

@@ -1,12 +1,11 @@
 import { IMediaProcessor, MediaSource } from '../../../interfaces/IMediaProcessor.js';
 import { ProcessedMedia } from '../../../types/summary.types.js';
-
-import { BadRequestError } from '@/utils/errors/errorHandling.js';
+import { BadRequestError } from '@/utils/errors/index.js';
 import { validateVideoFile } from '@/utils/file/fileValidation.js';
 import { promises as fs } from 'fs';
 import fs_sync from 'fs';
 import path from 'path';
-import { TEMP_DIRS } from '@/utils/constants/paths.js';
+import { TempPaths } from '@/config/paths.js';
 import { v4 as uuidv4 } from 'uuid';
 import ffmpeg from 'fluent-ffmpeg';
 import { getFfmpegPath, getFfprobePath } from '@/utils/media/ffmpeg.js';
@@ -37,13 +36,13 @@ export class FileUploadMediaProcessor implements IMediaProcessor {
 
     const { file, filename, size } = source.data;
     const fileId = uuidv4();
-    const tempVideoPath = path.join(TEMP_DIRS.sessions, `${fileId}-original${path.extname(filename)}`);
-    const audioPath = path.join(TEMP_DIRS.audios, `${fileId}.mp3`);
+    const tempVideoPath = path.join(TempPaths.SESSIONS, `${fileId}-original${path.extname(filename)}`);
+    const audioPath = path.join(TempPaths.AUDIOS, `${fileId}.mp3`);
 
     try {
       // Create directories
-      await fs.mkdir(TEMP_DIRS.sessions, { recursive: true });
-      await fs.mkdir(TEMP_DIRS.audios, { recursive: true });
+      await fs.mkdir(TempPaths.SESSIONS, { recursive: true });
+      await fs.mkdir(TempPaths.AUDIOS, { recursive: true });
 
       // Save stream to temporary file
       const writeStream = fs_sync.createWriteStream(tempVideoPath);
@@ -105,14 +104,14 @@ export class FileUploadMediaProcessor implements IMediaProcessor {
   }
 
   async cleanup(mediaId: string): Promise<void> {
-    const sessionPath = path.join(TEMP_DIRS.sessions, `${mediaId}-original.*`);
-    const audioPath = path.join(TEMP_DIRS.audios, `${mediaId}.mp3`);
+    const sessionPath = path.join(TempPaths.SESSIONS, `${mediaId}-original.*`);
+    const audioPath = path.join(TempPaths.AUDIOS, `${mediaId}.mp3`);
 
     // Clean up session file
-    const sessionFiles = await fs.readdir(TEMP_DIRS.sessions);
+    const sessionFiles = await fs.readdir(TempPaths.SESSIONS);
     const matchingFiles = sessionFiles.filter(file => file.startsWith(`${mediaId}-original`));
     for (const file of matchingFiles) {
-      await fs.unlink(path.join(TEMP_DIRS.sessions, file)).catch(() => {});
+      await fs.unlink(path.join(TempPaths.SESSIONS, file)).catch(() => {});
     }
 
     // Clean up audio file
