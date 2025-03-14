@@ -1,7 +1,8 @@
 import { ITranscriptionService } from '../../interfaces/ITranscriptionService.js';
 import { ProcessedMedia, Transcript } from '../../types/summary.types.js';
-import { generateTranscript } from '@/lib/openAI.js';
+import { generateTranscript } from '@/integrations/openAI.js';
 import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
+import { MediaError, MediaErrorCode } from '@/utils/errors/index.js';
 
 export class OpenAITranscriptionService implements ITranscriptionService {
   async transcribe(
@@ -9,15 +10,43 @@ export class OpenAITranscriptionService implements ITranscriptionService {
   ): Promise<Transcript> {
     const processName = 'Speech Recognition';
     processTimer.startProcess(processName);
-    logProcessStep(processName, 'start', { model: 'Whisper', format: media.metadata.format });
+    logProcessStep(processName, 'start', { 
+      model: 'Whisper',
+      format: media.metadata.format,
+      duration: media.metadata.duration,
+      mediaId: media.id
+    });
 
     try {
+      // Validate input
+      processTimer.startProcess('Input Validation');
+      if (!media.audioPath) {
+        throw new MediaError(
+          'No audio file provided for transcription',
+          MediaErrorCode.PROCESSING_FAILED,
+          { mediaId: media.id }
+        );
+      }
+      processTimer.endProcess('Input Validation');
+
+      // Generate transcript
+      processTimer.startProcess('Transcription');
       const text = await generateTranscript(media.id);
+      if (!text || text.trim().length === 0) {
+        throw new MediaError(
+          'Generated transcript is empty',
+          MediaErrorCode.PROCESSING_FAILED,
+          { mediaId: media.id }
+        );
+      }
+      processTimer.endProcess('Transcription');
+
+      // Process transcript
+      processTimer.startProcess('Segmentation');
       const words = text.split(/\s+/);
-      
-      // Create segments for the transcript
       const wordsPerSegment = 50;
       const segments = [];
+
       for (let i = 0; i < words.length; i += wordsPerSegment) {
         segments.push({
           text: words.slice(i, i + wordsPerSegment).join(' '),
@@ -25,20 +54,51 @@ export class OpenAITranscriptionService implements ITranscriptionService {
           endTime: (Math.min(i + wordsPerSegment, words.length) / words.length) * media.metadata.duration
         });
       }
+      processTimer.endProcess('Segmentation');
 
       logProcessStep(processName, 'complete', { 
         wordCount: words.length,
         segments: segments.length,
-        rate: `${Math.round(words.length / (media.metadata.duration || 1))}w/s`
+        rate: `${Math.round(words.length / (media.metadata.duration || 1))}w/s`,
+        mediaId: media.id
       });
       processTimer.endProcess(processName);
 
       return { text, segments };
     } catch (error) {
-      const err = error instanceof Error ? error : new Error(String(error));
-      logProcessStep(processName, 'error', { error: err.message });
-      processTimer.endProcess(processName, err);
-      throw err;
+      // End all active processes
+      ['Segmentation', 'Transcription', 'Input Validation', processName].forEach(process => {
+        try {
+          processTimer.endProcess(process, error instanceof Error ? error : new Error(String(error)));
+        } catch {
+          // Process might not have been started
+        }
+      });
+
+      // Log error with context
+      logProcessStep(processName, 'error', {
+        error: error instanceof Error ? error.message : String(error),
+        mediaId: media.id,
+        format: media.metadata.format,
+        duration: media.metadata.duration
+      });
+
+      // Handle different error types
+      if (error instanceof MediaError) {
+        throw error;
+      }
+
+      // Wrap unknown errors
+      throw new MediaError(
+        'Failed to transcribe audio',
+        MediaErrorCode.PROCESSING_FAILED,
+        {
+          mediaId: media.id,
+          format: media.metadata.format,
+          duration: media.metadata.duration,
+          error: error instanceof Error ? error.message : String(error)
+        }
+      );
     }
   }
 } 

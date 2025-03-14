@@ -1,4 +1,4 @@
-import { checkOpenAIConnection } from '@/lib/openAI.js';
+import { checkOpenAIConnection } from '@/integrations/openAI.js';
 import { createStorageService, StorageError, StorageErrorCode } from '../../services/storage/StorageService.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
 import { config } from '@/config/environment.js';

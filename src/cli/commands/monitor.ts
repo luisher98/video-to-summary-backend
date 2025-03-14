@@ -1,7 +1,7 @@
 import { blue, green, red, yellow, warning, success } from '../style/colors.js';
 import { formatBytes } from '../../utils/formatters/fileSize.js';
 import { formatDuration } from '../../utils/formatters/dateTime.js';
-import { getQueueStatus } from '../../server/middleware/security/index.js';
+import { getQueueStatus } from '../../server/middleware/security/lifecycle.js';
 import os from 'os';
 import { Command } from 'commander';
 

@@ -8,6 +8,7 @@ export interface SummaryMetadata {
   sourceType: 'youtube' | 'file';
   sourceId: string;
   timestamp: Date;
+  compressionRatio?: number;
 }
 
 export interface SummaryOptions {

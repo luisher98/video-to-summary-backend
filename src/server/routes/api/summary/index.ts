@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { security } from '../../../middleware/index.js';
+import { security } from '../../../middleware/middleware.js';
 import youtube from './youtube/index.js';
 import upload from './upload/index.js';
 
 const router = Router();
 
 // Apply summary-specific middleware
-router.use(security.rateLimit.processing);
+router.use(security.request.rateLimit.processing);
 
 // Mount summary provider routes
 router.use('/youtube', youtube);

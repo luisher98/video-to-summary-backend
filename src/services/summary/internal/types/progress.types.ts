@@ -21,11 +21,16 @@ export interface Progress {
  */
 export type ProcessingStatus = 
     | 'pending'
+    | 'validating'
+    | 'initializing'
     | 'uploading'
+    | 'downloading'
     | 'processing'
     | 'converting'
     | 'transcribing'
+    | 'segmenting'
     | 'summarizing'
+    | 'finalizing'
     | 'done'
     | 'error';
 
@@ -44,33 +49,57 @@ export interface ProcessingStage {
  */
 export const PROCESSING_STAGES: ProcessingStage[] = [
     {
-        name: 'initialization',
-        status: 'pending',
-        progressRange: [0, 5],
-        getMessage: () => 'Initializing...'
+        name: 'input_validation',
+        status: 'validating',
+        progressRange: [0, 2],
+        getMessage: () => 'Validating input...'
     },
     {
-        name: 'media',
+        name: 'resource_setup',
+        status: 'initializing',
+        progressRange: [2, 5],
+        getMessage: () => 'Setting up resources...'
+    },
+    {
+        name: 'media_download',
+        status: 'downloading',
+        progressRange: [5, 20],
+        getMessage: (progress) => `Downloading media (${progress}%)`
+    },
+    {
+        name: 'audio_processing',
         status: 'processing',
-        progressRange: [5, 35],
-        getMessage: (progress) => `Processing media (${progress}%)`
+        progressRange: [20, 35],
+        getMessage: (progress) => `Processing audio (${progress}%)`
     },
     {
-        name: 'transcription',
+        name: 'speech_recognition',
         status: 'transcribing',
         progressRange: [35, 70],
-        getMessage: (progress) => `Generating transcript (${progress}%)`
+        getMessage: (progress) => `Converting speech to text (${progress}%)`
+    },
+    {
+        name: 'text_segmentation',
+        status: 'segmenting',
+        progressRange: [70, 75],
+        getMessage: (progress) => `Segmenting text (${progress}%)`
     },
     {
         name: 'summarization',
         status: 'summarizing',
-        progressRange: [70, 95],
+        progressRange: [75, 95],
         getMessage: (progress) => `Generating summary (${progress}%)`
+    },
+    {
+        name: 'result_processing',
+        status: 'finalizing',
+        progressRange: [95, 98],
+        getMessage: (progress) => `Processing results (${progress}%)`
     },
     {
         name: 'done',
         status: 'done',
-        progressRange: [95, 100],
+        progressRange: [98, 100],
         getMessage: () => 'Complete'
     }
 ]; 

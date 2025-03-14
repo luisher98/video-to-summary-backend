@@ -1,4 +1,5 @@
 import { InternalServerError, BadRequestError } from "@/utils/errors/index.js";
+import { processTimer, logRequest, logProcessStep } from "@/utils/logging/logger.js";
 import { YouTubeApiResponse } from "./videoInfo.types.js";
 
 /**
@@ -14,7 +15,12 @@ import { YouTubeApiResponse } from "./videoInfo.types.js";
  * console.log(info.title, info.channelTitle);
  */
 export default async function videoInfo(url: string) {
+  processTimer.startProcess('video-info');
+  logProcessStep('video-info', 'start', { url });
+
   try {
+    // URL validation
+    processTimer.startProcess('url-validation');
     if (!url.includes('?v=')) {
       throw new BadRequestError("Invalid YouTube URL format");
     }
@@ -23,19 +29,26 @@ export default async function videoInfo(url: string) {
     if (!id) {
       throw new BadRequestError("Could not extract video ID from URL");
     }
+    processTimer.endProcess('url-validation');
 
+    // API key validation
+    processTimer.startProcess('api-validation');
     const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
     if (!YOUTUBE_API_KEY) {
       throw new InternalServerError("YouTube API key is not configured");
     }
+    processTimer.endProcess('api-validation');
 
-    console.log('Fetching video info for ID:', id);
+    // Fetch video data
+    processTimer.startProcess('api-fetch');
+    logProcessStep('api-fetch', 'start', { videoId: id });
+    
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?id=${id}&key=${YOUTUBE_API_KEY}&part=snippet,contentDetails`
     );
 
     if (!response.ok) {
-      console.error('YouTube API error:', {
+      logProcessStep('api-fetch', 'error', {
         status: response.status,
         statusText: response.statusText
       });
@@ -43,8 +56,11 @@ export default async function videoInfo(url: string) {
     }
 
     const data = await response.json() as YouTubeApiResponse;
-    console.log('YouTube API response:', data);
+    processTimer.endProcess('api-fetch');
+    logProcessStep('api-fetch', 'complete', { videoId: id });
 
+    // Process response
+    processTimer.startProcess('data-processing');
     if (!data.items?.length) {
       throw new BadRequestError("Video not found or is unavailable");
     }
@@ -56,7 +72,7 @@ export default async function videoInfo(url: string) {
     // Parse duration from PT1H2M10S format to seconds
     const duration = parseDuration(contentDetails.duration);
 
-    return {
+    const result = {
       id,
       title: snippet.title,
       description: shortenString(snippet.description, 500),
@@ -64,12 +80,38 @@ export default async function videoInfo(url: string) {
       channel: snippet.channelTitle,
       duration
     };
+
+    processTimer.endProcess('data-processing');
+    processTimer.endProcess('video-info');
+
+    logRequest({
+      event: 'video_info_fetched',
+      videoId: id,
+      processTimings: processTimer.getTimings()
+    });
+
+    return result;
   } catch (error) {
-    console.error('Error in videoInfo:', error);
+    // End any active processes
+    ['data-processing', 'api-fetch', 'api-validation', 'url-validation', 'video-info'].forEach(process => {
+      try {
+        processTimer.endProcess(process, error instanceof Error ? error : new Error(String(error)));
+      } catch {
+        // Process might not have been started
+      }
+    });
+
+    logRequest({
+      event: 'video_info_error',
+      error: error instanceof Error ? error.message : 'Unknown error',
+      url,
+      processTimings: processTimer.getTimings()
+    });
+
     if (error instanceof BadRequestError || error instanceof InternalServerError) {
       throw error;
     }
-    throw new InternalServerError("Failed to process video info");
+    throw new InternalServerError("Failed to process video info", "VIDEO_INFO_ERROR", { originalError: error });
   }
 }
 

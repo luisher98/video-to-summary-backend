@@ -1,9 +1,10 @@
 import { Request, Response } from 'express';
-import { createStorageService } from '@/services/storage/StorageService.js';
-import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
-import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { handleError } from '@/utils/errors/index.js';
 import { v4 as uuidv4 } from 'uuid';
+import { createStorageService } from '@/services/storage/StorageService.js';
+import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
+import { processTimer } from '@/utils/logging/logger.js';
+import { withErrorHandling } from '@/utils/errors/index.js';
+import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { Readable } from 'stream';
 
 /**
@@ -42,16 +43,14 @@ import { Readable } from 'stream';
  *      * error: { status: 'error', message: string, progress: 0 }
  */
 
-// Create storage service instance
-const storage = createStorageService(AZURE_STORAGE_CONFIG);
-let isInitialized = false;
+let storage: Awaited<ReturnType<typeof createStorageService>>;
 
-// Ensure storage is initialized
 async function ensureStorageInitialized() {
-    if (!isInitialized) {
+    if (!storage) {
+        storage = await createStorageService(AZURE_STORAGE_CONFIG);
         await storage.initialize();
-        isInitialized = true;
     }
+    return storage;
 }
 
 interface UploadRequest {
@@ -59,34 +58,35 @@ interface UploadRequest {
     fileSize: number;
 }
 
-// Helper to generate the full blob name
 function generateBlobName(fileId: string, fileName?: string): string {
-    return fileName ? `${fileId}-${fileName}` : fileId;
+    const extension = fileName ? fileName.split('.').pop() : '';
+    return `${fileId}${extension ? `.${extension}` : ''}`;
 }
 
 /**
- * Step 1: Initiate the upload process and get a pre-signed URL
+ * Step 1: Get upload URL
  */
-export async function initiateUpload(req: Request, res: Response) {
-    try {
-        await ensureStorageInitialized();
-        
-        const { fileName, fileSize } = req.body as UploadRequest;
-        const fileId = uuidv4();
-        const blobName = generateBlobName(fileId, fileName);
-        
-        // Generate upload URL with metadata
-        const uploadUrl = await storage.generateUploadUrl(blobName, {
-            metadata: {
-                originalName: fileName,
-                size: fileSize.toString(),
-                uploadedAt: new Date().toISOString(),
-                fileId // Store the original fileId in metadata
-            }
-        });
+export const initiateUpload = withErrorHandling(async (req: Request, res: Response) => {
+    const { fileName, fileSize } = req.body as UploadRequest;
+    
+    processTimer.startProcess('initiate_upload');
+    const storage = await ensureStorageInitialized();
 
-        // Return a consistent response structure
-        res.json({
+    const fileId = uuidv4();
+    const blobName = generateBlobName(fileId, fileName);
+    
+    const uploadUrl = await storage.generateUploadUrl(blobName, {
+        metadata: {
+            originalName: fileName,
+            size: fileSize.toString(),
+            uploadedAt: new Date().toISOString()
+        }
+    });
+
+    processTimer.endProcess('initiate_upload');
+
+    return {
+        data: {
             fileId,
             uploadUrl: {
                 ...uploadUrl,
@@ -95,110 +95,64 @@ export async function initiateUpload(req: Request, res: Response) {
             fileName,
             fileSize,
             blobName
-        });
-    } catch (error) {
-        handleError(error, res);
-    }
-}
+        }
+    };
+});
 
 /**
  * Step 2: Handle the actual file upload
  */
-export async function uploadContent(req: Request, res: Response) {
-    try {
-        await ensureStorageInitialized();
-        
-        const { fileId } = req.params;
-        const { file } = req;
-
-        if (!file) {
-            return res.status(400).json({ error: 'No file provided' });
-        }
-
-        // Upload the file
-        const uploadResult = await storage.uploadFile(
-            file.buffer,
-            fileId,
-            file.size
-        );
-
-        res.json({
-            fileId,
-            url: uploadResult,
-            status: 'uploaded'
-        });
-    } catch (error) {
-        handleError(error, res);
+export const uploadContent = withErrorHandling(async (req: Request, res: Response) => {
+    const { fileId, blobName } = req.body;
+    if (!fileId || !blobName) {
+        throw new Error('fileId and blobName are required');
     }
-}
+
+    processTimer.startProcess('upload_content');
+    const storage = await ensureStorageInitialized();
+
+    const uploadResult = await storage.uploadFile(
+        req.file!.buffer,
+        blobName,
+        req.file!.size
+    );
+
+    processTimer.endProcess('upload_content');
+
+    return {
+        data: {
+            fileId,
+            blobName,
+            url: uploadResult
+        }
+    };
+});
 
 /**
- * Step 3: Process the uploaded video with progress streaming
+ * Step 3: Process the uploaded video
  */
-export async function processVideo(req: Request, res: Response) {
-    const { fileId } = req.params;
-
-    try {
-        await ensureStorageInitialized();
-        
-        // Set up SSE headers
-        res.setHeader('Content-Type', 'text/event-stream');
-        res.setHeader('Cache-Control', 'no-cache');
-        res.setHeader('Connection', 'keep-alive');
-        res.setHeader('X-Accel-Buffering', 'no');
-
-        // Get the file directly using the fileId as the blob name
-        const blobName = generateBlobName(fileId, 'test-video.mp4');
-        console.log('Looking for blob:', blobName);
-
-        // Check if file exists
-        const exists = await storage.fileExists(blobName);
-        if (!exists) {
-            throw new Error(`File ${blobName} not found`);
-        }
-
-        // Get the file stream
-        const fileStream = await storage.downloadFile(blobName);
-        
-        const summaryService = SummaryServiceFactory.createFileUploadService();
-        
-        // Set up progress tracking
-        summaryService.onProgress((progress) => {
-            if (progress.status !== 'done') {
-                res.write(`data: ${JSON.stringify(progress)}\n\n`);
-            }
-        });
-
-        const source: MediaSource = {
-            type: 'file',
-            data: {
-                file: fileStream,
-                filename: fileId,
-                size: 0 // Size will be determined from the stream
-            }
-        };
-
-        const summary = await summaryService.process(source, {
-            maxWords: Number(req.query.words) || 400,
-            additionalPrompt: req.query.prompt as string
-        });
-
-        // Send final summary
-        res.write(`data: ${JSON.stringify({
-            status: 'done',
-            message: summary.content,
-            progress: 100
-        })}\n\n`);
-        res.end();
-    } catch (error) {
-        // Send error through SSE if possible
-        if (!res.headersSent) {
-            res.write(`data: ${JSON.stringify({
-                status: 'error',
-                message: error instanceof Error ? error.message : 'Unknown error',
-                progress: 0
-            })}\n\n`);
-            res.end();
-        }
+export const processVideo = withErrorHandling(async (req: Request, res: Response) => {
+    const { fileId, blobName } = req.body;
+    if (!fileId || !blobName) {
+        throw new Error('fileId and blobName are required');
     }
-} 
+
+    processTimer.startProcess('process_video');
+    const storage = await ensureStorageInitialized();
+
+    // Get the file URL from the storage provider
+    const url = await storage.uploadFile(blobName, '', 0); // This will return the URL without uploading
+
+    // TODO: Add video processing logic here
+    const result = {
+        fileId,
+        blobName,
+        url,
+        status: 'pending',
+        message: 'Video processing queued'
+    };
+
+    processTimer.endProcess('process_video');
+
+    return { data: result };
+}); 

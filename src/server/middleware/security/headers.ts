@@ -1,28 +1,35 @@
 import { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
+import { SERVER_CONFIG } from '@/config/server.js';
 
-// Basic security headers
-export const basic = helmet();
+/**
+ * Basic security headers middleware using helmet
+ */
+export const basicHeaders = helmet();
 
-// Content Security Policy
-export const csp = helmet.contentSecurityPolicy({
+/**
+ * Content Security Policy middleware
+ */
+export const cspHeaders = helmet.contentSecurityPolicy({
     directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "'unsafe-inline'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: ["'self'", "https:"],
-        fontSrc: ["'self'", "https:", "data:"],
-        objectSrc: ["'none'"],
-        mediaSrc: ["'self'"],
-        frameSrc: ["'none'"],
+        ...SERVER_CONFIG.security.csp,
+        upgradeInsecureRequests: [] // Empty array means enabled
     }
 });
 
-// CORS headers
-export const cors = (req: Request, res: Response, next: NextFunction): void => {
+/**
+ * CORS headers middleware
+ */
+export function corsHeaders(req: Request, res: Response, next: NextFunction): void {
+    const { methods, allowedHeaders } = SERVER_CONFIG.security.cors;
+    
     res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', methods.join(', '));
+    res.header('Access-Control-Allow-Headers', allowedHeaders.join(', '));
+    
+    if (SERVER_CONFIG.security.cors.credentials) {
+        res.header('Access-Control-Allow-Credentials', 'true');
+    }
+    
     next();
-}; 
+} 

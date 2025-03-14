@@ -7,6 +7,7 @@ import { StorageFile, UploadUrlResult, AzureStorageConfiguration, ServicePrincip
 import { AuthStrategy } from '../../interfaces/auth-strategy.interface.js';
 import { AzureServicePrincipalAuthStrategy } from './auth-strategy/service-principal-auth.js';
 import { AzureConnectionStringAuthStrategy } from './auth-strategy/connection-string-auth.js';
+import { Transform } from 'stream';
 
 export class AzureBlobStorageProvider implements StorageProvider {
     private blobServiceClient: BlobServiceClient | null = null;
@@ -111,20 +112,57 @@ export class AzureBlobStorageProvider implements StorageProvider {
         };
     }
 
-    async uploadFile(file: Buffer | Readable, fileName: string, fileSize?: number): Promise<string> {
+    async uploadFile(
+        file: Buffer | Readable,
+        fileName: string,
+        fileSize?: number,
+        options?: { onProgress?: (progress: number) => void }
+    ): Promise<string> {
         this.validateInitialization();
 
         try {
             const blockBlobClient = this.containerClient!.getBlockBlobClient(fileName);
             
             if (Buffer.isBuffer(file)) {
-                await blockBlobClient.uploadData(file);
+                // For Buffer uploads, we can track progress using chunks
+                const CHUNK_SIZE = 1024 * 1024; // 1MB chunks
+                let uploaded = 0;
+                
+                // Split the buffer into chunks and upload each chunk
+                for (let i = 0; i < file.length; i += CHUNK_SIZE) {
+                    const chunk = file.slice(i, Math.min(i + CHUNK_SIZE, file.length));
+                    await blockBlobClient.uploadData(chunk);
+                    
+                    uploaded += chunk.length;
+                    if (options?.onProgress) {
+                        options.onProgress((uploaded / file.length) * 100);
+                    }
+                }
             } else {
-                await blockBlobClient.uploadStream(file, undefined, undefined, {
-                    blobHTTPHeaders: {
-                        blobContentType: 'application/octet-stream'
+                // For streams, we can use the pipeline to track progress
+                const totalSize = fileSize || 0;
+                let uploaded = 0;
+                
+                const progressStream = new Transform({
+                    transform(chunk, encoding, callback) {
+                        uploaded += chunk.length;
+                        if (options?.onProgress && totalSize > 0) {
+                            options.onProgress((uploaded / totalSize) * 100);
+                        }
+                        callback(null, chunk);
                     }
                 });
+
+                await blockBlobClient.uploadStream(
+                    file.pipe(progressStream),
+                    undefined,
+                    undefined,
+                    {
+                        blobHTTPHeaders: {
+                            blobContentType: 'application/octet-stream'
+                        }
+                    }
+                );
             }
 
             return blockBlobClient.url;

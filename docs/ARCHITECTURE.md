@@ -6,7 +6,7 @@
 src/
 ├── cli/          # Command-line interface
 ├── config/       # Application configuration
-├── lib/          # External library integrations
+├── integrations/ # External service integrations
 ├── server/       # Web server and API routes
 ├── services/     # Core services (summary, storage, etc.)
 ├── types/        # TypeScript type definitions
@@ -103,4 +103,95 @@ Major external dependencies:
 - FFmpeg for media processing
 - youtube-dl for video downloads
 
-For a complete list, see [package.json](../package.json). 
+For a complete list, see [package.json](../package.json).
+
+## Project Structure
+
+The project follows a modular architecture with clear separation of concerns. Here's the directory structure:
+
+```
+.
+├── Dockerfile
+├── Readme.md
+├── data
+│   ├── logs
+│   ├── test-data
+│   │   ├── argentina.mp4
+│   │   └── joji.mp4
+│   └── tmp
+│       ├── audios
+│       ├── cookies
+│       ├── sessions
+│       ├── transcripts
+│       └── uploads
+├── docker-compose.yml
+├── docs
+│   ├── API.md
+│   ├── ARCHITECTURE.md
+│   └── UTILITIES.md
+├── ecosystem.config.cjs
+├── eslint.config.js
+├── package-lock.json
+├── package.json
+├── src
+│   ├── cli                    # Command-line interface
+│   │   ├── cli.ts
+│   │   ├── commands
+│   │   ├── parser.ts
+│   │   ├── style
+│   │   └── utils
+│   ├── config                # Application configuration
+│   │   ├── azure.ts
+│   │   ├── environment.ts
+│   │   ├── fileSize.ts
+│   │   ├── loadEnv.ts
+│   │   ├── paths.ts
+│   │   ├── server.ts
+│   │   └── youtube.ts
+│   ├── index.ts
+│   ├── integrations         # Third-party integrations
+│   │   └── openAI.ts
+│   ├── server               # HTTP server and routes
+│   │   ├── middleware
+│   │   └── routes
+│   ├── services            # Core business logic
+│   │   ├── info
+│   │   ├── storage
+│   │   └── summary
+│   ├── types              # TypeScript type definitions
+│   └── utils              # Utility functions
+│       ├── errors
+│       ├── file
+│       ├── formatters
+│       ├── logging
+│       ├── media
+│       └── system
+├── tmp                    # Temporary files (gitignored)
+│   ├── audios
+│   ├── cookies
+│   ├── sessions
+│   ├── transcripts
+│   └── uploads
+└── tsconfig.json
+```
+
+### Key Directories
+
+- **`src/config`**: Contains all configuration files for different aspects of the application (Azure, YouTube, file sizes, etc.)
+- **`src/services`**: Core business logic organized by domain (storage, summary, info)
+- **`src/server`**: HTTP server implementation, routes, and middleware
+- **`src/utils`**: Shared utility functions and error handling
+- **`data/tmp`**: Temporary file storage for processing
+- **`docs`**: Project documentation
+
+### Configuration Files
+
+The application uses several configuration files in `src/config`:
+
+- `azure.ts`: Azure Storage configuration
+- `environment.ts`: Environment variables and settings
+- `fileSize.ts`: File size limits and chunk sizes
+- `paths.ts`: Application directory paths
+- `youtube.ts`: YouTube-specific settings (cookies, download options)
+
+Each configuration file exports a strongly-typed configuration object that can be imported throughout the application. 

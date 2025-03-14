@@ -82,7 +82,9 @@ function formatDuration(ms: number): string {
  * Generates a progress bar string
  */
 function generateProgressBar(percentage: number, length: number = 20): string {
-    const filled = Math.round(percentage * length);
+    // Ensure percentage is between 0 and 1
+    const validPercentage = Math.max(0, Math.min(1, Number.isFinite(percentage) ? percentage : 0));
+    const filled = Math.round(validPercentage * length);
     const empty = length - filled;
     return `[${('█').repeat(filled)}${('░').repeat(empty)}]`;
 }
@@ -170,7 +172,8 @@ export function logProcessSummary(processTimings: ProcessTiming[]): void {
     // Display timings
     uniqueTimings.forEach(timing => {
         if (timing.duration) {
-            const percentage = timing.duration / totalDuration;
+            // Calculate percentage safely
+            const percentage = totalDuration > 0 ? timing.duration / totalDuration : 0;
             const bar = generateProgressBar(percentage, 30);
             const duration = formatDuration(timing.duration);
             const percentStr = `${(percentage * 100).toFixed(1)}%`.padStart(5);

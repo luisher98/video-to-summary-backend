@@ -1,20 +1,38 @@
-// Base errors
-export { ApplicationError } from './base/ApplicationError.js';
-export { HttpError } from './base/HttpError.js';
+// Types
+export * from './types/error.types.js';
+
+// Base error classes
+export * from './base/ApplicationError.js';
+export * from './base/HttpError.js';
 
 // HTTP errors
-export { BadRequestError } from './http/BadRequestError.js';
-export { InternalServerError } from './http/InternalServerError.js';
+export * from './http/BadRequestError.js';
+export * from './http/InternalServerError.js';
+export * from './http/RateLimitError.js';
 
-// Domain errors
-export { StorageError, StorageErrorCode } from './domain/StorageError.js';
-export { MediaError, MediaErrorCode } from './domain/MediaError.js';
+// Domain-specific errors
+export * from './domain/MediaError.js';
+export * from './domain/NetworkError.js';
+export * from './domain/StorageError.js';
 
-// Validation errors
+// Validation
 export { ValidationError } from './validation/ValidationError.js';
 
-// Error handlers
-export { handleError, handleUncaughtErrors } from './handlers.js';
+// Error handling middleware and utilities
+export {
+    createErrorMiddleware,
+    handleError,
+    withErrorHandling,
+    sendErrorResponse,
+    type RouteResponse,
+    type AsyncRouteHandler
+} from './middleware/errorMiddleware.js';
+
+// Global error handlers
+export { handleUncaughtErrors } from './handlers/index.js';
+
+// Constants
+export * from './constants/httpStatus.js';
 
 // Error handler type
 export type ErrorHandler = (error: Error) => void; 

@@ -19,6 +19,10 @@ export class ProgressTracker {
     this.cleanupCallbacks.push(callback);
   }
 
+  getCurrentStage(): string {
+    return this.currentStage.name;
+  }
+
   private notifyObservers(progress: Progress): void {
     // Don't send updates after completion except for errors
     if (this.isCompleted && progress.status !== 'error') {

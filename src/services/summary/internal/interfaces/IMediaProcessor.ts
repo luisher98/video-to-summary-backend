@@ -6,6 +6,18 @@ export interface MediaSource {
 }
 
 export interface IMediaProcessor {
+  /**
+   * Ensures required resources are available
+   */
+  ensureResources?(): Promise<void>;
+
+  /**
+   * Processes media from the given source
+   */
   processMedia(source: MediaSource): Promise<ProcessedMedia>;
-  cleanup(mediaId: string): Promise<void>;
+
+  /**
+   * Cleans up resources for the given media ID
+   */
+  cleanup?(mediaId: string): Promise<void>;
 } 

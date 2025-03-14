@@ -1,149 +1,146 @@
 import { Request, Response } from 'express';
 import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
-import { logRequest } from '@/utils/logging/logger.js';
-import { handleError } from '@/utils/errors/index.js';
+import { processTimer } from '@/utils/logging/logger.js';
+import { withErrorHandling } from '@/utils/errors/index.js';
+
+interface ProgressUpdate {
+    status: string;
+    progress: number;
+    message?: string;
+}
 
 /**
  * Generate a summary from an uploaded video file
  */
-export async function generateSummary(req: Request, res: Response) {
-    const startTime = Date.now();
-    const { file } = req;
-
+export const generateSummary = withErrorHandling(async (req: Request, res: Response) => {
+    const file = req.file;
     if (!file) {
-        res.status(400).json({ error: 'No file provided' });
-        return;
+        throw new Error('No file uploaded');
     }
 
-    try {
-        const summaryService = SummaryServiceFactory.createFileUploadService();
-        const source: MediaSource = {
-            type: 'file',
-            data: {
-                file: file.buffer,
-                filename: file.originalname,
-                size: file.size
-            }
-        };
+    const words = Number(req.query.words) || 400;
+    processTimer.startProcess('upload_summary');
 
-        const summary = await summaryService.process(source, {
-            maxWords: Number(req.query.words) || 400,
-            additionalPrompt: req.query.prompt as string
-        });
-
-        logRequest({
-            event: 'summary_generated',
+    const summaryService = SummaryServiceFactory.createFileUploadService();
+    const source: MediaSource = {
+        type: 'file',
+        data: {
+            file: file.buffer,
             filename: file.originalname,
-            ip: req.ip || req.socket.remoteAddress || 'unknown',
-            userAgent: req.get('user-agent'),
-            duration: Date.now() - startTime,
-            words: Number(req.query.words) || 400
-        });
+            size: file.size
+        }
+    };
 
-        res.json({ data: summary.content });
-    } catch (error) {
-        logRequest({
-            event: 'summary_error',
+    const summary = await summaryService.process(source, {
+        maxWords: words,
+        additionalPrompt: req.query.prompt as string
+    });
+
+    processTimer.endProcess('upload_summary');
+
+    return {
+        data: summary.content,
+        meta: {
             filename: file.originalname,
-            ip: req.ip || req.socket.remoteAddress || 'unknown',
-            userAgent: req.get('user-agent'),
-            duration: Date.now() - startTime,
-            error: error instanceof Error ? error.message : 'Unknown error'
-        });
-        handleError(error, res);
-    }
-}
+            words
+        }
+    };
+});
 
 /**
  * Stream summary generation progress for an uploaded video file
  */
-export async function streamSummary(req: Request, res: Response) {
-    const { file } = req;
-
+export const streamSummary = withErrorHandling(async (req: Request, res: Response) => {
+    const file = req.file;
     if (!file) {
-        res.status(400).json({ error: 'No file provided' });
-        return;
+        throw new Error('No file uploaded');
     }
 
-    try {
-        // Set up SSE headers
-        res.setHeader('Content-Type', 'text/event-stream');
-        res.setHeader('Cache-Control', 'no-cache');
-        res.setHeader('Connection', 'keep-alive');
-        res.setHeader('X-Accel-Buffering', 'no');
+    const words = Number(req.query.words) || 400;
 
-        const summaryService = SummaryServiceFactory.createFileUploadService();
-        
-        // Set up progress tracking
-        summaryService.onProgress((progress) => {
-            // Only send progress updates, not the final summary
-            if (progress.status !== 'done') {
-                res.write(`data: ${JSON.stringify(progress)}\n\n`);
-            }
-        });
+    // Set up SSE headers
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no');
 
-        const source: MediaSource = {
-            type: 'file',
-            data: {
-                file: file.buffer,
-                filename: file.originalname,
-                size: file.size
-            }
-        };
+    processTimer.startProcess('upload_summary_stream');
 
-        const summary = await summaryService.process(source, {
-            maxWords: Number(req.query.words) || 400,
-            additionalPrompt: req.query.prompt as string
-        });
+    const summaryService = SummaryServiceFactory.createFileUploadService();
+    
+    // Set up progress tracking
+    summaryService.onProgress((progress: ProgressUpdate) => {
+        if (!res.headersSent && progress.status !== 'done') {
+            res.write(`data: ${JSON.stringify(progress)}\n\n`);
+        }
+    });
 
-        // Send final summary only once
+    const source: MediaSource = {
+        type: 'file',
+        data: {
+            file: file.buffer,
+            filename: file.originalname,
+            size: file.size
+        }
+    };
+
+    const summary = await summaryService.process(source, {
+        maxWords: words,
+        additionalPrompt: req.query.prompt as string
+    });
+
+    processTimer.endProcess('upload_summary_stream');
+
+    // Send final summary
+    if (!res.headersSent) {
         res.write(`data: ${JSON.stringify({
             status: 'done',
             message: summary.content,
             progress: 100
         })}\n\n`);
         res.end();
-    } catch (error) {
-        // Send error through SSE if possible
-        if (!res.headersSent) {
-            res.write(`data: ${JSON.stringify({
-                status: 'error',
-                message: error instanceof Error ? error.message : 'Unknown error',
-                progress: 0
-            })}\n\n`);
-            res.end();
-        }
     }
-}
+
+    return {
+        meta: {
+            filename: file.originalname,
+            words,
+            streaming: true
+        }
+    };
+});
 
 /**
  * Get the transcript of an uploaded video file
  */
-export async function getTranscript(req: Request, res: Response) {
-    const { file } = req;
-
+export const getTranscript = withErrorHandling(async (req: Request, res: Response) => {
+    const file = req.file;
     if (!file) {
-        res.status(400).json({ error: 'No file provided' });
-        return;
+        throw new Error('No file uploaded');
     }
 
-    try {
-        const summaryService = SummaryServiceFactory.createFileUploadService();
-        const source: MediaSource = {
-            type: 'file',
-            data: {
-                file: file.buffer,
-                filename: file.originalname,
-                size: file.size
-            }
-        };
+    processTimer.startProcess('upload_transcript');
 
-        const result = await summaryService.process(source, {
-            returnTranscriptOnly: true
-        });
+    const summaryService = SummaryServiceFactory.createFileUploadService();
+    const source: MediaSource = {
+        type: 'file',
+        data: {
+            file: file.buffer,
+            filename: file.originalname,
+            size: file.size
+        }
+    };
 
-        res.json({ data: result.content });
-    } catch (error) {
-        handleError(error, res);
-    }
-} 
+    const result = await summaryService.process(source, {
+        returnTranscriptOnly: true
+    });
+
+    processTimer.endProcess('upload_transcript');
+
+    return {
+        data: result.content,
+        meta: {
+            filename: file.originalname
+        }
+    };
+}); 

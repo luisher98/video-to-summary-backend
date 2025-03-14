@@ -1,66 +1,65 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request } from 'express';
 import { BadRequestError } from '@/utils/errors/index.js';
-import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
 import { FILE_SIZE } from '@/config/fileSize.js';
+import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
 
-export function validateInitiateUpload(req: Request, res: Response, next: NextFunction): void {
+/**
+ * Validates if a file size is within acceptable range
+ */
+function isValidFileSize(size: number): boolean {
+    return typeof size === 'number' && 
+           size > 0 && 
+           size <= FILE_SIZE.MAX_FILE_SIZE;
+}
+
+/**
+ * Validates if a file type is allowed
+ */
+function isValidFileType(mimeType: string): boolean {
+    return AZURE_STORAGE_CONFIG.allowedFileTypes.includes(mimeType);
+}
+
+/**
+ * Validates file metadata
+ */
+function isValidFileMetadata(fileName?: string, fileSize?: number): boolean {
+    return Boolean(fileName) && 
+           typeof fileSize === 'number' && 
+           isValidFileSize(fileSize);
+}
+
+/**
+ * Validates file upload initiation request
+ */
+export function validateUploadInit(req: Request): void {
     const { fileName, fileSize } = req.body;
-
-    if (!fileName || !fileSize) {
-        throw new BadRequestError('fileName and fileSize are required');
+    if (!isValidFileMetadata(fileName, fileSize)) {
+        throw new BadRequestError('Invalid or missing file metadata');
     }
-
-    if (typeof fileSize !== 'number' || fileSize <= 0) {
-        throw new BadRequestError('fileSize must be a positive number');
-    }
-
-    if (fileSize > FILE_SIZE.MAX_FILE_SIZE) {
-        throw new BadRequestError(`File size ${fileSize} exceeds maximum allowed size ${FILE_SIZE.MAX_FILE_SIZE}`);
-    }
-
-    next();
 }
 
-export function validateFileUpload(req: Request, res: Response, next: NextFunction): void {
+/**
+ * Validates uploaded file
+ */
+export function validateUploadedFile(req: Request): void {
     const { file } = req;
-
     if (!file) {
         throw new BadRequestError('No file provided');
     }
-
-    if (file.size === 0) {
-        throw new BadRequestError('File is empty');
+    if (!isValidFileSize(file.size)) {
+        throw new BadRequestError(`File size ${file.size} exceeds maximum allowed size`);
     }
-
-    if (file.size > FILE_SIZE.MAX_FILE_SIZE) {
-        throw new BadRequestError(`File size ${file.size} exceeds maximum allowed size ${FILE_SIZE.MAX_FILE_SIZE}`);
-    }
-
-    next();
 }
 
-export function validateFileType(req: Request, res: Response, next: NextFunction): void {
+/**
+ * Validates file type from request
+ */
+export function validateFileTypeFromRequest(req: Request): void {
     const { file } = req;
-
     if (!file) {
         throw new BadRequestError('No file provided');
     }
-
-    if (!AZURE_STORAGE_CONFIG.allowedFileTypes.includes(file.mimetype)) {
-        throw new BadRequestError(
-            `Unsupported file type: ${file.mimetype}. Allowed types: ${AZURE_STORAGE_CONFIG.allowedFileTypes.join(', ')}`
-        );
+    if (!isValidFileType(file.mimetype)) {
+        throw new BadRequestError('Unsupported file type');
     }
-
-    next();
-}
-
-export function validateWordCount(req: Request, res: Response, next: NextFunction): void {
-    const words = Number(req.query.words);
-
-    if (req.query.words && (isNaN(words) || words < 50 || words > 1000)) {
-        throw new BadRequestError('Word count must be between 50 and 1000');
-    }
-
-    next();
 } 

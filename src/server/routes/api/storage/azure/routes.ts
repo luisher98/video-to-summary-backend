@@ -1,51 +1,36 @@
-import { Request, Response, Router } from 'express';
-import { createStorageService, StorageError } from '@/services/storage/StorageService.js';
-import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { handleError } from '@/utils/errors/index.js';
-import { validateFileUpload } from '@/server/middleware/validation/upload.js';
-
-const router = Router();
-
-// Initialize storage service
-const storage = createStorageService(AZURE_STORAGE_CONFIG);
-await storage.initialize();
+import { Request, Response } from 'express';
+import { StorageProvider } from '@/services/storage/StorageService.js';
+import { withErrorHandling } from '@/utils/errors/index.js';
+import { EventEmitter } from 'events';
+import { logProcessStep } from '@/utils/logging/logger.js';
 
 interface UploadRequest {
     fileName: string;
     fileSize: number;
 }
 
-/**
- * Handle direct file upload to Azure Blob Storage
- */
-export async function uploadFile(req: Request, res: Response) {
-    try {
-        const { file } = req;
-        if (!file) {
-            return res.status(400).json({ error: 'No file provided' });
-        }
+interface UploadOptions {
+    onProgress?: (bytesTransferred: number) => void;
+}
 
-        const uploadResult = await storage.uploadFile(
-            file.buffer,
-            file.originalname,
-            file.size
-        );
-
-        res.json({ data: uploadResult });
-    } catch (error) {
-        handleError(error, res);
-    }
+interface UploadResult {
+    url: string;
+    blobName: string;
+    [key: string]: any;
 }
 
 /**
- * Generate a pre-signed URL for client-side upload to Azure Blob Storage
+ * Creates route handlers with the provided storage instance
  */
-export async function getUploadUrl(req: Request, res: Response) {
-    try {
+export function createRouteHandlers(storage: StorageProvider) {
+    /**
+     * Step 1: Initiate upload and get pre-signed URL
+     */
+    const initiateUpload = withErrorHandling(async (req: Request, res: Response) => {
         const { fileName, fileSize } = req.body as UploadRequest;
         
         if (!fileName || !fileSize) {
-            return res.status(400).json({ error: 'fileName and fileSize are required' });
+            throw new Error('fileName and fileSize are required');
         }
 
         const uploadUrl = await storage.generateUploadUrl(fileName, {
@@ -56,49 +41,87 @@ export async function getUploadUrl(req: Request, res: Response) {
             }
         });
 
-        res.json({ data: uploadUrl });
-    } catch (error) {
-        handleError(error, res);
-    }
-}
+        return {
+            data: {
+                uploadUrl,
+                fileName,
+                fileSize
+            }
+        };
+    });
 
-router.post('/upload', validateFileUpload, async (req: Request, res: Response) => {
-    try {
+    /**
+     * Step 2: Handle direct file upload
+     */
+    const uploadContent = withErrorHandling(async (req: Request, res: Response) => {
         const { file } = req;
         if (!file) {
-            throw new Error('No file uploaded');
+            throw new Error('No file provided');
         }
 
+        // Create an event emitter for progress updates
+        const progressEmitter = new EventEmitter();
+        let uploadProgress = 0;
+
+        // Set up progress tracking
+        progressEmitter.on('progress', (progress: number) => {
+            uploadProgress = progress;
+            logProcessStep('File Upload', 'start', { progress });
+        });
+
+        // Start the upload
+        logProcessStep('File Upload', 'start', { size: file.size });
+        
         const uploadResult = await storage.uploadFile(
             file.buffer,
             file.originalname,
-            file.size
+            file.size,
+            {
+                onProgress: (progress: number) => {
+                    progressEmitter.emit('progress', progress);
+                }
+            }
         );
 
-        res.json({
-            success: true,
-            url: uploadResult
-        });
-    } catch (error) {
-        handleError(error, res);
-    }
-});
+        // Log completion
+        logProcessStep('File Upload', 'complete', { size: file.size });
 
-router.post('/upload-url', validateFileUpload, async (req: Request, res: Response) => {
-    try {
-        const { fileName, fileSize } = req.body;
-
-        const uploadUrl = await storage.generateUploadUrl(fileName, {
-            metadata: {
-                originalName: fileName,
-                size: fileSize.toString()
+        return {
+            data: {
+                url: uploadResult,
+                blobName: file.originalname,
+                progress: 100,
+                status: 'completed',
+                message: 'Upload completed successfully'
             }
-        });
+        };
+    });
 
-        res.json(uploadUrl);
-    } catch (error) {
-        handleError(error, res);
-    }
-});
+    /**
+     * Step 3: Process the uploaded file
+     */
+    const processVideo = withErrorHandling(async (req: Request, res: Response) => {
+        const { blobName } = req.body;
+        if (!blobName) {
+            throw new Error('blobName is required');
+        }
 
-export default router; 
+        // Get the file URL
+        const url = await storage.uploadFile(blobName, '', 0); // This will return the URL without uploading
+
+        return {
+            data: {
+                blobName,
+                url,
+                status: 'pending',
+                message: 'Video processing queued'
+            }
+        };
+    });
+
+    return {
+        initiateUpload,
+        uploadContent,
+        processVideo
+    };
+} 

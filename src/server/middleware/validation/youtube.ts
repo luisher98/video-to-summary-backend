@@ -1,31 +1,30 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request } from 'express';
 import { BadRequestError } from '@/utils/errors/index.js';
 
-export function validateUrl(req: Request, res: Response, next: NextFunction): void {
-    const url = req.query.url as string;
+/**
+ * YouTube URL validation patterns
+ */
+const YOUTUBE_PATTERNS = {
+    WATCH: 'youtube.com/watch?v=',
+    SHORT: 'youtu.be/'
+} as const;
 
-    if (!url) {
-        throw new BadRequestError('YouTube URL is required');
-    }
-
-    if (!url.includes('youtube.com/watch?v=') && !url.includes('youtu.be/')) {
-        throw new BadRequestError('Invalid YouTube URL format');
-    }
-
-    next();
+/**
+ * Validates if a string is a valid YouTube URL
+ * @param url - URL to validate
+ */
+function isValidYouTubeUrl(url: string): boolean {
+    if (!url) return false;
+    return url.includes(YOUTUBE_PATTERNS.WATCH) || url.includes(YOUTUBE_PATTERNS.SHORT);
 }
 
-export function validateWordCount(req: Request, res: Response, next: NextFunction): void {
-    // If no word count provided, skip validation
-    if (!req.query.words) {
-        return next();
+/**
+ * Validates YouTube URL from request query parameter
+ * @throws BadRequestError if URL is invalid or missing
+ */
+export function validateYouTubeUrl(req: Request): void {
+    const url = req.query.url as string;
+    if (!isValidYouTubeUrl(url)) {
+        throw new BadRequestError('Invalid or missing YouTube URL');
     }
-
-    const words = Number(req.query.words);
-
-    if (isNaN(words) || words < 50 || words > 1000) {
-        throw new BadRequestError('Word count must be between 50 and 1000');
-    }
-
-    next();
-} 
+}

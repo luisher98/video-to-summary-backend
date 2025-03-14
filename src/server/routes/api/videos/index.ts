@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validation } from '../../../middleware/index.js';
+import { validation } from '../../../middleware/middleware.js';
 import { initiateUpload, processVideo } from './routes.js';
 
 const router = Router();

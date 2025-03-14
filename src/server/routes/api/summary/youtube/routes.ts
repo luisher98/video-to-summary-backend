@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummaryService.js';
 import { logRequest } from '@/utils/logging/logger.js';
-import { handleError } from '@/utils/errors/index.js';
+import { withErrorHandling, sendErrorResponse } from '@/utils/errors/index.js';
+import { MediaError } from '@/utils/errors/index.js';
 
 /**
  * Generate a summary from a YouTube video
@@ -41,7 +42,7 @@ export async function generateSummary(req: Request, res: Response) {
             duration: Date.now() - startTime,
             error: error instanceof Error ? error.message : 'Unknown error'
         });
-        handleError(error, res);
+        sendErrorResponse(error, res);
     }
 }
 
@@ -88,10 +89,22 @@ export async function streamSummary(req: Request, res: Response) {
     } catch (error) {
         // Send error through SSE if possible
         if (!res.headersSent) {
+            let errorMessage = 'An unexpected error occurred';
+            let errorCode = 'UNKNOWN_ERROR';
+            
+            if (error instanceof MediaError) {
+                errorMessage = error.message;
+                errorCode = error.code;
+            } else if (error instanceof Error) {
+                errorMessage = error.message;
+            }
+
             res.write(`data: ${JSON.stringify({
                 status: 'error',
-                message: error instanceof Error ? error.message : 'Unknown error',
-                progress: 0
+                message: errorMessage,
+                code: errorCode,
+                progress: 0,
+                error: errorMessage
             })}\n\n`);
             res.end();
         }
@@ -117,7 +130,7 @@ export async function getTranscript(req: Request, res: Response) {
 
         res.json({ data: result.content });
     } catch (error) {
-        handleError(error, res);
+        sendErrorResponse(error, res);
     }
 }
 
@@ -136,6 +149,6 @@ export async function getMetadata(req: Request, res: Response) {
             }
         });
     } catch (error) {
-        handleError(error, res);
+        sendErrorResponse(error, res);
     }
 } 

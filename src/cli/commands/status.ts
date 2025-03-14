@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import { success, warning } from '../style/colors.js';
-import { getQueueStatus } from '../../server/middleware/security/index.js';
+import { getQueueStatus } from '../../server/middleware/security/lifecycle.js';
 
 export const status = new Command('status')
     .description('Check server status')

@@ -26,7 +26,11 @@
  * 6. Logging
  * - logger: Structured logging with request tracking
  * 
- * 7. Error Handling
+ * 7. Validation
+ * - text: Text validation functions
+ * - file: File validation functions
+ * 
+ * 8. Error Handling
  * - errors: Centralized error handling with domain-specific errors and HTTP errors
  */
 

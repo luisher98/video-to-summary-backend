@@ -1,10 +1,12 @@
 import express from 'express';
 import { Server } from 'http';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { initializeTempDirs, clearAllTempDirs } from '@/utils/file/tempDirs.js';
-import { handleUncaughtErrors } from '@/utils/errors/index.js';
+import { handleUncaughtErrors } from '@/utils/errors/handlers/index.js';
 import { SERVER_CONFIG } from '../config/server.js';
-import { commonMiddleware, errors } from './middleware/index.js';
-import apiRoutes from './routes/api/index.js';
+import { middlewareChains, errors } from './middleware/middleware.js';
+import apiRoutes from './routes/api/router.js';
 import { verifyServices } from '@/utils/system/serviceVerification.js';
 
 // Initialize Express app
@@ -14,7 +16,11 @@ export const app = express();
 app.set('trust proxy', SERVER_CONFIG.security.trustProxy);
 
 // Apply common middleware
-app.use(commonMiddleware);
+app.use(middlewareChains.common);
+
+// Handle static files
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.join(__dirname, '../../public')));
 
 // Parse JSON and URL-encoded bodies
 app.use(express.json());
