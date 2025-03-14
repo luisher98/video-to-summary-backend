@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { validation } from '../../../middleware/middleware.js';
-import { initiateUpload, processVideo } from './routes.js';
+import { validation } from '../../middleware/middleware.js';
+import { initiateUpload, processVideo } from './video.handler.js';
 
 const router = Router();
 

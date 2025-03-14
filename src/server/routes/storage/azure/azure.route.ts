@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { validation } from '@/server/middleware/middleware.js';
 import { createStorageService } from '@/services/storage/StorageService.js';
 import { AZURE_STORAGE_CONFIG } from '@/config/azure.js';
-import { createRouteHandlers } from './routes.js';
+import { createRouteHandlers } from './azure.handler.js';
 
 // Initialize storage service (this will be done only once)
 const storage = await createStorageService(AZURE_STORAGE_CONFIG);

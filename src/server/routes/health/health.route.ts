@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getStatus } from './routes.js';
+import { getStatus } from './health.handler.js';
 
 const router = Router();
 

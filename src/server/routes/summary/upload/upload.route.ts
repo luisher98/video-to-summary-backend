@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { validation } from '../../../../middleware/middleware.js';
-import { generateSummary, streamSummary, getTranscript } from './routes.js';
+import { validation } from '../../../middleware/middleware.js';
+import { generateSummary, streamSummary, getTranscript } from './upload.handler.js';
 
 const router = Router();
 

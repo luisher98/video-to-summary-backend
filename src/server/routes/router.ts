@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import storage from './storage/index.js';
-import summary from './summary/index.js';
-import health from './health/index.js';
-import test from './healthSSE/index.js';
-import videos from './videos/index.js';
+import storage from './storage/storage.route.js';
+import summary from './summary/summary.route.js';
+import health from './health/health.route.js';
+import test from './healthSSE/healthSSE.route.js';
+import videos from './videos/video.route.js';
 
 const router = Router();
 

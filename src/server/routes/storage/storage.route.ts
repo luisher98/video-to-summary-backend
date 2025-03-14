@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { security } from '../../../middleware/middleware.js';
-import azure from './azure/index.js';
+import { security } from '../../middleware/middleware.js';
+import azure from './azure/azure.route.js';
 
 const router = Router();
 

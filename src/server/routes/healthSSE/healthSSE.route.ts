@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getTestSSE } from './routes.js';
+import { getTestSSE } from './healthSSE.handler.js';
 
 const router = Router();
 

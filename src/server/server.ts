@@ -3,10 +3,10 @@ import { Server } from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { initializeTempDirs, clearAllTempDirs } from '@/utils/file/tempDirs.js';
-import { handleUncaughtErrors } from '@/utils/errors/handlers/index.js';
+import { handleUncaughtErrors } from '@/utils/errors/handlers/handler.js';
 import { SERVER_CONFIG } from '../config/server.js';
 import { middlewareChains, errors } from './middleware/middleware.js';
-import apiRoutes from './routes/api/router.js';
+import apiRoutes from './routes/router.js';
 import { verifyServices } from '@/utils/system/serviceVerification.js';
 
 // Initialize Express app

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { security } from '../../../middleware/middleware.js';
-import youtube from './youtube/index.js';
-import upload from './upload/index.js';
+import { security } from '../../middleware/middleware.js';
+import youtube from './youtube/youtube.route.js';
+import upload from './upload/upload.route.js';
 
 const router = Router();
 

@@ -29,7 +29,7 @@ export {
 } from './middleware/errorMiddleware.js';
 
 // Global error handlers
-export { handleUncaughtErrors } from './handlers/index.js';
+export { handleUncaughtErrors } from './handlers/handler.js';
 
 // Constants
 export * from './constants/httpStatus.js';

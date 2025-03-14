@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { validation } from '../../../../middleware/middleware.js';
-import { generateSummary, streamSummary, getTranscript, getMetadata } from './routes.js';
+import { validation } from '../../../middleware/middleware.js';
+import { generateSummary, streamSummary, getTranscript, getMetadata } from './youtube.handler.js';
 
 const router = Router();
 

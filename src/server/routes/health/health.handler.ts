@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getServerStatus } from '../../../server.js';
+import { getServerStatus } from '../../server.js';
 
 /**
  * Get server health status
