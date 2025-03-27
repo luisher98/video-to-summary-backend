@@ -18,11 +18,23 @@ interface ServiceStatus {
 async function verifyEnvironment(): Promise<ServiceStatus> {
     try {
         // First check Azure-specific environment variables
-        const azureVars = {
+        const azureVars: Record<string, string | undefined> = {
             'AZURE_STORAGE_ACCOUNT_NAME': process.env.AZURE_STORAGE_ACCOUNT_NAME,
-            'AZURE_STORAGE_CONNECTION_STRING': process.env.AZURE_STORAGE_CONNECTION_STRING,
             'AZURE_STORAGE_CONTAINER_NAME': process.env.AZURE_STORAGE_CONTAINER_NAME
         };
+
+        // Check if using service principal authentication
+        const isServicePrincipal = process.env.AZURE_STORAGE_AUTH_TYPE === 'servicePrincipal';
+        
+        if (isServicePrincipal) {
+            // If using service principal, check for those variables
+            azureVars['AZURE_TENANT_ID'] = process.env.AZURE_TENANT_ID;
+            azureVars['AZURE_CLIENT_ID'] = process.env.AZURE_CLIENT_ID;
+            azureVars['AZURE_CLIENT_SECRET'] = process.env.AZURE_CLIENT_SECRET;
+        } else {
+            // Only check for connection string if not using service principal
+            azureVars['AZURE_STORAGE_CONNECTION_STRING'] = process.env.AZURE_STORAGE_CONNECTION_STRING;
+        }
 
         const missingAzureVars = Object.entries(azureVars)
             .filter(([_, value]) => !value || value.trim() === '')
