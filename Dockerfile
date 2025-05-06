@@ -20,7 +20,7 @@
     RUN npm run build
     
     # Remove devDependencies and unnecessary files to reduce image size
-    RUN npm prune --omit=dev && rm -rf src
+    RUN npm prune --omit=dev
     
     # ---- Production Image ----
     FROM node:20-alpine
@@ -34,6 +34,10 @@
     COPY --from=builder /app/dist ./dist
     COPY --from=builder /app/node_modules ./node_modules
     COPY --from=builder /app/package.json ./package.json
+    COPY --from=builder /app/src ./src
+    
+    # Create necessary directories
+    RUN mkdir -p data/tmp
     
     # Expose the application port
     EXPOSE 3000
