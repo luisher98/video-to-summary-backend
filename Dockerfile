@@ -1,25 +1,25 @@
 # ---- Builder Stage ----
     FROM node:20-alpine AS builder
 
-    # Install required dependencies (including Python)
+    # Install Python and required dependencies
     RUN apk add --no-cache python3 py3-pip
     
     # Set working directory
     WORKDIR /app
     
-    # Copy package.json files first to leverage Docker's build cache
+    # Copy package files
     COPY package*.json ./
     
-    # Install all dependencies, including TypeScript for compilation
+    # Install dependencies
     RUN npm install
     
-    # Copy the rest of the application
+    # Copy source code
     COPY . .
     
-    # Compile TypeScript into JavaScript
+    # Build TypeScript
     RUN npm run build
     
-    # Remove devDependencies and unnecessary files to reduce image size
+    # Remove dev dependencies
     RUN npm prune --omit=dev
     
     # ---- Production Image ----
@@ -27,10 +27,10 @@
     
     WORKDIR /app
     
-    # Install Python in the final image (needed for youtube-dl-exec)
+    # Install Python and required dependencies
     RUN apk add --no-cache python3 py3-pip
     
-    # Copy only necessary files from the builder stage (optimized for production)
+    # Copy built files and dependencies
     COPY --from=builder /app/dist ./dist
     COPY --from=builder /app/node_modules ./node_modules
     COPY --from=builder /app/package.json ./package.json
@@ -39,9 +39,12 @@
     # Create necessary directories
     RUN mkdir -p data/tmp
     
+    # Set environment variables
+    ENV NODE_ENV=production
+    
     # Expose the application port
     EXPOSE 3000
     
     # Start the application
-    CMD ["node", "dist/index.js"]
+    CMD ["node", "--experimental-specifier-resolution=node", "dist/index.js"]
     

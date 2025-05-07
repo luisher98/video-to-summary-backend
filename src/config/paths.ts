@@ -63,15 +63,15 @@ export const PathConfig = Object.freeze({
     
     // Source and build directories
     sourceRoot: process.env.SOURCE_DIR ? 
-        path.resolve(rootDir, process.env.SOURCE_DIR) : 
+        (path.isAbsolute(process.env.SOURCE_DIR) ? process.env.SOURCE_DIR : path.resolve(rootDir, process.env.SOURCE_DIR)) : 
         path.join(rootDir, 'src'),
     distRoot: process.env.DIST_DIR ? 
-        path.resolve(rootDir, process.env.DIST_DIR) : 
+        (path.isAbsolute(process.env.DIST_DIR) ? process.env.DIST_DIR : path.resolve(rootDir, process.env.DIST_DIR)) : 
         path.join(rootDir, 'dist'),
     
     // Temporary directories
     tempRoot: process.env.TEMP_DIR ? 
-        path.resolve(process.env.TEMP_DIR) : 
+        (path.isAbsolute(process.env.TEMP_DIR) ? process.env.TEMP_DIR : path.resolve(rootDir, process.env.TEMP_DIR)) : 
         path.join(rootDir, 'data', 'tmp'),
         
     // Ensure all paths are absolute
@@ -95,15 +95,15 @@ export const StaticPaths = Object.freeze({
     /** Root directory of the project */
     ROOT: rootDir,
     /** Source code directory */
-    SRC: validatePath(path.join(rootDir, PathConfig.sourceRoot)),
+    SRC: validatePath(path.isAbsolute(PathConfig.sourceRoot) ? PathConfig.sourceRoot : path.join(rootDir, PathConfig.sourceRoot)),
     /** Distribution directory */
-    DIST: validatePath(path.join(rootDir, PathConfig.distRoot), true),
+    DIST: validatePath(path.isAbsolute(PathConfig.distRoot) ? PathConfig.distRoot : path.join(rootDir, PathConfig.distRoot), true),
     /** Services directory */
-    SERVICES: validatePath(path.join(rootDir, PathConfig.sourceRoot, 'services')),
+    SERVICES: validatePath(path.join(PathConfig.sourceRoot, 'services')),
     /** Utilities directory */
-    UTILS: validatePath(path.join(rootDir, PathConfig.sourceRoot, 'utils')),
+    UTILS: validatePath(path.join(PathConfig.sourceRoot, 'utils')),
     /** Server directory */
-    SERVER: validatePath(path.join(rootDir, PathConfig.sourceRoot, 'server'))
+    SERVER: validatePath(path.join(PathConfig.sourceRoot, 'server'))
 });
 
 /**
