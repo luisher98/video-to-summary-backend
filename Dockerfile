@@ -1,11 +1,8 @@
 # ---- Builder Stage ----
     FROM node:20-alpine AS builder
 
-    # Install Python and required dependencies
-    RUN apk add --no-cache python3 py3-pip
-    
     # Set working directory
-    WORKDIR /app
+    WORKDIR /src
     
     # Copy package files
     COPY package*.json ./
@@ -25,7 +22,7 @@
     # ---- Production Image ----
     FROM node:20-alpine
     
-    WORKDIR /app
+    WORKDIR /src
     
     # Install Python and required dependencies
     RUN apk add --no-cache python3 py3-pip
@@ -46,5 +43,5 @@
     EXPOSE 3000
     
     # Start the application
-    CMD ["node", "--experimental-specifier-resolution=node", "dist/index.js"]
+    CMD ["npm run start"]
     
