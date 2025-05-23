@@ -4,46 +4,69 @@
 - [Video Summary API Documentation](#video-summary-api-documentation)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
+  - [Architecture](#architecture)
+    - [Core Components](#core-components)
   - [Getting Started](#getting-started)
     - [Base URL](#base-url)
     - [Prerequisites](#prerequisites)
+    - [Environment Setup](#environment-setup)
   - [Authentication](#authentication)
   - [Rate Limiting](#rate-limiting)
   - [API Endpoints](#api-endpoints)
     - [YouTube Summary](#youtube-summary)
       - [Query Parameters](#query-parameters)
-      - [Example Request](#example-request)
+      - [Technical Details](#technical-details)
       - [SSE Events](#sse-events)
     - [File Upload Summary](#file-upload-summary)
+      - [Technical Implementation](#technical-implementation)
       - [Query Parameters](#query-parameters-1)
-      - [Request Headers](#request-headers)
+      - [Headers](#headers)
       - [Form Data](#form-data)
-      - [Example Request](#example-request-1)
+      - [Example Request](#example-request)
       - [SSE Events](#sse-events-1)
-    - [Transcript](#transcript)
-      - [Query Parameters](#query-parameters-2)
-      - [Example Request](#example-request-2)
-      - [Response](#response)
-    - [Video Information](#video-information)
-      - [Query Parameters](#query-parameters-3)
-      - [Example Request](#example-request-3)
-      - [Response](#response-1)
-    - [Health Check](#health-check)
-      - [Example Request](#example-request-4)
-      - [Response](#response-2)
     - [Azure Blob Summary](#azure-blob-summary)
-      - [Query Parameters](#query-parameters-4)
-      - [Example Request](#example-request-5)
+      - [Query Parameters](#query-parameters-2)
+      - [Example Request](#example-request-1)
       - [SSE Events](#sse-events-2)
+    - [Transcript](#transcript)
+      - [Implementation Details](#implementation-details)
+      - [Query Parameters](#query-parameters-3)
+    - [Video Information](#video-information)
+      - [Implementation](#implementation)
+      - [Query Parameters](#query-parameters-4)
+  - [Technical Implementation](#technical-implementation-1)
+    - [File Processing](#file-processing)
+    - [Storage Strategy](#storage-strategy)
+    - [Security Measures](#security-measures)
+    - [Performance Optimization](#performance-optimization)
   - [Error Handling](#error-handling)
-    - [Common Status Codes](#common-status-codes)
+    - [Status Codes](#status-codes)
   - [Examples](#examples)
-    - [JavaScript Example (Browser)](#javascript-example-browser)
-    - [Node.js Example (File Upload)](#nodejs-example-file-upload)
+    - [JavaScript SSE Client](#javascript-sse-client)
+    - [File Upload with Progress](#file-upload-with-progress)
   - [Best Practices](#best-practices)
+    - [Client Implementation](#client-implementation)
+    - [Server Considerations](#server-considerations)
   - [WebSocket Events](#websocket-events)
     - [Progress Event Types](#progress-event-types)
     - [Event Format](#event-format)
+  - [Summary Endpoints](#summary-endpoints)
+    - [YouTube Video Processing](#youtube-video-processing)
+      - [`GET /api/summary/youtube/summary`](#get-apisummaryyoutubesummary)
+      - [`GET /api/summary/youtube/stream`](#get-apisummaryyoutubestream)
+      - [`GET /api/summary/youtube/transcript`](#get-apisummaryyoutubetranscript)
+    - [Streaming Endpoints (Optimized for Performance)](#streaming-endpoints-optimized-for-performance)
+      - [`GET /api/summary/youtube/streaming/summary`](#get-apisummaryyoutubestreamingsummary)
+      - [`GET /api/summary/youtube/streaming/transcript`](#get-apisummaryyoutubestreamingtranscript)
+    - [File Upload Processing](#file-upload-processing)
+      - [`POST /api/summary/upload/summary`](#post-apisummaryuploadsummary)
+      - [`POST /api/summary/upload/transcript`](#post-apisummaryuploadtranscript)
+  - [Storage Endpoints](#storage-endpoints)
+    - [Azure Storage Integration](#azure-storage-integration)
+      - [`POST /api/storage/blob`](#post-apistorageblob)
+  - [Health and Status Endpoints](#health-and-status-endpoints)
+      - [`GET /api/health`](#get-apihealth)
+  - [Performance Metrics](#performance-metrics)
 
 ## Overview
 
@@ -492,5 +515,162 @@ interface ErrorEvent {
   status: 'error';
   error: string;
   details?: any;
+}
+```
+
+## Summary Endpoints
+
+### YouTube Video Processing
+
+#### `GET /api/summary/youtube/summary`
+Generate a summary of a YouTube video.
+
+**Query Parameters:**
+- `url` (required): YouTube video URL
+- `words` (optional): Maximum number of words in the summary (default: 400)
+- `prompt` (optional): Additional instructions for the AI
+
+**Response:**
+```json
+{
+  "data": "Summary text here..."
+}
+```
+
+#### `GET /api/summary/youtube/stream`
+Generate a summary with progress updates via Server-Sent Events (SSE).
+
+**Query Parameters:**
+- `url` (required): YouTube video URL
+- `words` (optional): Maximum number of words in the summary (default: 400)
+- `prompt` (optional): Additional instructions for the AI
+
+**Response:** SSE stream with progress updates and final summary
+
+#### `GET /api/summary/youtube/transcript`
+Get the full transcript of a YouTube video.
+
+**Query Parameters:**
+- `url` (required): YouTube video URL
+
+**Response:**
+```json
+{
+  "data": "Full transcript text here..."
+}
+```
+
+### Streaming Endpoints (Optimized for Performance)
+
+#### `GET /api/summary/youtube/streaming/summary`
+Generate a summary using streaming and piping for improved performance. This endpoint is more efficient for large videos and starts processing before the download completes.
+
+**Query Parameters:**
+- `url` (required): YouTube video URL
+- `words` (optional): Maximum number of words in the summary (default: 400)
+- `prompt` (optional): Additional instructions for the AI
+
+**Response:** SSE stream with progress updates and final summary
+
+**Performance Benefits:**
+- Faster processing for large videos
+- Lower memory usage
+- Processing starts before download completes
+
+#### `GET /api/summary/youtube/streaming/transcript`
+Get the transcript of a YouTube video using streaming for improved performance.
+
+**Query Parameters:**
+- `url` (required): YouTube video URL
+- `stream` (optional): Set to "true" to receive progress updates via SSE
+
+**Response:**
+- If `stream=true`: SSE stream with progress updates and final transcript
+- Otherwise: Standard JSON response with transcript
+
+### File Upload Processing
+
+#### `POST /api/summary/upload/summary`
+Generate a summary from an uploaded audio or video file.
+
+**Form Data:**
+- `file` (required): Audio or video file to process
+- `words` (optional): Maximum number of words in the summary (default: 400)
+- `prompt` (optional): Additional instructions for the AI
+
+**Response:**
+```json
+{
+  "data": "Summary text here..."
+}
+```
+
+#### `POST /api/summary/upload/transcript`
+Get the transcript from an uploaded audio or video file.
+
+**Form Data:**
+- `file` (required): Audio or video file to process
+
+**Response:**
+```json
+{
+  "data": "Full transcript text here..."
+}
+```
+
+## Storage Endpoints
+
+### Azure Storage Integration
+
+#### `POST /api/storage/blob`
+Upload a file to Azure Blob Storage.
+
+**Form Data:**
+- `file` (required): File to upload
+- `container` (optional): Container name (default: from config)
+
+**Response:**
+```json
+{
+  "url": "https://storage.url/path/to/file",
+  "filename": "filename.ext"
+}
+```
+
+## Health and Status Endpoints
+
+#### `GET /api/health`
+Check API health status.
+
+**Response:**
+```json
+{
+  "status": "healthy",
+  "uptime": 12345,
+  "version": "1.0.0"
+}
+```
+
+## Performance Metrics
+
+The streaming endpoints include performance metrics in the response metadata, including:
+- `downloadTime`: Time spent downloading the video
+- `processingTime`: Time spent processing the audio
+- `transcriptionTime`: Time spent generating the transcript
+- `summarizationTime`: Time spent generating the summary
+- `totalTime`: Total request processing time
+- `memoryUsage`: Peak memory usage during processing
+
+Example metrics response:
+```json
+{
+  "metrics": {
+    "downloadTime": 2500,
+    "processingTime": 1200,
+    "transcriptionTime": 3500,
+    "summarizationTime": 1800,
+    "totalTime": 9000,
+    "memoryUsage": "120MB"
+  }
 }
 ``` 

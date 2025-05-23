@@ -1,8 +1,9 @@
-import fs from 'fs';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import { config } from '@/config/environment.js';
 import { TempPaths } from '@/config/paths.js';
+import { Readable } from 'stream';
+import fs from 'fs';
 
 dotenv.config();
 
@@ -29,17 +30,43 @@ export async function checkOpenAIConnection(): Promise<boolean> {
 }
 
 /**
- * Generates a transcript from an audio file
+ * Generates a transcript from an audio stream
+ * @param stream Audio stream to transcribe
+ * @param id Identifier for the stream
+ * @returns Promise with the transcript text
  */
-export async function generateTranscript(id: string): Promise<string> {
+export async function generateTranscriptFromStream(
+    stream: Readable,
+    id: string
+): Promise<string> {
     try {
+        // First, buffer the stream to a temporary file
+        // Note: OpenAI API doesn't currently support direct streaming for transcription
+        const tempFilePath = `${TempPaths.AUDIOS}/${id}-temp.mp3`;
+        const writeStream = fs.createWriteStream(tempFilePath);
+        
+        await new Promise<void>((resolve, reject) => {
+            stream.pipe(writeStream)
+                .on('finish', () => resolve())
+                .on('error', (err) => reject(err));
+        });
+        
+        // Use the file for transcription
         const transcription = await openai.audio.transcriptions.create({
-            file: fs.createReadStream(`${TempPaths.AUDIOS}/${id}.mp3`),
+            file: fs.createReadStream(tempFilePath),
             model: 'whisper-1'
         });
+        
+        // Clean up the temporary file
+        try {
+            fs.unlinkSync(tempFilePath);
+        } catch (error) {
+            console.warn(`Failed to clean up temporary file ${tempFilePath}:`, error);
+        }
+        
         return transcription.text;
     } catch (error) {
-        console.error('Transcription error:', error);
+        console.error('Streaming transcription error:', error);
         throw error;
     }
 }

@@ -11,6 +11,7 @@ A powerful API and CLI tool that generates summaries and transcripts from YouTub
 - 🔄 Azure Blob Storage integration
 - 🖥️ CLI interface
 - 🔒 Secure and rate-limited API
+- 🌊 Streaming processing for better performance and lower memory usage
 
 ## Quick Start
 
@@ -51,6 +52,7 @@ A powerful API and CLI tool that generates summaries and transcripts from YouTub
 
 - Node.js 18+
 - FFmpeg
+- yt-dlp (for YouTube video processing)
 - Azure Storage Account (optional)
 - OpenAI API key
 - YouTube Data API key
@@ -64,6 +66,23 @@ OPENAI_API_KEY=your-api-key
 YOUTUBE_API_KEY=your-api-key
 PORT=5050
 ```
+
+## API Endpoints
+
+The API uses a streaming architecture for better performance:
+
+```
+# YouTube Summary
+GET /api/summary/youtube/summary?url=https://youtube.com/watch?v=...
+
+# YouTube Transcript
+GET /api/summary/youtube/transcript?url=https://youtube.com/watch?v=...
+
+# File Upload Summary
+POST /api/summary/upload/summary
+```
+
+See the [API Documentation](docs/API.md) for complete details.
 
 ## Development
 
@@ -80,7 +99,6 @@ npm test
 # Run linter
 npm run lint
 ```
-
 
 ## License
 

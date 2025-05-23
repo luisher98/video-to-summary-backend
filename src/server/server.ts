@@ -86,7 +86,8 @@ export async function startServer(): Promise<void> {
     serverInstance = app.listen(SERVER_CONFIG.port, () => {
         if (shouldLog) {
             console.log(`Server running on ${SERVER_CONFIG.url}`);
-            console.log(`Example endpoint: ${SERVER_CONFIG.url}/api/summary/youtube/stream?url=https://www.youtube.com/watch?v=${SERVER_CONFIG.examples.videoId}`);
+            console.log(`Regular endpoint: ${SERVER_CONFIG.url}/api/summary/youtube/stream?url=https://www.youtube.com/watch?v=${SERVER_CONFIG.examples.videoId}`);
+            console.log(`Streaming endpoint: ${SERVER_CONFIG.url}/api/summary/youtube/streaming/summary?url=https://www.youtube.com/watch?v=${SERVER_CONFIG.examples.videoId}`);
         }
     });
 

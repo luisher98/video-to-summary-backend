@@ -1,14 +1,15 @@
 import { ITranscriptionService } from '../../interfaces/ITranscriptionService.js';
 import { ProcessedMedia, Transcript } from '../../types/summary.types.js';
-import { generateTranscript } from '@/integrations/openAI.js';
+import { generateTranscriptFromStream } from '@/integrations/openAI.js';
 import { processTimer, logProcessStep } from '@/utils/logging/logger.js';
 import { MediaError, MediaErrorCode } from '@/utils/errors/index.js';
+import { StreamingProcessedMedia } from '../media/youtube/StreamingYouTubeMediaProcessor.js';
 
-export class OpenAITranscriptionService implements ITranscriptionService {
+export class StreamingOpenAITranscriptionService implements ITranscriptionService {
   async transcribe(
     media: ProcessedMedia
   ): Promise<Transcript> {
-    const processName = 'Speech Recognition';
+    const processName = 'Streaming Speech Recognition';
     processTimer.startProcess(processName);
     logProcessStep(processName, 'start', { 
       model: 'Whisper',
@@ -20,18 +21,24 @@ export class OpenAITranscriptionService implements ITranscriptionService {
     try {
       // Validate input
       processTimer.startProcess('Input Validation');
-      if (!media.audioPath) {
+      
+      // Check if we have a stream or need to fall back to file-based processing
+      const streamingMedia = media as StreamingProcessedMedia;
+      if (!streamingMedia.stream) {
         throw new MediaError(
-          'No audio file provided for transcription',
+          'No audio stream provided for transcription',
           MediaErrorCode.PROCESSING_FAILED,
           { mediaId: media.id }
         );
       }
       processTimer.endProcess('Input Validation');
 
-      // Generate transcript
-      processTimer.startProcess('Transcription');
-      const text = await generateTranscript(media.id);
+      // Generate transcript using the stream
+      processTimer.startProcess('Streaming Transcription');
+      logProcessStep('Streaming Transcription', 'start', { mediaId: media.id });
+      
+      const text = await generateTranscriptFromStream(streamingMedia.stream, media.id);
+      
       if (!text || text.trim().length === 0) {
         throw new MediaError(
           'Generated transcript is empty',
@@ -39,9 +46,9 @@ export class OpenAITranscriptionService implements ITranscriptionService {
           { mediaId: media.id }
         );
       }
-      processTimer.endProcess('Transcription');
+      processTimer.endProcess('Streaming Transcription');
 
-      // Process transcript
+      // Process transcript into segments
       processTimer.startProcess('Segmentation');
       const words = text.split(/\s+/);
       const wordsPerSegment = 50;
@@ -50,8 +57,8 @@ export class OpenAITranscriptionService implements ITranscriptionService {
       for (let i = 0; i < words.length; i += wordsPerSegment) {
         segments.push({
           text: words.slice(i, i + wordsPerSegment).join(' '),
-          startTime: (i / words.length) * media.metadata.duration,
-          endTime: (Math.min(i + wordsPerSegment, words.length) / words.length) * media.metadata.duration
+          startTime: (i / words.length) * (media.metadata.duration || 0),
+          endTime: (Math.min(i + wordsPerSegment, words.length) / words.length) * (media.metadata.duration || 0)
         });
       }
       processTimer.endProcess('Segmentation');
@@ -59,7 +66,7 @@ export class OpenAITranscriptionService implements ITranscriptionService {
       logProcessStep(processName, 'complete', { 
         wordCount: words.length,
         segments: segments.length,
-        rate: `${Math.round(words.length / (media.metadata.duration || 1))}w/s`,
+        rate: media.metadata.duration ? `${Math.round(words.length / media.metadata.duration)}w/s` : 'unknown',
         mediaId: media.id
       });
       processTimer.endProcess(processName);
@@ -67,7 +74,7 @@ export class OpenAITranscriptionService implements ITranscriptionService {
       return { text, segments };
     } catch (error) {
       // End all active processes
-      ['Segmentation', 'Transcription', 'Input Validation', processName].forEach(process => {
+      ['Segmentation', 'Streaming Transcription', 'Input Validation', processName].forEach(process => {
         try {
           processTimer.endProcess(process, error instanceof Error ? error : new Error(String(error)));
         } catch {
@@ -90,7 +97,7 @@ export class OpenAITranscriptionService implements ITranscriptionService {
 
       // Wrap unknown errors
       throw new MediaError(
-        'Failed to transcribe audio',
+        'Failed to transcribe audio stream',
         MediaErrorCode.PROCESSING_FAILED,
         {
           mediaId: media.id,
