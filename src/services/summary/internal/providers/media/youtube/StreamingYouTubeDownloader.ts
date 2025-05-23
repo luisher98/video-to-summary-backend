@@ -5,9 +5,6 @@ import { CookieHandler } from './cookies/cookieHandler.js';
 import { MediaError, MediaErrorCode } from '@/utils/errors/index.js';
 import { logProcessStep } from '@/utils/logging/logger.js';
 import { v4 as uuidv4 } from 'uuid';
-import path from 'path';
-import { TempPaths } from '@/config/paths.js';
-import fs from 'fs';
 import { AdaptiveBuffer } from '@/utils/streaming/AdaptiveBuffer.js';
 
 /**
