@@ -19,7 +19,7 @@
     "test:prod": "cross-env TEST_ENV=production jest --config jest.config.prod.js --testMatch '**/tests/production/**/*.production.test.ts'",
     "test:all": "jest --testMatch '**/*.test.ts'",
     "lint": "eslint . --ext .ts",
-    "clean": "rm -rf dist",
+    "clean": "npx rimraf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
     "postbuild": "npx tsc-alias",
