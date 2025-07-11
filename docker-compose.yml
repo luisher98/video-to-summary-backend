@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  youtube-summary-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: youtube-summary-api
+    ports:
+      - "5050:5050"
+    environment:
+      - NODE_ENV=production
+      - PORT=5050
+      - API_HOST=0.0.0.0
+      - API_PORT=5050
+      # Environment variables (use .env file or set these)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - AZURE_STORAGE_ACCOUNT_NAME=${AZURE_STORAGE_ACCOUNT_NAME}
+      - AZURE_STORAGE_CONTAINER_NAME=${AZURE_STORAGE_CONTAINER_NAME:-uploads}
+      - API_KEYS=${API_KEYS}
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4}
+      - YOUTUBE_USE_COOKIES=${YOUTUBE_USE_COOKIES:-false}
+      - RATE_LIMIT_MAX=${RATE_LIMIT_MAX:-100}
+      - MAX_CONCURRENT_REQUESTS=${MAX_CONCURRENT_REQUESTS:-2}
+      - REQUEST_TIMEOUT_MS=${REQUEST_TIMEOUT_MS:-30000}
+      - MAX_FILE_SIZE=${MAX_FILE_SIZE:-104857600}
+    volumes:
+      # Mount data directories for persistence
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5050/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: youtube-summary-network

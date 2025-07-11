@@ -25,7 +25,18 @@
     "postbuild": "npx tsc-alias",
     "stop": "pm2 kill || true",
     "start": "node --experimental-specifier-resolution=node dist/index.js",
-    "restart": "npm run build && npm run start"
+    "restart": "npm run build && npm run start",
+    "docker:build": "docker build -t youtube-summary-api .",
+    "docker:run": "docker run -d -p 5050:5050 --name youtube-summary-api youtube-summary-api",
+    "docker:stop": "docker stop youtube-summary-api && docker rm youtube-summary-api",
+    "docker:logs": "docker logs -f youtube-summary-api",
+    "docker:compose": "docker-compose up -d",
+    "docker:compose:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:compose:down": "docker-compose down",
+    "docker:compose:logs": "docker-compose logs -f",
+    "docker:compose:build": "docker-compose build",
+    "docker:compose:restart": "docker-compose restart",
+    "docker:cleanup": "docker system prune -f"
   },
   "keywords": [
     "youtube",
