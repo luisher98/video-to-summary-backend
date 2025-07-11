@@ -38,6 +38,9 @@ const currentFilePath = fileURLToPath(currentFileUrl);
 // When running from dist, we need to go up to the project root
 const rootDir = path.dirname(path.dirname(path.dirname(currentFilePath))); // Always go up from dist/src/config to project root
 
+// Check if we're running from dist directory
+const isRunningFromDist = currentFilePath.includes('/dist/');
+
 // Validate root directory
 if (!fs.existsSync(path.join(rootDir, 'package.json'))) {
     throw new Error(`Invalid root directory: ${rootDir} (no package.json found)`);
@@ -62,9 +65,11 @@ export const PathConfig = Object.freeze({
         path.join(rootDir, 'data'),
     
     // Source and build directories
-    sourceRoot: process.env.SOURCE_DIR ? 
-        (path.isAbsolute(process.env.SOURCE_DIR) ? process.env.SOURCE_DIR : path.resolve(rootDir, process.env.SOURCE_DIR)) : 
-        path.join(rootDir, 'src'),
+    sourceRoot: isRunningFromDist ? 
+        path.join(rootDir, 'dist') : 
+        (process.env.SOURCE_DIR ? 
+            (path.isAbsolute(process.env.SOURCE_DIR) ? process.env.SOURCE_DIR : path.resolve(rootDir, process.env.SOURCE_DIR)) : 
+            path.join(rootDir, 'src')),
     distRoot: process.env.DIST_DIR ? 
         (path.isAbsolute(process.env.DIST_DIR) ? process.env.DIST_DIR : path.resolve(rootDir, process.env.DIST_DIR)) : 
         path.join(rootDir, 'dist'),
