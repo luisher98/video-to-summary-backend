@@ -14,10 +14,7 @@
     "dev": "cross-env NODE_OPTIONS=\"--experimental-specifier-resolution=node --loader ts-node/esm\" ts-node src/index.ts",
     "cli": "cross-env NODE_OPTIONS=\"--experimental-specifier-resolution=node --loader ts-node/esm\" ts-node src/index.ts --cli",
     "view": "node dist/index.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:watch": "jest --watchAll --testMatch '**/tests/development/**/*.development.test.ts'",
-    "test:prod": "cross-env TEST_ENV=production jest --config jest.config.prod.js --testMatch '**/tests/production/**/*.production.test.ts'",
-    "test:all": "jest --testMatch '**/*.test.ts'",
+
     "lint": "eslint . --ext .ts",
     "clean": "npx rimraf dist",
     "prebuild": "npm run clean",
@@ -82,7 +79,7 @@
     "@types/express": "^4.17.21",
     "@types/fluent-ffmpeg": "^2.1.27",
     "@types/helmet": "^4.0.0",
-    "@types/jest": "^29.5.13",
+
     "@types/node": "^18.19.76",
     "@types/supertest": "^6.0.2",
     "@types/webpack": "^5.28.5",
@@ -95,10 +92,10 @@
     "declaration-bundler-webpack-plugin": "^1.0.3",
     "eslint": "^9.7.0",
     "globals": "^15.8.0",
-    "jest": "^29.7.0",
+
     "nodemon": "^3.1.4",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.2.5",
+
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.1",
     "tsc-alias": "^1.8.8",
