@@ -102,7 +102,6 @@ jobs:
           --update-env-vars="AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" \
           --update-env-vars="AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" \
           --update-env-vars="AZURE_STORAGE_ACCOUNT_NAME=${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}" \
-          --update-env-vars="API_KEYS=${{ secrets.API_KEYS }}" \
           --update-env-vars="CORS_ORIGINS=${{ secrets.CORS_ORIGINS }}" \
           --update-env-vars="RATE_LIMIT_MAX=${{ secrets.RATE_LIMIT_MAX || '100' }}" \
           --update-env-vars="MAX_CONCURRENT_REQUESTS=${{ secrets.MAX_CONCURRENT_REQUESTS || '2' }}" \
