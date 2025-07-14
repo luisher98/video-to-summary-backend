@@ -87,7 +87,6 @@ export class StreamingYouTubeDownloader {
                 // Format and quality settings
                 '--format', 'bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio',
                 '--audio-quality', '0', // Best quality
-                '--embed-subs', 'false',
                 '--no-playlist',
                 
                 // Network settings
