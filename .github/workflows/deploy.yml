@@ -105,7 +105,6 @@ jobs:
           --image=${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.IMAGE_NAME }}:latest \
           --region=${{ env.REGION }} \
           --platform=managed \
-          --port=5050 \
           --allow-unauthenticated \
           --memory=1Gi \
           --cpu=1 \
