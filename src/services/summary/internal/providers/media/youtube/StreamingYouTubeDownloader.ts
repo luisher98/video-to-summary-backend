@@ -30,9 +30,42 @@ export class StreamingYouTubeDownloader {
         logProcessStep('YouTube Download', 'start', { url, fileId });
 
         try {
+            // Check if yt-dlp is available
+            console.log('Checking yt-dlp availability...');
+            try {
+                const ytDlpTest = spawn('yt-dlp', ['--version']);
+                ytDlpTest.on('error', (error) => {
+                    console.error('yt-dlp not found or not executable:', error);
+                    throw new MediaError(
+                        'yt-dlp is not available in this environment',
+                        MediaErrorCode.DOWNLOAD_FAILED
+                    );
+                });
+                
+                let versionOutput = '';
+                ytDlpTest.stdout.on('data', (data) => {
+                    versionOutput += data.toString();
+                });
+                
+                await new Promise<void>((resolve, reject) => {
+                    ytDlpTest.on('exit', (code) => {
+                        if (code === 0) {
+                            console.log('yt-dlp version:', versionOutput.trim());
+                            resolve();
+                        } else {
+                            reject(new Error(`yt-dlp version check failed with code ${code}`));
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('yt-dlp availability check failed:', error);
+                throw error;
+            }
+            
             // Get cookie configuration
             const cookieOptions = await CookieHandler.processYouTubeCookies();
             const ffmpegPath = getFfmpegPath();
+            console.log('Using FFmpeg path:', ffmpegPath);
 
             // Prepare yt-dlp arguments
             const ytDlpArgs = [
@@ -49,16 +82,22 @@ export class StreamingYouTubeDownloader {
             }
 
             // Start yt-dlp process
+            console.log('Starting yt-dlp with args:', ytDlpArgs);
             const ytDlp = spawn('yt-dlp', ytDlpArgs);
             
             // Track progress
             let totalBytes = 0;
             let lastProgressUpdate = 0;
+            let ytDlpBytesReceived = 0;
+            
+            ytDlp.stdout.on('data', (chunk) => {
+                ytDlpBytesReceived += chunk.length;
+                console.log(`yt-dlp stdout data: ${chunk.length} bytes (total: ${ytDlpBytesReceived})`);
+            });
             
             ytDlp.stderr.on('data', (data) => {
                 const output = data.toString();
-                // Log errors but don't abort unless process fails
-                console.error('yt-dlp stderr:', output);
+                console.log('yt-dlp stderr:', output);
             });
 
             // Create FFmpeg process for audio conversion
@@ -74,6 +113,13 @@ export class StreamingYouTubeDownloader {
             ]);
             
             // Add more detailed FFmpeg logging
+            let ffmpegBytesOutput = 0;
+            
+            ffmpeg.stdout.on('data', (chunk) => {
+                ffmpegBytesOutput += chunk.length;
+                console.log(`FFmpeg stdout data: ${chunk.length} bytes (total: ${ffmpegBytesOutput})`);
+            });
+            
             ffmpeg.stderr.on('data', (data) => {
                 const output = data.toString();
                 console.log('FFmpeg stderr:', output);
@@ -81,6 +127,7 @@ export class StreamingYouTubeDownloader {
 
             // Setup error handlers
             ytDlp.on('error', (error) => {
+                console.error('yt-dlp process error:', error);
                 logProcessStep('YouTube Download', 'error', { error: error.message, url });
                 throw new MediaError(
                     `Failed to start YouTube download: ${error.message}`,
@@ -89,11 +136,21 @@ export class StreamingYouTubeDownloader {
             });
 
             ffmpeg.on('error', (error) => {
+                console.error('FFmpeg process error:', error);
                 logProcessStep('Audio Processing', 'error', { error: error.message, url });
                 throw new MediaError(
                     `Failed to process audio: ${error.message}`,
                     MediaErrorCode.PROCESSING_FAILED
                 );
+            });
+            
+            // Add exit handlers for better debugging
+            ytDlp.on('exit', (code, signal) => {
+                console.log(`yt-dlp exited with code: ${code}, signal: ${signal}, bytes received: ${ytDlpBytesReceived}`);
+            });
+            
+            ffmpeg.on('exit', (code, signal) => {
+                console.log(`FFmpeg exited with code: ${code}, signal: ${signal}, bytes output: ${ffmpegBytesOutput}`);
             });
 
             // Create progress monitoring transform stream
