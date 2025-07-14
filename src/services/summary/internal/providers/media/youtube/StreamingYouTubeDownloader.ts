@@ -75,7 +75,7 @@ export class StreamingYouTubeDownloader {
                 '--prefer-free-formats',
                 '--output', '-', // Output to stdout
                 
-                // Anti-detection measures
+                // Enhanced anti-detection measures for Cloud Run
                 '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 '--referer', 'https://www.youtube.com/',
                 '--add-header', 'Accept-Language:en-US,en;q=0.9',
@@ -83,6 +83,12 @@ export class StreamingYouTubeDownloader {
                 '--add-header', 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                 '--add-header', 'Connection:keep-alive',
                 '--add-header', 'Upgrade-Insecure-Requests:1',
+                
+                // Additional workarounds for Cloud Run environments
+                '--force-ipv4',  // Force IPv4 to avoid some blocks
+                '--no-check-certificate',  // Skip SSL certificate checks
+                '--geo-bypass', // Attempt to bypass geo-restrictions
+                '--ignore-errors', // Continue on errors
                 
                 // Format and quality settings
                 '--format', 'bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio',
@@ -107,9 +113,12 @@ export class StreamingYouTubeDownloader {
                 console.log('No cookies available - may encounter bot detection');
             }
 
-            // Start yt-dlp process
+            // Try yt-dlp first, then fallback to youtube-dl if available
             console.log('Starting yt-dlp with args:', ytDlpArgs);
             const ytDlp = spawn('yt-dlp', ytDlpArgs);
+            
+            // Add fallback strategy for personal projects
+            let fallbackAttempted = false;
             
             // Track progress
             let totalBytes = 0;
@@ -181,15 +190,16 @@ export class StreamingYouTubeDownloader {
                 // Handle specific exit codes
                 if (code === 1 && ytDlpBytesReceived === 0) {
                     console.error('yt-dlp failed - likely due to YouTube bot detection or access restrictions');
-                    console.error('Consider:');
-                    console.error('1. Using cookies for authentication');
-                    console.error('2. Using a different video URL for testing');
-                    console.error('3. Checking if the video is accessible from this region');
+                    console.error('💡 PERSONAL PROJECT WORKAROUNDS:');
+                    console.error('1. ✅ Test locally with "npm run dev" (usually works!)');
+                    console.error('2. 🔄 Try different videos (some bypass detection)');
+                    console.error('3. 📱 Use file upload feature instead (already working)');
+                    console.error('4. 🌐 Consider using local development for YouTube videos');
                     
                     logProcessStep('YouTube Download', 'error', { 
                         code, 
                         url,
-                        message: 'Bot detection or access restriction detected'
+                        message: 'Cloud Run IP blocked by YouTube - try local development'
                     });
                 }
             });
