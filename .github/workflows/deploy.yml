@@ -114,7 +114,8 @@ jobs:
           --timeout=900 \
           --cpu-throttling \
           --no-cpu-boost \
-          --set-env-vars="NODE_ENV=${{ env.NODE_ENV }}"
+          --set-env-vars="NODE_ENV=${{ env.NODE_ENV }}" \
+          --port=5050
 
     - name: Set environment variables
       run: |
