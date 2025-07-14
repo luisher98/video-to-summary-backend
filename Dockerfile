@@ -1,5 +1,5 @@
 # ---- Builder Stage ----
-FROM node:20-alpine AS builder
+FROM node:20.18-alpine AS builder
 
 # Set working directory
 WORKDIR /app
@@ -23,7 +23,7 @@ RUN npm run build
 RUN npm prune --omit=dev
 
 # ---- Production Image ----
-FROM node:20-alpine
+FROM node:20.18-alpine
 
 WORKDIR /app
 
