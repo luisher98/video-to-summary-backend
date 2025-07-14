@@ -39,14 +39,15 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/package-lock.json ./package-lock.json
-COPY --from=builder /app/data ./data
 
 # Create necessary directories
 RUN mkdir -p /app/data/tmp/uploads \
     /app/data/tmp/audios \
     /app/data/tmp/transcripts \
     /app/data/tmp/cookies \
-    /app/data/tmp/sessions
+    /app/data/tmp/sessions \
+    /app/data/logs \
+    /app/data/test-data
 
 # Set environment variables
 ENV NODE_ENV=production
