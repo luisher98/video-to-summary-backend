@@ -3,6 +3,7 @@ import { SummaryServiceFactory, MediaSource } from '@/services/summary/SummarySe
 import { logRequest } from '@/utils/logging/logger.js';
 import { withErrorHandling, sendErrorResponse } from '@/utils/errors/index.js';
 import { MediaError } from '@/utils/errors/index.js';
+import videoInfo from '@/services/info/videoInfo.js';
 
 
 /**
@@ -303,28 +304,34 @@ export async function getMetadata(req: Request, res: Response) {
     const url = req.query.url as string;
 
     try {
-        // Get metadata from YouTube API
-        // Note: This is a simplified implementation that returns basic info
-        // In a real implementation, you would use the YouTube API to get detailed metadata
+        // Get metadata from YouTube API using the videoInfo service
+        const videoData = await videoInfo(url);
         
-        const videoId = extractVideoId(url);
-        
-        if (!videoId) {
-            return res.status(400).json({
-                error: 'Invalid YouTube URL'
-            });
-        }
-        
-        // Return basic metadata
+        // Return the video metadata in the expected format
         res.json({
+            success: true,
             data: {
-                id: videoId,
-                url: url,
-                platform: 'youtube'
+                id: videoData.id,
+                title: videoData.title,
+                thumbnail: {
+                    url: videoData.thumbnailUrl,
+                    width: 1280,
+                    height: 720
+                },
+                channel: videoData.channel,
+                description: videoData.description,
+                duration: videoData.duration
             }
         });
     } catch (error) {
-        sendErrorResponse(error, res);
+        console.error('Error fetching video metadata:', error);
+        
+        // Return error response in the expected format
+        res.status(500).json({
+            success: false,
+            message: error instanceof Error ? error.message : 'Failed to fetch video info',
+            error: error instanceof Error ? error.message : 'Unknown error'
+        });
     }
 }
 

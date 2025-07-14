@@ -1,12 +1,74 @@
 import { spawn } from 'child_process';
 import { Readable, Transform } from 'stream';
-import { getFfmpegPath } from '@/utils/media/ffmpeg.js';
-import { CookieHandler } from './cookies/cookieHandler.js';
-import { YOUTUBE_CONFIG } from '@/config/youtube.js';
+import { v4 as uuidv4 } from 'uuid';
 import { MediaError, MediaErrorCode } from '@/utils/errors/index.js';
 import { logProcessStep } from '@/utils/logging/logger.js';
-import { v4 as uuidv4 } from 'uuid';
+import { YOUTUBE_CONFIG } from '@/config/youtube.js';
+import { getFfmpegPath } from '@/utils/media/ffmpeg.js';
 import { AdaptiveBuffer } from '@/utils/streaming/AdaptiveBuffer.js';
+import { CookieHandler } from './cookies/cookieHandler.js';
+
+// Progress bar utility
+class ProgressBar {
+    private lastUpdate = 0;
+    private lastBytes = 0;
+    private startTime = Date.now();
+    private updateInterval = 1000; // Update every 1 second to reduce clutter
+
+    constructor(private label: string) {
+        this.startTime = Date.now();
+    }
+
+    update(currentBytes: number, totalBytes?: number): void {
+        const now = Date.now();
+        if (now - this.lastUpdate < this.updateInterval) {
+            return;
+        }
+
+        const elapsed = (now - this.startTime) / 1000;
+        const bytesPerSecond = currentBytes / elapsed;
+        const speed = this.formatBytes(bytesPerSecond) + '/s';
+        
+        let progressStr = '';
+        if (totalBytes) {
+            const percentage = Math.round((currentBytes / totalBytes) * 100);
+            const bar = this.createProgressBar(percentage, 20);
+            progressStr = ` ${bar} ${percentage}%`;
+        } else {
+            progressStr = ` ${this.formatBytes(currentBytes)}`;
+        }
+
+        // Simple progress display
+        const progressLine = `${this.label}:${progressStr} (${speed})`;
+        process.stdout.write(`\r${progressLine.padEnd(60)}`);
+        this.lastUpdate = now;
+        this.lastBytes = currentBytes;
+    }
+
+    complete(): void {
+        const elapsed = (Date.now() - this.startTime) / 1000;
+        const totalBytes = this.lastBytes;
+        const avgSpeed = this.formatBytes(totalBytes / elapsed) + '/s';
+        
+        // Show completion
+        const completionLine = `${this.label}: Complete (${this.formatBytes(totalBytes)} in ${elapsed.toFixed(1)}s, avg: ${avgSpeed})`;
+        process.stdout.write(`\r${completionLine.padEnd(60)}\n`);
+    }
+
+    private createProgressBar(percentage: number, length: number): string {
+        const filled = Math.round((percentage / 100) * length);
+        const empty = length - filled;
+        return `[${'█'.repeat(filled)}${'░'.repeat(empty)}]`;
+    }
+
+    private formatBytes(bytes: number): string {
+        if (bytes === 0) return '0 B';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+    }
+}
 
 /**
  * Proxy manager for handling residential proxy rotation and fallback
@@ -178,8 +240,9 @@ export class StreamingYouTubeDownloader {
                 '--fragment-retries', '3',
                 '--retry-sleep', 'exp=1:2:10',
                 
-                // Reduce verbosity but keep some output for debugging
-                '--no-warnings'
+                // Reduce verbosity for cleaner output
+                '--no-warnings',
+                '--quiet'
             ];
 
             // Add proxy if available
@@ -298,8 +361,12 @@ export class StreamingYouTubeDownloader {
         cookieOptions?: any
     ): Promise<{ stream: Readable; fileId: string; cleanup: () => Promise<void>; }> {
         // Start yt-dlp process
-        console.log('Starting yt-dlp with args:', ytDlpArgs);
+        console.log('Starting yt-dlp download...');
         const ytDlp = spawn('yt-dlp', ytDlpArgs);
+        
+        // Initialize progress bars
+        const ytDlpProgress = new ProgressBar('Downloading');
+        const ffmpegProgress = new ProgressBar('Processing');
         
         // Track progress
         let totalBytes = 0;
@@ -308,37 +375,43 @@ export class StreamingYouTubeDownloader {
         
         ytDlp.stdout.on('data', (chunk) => {
             ytDlpBytesReceived += chunk.length;
-            console.log(`yt-dlp stdout data: ${chunk.length} bytes (total: ${ytDlpBytesReceived})`);
+            ytDlpProgress.update(ytDlpBytesReceived);
         });
         
         ytDlp.stderr.on('data', (data) => {
             const output = data.toString();
-            console.log('yt-dlp stderr:', output);
+            // Only log important messages, not progress info
+            if (output.includes('ERROR') || output.includes('WARNING') || output.includes('[download]')) {
+                console.log('yt-dlp:', output.trim());
+            }
         });
 
         // Create FFmpeg process for audio conversion
         const ffmpeg = spawn(ffmpegPath, [
             '-i', 'pipe:0',          // Take input from stdin
             '-f', 'mp3',             // Output format
-            '-ab', '128k',           // Audio bitrate
-            '-ac', '2',              // Audio channels
-            '-ar', '44100',          // Audio sample rate
+            '-ab', '64k',            // Reduced bitrate from 128k to 64k
+            '-ac', '1',              // Mono audio instead of stereo (2 channels)
+            '-ar', '22050',          // Lower sample rate from 44100 to 22050
             '-vn',                   // No video
-            '-loglevel', 'info',     // Increase logging for debugging
+            '-loglevel', 'error',    // Only show errors, not progress
             'pipe:1'                 // Output to stdout
         ]);
         
-        // Add more detailed FFmpeg logging
+        // Track FFmpeg output
         let ffmpegBytesOutput = 0;
         
         ffmpeg.stdout.on('data', (chunk) => {
             ffmpegBytesOutput += chunk.length;
-            console.log(`FFmpeg stdout data: ${chunk.length} bytes (total: ${ffmpegBytesOutput})`);
+            ffmpegProgress.update(ffmpegBytesOutput);
         });
         
         ffmpeg.stderr.on('data', (data) => {
             const output = data.toString();
-            console.log('FFmpeg stderr:', output);
+            // Only log actual errors, not progress info
+            if (output.includes('Error') || output.includes('error')) {
+                console.log('FFmpeg error:', output.trim());
+            }
         });
 
         // Track if we need to retry with different parameters
@@ -366,7 +439,7 @@ export class StreamingYouTubeDownloader {
         
         // Add exit handlers for better debugging
         ytDlp.on('exit', async (code, signal) => {
-            console.log(`yt-dlp exited with code: ${code}, signal: ${signal}, bytes received: ${ytDlpBytesReceived}`);
+            ytDlpProgress.complete();
             
             // Handle specific exit codes
             if (code === 1 && ytDlpBytesReceived === 0) {
@@ -396,7 +469,7 @@ export class StreamingYouTubeDownloader {
         });
         
         ffmpeg.on('exit', (code, signal) => {
-            console.log(`FFmpeg exited with code: ${code}, signal: ${signal}, bytes output: ${ffmpegBytesOutput}`);
+            ffmpegProgress.complete();
         });
 
         // Create progress monitoring transform stream

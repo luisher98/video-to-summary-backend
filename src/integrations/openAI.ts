@@ -80,6 +80,12 @@ export async function generateTranscriptFromStream(
             console.warn(`Audio file is very small: ${stats.size} bytes`);
         }
         
+        // Check if file size exceeds OpenAI's limit (25MB = 26,214,400 bytes)
+        const OPENAI_MAX_SIZE = 26 * 1024 * 1024; // 26MB to be safe
+        if (stats.size > OPENAI_MAX_SIZE) {
+            throw new Error(`Audio file size (${(stats.size / 1024 / 1024).toFixed(1)}MB) exceeds OpenAI's maximum limit of 25MB. Please try a shorter video or contact support for larger file processing.`);
+        }
+        
         console.log(`Sending ${stats.size} byte MP3 file to OpenAI transcription`);
         
         // Use the file for transcription

@@ -138,7 +138,7 @@ export class AzureBlobStorageProvider implements StorageProvider {
                         options.onProgress((uploaded / file.length) * 100);
                     }
                 }
-            } else {
+            } else if (file instanceof Readable) {
                 // For streams, we can use the pipeline to track progress
                 const totalSize = fileSize || 0;
                 let uploaded = 0;
@@ -163,6 +163,8 @@ export class AzureBlobStorageProvider implements StorageProvider {
                         }
                     }
                 );
+            } else {
+                throw new Error('Invalid file type. Expected Buffer or Readable stream.');
             }
 
             return blockBlobClient.url;

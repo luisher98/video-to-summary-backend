@@ -133,6 +133,8 @@ export const uploadContent = withErrorHandling(async (req: Request, res: Respons
  */
 export const processVideo = withErrorHandling(async (req: Request, res: Response) => {
     const { fileId, blobName } = req.body;
+    const { words = 400, prompt = '' } = req.query;
+    
     if (!fileId || !blobName) {
         throw new Error('fileId and blobName are required');
     }
@@ -140,19 +142,88 @@ export const processVideo = withErrorHandling(async (req: Request, res: Response
     processTimer.startProcess('process_video');
     const storage = await ensureStorageInitialized();
 
-    // Get the file URL from the storage provider
-    const url = await storage.uploadFile(blobName, '', 0); // This will return the URL without uploading
+    // Check if the file exists in Azure storage
+    const fileExists = await storage.fileExists(blobName);
+    if (!fileExists) {
+        throw new Error(`File ${blobName} not found in storage`);
+    }
 
-    // TODO: Add video processing logic here
-    const result = {
-        fileId,
-        blobName,
-        url,
-        status: 'pending',
-        message: 'Video processing queued'
-    };
+    // Get the file info to get the URL
+    const fileInfo = await storage.getFileInfo(blobName);
+    const url = fileInfo.url;
 
-    processTimer.endProcess('process_video');
+    // Set up SSE headers for streaming response
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no');
 
-    return { data: result };
+    try {
+        // Create summary service for Azure blob processing
+        const summaryService = SummaryServiceFactory.createFileUploadService();
+        
+        // Set up progress tracking
+        summaryService.onProgress((progress) => {
+            // Send progress updates via SSE
+            if (progress.status !== 'done') {
+                res.write(`data: ${JSON.stringify(progress)}\n\n`);
+            }
+        });
+
+        // Create media source for the Azure blob
+        const mediaSource: MediaSource = {
+            type: 'file',
+            data: {
+                path: url, // Use the Azure blob URL
+                originalname: fileInfo.name,
+                mimetype: fileInfo.contentType || 'video/mp4'
+            }
+        };
+
+        // Process the video and generate summary
+        const result = await summaryService.process(
+            mediaSource,
+            {
+                maxWords: Number(words),
+                additionalPrompt: prompt as string
+            }
+        );
+
+        // Send final result
+        const finalResponse = {
+            status: 'done',
+            summary: result.content,
+            progress: 100,
+            message: 'Video processing completed successfully',
+            fileId,
+            blobName,
+            url
+        };
+
+        res.write(`data: ${JSON.stringify(finalResponse)}\n\n`);
+        res.end();
+
+        processTimer.endProcess('process_video');
+        
+        // Return empty object to satisfy the return type requirement
+        return { data: {} };
+    } catch (error) {
+        console.error('Video processing error:', error);
+        
+        const errorResponse = {
+            status: 'error',
+            message: error instanceof Error ? error.message : 'Video processing failed',
+            progress: 0,
+            fileId,
+            blobName
+        };
+
+        res.write(`data: ${JSON.stringify(errorResponse)}\n\n`);
+        res.end();
+        
+        processTimer.endProcess('process_video', error instanceof Error ? error : new Error(String(error)));
+        
+        // Return empty object to satisfy the return type requirement
+        return { data: {} };
+    }
 }); 

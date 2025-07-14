@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { formatDuration } from '../formatters/dateTime.js';
 
 /**
  * Interface for process timing information
@@ -27,113 +28,7 @@ export interface LogInfo {
     [key: string]: any;
 }
 
-class ProcessTimer {
-    private timings: Map<string, ProcessTiming> = new Map();
-    private activeProcess: string | null = null;
-    private readonly MAX_TIMINGS = 1000; // Prevent unlimited growth
-
-    startProcess(processName: string): void {
-        // Clear old timings if map gets too large
-        if (this.timings.size > this.MAX_TIMINGS) {
-            const entries = Array.from(this.timings.entries());
-            // Keep only the most recent 500 entries
-            this.timings.clear();
-            entries.slice(-500).forEach(([key, value]) => {
-                this.timings.set(key, value);
-            });
-        }
-
-        const timing: ProcessTiming = {
-            processName,
-            startTime: performance.now(),
-            status: 'running',
-            subProcesses: []
-        };
-        
-        if (this.activeProcess) {
-            const parentTiming = this.timings.get(this.activeProcess);
-            if (parentTiming) {
-                parentTiming.subProcesses?.push(timing);
-            }
-        }
-        
-        this.timings.set(processName, timing);
-        this.activeProcess = processName;
-    }
-
-    endProcess(processName: string, error?: Error): void {
-        const timing = this.timings.get(processName);
-        if (timing) {
-            timing.endTime = performance.now();
-            timing.duration = timing.endTime - timing.startTime;
-            timing.status = error ? 'error' : 'completed';
-            this.activeProcess = null;
-        }
-    }
-
-    getTimings(): ProcessTiming[] {
-        return Array.from(this.timings.values());
-    }
-
-    // NEW: Clear timings method
-    clearTimings(): void {
-        this.timings.clear();
-        this.activeProcess = null;
-    }
-
-    // NEW: Clear old timings
-    clearOldTimings(maxAgeMs: number = 300000): void { // 5 minutes default
-        const now = performance.now();
-        for (const [key, timing] of this.timings.entries()) {
-            if (timing.endTime && (now - timing.endTime) > maxAgeMs) {
-                this.timings.delete(key);
-            }
-        }
-    }
-}
-
-export const processTimer = new ProcessTimer();
-
-/**
- * Formats duration in a human-readable format
- */
-function formatDuration(ms: number): string {
-    if (ms < 1000) return `${ms.toFixed(2)}ms`;
-    const seconds = ms / 1000;
-    if (seconds < 60) return `${seconds.toFixed(2)}s`;
-    const minutes = seconds / 60;
-    return `${minutes.toFixed(2)}m`;
-}
-
-/**
- * Generates a progress bar string
- */
-function generateProgressBar(percentage: number, length: number = 20): string {
-    // Ensure percentage is between 0 and 1
-    const validPercentage = Math.max(0, Math.min(1, Number.isFinite(percentage) ? percentage : 0));
-    const filled = Math.round(validPercentage * length);
-    const empty = length - filled;
-    return `[${('█').repeat(filled)}${('░').repeat(empty)}]`;
-}
-
-/**
- * Formats a size in bytes to human readable format
- */
-function formatSize(bytes: number): string {
-    if (bytes < 1024) return `${bytes}B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(2)}KB`;
-    if (bytes < 1024 * 1024 * 1024) return `${(bytes / 1024 / 1024).toFixed(2)}MB`;
-    return `${(bytes / 1024 / 1024 / 1024).toFixed(2)}GB`;
-}
-
-/**
- * Formats a process step with tree structure
- */
-function formatProcessStep(step: string, level: number = 0, last: boolean = false): string {
-    const indent = '  '.repeat(level);
-    const prefix = level === 0 ? '' : last ? '└─ ' : '├─ ';
-    return `${indent}${prefix}${step}`;
-}
+let lastProgressStep = '';
 
 /**
  * Logs a process step with visual formatting
@@ -142,34 +37,53 @@ export function logProcessStep(step: string, status: 'start' | 'complete' | 'err
     const icon = status === 'start' ? '→' : status === 'complete' ? '✓' : '✗';
     const color = status === 'start' ? chalk.blue : status === 'complete' ? chalk.green : chalk.red;
     
-    // Get timing information if available
-    const timing = processTimer.getTimings().find(t => t.processName === step);
-    const durationStr = timing?.duration ? ` ${chalk.gray(`${formatDuration(timing.duration)}`)}` : '';
-    
     // Format details more concisely
     let detailsStr = '';
     if (details) {
         if (typeof details === 'object') {
             if ('progress' in details) {
                 detailsStr = ` ${generateProgressBar(details.progress / 100)}`;
+            } else if ('kbDownloaded' in details) {
+                detailsStr = chalk.gray(` | Downloaded: ${Number(details.kbDownloaded).toFixed(2)} KB`);
             } else {
                 // Only show the first key-value pair
                 const firstKey = Object.keys(details)[0];
                 if (firstKey) {
                     const value = details[firstKey];
-                    if (firstKey === 'size') {
-                        detailsStr = chalk.gray(` | ${formatSize(value)}`);
-                    } else {
-                        detailsStr = chalk.gray(` | ${firstKey}: ${value}`);
-                    }
+                    detailsStr = chalk.gray(` | ${firstKey}: ${value}`);
                 }
             }
         } else {
             detailsStr = chalk.gray(` | ${details}`);
         }
     }
-    
-    console.log(`${color(icon)} ${step}${durationStr}${detailsStr}`);
+
+    const line = `${color(icon)} ${step}${detailsStr}`;
+
+    // If this is a progress update, overwrite the previous line
+    if (status === 'start' && (step.includes('Progress') || step.includes('Processing'))) {
+        if (lastProgressStep !== step) {
+            // If the step changed, print a newline before the new progress
+            process.stdout.write('\n');
+        }
+        process.stdout.write('\r' + line);
+        lastProgressStep = step;
+    } else {
+        // If the last line was a progress bar, print a newline before the next message
+        if (lastProgressStep) {
+            process.stdout.write('\n');
+            lastProgressStep = '';
+        }
+        console.log(line);
+    }
+}
+
+function generateProgressBar(percentage: number, length: number = 20): string {
+    // Ensure percentage is between 0 and 1
+    const validPercentage = Math.max(0, Math.min(1, Number.isFinite(percentage) ? percentage : 0));
+    const filled = Math.round(validPercentage * length);
+    const empty = length - filled;
+    return `[${('█').repeat(filled)}${('░').repeat(empty)}]`;
 }
 
 /**
@@ -214,7 +128,7 @@ export function logProcessSummary(processTimings: ProcessTiming[]): void {
         console.log('\n📊 Resource Usage:');
         const memoryUsage = process.memoryUsage();
         const heapPercentage = memoryUsage.heapUsed / memoryUsage.heapTotal;
-        console.log(`Memory    ${formatSize(memoryUsage.heapUsed)}/${formatSize(memoryUsage.heapTotal)} ${chalk.gray(`(${(heapPercentage * 100).toFixed(1)}%)`)}`);
+        console.log(`Memory    ${chalk.gray(`(${(heapPercentage * 100).toFixed(1)}%)`)}`);
     }
     
     console.log('');
@@ -241,3 +155,64 @@ export function logRequest(info: LogInfo): void {
         console.log(JSON.stringify(logData, null, 2));
     }
 } 
+
+// Add back processTimer for compatibility with other imports
+class ProcessTimer {
+    private timings: Map<string, any> = new Map();
+    private activeProcess: string | null = null;
+    private readonly MAX_TIMINGS = 1000;
+
+    startProcess(processName: string): void {
+        if (this.timings.size > this.MAX_TIMINGS) {
+            const entries = Array.from(this.timings.entries());
+            this.timings.clear();
+            entries.slice(-500).forEach(([key, value]) => {
+                this.timings.set(key, value);
+            });
+        }
+        const timing = {
+            processName,
+            startTime: performance.now(),
+            status: 'running',
+            subProcesses: []
+        };
+        if (this.activeProcess) {
+            const parentTiming = this.timings.get(this.activeProcess);
+            if (parentTiming) {
+                parentTiming.subProcesses?.push(timing);
+            }
+        }
+        this.timings.set(processName, timing);
+        this.activeProcess = processName;
+    }
+
+    endProcess(processName: string, error?: Error): void {
+        const timing = this.timings.get(processName);
+        if (timing) {
+            timing.endTime = performance.now();
+            timing.duration = (timing.endTime - timing.startTime) / 1000; // Convert to seconds
+            timing.status = error ? 'error' : 'completed';
+            this.activeProcess = null;
+        }
+    }
+
+    getTimings(): any[] {
+        return Array.from(this.timings.values());
+    }
+
+    clearTimings(): void {
+        this.timings.clear();
+        this.activeProcess = null;
+    }
+
+    clearOldTimings(maxAgeMs: number = 300000): void {
+        const now = performance.now();
+        for (const [key, timing] of this.timings.entries()) {
+            if (timing.endTime && (now - timing.endTime) > maxAgeMs) {
+                this.timings.delete(key);
+            }
+        }
+    }
+}
+
+export const processTimer = new ProcessTimer(); 

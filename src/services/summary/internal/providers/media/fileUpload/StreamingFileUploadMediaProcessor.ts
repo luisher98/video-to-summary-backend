@@ -55,6 +55,19 @@ export class StreamingFileUploadMediaProcessor implements IMediaProcessor {
     logProcessStep(processName, 'start', { originalname, mimetype });
 
     try {
+      // Estimate output file size if we have file size information
+      if (fileSource.data.buffer) {
+        const originalSize = fileSource.data.buffer.length;
+        // Rough estimation: MP3 at 64kbps mono is about 8KB per minute
+        // Assuming video is roughly 1:1 ratio with audio duration
+        const estimatedMinutes = originalSize / (1024 * 1024 * 10); // Rough estimate: 10MB per minute
+        const estimatedMP3Size = estimatedMinutes * 8 * 1024; // 8KB per minute
+        
+        if (estimatedMP3Size > 25 * 1024 * 1024) { // 25MB
+          console.warn(`Estimated MP3 size (${(estimatedMP3Size / 1024 / 1024).toFixed(1)}MB) may exceed OpenAI's 25MB limit for file: ${originalname}`);
+        }
+      }
+
       // Create streaming pipeline
       processTimer.startProcess('File Processing Pipeline');
       
@@ -85,9 +98,9 @@ export class StreamingFileUploadMediaProcessor implements IMediaProcessor {
       const ffmpeg = spawn(ffmpegPath, [
         '-i', 'pipe:0',          // Take input from stdin
         '-f', 'mp3',             // Output format
-        '-ab', '128k',           // Audio bitrate
-        '-ac', '2',              // Audio channels
-        '-ar', '44100',          // Audio sample rate
+        '-ab', '64k',            // Reduced bitrate from 128k to 64k
+        '-ac', '1',              // Mono audio instead of stereo (2 channels)
+        '-ar', '22050',          // Lower sample rate from 44100 to 22050
         '-vn',                   // No video
         '-loglevel', 'warning',  // Reduce logging
         'pipe:1'                 // Output to stdout
