@@ -11,7 +11,7 @@ on:
 env:
   REGION: us-east1
   PROJECT_ID: youtube-api-404423
-  REPO_NAME: youtube-summary-backend
+  REPO_NAME: video-summary-api
   IMAGE_NAME: youtube-summary-api
   NODE_ENV: production
 
