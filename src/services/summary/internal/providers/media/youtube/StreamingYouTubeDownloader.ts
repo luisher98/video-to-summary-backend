@@ -67,18 +67,45 @@ export class StreamingYouTubeDownloader {
             const ffmpegPath = getFfmpegPath();
             console.log('Using FFmpeg path:', ffmpegPath);
 
-            // Prepare yt-dlp arguments
+            // Prepare yt-dlp arguments with anti-detection measures
             const ytDlpArgs = [
                 url,
                 '--extract-audio',
                 '--audio-format', 'mp3',
                 '--prefer-free-formats',
                 '--output', '-', // Output to stdout
-                '--quiet'        // Reduce console output
+                
+                // Anti-detection measures
+                '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                '--referer', 'https://www.youtube.com/',
+                '--add-header', 'Accept-Language:en-US,en;q=0.9',
+                '--add-header', 'Accept-Encoding:gzip, deflate, br',
+                '--add-header', 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                '--add-header', 'Connection:keep-alive',
+                '--add-header', 'Upgrade-Insecure-Requests:1',
+                
+                // Format and quality settings
+                '--format', 'bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio',
+                '--audio-quality', '0', // Best quality
+                '--embed-subs', 'false',
+                '--no-playlist',
+                
+                // Network settings
+                '--socket-timeout', '60',
+                '--retries', '3',
+                '--fragment-retries', '3',
+                '--retry-sleep', 'exp=1:2:10',
+                
+                // Reduce verbosity but keep some output for debugging
+                '--no-warnings'
             ];
 
+            console.log('Cookie options:', cookieOptions);
             if (cookieOptions.cookies) {
                 ytDlpArgs.push('--cookies', cookieOptions.cookies);
+                console.log('Using cookies file:', cookieOptions.cookies);
+            } else {
+                console.log('No cookies available - may encounter bot detection');
             }
 
             // Start yt-dlp process
@@ -125,9 +152,13 @@ export class StreamingYouTubeDownloader {
                 console.log('FFmpeg stderr:', output);
             });
 
+            // Track if we need to retry with different parameters
+            let hasErrored = false;
+            
             // Setup error handlers
             ytDlp.on('error', (error) => {
                 console.error('yt-dlp process error:', error);
+                hasErrored = true;
                 logProcessStep('YouTube Download', 'error', { error: error.message, url });
                 throw new MediaError(
                     `Failed to start YouTube download: ${error.message}`,
@@ -147,6 +178,21 @@ export class StreamingYouTubeDownloader {
             // Add exit handlers for better debugging
             ytDlp.on('exit', (code, signal) => {
                 console.log(`yt-dlp exited with code: ${code}, signal: ${signal}, bytes received: ${ytDlpBytesReceived}`);
+                
+                // Handle specific exit codes
+                if (code === 1 && ytDlpBytesReceived === 0) {
+                    console.error('yt-dlp failed - likely due to YouTube bot detection or access restrictions');
+                    console.error('Consider:');
+                    console.error('1. Using cookies for authentication');
+                    console.error('2. Using a different video URL for testing');
+                    console.error('3. Checking if the video is accessible from this region');
+                    
+                    logProcessStep('YouTube Download', 'error', { 
+                        code, 
+                        url,
+                        message: 'Bot detection or access restriction detected'
+                    });
+                }
             });
             
             ffmpeg.on('exit', (code, signal) => {

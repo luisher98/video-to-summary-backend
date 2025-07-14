@@ -41,16 +41,39 @@ export class CookieHandler {
     public static async processYouTubeCookies(): Promise<CookieOptions> {
         // If cookies are disabled in config, return empty options
         if (!YOUTUBE_CONFIG.cookies.enabled) {
+            console.log('YouTube cookies disabled in configuration');
             return {};
         }
 
         try {
             // Check if cookie file exists
             await fs.access(YOUTUBE_CONFIG.cookies.path);
+            console.log('Found existing cookies file:', YOUTUBE_CONFIG.cookies.path);
             return { cookies: YOUTUBE_CONFIG.cookies.path };
         } catch {
-            // If no cookies exist, return empty options
-            return {};
+            // If no cookies exist, create a basic empty cookies file
+            // This sometimes helps with bot detection
+            try {
+                console.log('Creating basic cookies file at:', YOUTUBE_CONFIG.cookies.path);
+                
+                // Ensure the directory exists
+                const cookieDir = YOUTUBE_CONFIG.cookies.path.split('/').slice(0, -1).join('/');
+                await fs.mkdir(cookieDir, { recursive: true });
+                
+                // Create a basic cookies file with common YouTube domains
+                const basicCookieContent = `# Netscape HTTP Cookie File
+# This is a generated file! Do not edit.
+
+.youtube.com	TRUE	/	FALSE	0	CONSENT	PENDING+999
+.youtube.com	TRUE	/	FALSE	0	PREF	f1=50000000
+`;
+                await fs.writeFile(YOUTUBE_CONFIG.cookies.path, basicCookieContent);
+                console.log('Created basic cookies file');
+                return { cookies: YOUTUBE_CONFIG.cookies.path };
+            } catch (cookieError) {
+                console.warn('Failed to create cookies file:', cookieError);
+                return {};
+            }
         }
     }
 } 
