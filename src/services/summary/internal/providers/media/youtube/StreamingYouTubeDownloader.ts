@@ -69,9 +69,15 @@ export class StreamingYouTubeDownloader {
                 '-ac', '2',              // Audio channels
                 '-ar', '44100',          // Audio sample rate
                 '-vn',                   // No video
-                '-loglevel', 'warning',  // Reduce logging
+                '-loglevel', 'info',     // Increase logging for debugging
                 'pipe:1'                 // Output to stdout
             ]);
+            
+            // Add more detailed FFmpeg logging
+            ffmpeg.stderr.on('data', (data) => {
+                const output = data.toString();
+                console.log('FFmpeg stderr:', output);
+            });
 
             // Setup error handlers
             ytDlp.on('error', (error) => {

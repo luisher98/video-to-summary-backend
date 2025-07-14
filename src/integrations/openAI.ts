@@ -39,17 +39,48 @@ export async function generateTranscriptFromStream(
     stream: Readable,
     id: string
 ): Promise<string> {
+    let tempFilePath = '';
     try {
         // First, buffer the stream to a temporary file
         // Note: OpenAI API doesn't currently support direct streaming for transcription
-        const tempFilePath = `${TempPaths.AUDIOS}/${id}-temp.mp3`;
+        tempFilePath = `${TempPaths.AUDIOS}/${id}-temp.mp3`;
         const writeStream = fs.createWriteStream(tempFilePath);
         
+        console.log(`Starting stream write to: ${tempFilePath}`);
+        
+        // Track bytes written
+        let bytesWritten = 0;
+        
         await new Promise<void>((resolve, reject) => {
+            stream.on('data', (chunk) => {
+                bytesWritten += chunk.length;
+            });
+            
             stream.pipe(writeStream)
-                .on('finish', () => resolve())
-                .on('error', (err) => reject(err));
+                .on('finish', () => {
+                    console.log(`Stream write finished. Bytes written: ${bytesWritten}`);
+                    // Add a small delay to ensure file is fully flushed
+                    setTimeout(() => resolve(), 100);
+                })
+                .on('error', (err) => {
+                    console.error('Stream write error:', err);
+                    reject(err);
+                });
         });
+        
+        // Validate the file was written successfully
+        const stats = await fs.promises.stat(tempFilePath);
+        console.log(`Temp file stats: size=${stats.size} bytes, exists=${stats.isFile()}`);
+        
+        if (stats.size === 0) {
+            throw new Error('Generated audio file is empty');
+        }
+        
+        if (stats.size < 1000) { // Less than 1KB is suspicious for an audio file
+            console.warn(`Audio file is very small: ${stats.size} bytes`);
+        }
+        
+        console.log(`Sending ${stats.size} byte MP3 file to OpenAI transcription`);
         
         // Use the file for transcription
         const transcription = await openai.audio.transcriptions.create({
@@ -57,9 +88,12 @@ export async function generateTranscriptFromStream(
             model: 'whisper-1'
         });
         
+        console.log(`Transcription completed successfully: ${transcription.text.length} characters`);
+        
         // Clean up the temporary file
         try {
-            fs.unlinkSync(tempFilePath);
+            await fs.promises.unlink(tempFilePath);
+            console.log(`Cleaned up temporary file: ${tempFilePath}`);
         } catch (error) {
             console.warn(`Failed to clean up temporary file ${tempFilePath}:`, error);
         }
@@ -67,6 +101,16 @@ export async function generateTranscriptFromStream(
         return transcription.text;
     } catch (error) {
         console.error('Streaming transcription error:', error);
+        
+        // Try to clean up the temp file on error
+        if (tempFilePath) {
+            try {
+                await fs.promises.unlink(tempFilePath);
+            } catch (cleanupError) {
+                console.warn(`Failed to clean up temp file after error: ${cleanupError}`);
+            }
+        }
+        
         throw error;
     }
 }
