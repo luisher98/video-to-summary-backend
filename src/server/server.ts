@@ -83,7 +83,7 @@ export async function startServer(): Promise<void> {
     // Only log once per cluster
     const shouldLog = !process.env.NODE_APP_INSTANCE || process.env.NODE_APP_INSTANCE === '0';
 
-    serverInstance = app.listen(SERVER_CONFIG.port, () => {
+    serverInstance = app.listen(Number(SERVER_CONFIG.port), '0.0.0.0', () => {
         if (shouldLog) {
             console.log(`Server running on ${SERVER_CONFIG.url}`);
             console.log(`Streaming endpoint: ${SERVER_CONFIG.url}/api/summary/youtube/streaming/summary?url=https://www.youtube.com/watch?v=${SERVER_CONFIG.examples.videoId}`);

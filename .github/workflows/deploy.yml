@@ -114,27 +114,7 @@ jobs:
           --timeout=900 \
           --cpu-throttling \
           --no-cpu-boost \
-          --set-env-vars="NODE_ENV=${{ env.NODE_ENV }}"
-
-    - name: Set environment variables
-      run: |
-        gcloud run services update ${{ env.IMAGE_NAME }}-service \
-          --region=${{ env.REGION }} \
-          --update-env-vars="OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" \
-          --update-env-vars="OPENAI_MODEL=${{ secrets.OPENAI_MODEL || 'gpt-4' }}" \
-          --update-env-vars="YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" \
-          --update-env-vars="YOUTUBE_USE_COOKIES=${{ secrets.YOUTUBE_USE_COOKIES || 'false' }}" \
-          --update-env-vars="AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}" \
-          --update-env-vars="AZURE_STORAGE_CONTAINER_NAME=${{ secrets.AZURE_STORAGE_CONTAINER_NAME || 'uploads' }}" \
-          --update-env-vars="AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID }}" \
-          --update-env-vars="AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}" \
-          --update-env-vars="AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}" \
-          --update-env-vars="AZURE_STORAGE_ACCOUNT_NAME=${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}" \
-          --update-env-vars="CORS_ORIGINS=${{ secrets.CORS_ORIGINS }}" \
-          --update-env-vars="RATE_LIMIT_MAX=${{ secrets.RATE_LIMIT_MAX || '100' }}" \
-          --update-env-vars="MAX_CONCURRENT_REQUESTS=${{ secrets.MAX_CONCURRENT_REQUESTS || '2' }}" \
-          --update-env-vars="REQUEST_TIMEOUT_MS=${{ secrets.REQUEST_TIMEOUT_MS || '30000' }}" \
-          --update-env-vars="MAX_FILE_SIZE=${{ secrets.MAX_FILE_SIZE || '104857600' }}"
+          --set-env-vars="NODE_ENV=${{ env.NODE_ENV }},OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},OPENAI_MODEL=${{ secrets.OPENAI_MODEL || 'gpt-4' }},YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }},YOUTUBE_USE_COOKIES=${{ secrets.YOUTUBE_USE_COOKIES || 'false' }},AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }},AZURE_STORAGE_CONTAINER_NAME=${{ secrets.AZURE_STORAGE_CONTAINER_NAME || 'uploads' }},AZURE_TENANT_ID=${{ secrets.AZURE_TENANT_ID }},AZURE_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }},AZURE_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }},AZURE_STORAGE_ACCOUNT_NAME=${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }},CORS_ORIGINS=${{ secrets.CORS_ORIGINS }},RATE_LIMIT_MAX=${{ secrets.RATE_LIMIT_MAX || '100' }},MAX_CONCURRENT_REQUESTS=${{ secrets.MAX_CONCURRENT_REQUESTS || '2' }},REQUEST_TIMEOUT_MS=${{ secrets.REQUEST_TIMEOUT_MS || '30000' }},MAX_FILE_SIZE=${{ secrets.MAX_FILE_SIZE || '104857600' }}"
 
     - name: Clean up old revisions
       run: |
