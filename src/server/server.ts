@@ -80,6 +80,14 @@ export async function startServer(): Promise<void> {
         });
     }, SERVER_CONFIG.tempFiles.cleanupInterval);
 
+    // Set up periodic cookie cleanup
+    const { CookieHandler } = await import('@/services/summary/internal/providers/media/youtube/cookies/cookieHandler.js');
+    const cookieCleanupInterval = setInterval(() => {
+        CookieHandler.cleanupOldCookies().catch((error: Error) => {
+            console.error('Error during cookie cleanup:', error);
+        });
+    }, 60 * 60 * 1000); // Clean up every hour
+
     // Only log once per cluster
     const shouldLog = !process.env.NODE_APP_INSTANCE || process.env.NODE_APP_INSTANCE === '0';
 
@@ -104,6 +112,7 @@ export async function startServer(): Promise<void> {
     // Clean up on process termination
     process.on('SIGTERM', () => {
         clearInterval(cleanupInterval);
+        clearInterval(cookieCleanupInterval);
         stopServer().catch(console.error);
     });
 }

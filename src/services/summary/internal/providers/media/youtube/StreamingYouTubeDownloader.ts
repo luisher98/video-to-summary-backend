@@ -75,7 +75,7 @@ export class StreamingYouTubeDownloader {
                 '--prefer-free-formats',
                 '--output', '-', // Output to stdout
                 
-                // Enhanced anti-detection measures for Cloud Run
+                // Anti-detection measures
                 '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 '--referer', 'https://www.youtube.com/',
                 '--add-header', 'Accept-Language:en-US,en;q=0.9',
@@ -83,12 +83,6 @@ export class StreamingYouTubeDownloader {
                 '--add-header', 'Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
                 '--add-header', 'Connection:keep-alive',
                 '--add-header', 'Upgrade-Insecure-Requests:1',
-                
-                // Additional workarounds for Cloud Run environments
-                '--force-ipv4',  // Force IPv4 to avoid some blocks
-                '--no-check-certificate',  // Skip SSL certificate checks
-                '--geo-bypass', // Attempt to bypass geo-restrictions
-                '--ignore-errors', // Continue on errors
                 
                 // Format and quality settings
                 '--format', 'bestaudio[ext=m4a]/bestaudio[ext=mp3]/bestaudio',
@@ -105,20 +99,26 @@ export class StreamingYouTubeDownloader {
                 '--no-warnings'
             ];
 
-            console.log('Cookie options:', cookieOptions);
+            console.log('Cookie processing result:', cookieOptions);
             if (cookieOptions.cookies) {
                 ytDlpArgs.push('--cookies', cookieOptions.cookies);
-                console.log('Using cookies file:', cookieOptions.cookies);
+                console.log('✅ Using cookies file:', cookieOptions.cookies);
+                
+                // Log cookie file size for debugging
+                try {
+                    const fs = await import('fs');
+                    const stats = await fs.promises.stat(cookieOptions.cookies);
+                    console.log(`Cookie file size: ${stats.size} bytes`);
+                } catch (error) {
+                    console.warn('Could not read cookie file stats:', error);
+                }
             } else {
-                console.log('No cookies available - may encounter bot detection');
+                console.log('❌ No cookies available - may encounter bot detection');
             }
 
-            // Try yt-dlp first, then fallback to youtube-dl if available
+            // Start yt-dlp process
             console.log('Starting yt-dlp with args:', ytDlpArgs);
             const ytDlp = spawn('yt-dlp', ytDlpArgs);
-            
-            // Add fallback strategy for personal projects
-            let fallbackAttempted = false;
             
             // Track progress
             let totalBytes = 0;
@@ -184,22 +184,31 @@ export class StreamingYouTubeDownloader {
             });
             
             // Add exit handlers for better debugging
-            ytDlp.on('exit', (code, signal) => {
+            ytDlp.on('exit', async (code, signal) => {
                 console.log(`yt-dlp exited with code: ${code}, signal: ${signal}, bytes received: ${ytDlpBytesReceived}`);
                 
                 // Handle specific exit codes
                 if (code === 1 && ytDlpBytesReceived === 0) {
                     console.error('yt-dlp failed - likely due to YouTube bot detection or access restrictions');
-                    console.error('💡 PERSONAL PROJECT WORKAROUNDS:');
-                    console.error('1. ✅ Test locally with "npm run dev" (usually works!)');
-                    console.error('2. 🔄 Try different videos (some bypass detection)');
-                    console.error('3. 📱 Use file upload feature instead (already working)');
-                    console.error('4. 🌐 Consider using local development for YouTube videos');
+                    console.error('Attempting fallback strategies...');
+                    
+                    // Try to get fresh cookies if the current ones failed
+                    if (cookieOptions.cookies) {
+                        console.log('Current cookies may be expired, attempting to refresh...');
+                        try {
+                            const { CookieHandler } = await import('./cookies/cookieHandler.js');
+                            await CookieHandler.cleanupOldCookies();
+                        } catch (error) {
+                            console.warn('Cookie cleanup failed:', error);
+                        }
+                    }
                     
                     logProcessStep('YouTube Download', 'error', { 
                         code, 
                         url,
-                        message: 'Cloud Run IP blocked by YouTube - try local development'
+                        message: 'Bot detection or access restriction detected',
+                        cookiesUsed: !!cookieOptions.cookies,
+                        bytesReceived: ytDlpBytesReceived
                     });
                 }
             });
