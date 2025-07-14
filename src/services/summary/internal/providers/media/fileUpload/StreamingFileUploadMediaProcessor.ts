@@ -35,6 +35,7 @@ export class StreamingFileUploadMediaProcessor implements IMediaProcessor {
   private activeStreams: Map<string, { 
     stream: Readable; 
     cleanup: () => Promise<void>;
+    createdAt: number;
   }> = new Map();
 
   async ensureResources(): Promise<void> {
@@ -165,7 +166,8 @@ export class StreamingFileUploadMediaProcessor implements IMediaProcessor {
       // Store active stream for later cleanup
       this.activeStreams.set(fileId, { 
         stream: ffmpeg.stdout.pipe(progressStream).pipe(adaptiveBuffer),
-        cleanup 
+        cleanup,
+        createdAt: Date.now()
       });
 
       // Create dummy audio file path for compatibility

@@ -30,8 +30,19 @@ export interface LogInfo {
 class ProcessTimer {
     private timings: Map<string, ProcessTiming> = new Map();
     private activeProcess: string | null = null;
+    private readonly MAX_TIMINGS = 1000; // Prevent unlimited growth
 
     startProcess(processName: string): void {
+        // Clear old timings if map gets too large
+        if (this.timings.size > this.MAX_TIMINGS) {
+            const entries = Array.from(this.timings.entries());
+            // Keep only the most recent 500 entries
+            this.timings.clear();
+            entries.slice(-500).forEach(([key, value]) => {
+                this.timings.set(key, value);
+            });
+        }
+
         const timing: ProcessTiming = {
             processName,
             startTime: performance.now(),
@@ -62,6 +73,22 @@ class ProcessTimer {
 
     getTimings(): ProcessTiming[] {
         return Array.from(this.timings.values());
+    }
+
+    // NEW: Clear timings method
+    clearTimings(): void {
+        this.timings.clear();
+        this.activeProcess = null;
+    }
+
+    // NEW: Clear old timings
+    clearOldTimings(maxAgeMs: number = 300000): void { // 5 minutes default
+        const now = performance.now();
+        for (const [key, timing] of this.timings.entries()) {
+            if (timing.endTime && (now - timing.endTime) > maxAgeMs) {
+                this.timings.delete(key);
+            }
+        }
     }
 }
 

@@ -4,6 +4,7 @@ import { logRequest } from '@/utils/logging/logger.js';
 import { withErrorHandling, sendErrorResponse } from '@/utils/errors/index.js';
 import { MediaError } from '@/utils/errors/index.js';
 
+
 /**
  * Stream summary generation for a YouTube video using piping/streaming for efficiency
  * This provides faster processing by starting transcription before download completes
@@ -56,23 +57,39 @@ export async function streamingSummary(req: Request, res: Response) {
         });
 
         // Update metrics for memory usage during processing
-        const memoryCheckInterval = setInterval(() => {
-            const currentMemory = process.memoryUsage().heapUsed;
-            if (currentMemory > metrics.memoryPeak) {
-                metrics.memoryPeak = currentMemory;
+        let memoryCheckInterval: ReturnType<typeof setInterval> | null = null;
+        let summary;
+        
+        try {
+            memoryCheckInterval = setInterval(() => {
+                const currentMemory = process.memoryUsage().heapUsed;
+                if (currentMemory > metrics.memoryPeak) {
+                    metrics.memoryPeak = currentMemory;
+                }
+            }, 1000);
+
+            // Set processing start time
+            metrics.processingStartTime = Date.now();
+
+            summary = await summaryService.process(source, {
+                maxWords: Number(req.query.words) || 400,
+                additionalPrompt: req.query.prompt as string
+            });
+
+            // Stop memory tracking
+            if (memoryCheckInterval) {
+                clearInterval(memoryCheckInterval);
+                memoryCheckInterval = null;
             }
-        }, 1000);
-
-        // Set processing start time
-        metrics.processingStartTime = Date.now();
-
-        const summary = await summaryService.process(source, {
-            maxWords: Number(req.query.words) || 400,
-            additionalPrompt: req.query.prompt as string
-        });
-
-        // Stop memory tracking
-        clearInterval(memoryCheckInterval);
+        
+        } catch (error) {
+            // CRITICAL: Always clear interval on error
+            if (memoryCheckInterval) {
+                clearInterval(memoryCheckInterval);
+                memoryCheckInterval = null;
+            }
+            throw error;
+        }
         
         // Set metrics for summarization end
         metrics.summarizationEndTime = Date.now();
@@ -198,19 +215,34 @@ export async function streamingTranscript(req: Request, res: Response) {
         };
 
         // Track memory usage during processing
-        const memoryCheckInterval = setInterval(() => {
-            const currentMemory = process.memoryUsage().heapUsed;
-            if (currentMemory > metrics.memoryPeak) {
-                metrics.memoryPeak = currentMemory;
+        let memoryCheckInterval: ReturnType<typeof setInterval> | null = null;
+        let result;
+        
+        try {
+            memoryCheckInterval = setInterval(() => {
+                const currentMemory = process.memoryUsage().heapUsed;
+                if (currentMemory > metrics.memoryPeak) {
+                    metrics.memoryPeak = currentMemory;
+                }
+            }, 1000);
+
+            result = await summaryService.process(source, {
+                returnTranscriptOnly: true
+            });
+
+            // Stop memory tracking and calculate metrics
+            if (memoryCheckInterval) {
+                clearInterval(memoryCheckInterval);
+                memoryCheckInterval = null;
             }
-        }, 1000);
-
-        const result = await summaryService.process(source, {
-            returnTranscriptOnly: true
-        });
-
-        // Stop memory tracking and calculate metrics
-        clearInterval(memoryCheckInterval);
+        } catch (error) {
+            // CRITICAL: Always clear interval on error
+            if (memoryCheckInterval) {
+                clearInterval(memoryCheckInterval);
+                memoryCheckInterval = null;
+            }
+            throw error;
+        }
         const finalMetrics = {
             totalTime: Date.now() - metrics.startTime,
             memoryUsage: `${Math.round((metrics.memoryPeak - metrics.memoryBefore) / (1024 * 1024))} MB`,

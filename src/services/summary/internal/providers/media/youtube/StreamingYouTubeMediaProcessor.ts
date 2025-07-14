@@ -33,6 +33,7 @@ export class StreamingYouTubeMediaProcessor implements IMediaProcessor {
   private activeStreams: Map<string, { 
     stream: Readable; 
     cleanup: () => Promise<void>;
+    createdAt: number;
   }> = new Map();
 
   async ensureResources(): Promise<void> {
@@ -40,7 +41,26 @@ export class StreamingYouTubeMediaProcessor implements IMediaProcessor {
     logProcessStep('Resource Setup', 'complete', 'environment ready');
   }
 
+  // NEW: Automatic cleanup method
+  private async cleanupOldStreams(maxAgeMs: number = 300000): Promise<void> { // 5 minutes
+    const now = Date.now();
+    const toCleanup: string[] = [];
+
+    for (const [streamId, streamInfo] of this.activeStreams.entries()) {
+      if ((now - streamInfo.createdAt) > maxAgeMs) {
+        toCleanup.push(streamId);
+      }
+    }
+
+    for (const streamId of toCleanup) {
+      await this.cleanup(streamId);
+    }
+  }
+
   async processMedia(source: MediaSource): Promise<StreamingProcessedMedia> {
+    // Clean up old streams before processing new ones
+    await this.cleanupOldStreams();
+
     if (source.type !== 'youtube') {
       throw new BadRequestError('Invalid source type for YouTube processor');
     }
@@ -67,7 +87,7 @@ export class StreamingYouTubeMediaProcessor implements IMediaProcessor {
       );
 
       // Store active stream for later cleanup
-      this.activeStreams.set(fileId, { stream, cleanup });
+      this.activeStreams.set(fileId, { stream, cleanup, createdAt: Date.now() });
 
       // Create dummy audio file path for compatibility
       const audioPath = path.join(TempPaths.AUDIOS, `${fileId}.mp3`);
@@ -118,8 +138,13 @@ export class StreamingYouTubeMediaProcessor implements IMediaProcessor {
       // Check if there's an active stream to clean up
       const streamInfo = this.activeStreams.get(mediaId);
       if (streamInfo) {
-        await streamInfo.cleanup();
-        this.activeStreams.delete(mediaId);
+        try {
+          await streamInfo.cleanup();
+        } catch (cleanupError) {
+          console.error(`Error during stream cleanup for ${mediaId}:`, cleanupError);
+        } finally {
+          this.activeStreams.delete(mediaId);
+        }
       }
 
       // Also clean up any temporary files
@@ -141,5 +166,11 @@ export class StreamingYouTubeMediaProcessor implements IMediaProcessor {
         { mediaId, error: error instanceof Error ? error.message : String(error) }
       );
     }
+  }
+
+  // NEW: Force cleanup all streams (for shutdown)
+  async cleanupAll(): Promise<void> {
+    const streamIds = Array.from(this.activeStreams.keys());
+    await Promise.allSettled(streamIds.map(id => this.cleanup(id)));
   }
 } 
