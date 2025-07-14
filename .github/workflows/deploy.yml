@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  REGION: us-east1
+  REGION: europe-southwest1
   PROJECT_ID: youtube-api-404423
   REPO_NAME: video-summary-api
   IMAGE_NAME: youtube-summary-api
