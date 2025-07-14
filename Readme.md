@@ -59,13 +59,37 @@ A powerful API and CLI tool that generates summaries and transcripts from YouTub
 
 ## Environment Variables
 
-Key environment variables (see `.env.example` for all options):
+Key environment variables:
 
 ```bash
-OPENAI_API_KEY=your-api-key
-YOUTUBE_API_KEY=your-api-key
+# Required
+OPENAI_API_KEY=your-openai-api-key
+YOUTUBE_API_KEY=your-youtube-api-key
 PORT=5050
+
+# Proxy Configuration (for bypassing YouTube IP blocking)
+YOUTUBE_USE_PROXY=true
+YOUTUBE_PROXY_ENDPOINTS=geo.rotating.databay.net:8080
+YOUTUBE_PROXY_USERNAME=your-databay-username
+YOUTUBE_PROXY_PASSWORD=your-databay-password
+
+# Optional
+YOUTUBE_USE_COOKIES=true
+AZURE_STORAGE_CONNECTION_STRING=your-azure-connection
 ```
+
+### Proxy Setup for Production
+
+If deploying to Google Cloud Run, YouTube may block requests due to datacenter IP detection. To resolve this, configure residential proxies:
+
+1. **Sign up for Databay** residential proxies ($0.65/GB)
+2. **Set proxy environment variables** in your deployment:
+   - `YOUTUBE_USE_PROXY=true`
+   - `YOUTUBE_PROXY_USERNAME=your-username`
+   - `YOUTUBE_PROXY_PASSWORD=your-password`
+3. **Deploy** - the system will automatically use residential IPs to bypass blocking
+
+📖 **See [Databay Proxy Setup Guide](docs/DATABAY_PROXY_SETUP.md)** for detailed instructions, cost analysis, and troubleshooting.
 
 ## API Endpoints
 
